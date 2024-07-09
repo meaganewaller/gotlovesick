@@ -18,7 +18,8 @@
     "react-use-scroll-direction": "^0.1.0",
     "tailwindcss": "3.4.1",
     "typescript": "5.3.3",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "zustand": "^4.5.4"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.13",

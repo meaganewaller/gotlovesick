@@ -24,11 +24,6 @@ export const metadata = {
   description: "The fastest way to build apps with Next.js and Supabase",
 };
 
-export const viewport = {
-  themeColor: '#1D232A',
-  colorScheme: 'dark'
-}
-
 export default function RootLayout({
   children,
 }: {

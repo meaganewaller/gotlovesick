@@ -2,6 +2,7 @@
 
 import { useEffect, useState, type RefObject } from 'react';
 import { useScrollDirection } from 'react-use-scroll-direction';
+import { create } from 'zustand';
 
 export function useOutsideClick(
   refs: RefObject<Element>[],

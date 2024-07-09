@@ -20,7 +20,7 @@ export default async function Index() {
           <AvatarComponent className='avatar mb-6 h-16 w-16 rounded-full shadow-halo-secondary-sm xs:hidden' />
           <p>welcome to my</p>
           <h1 className='mb-4 mt-2 text-2xl font-bold leading-tight xs:text-3xl lg:text-4xl'>
-            <span classNamne='text-primary'>
+            <span className='text-primary'>
               secret gardens{' '}
               <span className='whitespace-nowrap italic text-sm'>
                 or lunar valleys

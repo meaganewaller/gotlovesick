@@ -2,6 +2,7 @@
 
 import clsx from 'clsx';
 import navMenuData from '@/data/nav-menu';
+import ThemeSwitcher from './theme-switcher';
 import Image from 'next/image';
 import emblem from '@/public/emblem-yellow.png';
 import {
@@ -47,6 +48,7 @@ const NavMenu = forwardRef<
     forceCloseSubmenus: () => setOpenSubmenu(-1)
   }));
   return (
+    <>
     <ul ref={navMenu} className={clsx('menu flex-nowrap', className)}>
       {navMenuData.map((item, index) => (
         <li key={item[0] as string}>
@@ -69,7 +71,7 @@ const NavMenu = forwardRef<
               open={openSubmenu === index}
             >
               <summary className="pr-5">{item[0]}</summary>
-              <ul className="nav:!mt-6 nav:bg-neutral">
+              <ul className="nav:!mt-6 nav:bg-base-100">
                 {item[1]!.map((link) => (
                   <li key={link[0]}>
                     <SuperLink href={link[1]} onClick={handleNavigation}>
@@ -82,20 +84,9 @@ const NavMenu = forwardRef<
           )}
         </li>
       ))}
-      {compact && (
-        <li>
-          <SuperLink
-            href="/Resume.pdf"
-            toFile
-            external
-            className="flex items-center justify-between text-primary hover:bg-primary hover:text-primary-content focus:!text-primary active:!text-primary"
-          >
-            Resume
-            <HiArrowTopRightOnSquare className="-mr-0.5 mb-px h-4 w-4" />
-          </SuperLink>
-        </li>
-      )}
     </ul>
+    <ThemeSwitcher w='1.25' h='1.25' />
+    </>
   );
 });
 
@@ -119,7 +110,7 @@ export default function Header() {
         showNavbar ? 'translate-y-0' : '-translate-y-full'
       )}
     >
-      <header className="navbar m-5 max-w-6xl rounded-box bg-neutral shadow-md">
+      <header className="navbar m-5 max-w-6xl rounded-box bg-base-100 shadow-md">
         <div className="mx-1 my-0.5 flex flex-1 flex-row items-center gap-2">
           <SuperLink href="/" className="btn btn-ghost px-2">
             <Image
@@ -166,22 +157,13 @@ export default function Header() {
         </div>
         <div className="hidden flex-none nav:flex">
           <NavMenu ref={navMenuWide} className="menu-horizontal" />
-          <SuperLink
-            href="/Resume.pdf"
-            toFile
-            external
-            className="btn btn-outline btn-primary mx-1"
-          >
-            Resume
-            <HiArrowTopRightOnSquare className="mb-px h-4 w-4" />
-          </SuperLink>
         </div>
         <div className="relative flex flex-none nav:hidden">
           <VisibilityToggler
             ref={toggler}
             IconWhenHidden={HiBars3}
             buttonClass="btn-ghost"
-            className="absolute right-0 top-0 w-52 translate-x-2 translate-y-20 overflow-hidden rounded-box bg-neutral shadow-md"
+            className="absolute right-0 top-0 w-52 translate-x-2 translate-y-20 overflow-hidden rounded-box bg-base-100 shadow-md"
           >
             <NavMenu
               ref={navMenuNarrow}

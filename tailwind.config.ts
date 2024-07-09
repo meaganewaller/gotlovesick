@@ -38,6 +38,8 @@ module.exports = {
   plugins: [typography, daisyui],
   daisyui: {
     themes: [
+      'light',
+      'dark',
       {
         debut: {
         },
