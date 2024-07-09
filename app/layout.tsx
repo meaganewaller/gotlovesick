@@ -1,5 +1,10 @@
-import { GeistSans } from "geist/font/sans";
+import { Mulish } from "next/font/google";
 import "./globals.css";
+
+const mulish = Mulish({
+  subsets: ['latin'],
+  variable: '--font-sans'
+})
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -7,9 +12,21 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Next.js and Supabase Starter Kit",
+  title: {
+    template: '%s | secret gardens',
+    default: 'welcome to my secret gardens'
+  },
+  robots: {
+    index: true,
+    follow: true
+  },
   description: "The fastest way to build apps with Next.js and Supabase",
 };
+
+export const viewport = {
+  themeColor: '#1D232A',
+  colorScheme: 'dark'
+}
 
 export default function RootLayout({
   children,
@@ -17,11 +34,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={GeistSans.className}>
-      <body className="bg-background text-foreground">
-        <main className="min-h-screen flex flex-col items-center">
-          {children}
-        </main>
+    <html lang="en" className={`font-sans ${mulish.variable}`}>
+      <body>
+      <div className='m-auto min-w-[350px] max-w-6xl'>
+      <main className="pt-header-buffer flex min-h-screen flex-col justify-center pb-1">
+      {children}
+      </main>
+      </div>
       </body>
     </html>
   );
