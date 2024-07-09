@@ -1,0 +1,10 @@
+.wave {
+  animation: wave 0.5s alternate infinite ease-in-out;
+  top: 0.15em;
+}
+
+@keyframes wave {
+  to {
+    top: -0.15em;
+  }
+}

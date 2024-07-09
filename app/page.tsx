@@ -1,54 +1,56 @@
-import DeployButton from "../components/DeployButton";
-import AuthButton from "../components/AuthButton";
 import { createClient } from "@/utils/supabase/server";
-import ConnectSupabaseSteps from "@/components/tutorial/ConnectSupabaseSteps";
-import SignUpUserSteps from "@/components/tutorial/SignUpUserSteps";
-import Header from "@/components/Header";
+import Image from 'next/image'
+import Avatar from '@/public/pixel-avatar.webp'
+import { FiGithub, FiInstagram, FiX } from 'react-icons/fi';
+import { FaTiktok } from 'react-icons/fa'
+import SuperLink from '@/components/links/standard';
+
+function AvatarComponent({ className }: { className?: string }) {
+  return (
+    <Image src={Avatar} alt="Meagan's avatar." className={className}/>
+  )
+}
 
 export default async function Index() {
-  const canInitSupabaseClient = () => {
-    // This function is just for the interactive tutorial.
-    // Feel free to remove it once you have Supabase connected.
-    try {
-      createClient();
-      return true;
-    } catch (e) {
-      return false;
-    }
-  };
-
-  const isSupabaseConnected = canInitSupabaseClient();
-
   return (
-    <div className="flex-1 w-full flex flex-col gap-20 items-center">
-      <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
-        <div className="w-full max-w-4xl flex justify-between items-center p-3 text-sm">
-          <DeployButton />
-          {isSupabaseConnected && <AuthButton />}
+    <div className="hero my-4">
+      <div className='hero-content max-w-5xl flex-row gap-16'>
+        <AvatarComponent className='avatar mb-6 h-40 w-40 rounded-full shadow-halo-secondary lg:avatar' />
+        <div>
+          <AvatarComponent className='avatar mb-6 h-16 w-16 rounded-full shadow-halo-secondary-sm xs:hidden' />
+          <p>welcome to my</p>
+          <h1 className='mb-4 mt-2 text-2xl font-bold leading-tight xs:text-3xl lg:text-4xl'>
+            <span classNamne='text-primary'>
+              secret gardens{' '}
+              <span className='whitespace-nowrap italic text-sm'>
+                or lunar valleys
+              </span>
+            </span>
+            <br />i have lots of interests.
+          </h1>
+          <p className='max-w-xl text-sm leading-relaxed xs:text-base'>
+            i just want to be known for the things that i <span className='italic tracking-wider font-serif'>love</span>
+          </p>
+          <div className='mt-6 flex flex-row items-center justify-start gap-4'>
+            <AvatarComponent className='mr-4 hidden h-16 w-16 rounded-full shadow-halo-secondary-sm xs:avatar sm:h-20 sm:w-20 lg:hidden' />
+            <SuperLink href='/blog' className='btn btn-primary shadow-halo-primary-sm'>Check out the blog!</SuperLink>
+            <div className='flex-row gap-2'>
+              <div className='flex gap-1'>
+                <SuperLink href='https://github.com/meaganewaller' external styledIcon>
+                  <FiGithub className='h-4 w-4' />
+                </SuperLink>
+                <SuperLink href='https://twitter.com' external styledIcon>
+                  <FiX className='h-4 w-4' />
+                </SuperLink>
+                <SuperLink href='https://tiktok.com/gotlovesickallovermybed' external styledIcon>
+                  <FaTiktok className='h-4 w-4' />
+                </SuperLink>
+                <SuperLink href='https://instagram.com/' external styledIcon><FiInstagram className='h-4 w-4' /></SuperLink>
+              </div>
+            </div>
+          </div>
         </div>
-      </nav>
-
-      <div className="flex-1 flex flex-col gap-20 max-w-4xl px-3">
-        <Header />
-        <main className="flex-1 flex flex-col gap-6">
-          <h2 className="font-bold text-4xl mb-4">Next steps</h2>
-          {isSupabaseConnected ? <SignUpUserSteps /> : <ConnectSupabaseSteps />}
-        </main>
       </div>
-
-      <footer className="w-full border-t border-t-foreground/10 p-8 flex justify-center text-center text-xs">
-        <p>
-          Powered by{" "}
-          <a
-            href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
-            target="_blank"
-            className="font-bold hover:underline"
-            rel="noreferrer"
-          >
-            Supabase
-          </a>
-        </p>
-      </footer>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { Mulish } from "next/font/google";
 import "./globals.css";
+import Header from '@/components/header';
 
 const mulish = Mulish({
   subsets: ['latin'],
@@ -36,11 +37,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`font-sans ${mulish.variable}`}>
       <body>
-      <div className='m-auto min-w-[350px] max-w-6xl'>
-      <main className="pt-header-buffer flex min-h-screen flex-col justify-center pb-1">
-      {children}
-      </main>
-      </div>
+        <div className='m-auto min-w-[350px] max-w-6xl'>
+          <Header />
+          <main className="pt-header-buffer flex min-h-screen flex-col justify-center pb-1">
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );
