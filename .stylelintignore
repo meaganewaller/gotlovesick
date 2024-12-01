@@ -1,0 +1,11 @@
+/.*.js
+/.*.ts
+.*.tsx
+.*.jsx
+*.min.js
+.*cache/
+.next/
+build/
+dist/
+node_modules/
+public/
