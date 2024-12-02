@@ -2,7 +2,7 @@ import Link from 'next/link'
 import bow from '@/public/images/bow.gif'
 import Image from 'next/image'
 import getAllLogs from '@/lib/queries/getAllLogs'
-import {Log} from '@/lib/types'
+import { Log } from '@/lib/types'
 
 export default async function UpdateLog() {
   const logs = await getAllLogs()
@@ -22,7 +22,7 @@ export default async function UpdateLog() {
 
   return (
     <nav
-      className="p-4 select-none border border-solid border-lime-500 bg-pink-50 rounded-xl"
+      className="p-4 select-none border-solid border-lime-500 bg-lime-50 rounded-xl min-h-[50vh] border-2 overflow-scroll"
       id="update-log"
     >
       <span className="text-center text-xl leading-6 text-rose-600 w-full flex font-pixel justify-center gap-1 mb-5">
@@ -33,15 +33,15 @@ export default async function UpdateLog() {
       {logs.map((log: Log) => (
         <article
           key={log.databaseId}
-          className="leading-6 flex flex-col justify-center gap-1"
+          className="leading-6 flex flex-col justify-center gap-1 border-lime-200 border-b-2 border-dashed pb-5 pt-2"
         >
           <h2
-            dangerouslySetInnerHTML={{__html: log.title}}
-            className="!p-0 !mx-0 mb-3 text-sm uppercase tracking-widest"
+            dangerouslySetInnerHTML={{ __html: log.title }}
+            className="!p-0 !mx-0 mb-3 text-sm uppercase tracking-widest text-center italic"
           />
           <div
-            dangerouslySetInnerHTML={{__html: log.content}}
-            className="text-justify !p-0 !text-base"
+            dangerouslySetInnerHTML={{ __html: log.content }}
+            className="text-justify !p-0 !mb-1 !text-base"
           />
         </article>
       ))}

@@ -12,7 +12,7 @@ export interface Children {
 
 export interface GraphQLResponse<T = any> {
   data?: T
-  errors?: Array<{message: string}>
+  errors?: Array<{ message: string }>
 }
 
 export interface Menu {
@@ -82,6 +82,34 @@ export interface Log {
   date: string
   content: string
   title: string
+}
+
+export interface Collection {
+  databaseId: string;
+  name: string;
+  slug: string;
+  parent: {
+    node: {
+      databaseId: string;
+      slug: string;
+      name: string;
+    }
+  }
+}
+
+export interface Bookmark {
+  databaseId: string
+  title: string
+  slug: string
+  featuredImage: FeaturedImage
+  commentCount: number
+  content: string
+  excerpt: string
+  collections: [
+    edges: {
+      node: Collection
+    }
+  ]
 }
 
 export interface Post {

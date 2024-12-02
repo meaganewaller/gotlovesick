@@ -1,5 +1,5 @@
-import {fetchGraphQL} from '@/lib/functions'
-import {Page} from '@/lib/types'
+import { fetchGraphQL } from '@/lib/functions'
+import { Page } from '@/lib/types'
 
 /**
  * Fetch all pages.
@@ -15,6 +15,7 @@ export default async function getAllPages() {
           modified
           excerpt(format: RENDERED)
           slug
+          title
           featuredImage {
             node {
               altText

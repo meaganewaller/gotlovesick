@@ -1,14 +1,11 @@
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import HeaderNav from '@/components/HeaderNav'
-import Sidebar from '@/components/Sidebar'
-import UpdateLog from '@/components/UpdateLog'
 import AccessCounter from '@/components/AccessCounter'
 import config from '@/lib/config'
-import type {Metadata, Viewport} from 'next'
+import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import 'flex-layout-attribute'
-import Script from 'next/script'
 
 /**
  * Setup metadata.
@@ -36,7 +33,7 @@ export const viewport: Viewport = {
  *
  * @see https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#root-layout-required
  */
-export default function RootLayout({children}: {children: React.ReactNode}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
@@ -50,15 +47,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
                 <HeaderNav />
               </div>
             </div>
-            <div layout="lg-column" self="size-x1">
-              <div self="size-x1">
-                <Sidebar />
-              </div>
-              <div self="size-x3 sm-first">{children}</div>
-              <div self="size-x1">
-                <UpdateLog />
-              </div>
-            </div>
+            {children}
             <div layout="rows-justify">
               <hr className="border-t-2 border-lime-500 w-full border-dashed" />
               <div self="sm-full">
