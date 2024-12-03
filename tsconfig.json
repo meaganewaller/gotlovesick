@@ -13,7 +13,7 @@
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -25,7 +25,22 @@
     ],
     "paths": {
       "@/*": [
-        "./*"
+        "./src/*"
+      ],
+      "@/lib/*": [
+        "./src/lib/*"
+      ],
+      "@/queries/*": [
+        "./src/lib/queries/*"
+      ],
+      "@/components/*": [
+        "./src/components/*"
+      ],
+      "@/types/*": [
+        "./src/types/*"
+      ],
+      "~/*": [
+        "./public/*"
       ]
     }
   },
@@ -34,7 +49,9 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "index.d.ts"
+    "index.d.ts",
+    "src/hooks/sections/hero.tjsx",
+    "next.config.mjs"
   ],
   "exclude": [
     "node_modules"
