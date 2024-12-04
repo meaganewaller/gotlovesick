@@ -1,9 +1,9 @@
 import config from '@/lib/config'
 import getTagBySlug from '@/lib/queries/getTagBySlug'
-import {Metadata} from 'next'
+import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import {notFound} from 'next/navigation'
+import { notFound } from 'next/navigation'
 
 /**
  * Generate the metadata for each static route at build time.
@@ -13,9 +13,9 @@ import {notFound} from 'next/navigation'
 export async function generateMetadata({
   params
 }: {
-  params: {slug: string}
+  params: { slug: string }
 }): Promise<Metadata | null> {
-  const slug = params.slug
+  const { slug } = params
 
   return {
     title: `${slug} Archives - ${config.siteName}`,
@@ -28,7 +28,7 @@ export async function generateMetadata({
  *
  * @see https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#pages
  */
-export default async function TagArchive({params}: {params: {slug: string}}) {
+export default async function TagArchive({ params }: { params: { slug: string } }) {
   // Fetch posts from WordPress.
   const posts = await getTagBySlug(params.slug)
 
@@ -51,12 +51,12 @@ export default async function TagArchive({params}: {params: {slug: string}}) {
               priority={true}
             />
             <Link href={`/blog/${post.slug}`}>
-              <h2 dangerouslySetInnerHTML={{__html: post.title}} />
+              <h2 dangerouslySetInnerHTML={{ __html: post.title }} />
             </Link>
             <p className="text-sm text-gray-500">
               {post.commentCount} Comments
             </p>
-            <div dangerouslySetInnerHTML={{__html: post.excerpt}} />
+            <div dangerouslySetInnerHTML={{ __html: post.excerpt }} />
             <Link className="button" href={`/blog/${post.slug}`}>
               View Post
             </Link>

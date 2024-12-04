@@ -11,9 +11,9 @@ export default async function UpdateLog() {
     return (
       <nav className="py-4 px-0 select-none" id="update-log">
         <span className="text-center text-xl leading-6 text-rose-600 w-full flex font-pixel justify-center gap-1">
-          <Image src={bow} alt="" width={22} height={13} />
+          <Image src={bow} alt="" className="h-auto" width={bow.width} height={bow.height} />
           Update Log
-          <Image src={bow} alt="" width={22} height={13} />
+          <Image src={bow} alt="" className="h-auto" width={bow.width} height={bow.height} />
         </span>
         <p>no update logs found</p>
       </nav>
@@ -26,9 +26,9 @@ export default async function UpdateLog() {
       id="update-log"
     >
       <span className="text-center text-xl leading-6 text-rose-600 w-full flex font-pixel justify-center gap-1 mb-5">
-        <Image src={bow} alt="" />
+        <Image src={bow} alt="" className="h-auto" width={bow.width} height={bow.height} />
         Updates
-        <Image src={bow} alt="" />
+        <Image src={bow} alt="" className="h-auto" width={bow.width} height={bow.height} />
       </span>
       {logs.map((log: Log) => (
         <article

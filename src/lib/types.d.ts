@@ -28,17 +28,16 @@ export interface FeaturedImage {
   }
 }
 
+export interface MenuItem {
+  uri: string
+  label: string
+  databaseId: string
+  id: string
+}
+
 export interface Menu {
   menuItems: {
-    edges: [
-      {
-        node: {
-          uri: string
-          label: string
-          databaseId: string
-        }
-      }
-    ]
+    nodes: MenuItem[]
   }
 }
 
@@ -85,7 +84,7 @@ export interface Collection {
   }
 }
 
-export interface Bookmark {
+export interface Bookmark extends Post {
   databaseId: string
   title: string
   slug: string

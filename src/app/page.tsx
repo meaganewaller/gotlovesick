@@ -1,5 +1,5 @@
 import getAllPosts from '@/lib/queries/getAllPosts'
-import getPageBySlug from '@/lib/queries/getPageBySlug'
+import { getPageBySlug } from '@/lib/queries/Pages'
 import { getAllBookmarks } from '@/lib/queries/Bookmarks'
 import { Post, Bookmark } from '@/lib/types'
 import Link from 'next/link'
@@ -31,7 +31,7 @@ export default async function Home() {
   return (
     <div layout="lg-column" self="size-x1">
       <div self="size-x1">
-        <Sidebar />
+        <Sidebar pageSlug={"homepage"} menuSlug={"sidebar"} />
         <Image src={rainbow} width={240} height={240} alt="" className="mx-auto" />
       </div>
       <div self="size-x3 sm-first" className="bg-fuchsia-100 border-fuchsia-600 border-solid border-2 max-h-[65vh] overflow-scroll">
@@ -72,6 +72,5 @@ export default async function Home() {
         <UpdateLog />
       </div>
     </div>
-
   )
 }

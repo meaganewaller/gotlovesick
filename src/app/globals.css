@@ -150,6 +150,7 @@
 
     div {
       @apply text-pink-800 font-bold text-lg;
+
       /* @apply outline-pink-500 outline-dotted outline-1; */
       @apply w-auto rounded-sm;
       @apply py-4 px-6;
@@ -180,6 +181,18 @@
           inset 1px 2px #fdd889,
           inset -2px 2px #fbc761,
           inset 2px -2px #e5a01a;
+      }
+
+      &.active-sidebar-link {
+        @apply text-yellow-500 from-yellow-50 via-yellow-100 via-[86%] to-yellow-200;
+
+        &:hover {
+          box-shadow:
+            inset -1px 1px #fce7f3,
+            inset 1px 2px #f9a8d4,
+            inset -2px 2px #f472b6,
+            inset 2px -2px #db2777;
+        }
       }
     }
   }
@@ -230,7 +243,7 @@
   }
 }
 
-@-webkit-keyframes AnimationName {
+@keyframes AnimationName {
   0% {
     background-position: 0% 42%
   }
@@ -244,7 +257,7 @@
   }
 }
 
-@-moz-keyframes AnimationName {
+@keyframes AnimationName {
   0% {
     background-position: 0% 42%
   }
@@ -258,7 +271,7 @@
   }
 }
 
-@-o-keyframes AnimationName {
+@keyframes AnimationName {
   0% {
     background-position: 0% 42%
   }
@@ -287,7 +300,7 @@
 }
 
 
-@-moz-keyframes gradient-animation {
+@keyframes gradient-animation {
   0% {
     background-position: 0% 50%;
   }

@@ -7,7 +7,7 @@ import logo from '~/logo.png'
 export default function Header() {
   return (
     <header>
-      <Image src={logo} alt="Secret Gardens Logo" width={373} height={174} />
+      <Image src={logo} alt="Secret Gardens Logo" width={373} height={174} priority />
     </header>
   )
 }

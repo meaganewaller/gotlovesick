@@ -48,6 +48,7 @@ export async function getPageBySlug(slug: string) {
         databaseId
         date
         modified
+        slug
         content(format: RENDERED)
         title(format: RENDERED)
         featuredImage {
