@@ -1,6 +1,8 @@
-/** @type {import('next').NextConfig} */
-const nextConfig: import("next").NextConfig = {
+import { NextConfig } from 'next'
+
+const nextConfig: NextConfig = {
   output: "standalone",
+  sassOptions: {},
   images: {
     remotePatterns: [
       {
@@ -18,7 +20,7 @@ const nextConfig: import("next").NextConfig = {
     ],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-  },
-};
+  }
+}
 
-export default nextConfig;
+module.exports = nextConfig

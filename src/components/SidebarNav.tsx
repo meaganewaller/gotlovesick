@@ -1,5 +1,3 @@
-'use client'
-
 import { cn } from "@/lib/utils"
 import Link from 'next/link'
 import { type Menu } from "@/lib/types"
@@ -9,8 +7,7 @@ interface SidebarNavParams {
   pageSlug: string
 }
 
-export default async function SidebarNav(params: SidebarNavParams) {
-  console.log("params:", params)
+export default function SidebarNav(params: SidebarNavParams) {
   return (
     <>
       {!!params.menu && params.menu.menuItems.nodes.map((item) => (

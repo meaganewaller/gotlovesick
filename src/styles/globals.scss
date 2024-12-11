@@ -1,0 +1,36 @@
+@import "./fonts.scss";
+@import "tailwindcss/base";
+@import "./reset.scss";
+@import "./custom-reset.scss";
+
+@tailwind components;
+@tailwind utilities;
+
+@import "./colors.scss";
+@import "./core.scss";
+
+@layer components {
+  .bg-pattern {
+    @apply relative z-0;
+
+    &::before {
+      @apply absolute inset-0 z-[-1] content-[''] grid-pattern-toolbar;
+      mask-image: linear-gradient(transparent, rgba(var(--color-toolbar)), transparent);
+    }
+  }
+}
+
+html.inverted,
+html.light-inverted,
+html.dark-inverted {
+
+  &,
+  & * {
+    @apply pointer-events-none select-none invert-[1.5] saturate-[30];
+
+    &::before {
+      z-index: 9999;
+      content: '–';
+    }
+  }
+}

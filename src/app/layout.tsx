@@ -1,8 +1,6 @@
-import HeaderNav from '@/components/HeaderNav'
-import AccessCounter from '@/components/AccessCounter'
 import config from '@/lib/config'
 import type { Metadata, Viewport } from 'next'
-import './globals.css'
+import '@/styles/globals.scss'
 import 'flex-layout-attribute'
 
 /**
@@ -33,8 +31,8 @@ export const viewport: Viewport = {
  */
 export default function RootLayout({ children, header, footer }: { children: React.ReactNode, header: React.ReactNode, footer: React.ReactNode; }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body>
+    <html lang="en" suppressHydrationWarning className={'font-sans 2xl:text-[24px]'}>
+      <body className='debug-screens bg-clouds'>
         <main>
           <section id="root-layout" layout="column">
             {header}

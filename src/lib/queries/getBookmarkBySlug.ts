@@ -35,6 +35,15 @@ export default async function getBookmarkBySlug(slug: string) {
           metaDesc
           title
         }
+        collection {
+          nodes {
+            id
+            databaseId
+            slug
+            uri
+            name
+          }
+        }
         comments(first: 30, where:{order:ASC}){
           nodes {
             content(format:RENDERED)

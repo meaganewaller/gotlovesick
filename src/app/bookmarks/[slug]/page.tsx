@@ -1,7 +1,10 @@
 import { getAllBookmarks } from "@/lib/queries/Bookmarks"
 import getBookmarkBySlug from "@/lib/queries/getBookmarkBySlug"
+import getBookmarksByCollection from "@/lib/queries/getBookmarksByCollection"
 import { notFound } from 'next/navigation'
+import Date from "@/components/date"
 import Image from "next/image"
+import Link from "next/link"
 
 export async function generateStaticParams() {
   const bookmarks = await getAllBookmarks()
@@ -24,18 +27,34 @@ export default async function Bookmark({ params }: { params: { slug: string } })
   }
 
   return (
-    <div layout="lg-column" self="size-x1">
-      <div self="size-x3">
-        <header>
-          <h1 className="text-5xl mt-10 mb-16 text-center" dangerouslySetInnerHTML={{ __html: bookmark.title }} />
-        </header>
-        <Image src={bookmark.featuredImage.node.sourceUrl} alt={bookmark.featuredImage.node.altText} width={bookmark.featuredImage.node.mediaDetails.width} height={bookmark.featuredImage.node.mediaDetails.height} className="mx-auto" />
-        <div id="blog-bookmark-container" dangerouslySetInnerHTML={{ __html: bookmark.content }} />
-        <hr className="border-pink-500 my-10" />
-      </div>
-      <div self="size-x1">
-      </div>
-    </div>
+    <>
+      <main>
+        <article>
+          <header className="mx-auto mt-20 max-w-screen-lg rounded-t-lg bg-white pt-16 text-center">
+            <p className="text-gray-500">Published <Date dateString={bookmark.date} /></p>
+            <h1 className="mt-2 text-4xl font-bold text-gray-900 sm:text-5xl">{bookmark.title}</h1>
+            <p className="mt-6 text-lg text-gray-700">{bookmark.excerpt}</p>
+            <div className="mt-6 flex flex-wrap justify-center gap-2">
+              {bookmark.collection.nodes.map((collection) => (
+                <Link
+                  key={collection.databaseId}
+                  href={`/collections/${collection.slug}`}
+                  className="rounded-lg bg-gray-100 px-2 py-1 font-medium text-gray-600 hover:bg-gray-200"
+                >
+                  {collection.name}
+                </Link>
+              ))}
+            </div>
+            <Image className="sm:h-[34rem] mt-10 w-full object-contain" src={bookmark.featuredImage.node.sourceUrl} alt={bookmark.featuredImage.node.altText} width={bookmark.featuredImage.node.mediaDetails.width} height={bookmark.featuredImage.node.mediaDetails.height} />
+          </header>
+
+          <div className="mx-auto mt-10 max-w-screen-md space-y-12 px-4 py-10 font-serif text-lg tracking-wide text-gray-700">
+            <div dangerouslySetInnerHTML={{ __html: bookmark.content }} />
+
+          </div>
+        </article>
+      </main>
+    </>
   )
 }
 

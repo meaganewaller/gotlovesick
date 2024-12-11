@@ -92,11 +92,9 @@ export interface Bookmark extends Post {
   commentCount: number
   content: string
   excerpt: string
-  collections: [
-    edges: {
-      node: Collection
-    }
-  ]
+  collection: {
+    nodes: Collection[]
+  }
 }
 
 export interface Post {
@@ -160,6 +158,23 @@ export interface Post {
 }
 
 export interface Shrine extends Post {
+}
+
+export interface Project extends Post {
+}
+
+interface ReviewDetailsFields {
+  rating: number
+  releaseDate: string
+  reviewContent: string
+
+}
+
+export interface Review extends Post {
+  reviewDetails: ReviewDetailsFields
+}
+
+export interface MusicReview extends Review {
 
 }
 

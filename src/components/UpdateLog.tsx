@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import bow from '~/images/bow.gif'
 import Image from 'next/image'
 import getAllLogs from '@/lib/queries/getAllLogs'
@@ -22,7 +21,7 @@ export default async function UpdateLog() {
 
   return (
     <nav
-      className="p-4 select-none border-solid border-lime-500 bg-lime-50 rounded-xl min-h-[50vh] border-2 overflow-scroll"
+      className="p-4 select-none border-solid border-lime-500 bg-lime-50 rounded-xl h-[30vh] border-2 overflow-y-scroll"
       id="update-log"
     >
       <span className="text-center text-xl leading-6 text-rose-600 w-full flex font-pixel justify-center gap-1 mb-5">

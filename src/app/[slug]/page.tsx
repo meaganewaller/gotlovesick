@@ -1,158 +1,115 @@
 import { getAllPosts } from "@/lib/queries/Posts";
-import { getPageBySlug } from "@/lib/queries/Pages"
-import { getAllShrines } from "@/lib/queries/Shrines";
 import { getAllBookmarks } from "@/lib/queries/Bookmarks";
-import getAllProjects from "@/lib/queries/getAllProjects"
-import Sidebar from '@/components/Sidebar'
-import { Page, Post } from "@/lib/types";
-import Image from 'next/image'
-import Link from 'next/link'
+import { getPageBySlug } from "@/lib/queries/Pages";
+import { Page, Post, Bookmark, Menu, Project, Shrine } from "@/lib/types"
+import Link from "next/link"
+import Sidebar from "@/components/Sidebar";
+import getMenuBySlug from "@/lib/queries/getMenuBySlug";
+import rainbow from "~/images/rainbow.gif";
+import Image from "next/image"
+import { getAllShrines } from "@/lib/queries/Shrines";
+import getAllProjects from "@/lib/queries/getAllProjects";
 import { notFound } from "next/navigation";
-import { AspectRatio } from "@/components/ui/aspect-ratio"
-import rainbow from '~/images/rainbow.gif'
 
 async function fetchData(slug: string) {
   if (slug === "blog") {
-    return { posts: await getAllPosts(), context: "blog" };
-  }
-
-  if (slug === "shrines") {
-    return { posts: await getAllShrines(), context: "shrines" };
-  }
-
-  if (slug === "projects") {
-    return { posts: await getAllProjects(), context: "projects" };
+    return { content: await getAllPosts(), context: 'blog', menu: await getMenuBySlug("blog") }
   }
 
   if (slug === "bookmarks") {
-    return { posts: await getAllBookmarks(), context: "bookmarks" };
+    return { content: await getAllBookmarks(), context: "bookmarks", menu: await getMenuBySlug("sidebar") }
   }
 
-  const page = await getPageBySlug(slug);
+  if (slug === "shrines") {
+    return { content: await getAllShrines(), context: "shrines", menu: await getMenuBySlug("sidebar") }
+  }
+
+  if (slug === "projects") {
+    return { content: await getAllProjects(), context: "projects", menu: await getMenuBySlug("sidebar") }
+  }
+
+  const page = await getPageBySlug(slug)
+  const menu = await getMenuBySlug("sidebar")
 
   if (page) {
-    return { post: page };
+    return { page: page, menu: menu }
   }
 
   return { error: "No data found" }
 }
 
-async function RenderPage({ page }: { page: Page }) {
-  const { slug, title, content } = page
-
-  console.log("slug is:", slug)
-
+function RenderPage({ page, menu }: { page: Page, menu: Menu }) {
   return (
     <div layout="lg-column" self="size-x1">
       <div self="size-x1">
-        <Sidebar pageSlug={slug} menuSlug={slug} />
-      </div>
-      <div self="size-x3 sm-first ">
-        <h1 dangerouslySetInnerHTML={{ __html: title }} />
-        <div dangerouslySetInnerHTML={{ __html: content }} />
-      </div>
-    </div>
-  );
-}
-
-function RenderPostsList({
-  posts,
-  context,
-}: {
-  posts: Post[];
-  context: string;
-}) {
-
-  let contextName
-  if (context === "blog") {
-    contextName = "blogs"
-  } else {
-    contextName = context
-  }
-
-  return (
-    <div layout="lg-column" self="size-x1">
-      <div self="size-x1">
-        <Sidebar pageSlug={context} menuSlug={"sidebar"} />
+        <Sidebar pageSlug={page.slug} menu={menu} />
         <Image src={rainbow} width={240} height={240} alt="" className="mx-auto" />
       </div>
       <div self="size-x3 sm-first" className="bg-fuchsia-100 border-fuchsia-600 border-solid border-2 max-h-[65vh] overflow-scroll">
-        <main className="flex flex-col">
-          <article className="flex">
-            <h1 className="capitalize text-center text-4xl my-6">Latest {contextName}</h1>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-4xl mx-auto px-8">
-              {posts.map((post: Post) => (
-                <article className="w-full pb-6 text-pretty" key={post.databaseId}>
-                  <div>
-                    <AspectRatio ratio={1 / 1}>
-                      <Image
-                        alt={post.featuredImage.node.altText}
-                        layout="fill"
-                        objectFit="cover"
-                        src={post.featuredImage.node.sourceUrl}
-                        priority={true}
-                      />
-                    </AspectRatio>
-                  </div>
-                  <Link href={`/${context}/${post.slug}`}>
-                    <h2
-                      dangerouslySetInnerHTML={{ __html: post.title }}
-                      className="tracking-normal leading-tight pt-2"
-                    />
-                  </Link>
-                  <p className="text-sm text-gray-500 italic">
-                    {new Date(post.date).toLocaleDateString("en-US", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })}
-                  </p>
-                  {/* <p className="text-sm text-gray-500">
-              {post.commentCount} Comments
-            </p> */}
-                  {/* <div dangerouslySetInnerHTML={{ __html: post.excerpt }} /> */}
-                  {/* <Link className="button" href={`/${context}/${post.slug}`}>
-              View Post
-            </Link> */}
-                </article>
-              ))}
-            </div>
-          </article>
+        <h1 dangerouslySetInnerHTML={{ __html: page.title }} />
+        <div dangerouslySetInnerHTML={{ __html: page.content }} />
+      </div>
+    </div>
+  )
+}
+
+interface ContentListParams {
+  content: Post[] | Bookmark[] | Project[] | Shrine[];
+  context: string
+  menu: Menu
+}
+
+function RenderContentList({ content, context, menu }: ContentListParams) {
+  return (
+    <div layout="lg-column" self="size-x1">
+      <div self="size-x1">
+        <Sidebar pageSlug={context} menu={menu} />
+        <Image src={rainbow} width={240} height={240} alt="" className="mx-auto" />
+      </div>
+      <div self="size-x3 sm-first" className="bg-fuchsia-100 border-fuchsia-600 border-solid border-2 max-h-[65vh] overflow-scroll">
+        <main className="flex flex-col gap-8">
+          <h1 className="capitalize">The {context} page</h1>
+          <div className="flex flex-wrap gap-8">
+            {content.map((content: Post | Bookmark | Project | Shrine) => (
+              <article className="w-72" key={content.databaseId}>
+                <Image alt={content.featuredImage.node.altText}
+                  height={content.featuredImage.node.mediaDetails.height}
+                  src={content.featuredImage.node.sourceUrl}
+                  width={content.featuredImage.node.mediaDetails.width}
+                  priority={true}
+                />
+                <Link href={`/${context}/${content.slug}`}>
+
+                  <h2 dangerouslySetInnerHTML={{ __html: content.title }} />
+                </Link>
+                <Link className="button" href={`/${context}/${content.slug}`}>
+                  See more
+                </Link>
+              </article>
+            ))}
+          </div>
         </main>
       </div>
     </div>
-  );
+  )
 }
 
-/**
- * Catch-all Archive Page route.
- */
-export default async function Archive({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  // Get the slug from the params.
-  const { slug } = await params;
+export default async function Archive({ params }: { params: { slug: string } }) {
+  const { slug } = params
 
-  // Fetch data from WordPress.
-  const data = await fetchData(slug);
+  const data = await fetchData(slug)
 
-  // If there's an error, return a 404 page.
   if (data.error) {
-    notFound();
+    notFound()
   }
 
-  // If this is a single page, render the page.
-  if (data.post) {
-    return <RenderPage page={data.post} />;
+  if (data.page) {
+    return <RenderPage page={data.page} menu={data.menu} />
   }
 
-  // Otherwise, this must be an archive. Render the posts list.
-  if (data.posts && data.posts.length > 0) {
-    return <RenderPostsList posts={data.posts} context={data.context} />;
+  if (data.content && data.content.length > 0) {
+    return <RenderContentList content={data.content} context={data.context} menu={data.menu} />
   }
 
-  // Otherwise, return a 404 page.
   notFound();
 }

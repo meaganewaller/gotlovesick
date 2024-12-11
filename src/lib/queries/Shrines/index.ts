@@ -34,3 +34,65 @@ export async function getAllShrines() {
     (node: any) => node
   ) as Shrine[]
 }
+
+export async function getShrineBySlug(slug: string) {
+  const query = `
+    query GetShrineBySlug($slug: ID!) {
+      shrine(id: $slug, idType: SLUG) {
+        databaseId
+        date
+        modified
+        content(format: RENDERED)
+        title(format: RENDERED)
+        featuredImage {
+          node {
+            altText
+            sourceUrl
+            mediaDetails {
+              height
+              width
+            }
+          }
+        }
+        author {
+          node {
+            name
+            avatar {
+              url
+            }
+          }
+        }
+        seo {
+          metaDesc
+          title
+        }
+        comments(first: 30, where: {order: ASC}) {
+          nodes {
+            content(format: RENDERED)
+            databaseId
+            date
+            status
+            author {
+              node {
+                avatar {
+                  url
+                }
+                email
+                name
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  `
+
+  const variables = {
+    slug: slug
+  }
+
+  const response = await fetchGraphQL(query, variables)
+
+  return response.data.shrine as Shrine
+}
