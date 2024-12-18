@@ -17,6 +17,17 @@ export async function getByReviewType(slug: string) {
             title
             excerpt
             content
+      featuredImage{
+        node{
+          altText
+          sourceUrl
+          mediaDetails{
+            height
+            width
+          }
+        }
+      }
+
             commentCount
             contentTypeName
             reviewType {
@@ -84,6 +95,17 @@ export async function getReviewBySlug(slug: string) {
 date
 title(format:RENDERED)
     content(format:RENDERED)
+featuredImage{
+node{
+altText
+sourceUrl
+mediaDetails{
+height
+width
+}
+}
+}
+
     databaseId
     modified
     commentCount

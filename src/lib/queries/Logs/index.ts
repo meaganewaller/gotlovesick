@@ -1,7 +1,7 @@
 import {fetchGraphQL} from '@/lib/functions'
 import {Log} from '@/lib/types'
 
-export default async function getAllLogs() {
+export async function getAllLogs() {
   const query = `
     query GetAllLogs {
       logs(where: {status: PUBLISH}) {

@@ -74,6 +74,8 @@ export async function getPostBySlug(slug: string) {
           nodes {
             databaseId
             name
+            slug
+            count
           }
         }
         categories {

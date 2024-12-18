@@ -4,7 +4,7 @@ import {Post} from '@/lib/types'
 /**
  * Fetch a category archive by slug.
  */
-export default async function getCategoryBySlug(
+export async function getCategoryBySlug(
   slug: string,
   limit: number = 10
 ) {
