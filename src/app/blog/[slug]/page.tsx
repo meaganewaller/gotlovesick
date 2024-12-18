@@ -93,7 +93,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
             <ul className="m-0 flex list-none gap-2 p-0">
               {post.tags.nodes.map((tag) => (
                 <li className="m-0 p-0" key={tag.databaseId}>
-                  <Link href={`/blog/tag/${tag.name}`}>{tag.name}</Link>
+                  <Link href={`/blog/tag/${tag.slug}`}>{tag.name}</Link>
                 </li>
               ))}
             </ul>

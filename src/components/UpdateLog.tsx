@@ -1,6 +1,6 @@
 import bow from '~/images/bow.gif'
 import Image from 'next/image'
-import getAllLogs from '@/lib/queries/getAllLogs'
+import { getAllLogs } from '@/lib/queries/Logs'
 import { Log } from '@/lib/types'
 
 export default async function UpdateLog() {

@@ -1,0 +1,48 @@
+{
+  "extends": "stylelint-config-standard-scss",
+  "rules": {
+    "alpha-value-notation": "number",
+    "color-function-notation": "legacy",
+    "comment-whitespace-inside": null,
+    "custom-property-pattern": null,
+    "declaration-empty-line-before": null,
+    "function-url-quotes": null,
+    "hue-degree-notation": "number",
+    "length-zero-no-unit": [
+      true,
+      {
+        "ignore": [
+          "custom-properties"
+        ]
+      }
+    ],
+    "property-no-unknown": [
+      true,
+      {
+        "ignoreProperties": [
+          "composes"
+        ]
+      }
+    ],
+    "selector-id-pattern": null,
+    "selector-class-pattern": [
+      "^([a-z][a-z0-9]*)((-|--|__)[a-z0-9]+)*$",
+      {
+        "message": "Selector should use lowercase and separate words with hyphens or use BEM (selector-class-pattern)"
+      }
+    ],
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": [
+          "global",
+          "local"
+        ]
+      }
+    ],
+    "scss/dollar-variable-empty-line-before": null,
+    "scss/dollar-variable-pattern": null,
+    "scss/double-slash-comment-whitespace-inside": null,
+    "scss/operator-no-newline-after": null
+  }
+}

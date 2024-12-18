@@ -1,8 +1,6 @@
 import CommentForm from '@/components/CommentForm'
-import getAllProjects from '@/lib/queries/getAllProjects'
-import getProjectBySlug from '@/lib/queries/getProjectBySlug'
+import { getAllProjects, getProjectBySlug } from '@/lib/queries/Projects'
 import { Metadata } from 'next'
-import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 /**

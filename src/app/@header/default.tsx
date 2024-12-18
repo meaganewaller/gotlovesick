@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import getHeaderMenuById from "@/lib/queries/getHeaderMenuById"
-import logo from '~/logo.png'
+import logo from '@/assets/images/logo.png'
 
 /**
  * Header component.

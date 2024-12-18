@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Post } from "@/lib/types";
+import Date from "@/components/date"
 
 export default function FeaturedBlogPost({ post, previousPost }: { post: Post, previousPost: Post }) {
   return (
@@ -7,8 +8,8 @@ export default function FeaturedBlogPost({ post, previousPost }: { post: Post, p
       <div layout="row top-stretch" className="space-x-4">
         <div self="size-x1" />
         <div self="size-x3">
-          <span className="uppercase tracking-wide text-base font-bold font-cute md:text-lg">
-            {post.date}
+          <span className="lowercase tracking-wide text-base font-cute md:text-lg">
+            <Date dateString={post.date} />
           </span>
           <h1 className='text-3xl md:text-4xl mt-1 mb-5 mx-0 tracking-wide'>
             <Link href={`/blog/${post.slug}`}

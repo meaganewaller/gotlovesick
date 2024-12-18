@@ -1,4 +1,27 @@
-import { extend } from "lodash"
+export interface Tag {
+  databaseId: string
+  name: string
+  slug: string
+  count: number
+}
+
+export interface TagPage extends Tag {
+  collectionFields: {
+    icon: {
+      node: {
+        altText: string
+        mediaDetails: {
+          height: number
+          width: number
+        }
+        sourceUrl: string
+      }
+    }
+  }
+  posts: {
+    nodes: Post[]
+  }
+}
 
 export interface SearchResults {
   id: number
@@ -75,6 +98,9 @@ export interface Collection {
   databaseId: string;
   name: string;
   slug: string;
+  collectionFields: {
+    color: string
+  }
   parent: {
     node: {
       databaseId: string;
@@ -84,21 +110,8 @@ export interface Collection {
   }
 }
 
-export interface Bookmark extends Post {
-  databaseId: string
-  title: string
-  slug: string
-  featuredImage: FeaturedImage
-  commentCount: number
-  content: string
-  excerpt: string
-  collection: {
-    nodes: Collection[]
-  }
-}
-
 export interface Post {
-  author: {
+  author?: {
     node: {
       name: string
       avatar: {
@@ -112,9 +125,9 @@ export interface Post {
   slug: string
   title: string
   excerpt: string
-  content: string
-  commentCount: number
-  categories: {
+  content?: string
+  commentCount?: number
+  categories?: {
     nodes: [
       {
         databaseId: string
@@ -122,20 +135,15 @@ export interface Post {
       }
     ]
   }
-  tags: {
-    nodes: [
-      {
-        databaseId: string
-        name: string
-      }
-    ]
+  tags?: {
+    nodes: Tag[]
   }
   featuredImage: FeaturedImage
-  seo: {
+  seo?: {
     metaDesc: string
     title: string
   }
-  comments: {
+  comments?: {
     nodes: [
       {
         databaseId: string
@@ -157,6 +165,13 @@ export interface Post {
   }
 }
 
+export interface Bookmark extends Post {
+  collections: {
+    nodes: Collection[]
+  }
+}
+
+
 export interface Shrine extends Post {
 }
 
@@ -167,7 +182,6 @@ interface ReviewDetailsFields {
   rating: number
   releaseDate: string
   reviewContent: string
-
 }
 
 export interface Review extends Post {
@@ -175,7 +189,7 @@ export interface Review extends Post {
 }
 
 export interface MusicReview extends Review {
-
+  featuredImage: FeaturedImage
 }
 
 export interface AllPages {

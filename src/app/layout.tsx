@@ -31,10 +31,10 @@ export const viewport: Viewport = {
  */
 export default function RootLayout({ children, header, footer }: { children: React.ReactNode, header: React.ReactNode, footer: React.ReactNode; }) {
   return (
-    <html lang="en" suppressHydrationWarning className={'font-sans 2xl:text-[24px]'}>
-      <body className='debug-screens bg-clouds'>
-        <main>
-          <section id="root-layout" layout="column">
+    <html lang="en" suppressHydrationWarning className={'font-sans 2xl:text-[24px] bg-clouds'}>
+      <body className='debug-screens bg-clouds my-12'>
+        <main className="bg-pinkFlowers border-2 border-raspberry-pink border-solid w-[90%] mx-auto p-5">
+          <section id="root-layout" layout="column" className="bg-soft-rose/60 border-solid border-2 border-raspberry-pink">
             {header}
             {children}
             {footer}

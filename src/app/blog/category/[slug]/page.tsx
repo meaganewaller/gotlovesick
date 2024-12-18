@@ -1,9 +1,9 @@
 import config from '@/lib/config'
-import getCategoryBySlug from '@/lib/queries/getCategoryBySlug'
-import {Metadata} from 'next'
+import { getCategoryBySlug } from '@/lib/queries/Categories'
+import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import {notFound} from 'next/navigation'
+import { notFound } from 'next/navigation'
 
 /**
  * Generate the metadata for each static route at build time.
@@ -13,7 +13,7 @@ import {notFound} from 'next/navigation'
 export async function generateMetadata({
   params
 }: {
-  params: {slug: string}
+  params: { slug: string }
 }): Promise<Metadata | null> {
   const slug = params.slug
 
@@ -31,7 +31,7 @@ export async function generateMetadata({
 export default async function CategoryArchive({
   params
 }: {
-  params: {slug: string}
+  params: { slug: string }
 }) {
   // Fetch posts from WordPress.
   const posts = await getCategoryBySlug(params.slug)
@@ -55,12 +55,12 @@ export default async function CategoryArchive({
               priority={true}
             />
             <Link href={`/blog/${post.slug}`}>
-              <h2 dangerouslySetInnerHTML={{__html: post.title}} />
+              <h2 dangerouslySetInnerHTML={{ __html: post.title }} />
             </Link>
             <p className="text-sm text-gray-500">
               {post.commentCount} Comments
             </p>
-            <div dangerouslySetInnerHTML={{__html: post.excerpt}} />
+            <div dangerouslySetInnerHTML={{ __html: post.excerpt }} />
             <Link className="button" href={`/blog/${post.slug}`}>
               View Post
             </Link>

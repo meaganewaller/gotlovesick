@@ -1,10 +1,18 @@
 module.exports = {
-  arrowParens: 'always',
-  jsxSingleQuote: true,
-  tabWidth: 2,
-  useTabs: false,
   singleQuote: true,
-  bracketSpacing: false,
-  semi: false,
-  trailingComma: "none",
+  trailingComma: 'es5',
+  semi: true,
+  printWidth: 80,
+  arrowParens: 'always',
+  overrides: [
+    {
+      files: ['tsconfig.json', 'jsconfig.json'],
+      options: {
+        parser: 'jsonc',
+      },
+    },
+  ],
+  // importOrderSeparation: true,
+  // importOrder: ['^@core/(.*)$', '^@server/(.*)$', '^@ui/(.*)$', '^[./]'],
+  // importOrderSortSpecifiers: true,
 };

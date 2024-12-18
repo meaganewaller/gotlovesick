@@ -1,6 +1,5 @@
-import { getAllBookmarks } from "@/lib/queries/Bookmarks"
-import getBookmarkBySlug from "@/lib/queries/getBookmarkBySlug"
-import getBookmarksByCollection from "@/lib/queries/getBookmarksByCollection"
+import { getAllBookmarks, getBookmarkBySlug } from "@/lib/queries/Bookmarks"
+// import getBookmarksByCollection from "@/lib/queries/getBookmarksByCollection"
 import { notFound } from 'next/navigation'
 import Date from "@/components/date"
 import Image from "next/image"
@@ -35,7 +34,7 @@ export default async function Bookmark({ params }: { params: { slug: string } })
             <h1 className="mt-2 text-4xl font-bold text-gray-900 sm:text-5xl">{bookmark.title}</h1>
             <p className="mt-6 text-lg text-gray-700">{bookmark.excerpt}</p>
             <div className="mt-6 flex flex-wrap justify-center gap-2">
-              {bookmark.collection.nodes.map((collection) => (
+              {bookmark.collections.nodes.map((collection) => (
                 <Link
                   key={collection.databaseId}
                   href={`/collections/${collection.slug}`}

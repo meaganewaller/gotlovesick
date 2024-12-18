@@ -3,24 +3,11 @@
 /* stylelint-disable no-duplicate-selectors */
 :root {
   --size-scrollbar-width: 8px;
-  --total-toolbar-height: 68px;
-  --scroll-margin: calc(var(--total-toolbar-height) + 1rem);
-  --vertical-content-padding: 1.5rem;
-}
-
-@media screen and (min-width: 596px) {
-  :root {
-    --total-toolbar-height: 68px;
-    --scroll-margin: calc(var(--total-toolbar-height) + 1rem);
-    --vertical-content-padding: 1.75rem;
-  }
 }
 
 @media screen and (min-width: 768px) {
   :root {
-    --total-toolbar-height: 68px;
     --size-scrollbar-width: 12px;
-    --vertical-content-padding: 2.25rem;
   }
 }
 
@@ -44,7 +31,7 @@
 }
 
 html {
-  @apply min-h-[100vh];
+  @apply min-h-[100vh] h-full;
 
   min-width: 360px;
   cursor: url('/cursors/orange-angel-wing-heart.cur'), auto;
@@ -55,22 +42,21 @@ body {
   @apply overflow-x-hidden;
 
   scroll-behavior: smooth;
-  accent-color: rgba(var(--color-accent));
   border-radius: 0.25rem;
 }
 
 body {
-  @apply font-sans h-full;
-  @apply mx-auto my-0 h-full w-full transform-none break-words border-0 p-0 align-baseline font-sans text-md font-normal tracking-wide text-primary-txt;
+  @apply h-full w-full mx-auto my-0 p-0 border-0;
+  @apply transform-none break-words align-baseline font-extra text-sm font-normal tracking-wide text-primary-txt;
 }
 
 section#root-layout {
   @apply min-h-[80vh];
 
   div {
-    @apply text-primary-txt text-lg font-extra;
+    @apply text-primary-txt text-md font-extra;
     @apply w-auto rounded-sm;
-    @apply py-4 px-6;
+    @apply py-4 px-3;
   }
 
   div div {}
@@ -84,14 +70,15 @@ a {
   }
 
   &:hover {
+    @apply outline-none;
+
     transition: 0.2s ease-in-out;
-    outline: none;
   }
 }
 
 a:focus,
 button:focus {
-  outline: none;
+  @apply outline-none;
 }
 
 a.focus-visible,
@@ -101,12 +88,12 @@ button:focus-visible {
 }
 
 a.focus-visible {
-  background: none;
+  @apply bg-none;
 }
 
 figure figcaption {
-  @apply text-xs;
-  text-align: center;
+  @apply text-xs text-center;
+
   margin: 0.625rem 0;
 }
 
@@ -140,42 +127,27 @@ samp {
   opacity: 1;
 }
 
-:-ms-input-placeholder {
-  /* stylelint-disable-line selector-no-vendor-prefix */
-  color: rgba(var(--color-tertiary-txt));
-  opacity: 1;
-}
-
 *:focus {
   outline: 2px dashed rgba(var(--color-secondary-txt));
   outline-offset: 0.25rem;
 }
 
-/* Fix image border in Safari for lazy loading images. See https://nextjs.org/docs/api-reference/next/future/image#known-browser-bugs */
-@media not all and (min-resolution: 0.001dpcm) {
-  img[loading='lazy'] {
-    clip-path: inset(0.5px);
-  }
-}
-
 body section,
-body article {
-  scroll-margin-top: var(--scroll-margin);
-}
+body article {}
 
 nav#update-log span {
   @apply bg-gradient-to-r from-gradient-purple via-gradient-blue to-gradient-green font-bold;
-  @apply py-1 text-center text-xl rounded-lg lowercase text-creamy-white font-extra;
+  @apply py-1 text-center text-md rounded-lg lowercase text-creamy-white font-extra;
 }
 
 nav#sidebar {
   span {
     @apply bg-gradient-to-r from-gradient-purple via-gradient-blue to-gradient-green;
-    @apply py-1 text-center text-xl rounded-lg lowercase text-creamy-white font-extra;
+    @apply py-1 text-center text-md rounded-lg lowercase text-creamy-white font-extra;
   }
 
   a {
-    @apply rounded-lg block text-raspberry-pink bg-gradient-to-bl from-baby-pink via-pale-pink via-[86%] to-peachy-pink;
+    @apply rounded-lg block text-primary-txt bg-gradient-to-r from-light-orange via-creamy-white via-[86%] to-light-yellow;
     @apply border border-solid border-deep-pink text-center no-underline;
     @apply p-1 w-auto h-auto lowercase;
 
@@ -228,7 +200,7 @@ div#blog-post-container {
 
   li,
   p {
-    @apply text-xl;
+    @apply text-md;
     @apply leading-relaxed;
   }
 
@@ -243,5 +215,72 @@ div#blog-post-container {
   h2 {
     @apply text-4xl;
     @apply my-10;
+  }
+}
+
+.scallop-rose-box {
+  min-width: fit-content;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 4;
+}
+
+.scallop-rose-box .u01 {
+  background: url('/images/frames/scallop-rose/f-ue.gif') repeat-x;
+  height: 32px;
+  margin: 0 32px;
+}
+
+.scallop-rose-box .s01 {
+  background: url('/images/frames/scallop-rose/f-sita.gif') repeat-x;
+  height: 32px;
+  margin: 0 32px;
+}
+
+.scallop-rose-box .box-top {
+  background-image: url('/images/frames/scallop-rose/f-kado1.gif'),
+    url('/images/frames/scallop-rose/f-kado2.gif');
+  background-position:
+    top left,
+    top right;
+  background-repeat: no-repeat, no-repeat;
+  height: 32px;
+}
+
+.scallop-rose-box .box-center {
+  background-image: url('/images/frames/scallop-rose/f-migi.gif'),
+    url('/images/frames/scallop-rose/f-hidari.gif');
+  background-position:
+    top right,
+    top left;
+  background-repeat: repeat-y, repeat-y;
+}
+
+.scallop-rose-box .box-inner {
+  background: #fff;
+  margin: 0 32px;
+  padding: 10px;
+}
+
+.scallop-rose-box .box-bottom {
+  background-image: url('/images/frames/scallop-rose/f-kado3.gif'),
+    url('/images/frames/scallop-rose/f-kado4.gif');
+  background-position:
+    top left,
+    top right;
+  background-repeat: no-repeat, no-repeat;
+  height: 32px;
+}
+
+.breadcrumb-separator {
+  margin: 0 .1875rem;
+  position: relative;
+
+  &::after {
+    @apply text-ivory;
+
+    vertical-align: bottom;
+    content: "> ";
   }
 }

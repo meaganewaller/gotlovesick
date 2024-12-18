@@ -5,10 +5,10 @@ import { Page, Post, Bookmark, Menu, Project, Shrine } from "@/lib/types"
 import Link from "next/link"
 import Sidebar from "@/components/Sidebar";
 import getMenuBySlug from "@/lib/queries/getMenuBySlug";
-import rainbow from "~/images/rainbow.gif";
+import rainbow from "@/assets/images/rainbow.gif";
 import Image from "next/image"
 import { getAllShrines } from "@/lib/queries/Shrines";
-import getAllProjects from "@/lib/queries/getAllProjects";
+import { getAllProjects } from "@/lib/queries/Projects";
 import { notFound } from "next/navigation";
 
 async function fetchData(slug: string) {

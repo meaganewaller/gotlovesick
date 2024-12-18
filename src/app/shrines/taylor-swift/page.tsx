@@ -25,9 +25,16 @@ export async function generateMetadata() {
     return {}
   }
 
+  if (!shrine.seo) {
+    return {
+      title: shrine.title,
+      description: shrine.excerpt
+    }
+  }
+
   return {
-    title: shrine.seo.title,
-    description: shrine.seo.metaDesc
+    title: shrine?.seo?.title,
+    description: shrine?.seo?.metaDesc
   }
 }
 
