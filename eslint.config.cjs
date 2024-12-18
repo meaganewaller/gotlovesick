@@ -1,5 +1,4 @@
 const typescriptEslint = require("@typescript-eslint/eslint-plugin")
-const i18Next = require("eslint-plugin-i18next")
 const tsParser = require("@typescript-eslint/parser")
 const js = require("@eslint/js")
 
@@ -24,11 +23,9 @@ module.exports = [{
   "plugin:@typescript-eslint/recommended",
   "prettier",
   "next/core-web-vitals",
-  "plugin:i18next/recommended",
 ), {
   plugins: {
     "@typescript-eslint": typescriptEslint,
-    i18next: i18Next,
   },
 
   languageOptions: {
@@ -57,8 +54,4 @@ module.exports = [{
     "components/emailTemplates/**/*.tsx",
     "pages/index.tsx",
   ],
-
-  rules: {
-    "i18next/no-literal-string": "off",
-  },
 }];
