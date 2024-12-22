@@ -1,5 +1,1 @@
-export * from './build-comments-tree'
-export * from './convert-post-to-article'
-export * from './convert-taxonomy-to-page-link'
-export * from './convert-wp-image-to-img'
-export * from './convert-wp-comment-to-comment'
+export * from "./convert-wplog-to-log";

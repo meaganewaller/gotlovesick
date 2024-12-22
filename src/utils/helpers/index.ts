@@ -1,8 +1,10 @@
 export * from './graphql'
-export * from './reading-time'
-export * from './refs'
-export * from './rehype'
-export * from './rss'
-export * from './schema-org'
 export * from './strings'
-export * from './themes'
+
+import { CONFIG } from '@/utils/config'
+
+export function url(path = '') {
+  const baseUrl = CONFIG.url
+
+  return new URL(path, baseUrl)
+}

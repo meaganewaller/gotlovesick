@@ -60,6 +60,12 @@ export type GraphQLPostWhere = {
   title?: string;
 };
 
+export type GraphQLBookmarkWhere = {
+  authorName?: string;
+  search?: string;
+  title?: string;
+}
+
 export type GraphQLTaxonomyFieldOrder = 'DATE' | 'MODIFIED' | 'SLUG' | 'TITLE';
 
 export type GraphQLTaxonomyOrderBy = {

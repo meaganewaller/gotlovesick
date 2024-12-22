@@ -1,40 +1,37 @@
-import config from '@/lib/config'
-import { getTagBySlug } from '@/lib/queries/Tags'
-import { Metadata } from 'next'
-import Image from 'next/image'
+// import config from '@/lib/config'
+// import { getTagBySlug } from '@/lib/queries/Tags'
 import Link from 'next/link'
-import { notFound } from 'next/navigation'
 
 /**
  * Generate the metadata for each static route at build time.
  *
  * @see https://nextjs.org/docs/app/api-reference/functions/generate-metadata#generatemetadata-function
  */
-export async function generateMetadata({
-  params
-}: {
-  params: { slug: string }
-}): Promise<Metadata | null> {
-  const { slug } = params
-
-  return {
-    title: `${slug} Archives - ${config.siteName}`,
-    description: `The tag archive for ${slug}`
-  }
-}
+// export async function generateMetadata({
+//   params
+// }: {
+//   params: { slug: string }
+// }): Promise<Metadata | null> {
+//   const { slug } = params
+//
+//   return {
+//     title: `${slug} Archives - ${config.siteName}`,
+//     description: `The tag archive for ${slug}`
+//   }
+// }
 
 /**
  * The tag archive route.
  *
  * @see https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#pages
  */
-export default async function TagArchive({ params }: { params: { slug: string } }) {
+export default async function TagArchive() {
   // Fetch posts from WordPress.
-  const tagPage = await getTagBySlug(params.slug)
-
-  if (!tagPage) {
-    notFound()
-  }
+  // const tagPage = await getTagBySlug(params.slug)
+  //
+  // if (!tagPage) {
+  //   notFound()
+  // }
 
   return (
     <>
@@ -53,13 +50,13 @@ export default async function TagArchive({ params }: { params: { slug: string } 
                 </span>
 
                 <span className="breadcrumb-separator" />
-                <span className="text-xs text-left break-words leading-5 text-vanilla">{tagPage.name}</span>
+                {/* <span className="text-xs text-left break-words leading-5 text-vanilla">{tagPage.name}</span> */}
               </span>
             </div>
             <div className="pb-12 mb-12 border-b border-solid border-ivory">
               <div className="mb-5 leading-6 text-left text-primary-txt">
                 <div className='overflow-hidden w-24 leading-6 text-left rounded-2xl'>
-                  <Image className='object-cover w-full max-w-full h-full max-h-full leading-6 text-left text-white align-middle border-none' src={tagPage.collectionFields.icon.node.sourceUrl} alt="" width={tagPage.collectionFields.icon.node.mediaDetails.width} height={tagPage.collectionFields.icon.node.mediaDetails.height} />
+                  {/* <Image className='object-cover w-full max-w-full h-full max-h-full leading-6 text-left text-white align-middle border-none' src={tagPage.collectionFields.icon.node.sourceUrl} alt="" width={tagPage.collectionFields.icon.node.mediaDetails.width} height={tagPage.collectionFields.icon.node.mediaDetails.height} /> */}
                 </div>
               </div>
             </div>

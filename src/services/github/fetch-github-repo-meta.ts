@@ -1,4 +1,4 @@
-import type { GithubRepositoryMeta, Nullable } from '@/lib/types';
+import type { GithubRepositoryMeta, Nullable } from '@/types'
 import { GITHUB_API } from '@/utils/constants';
 import { fetchGraphQL } from '@/utils/helpers';
 
@@ -25,7 +25,7 @@ export const fetchGithubRepoMeta = async ({
 }: FetchGithubRepoMetaInput) => {
   const token = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
 
-  if (!token) throw new Error('Github token is not defined.');
+  if (!token) throw new Error('GitHub token is not defined.');
 
   const response = await fetchGraphQL<GithubRepositoryResponse>({
     headers: {

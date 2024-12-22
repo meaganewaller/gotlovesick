@@ -1,5 +1,5 @@
-import type { Nullable, WPComment } from '@/lib/types'
-import { fetchGraphQL, getGraphQLUrl } from '@/lib/functions'
+import type { Nullable, WPComment } from '@/types'
+import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers'
 
 export type CreateCommentPayload = {
   clientMutationId: Nullable<string>

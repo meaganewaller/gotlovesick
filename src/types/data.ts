@@ -1,6 +1,15 @@
 import type { StaticImageData } from 'next/image';
 import type { Nullable } from './generics';
-import type { GraphQLNode } from './gql';
+import type { GraphQLNode, GraphQLNodes } from './gql';
+
+export enum MenuLocationEnum {
+  Sidebar = "SIDEBAR_MENU",
+  Blog = "BLOG_MENU",
+  Bookmarks = "BOOKMARKS_MENU",
+  Shrines = "SHRINES_MENU",
+  Header = "HEADER_MENU",
+  Resources = "RESOURCES_MENU",
+}
 
 export type SlugNode = {
   slug: string;
@@ -13,6 +22,10 @@ export type SlugNode = {
 type WPSeo = {
   metaDesc: string;
   title: string;
+  breadcrumbs: Nullable<{
+    text: string;
+    url: string;
+  }[]>;
 };
 
 type WPCommentAuthorAvatar = {
@@ -58,9 +71,9 @@ type WPInfo = { wordsCount: number };
 
 type WPContent = {
   contentParts: WPContentParts;
-  databaseId: number;
+  databaseId: number | string;
   date: string;
-  featuredImage: Nullable<GraphQLNode<WPImage>>;
+  featuredImage?: Nullable<GraphQLNode<WPImage>>;
   modified: string;
   seo: WPSeo;
   slug: string;
@@ -69,14 +82,37 @@ type WPContent = {
 
 export type WPPage = WPContent & {
   info: WPInfo;
+  content: string
 };
 
 type WPPostAuthor = { name: string };
 
 type WPAcfPosts = {
-  postsInThematic: Nullable<WPThematicPreview[]>;
-  postsInTopic: Nullable<WPTopicPreview[]>;
+  postsInCategory: Nullable<WPCategoryPreview[]>;
+  postsInTag: Nullable<WPTagPreview[]>;
 };
+
+export type MenuItem = {
+  id: string
+  databaseId: string
+  label: Nullable<string>,
+  description: Nullable<string>,
+  order: number,
+  title: string,
+  uri: string,
+  parentId?: string | null
+}
+
+export type WPMenuItem = {
+  key: string
+  title: string
+  order: number
+  path: string
+}
+
+export type WPMenu = {
+  nodes: WPMenuItem[]
+}
 
 export type WPPost = WPContent & {
   acfPosts: Nullable<Partial<WPAcfPosts>>;
@@ -84,6 +120,52 @@ export type WPPost = WPContent & {
   commentCount: Nullable<number>;
   info: WPInfo;
 };
+
+export type WPShrine = {
+  content: string;
+  contentParts: WPContentParts;
+  databaseId: number;
+  date: string;
+  featuredImage: Nullable<GraphQLNode<WPImage>>;
+  id: string;
+  modified: string;
+  seo: WPSeo;
+  slug: string;
+  title: string;
+  shrineDetails: Nullable<{
+    featuredSections: Nullable<{ content: string; title: string; }[]>;
+    sidebar: Nullable<GraphQLNodes<{
+      id: string;
+      databaseId: number;
+      title: string;
+      slug: string;
+      uri: string;
+    }>>;
+    shortDescription: Nullable<string>;
+    headerImage: Nullable<GraphQLNode<WPImage>>;
+  }>;
+}
+
+export type WPResource = WPContent & {
+  info: WPInfo;
+}
+
+export type WPResourceType = {
+  id: string;
+  databaseId: number;
+  slug: string;
+  name: string;
+  count: number;
+  resources: GraphQLNode<WPResource>[];
+}
+
+export type WPLog = WPContent
+
+export type WPBookmark = WPContent & {
+  author: GraphQLNode<WPPostAuthor>;
+  commentCount: Nullable<number>;
+  info: WPInfo;
+}
 
 export type WPPostPreview = Pick<
   WPPost,
@@ -97,10 +179,31 @@ export type WPPostPreview = Pick<
   | 'title'
 > & {
   acfPosts:
-  | Nullable<Pick<WPAcfPosts, 'postsInThematic'>>
-  | Nullable<Pick<WPAcfPosts, 'postsInTopic'>>;
+  | Nullable<Pick<WPAcfPosts, 'postsInCategory'>>
+  | Nullable<Pick<WPAcfPosts, 'postsInTag'>>;
   contentParts: Pick<WPContentParts, 'beforeMore'>;
 };
+
+export type WPBookmarkPreview = Pick<
+  WPBookmark,
+  | 'commentCount'
+  | 'databaseId'
+  | 'date'
+  | 'featuredImage'
+  | 'info'
+  | 'modified'
+  | 'slug'
+  | 'title'
+> & {
+  contentParts: Pick<WPContentParts, 'beforeMore'>;
+}
+
+export type RecentWPResource = Pick<
+  WPPost,
+  'date' | 'featuredImage' | 'slug' | 'title'
+> & {
+  databaseId: number;
+}
 
 export type RecentWPPost = Pick<
   WPPost,
@@ -109,30 +212,44 @@ export type RecentWPPost = Pick<
   databaseId: number;
 };
 
-type WPAcfThematics = {
-  postsInThematic: Nullable<WPPostPreview[]>;
+export type RecentWPLog = Pick<
+  WPPost,
+  'date' | 'slug' | 'title' | 'contentParts'
+> & {
+  databaseId: number;
 };
 
-export type WPThematic = WPContent & {
-  acfThematics: Nullable<WPAcfThematics>;
+export type RecentWPBookmark = Pick<
+  WPBookmark,
+  'date' | 'featuredImage' | 'slug' | 'title'
+> & {
+  databaseId: number;
 };
 
-export type WPThematicPreview = Pick<
-  WPThematic,
+type WPAcfCategories = {
+  postsInCategory: Nullable<WPPostPreview[]>;
+};
+
+export type WPCategory = WPContent & {
+  acfCategories: Nullable<WPAcfCategories>;
+};
+
+export type WPCategoryPreview = Pick<
+  WPCategory,
   'databaseId' | 'slug' | 'title'
 >;
 
-type WPAcfTopics = {
+type WPAcfTag = {
   officialWebsite: Nullable<string>;
-  postsInTopic: Nullable<WPPostPreview[]>;
+  postsInTag: Nullable<WPPostPreview[]>;
 };
 
-export type WPTopic = WPContent & {
-  acfTopics: Nullable<WPAcfTopics>;
+export type WPTag = WPContent & {
+  acfTags: Nullable<WPAcfTag>;
 };
 
-export type WPTopicPreview = Pick<
-  WPTopic,
+export type WPTagPreview = Pick<
+  WPTag,
   'databaseId' | 'featuredImage' | 'slug' | 'title'
 >;
 
@@ -226,8 +343,8 @@ export type PageLink = {
 type ArticleMeta = PageMeta & {
   author?: string;
   commentsCount?: number;
-  thematics?: PageLink[];
-  topics?: PageLink[];
+  categories?: PageLink[];
+  tags?: PageLink[];
 };
 
 export type Article = Page & {
@@ -237,11 +354,11 @@ export type Article = Page & {
 
 export type ArticlePreview = Pick<Article, 'intro' | 'slug' | 'title'> & {
   id: number;
-  meta: Omit<ArticleMeta, 'author' | 'seo' | 'topics'>;
+  meta: Omit<ArticleMeta, 'author' | 'seo' | 'tags'>;
 };
 
 export type RecentArticle = Pick<Article, 'slug' | 'title'> &
-  Pick<ArticleMeta, 'cover'> & {
+  Pick<ArticleMeta, 'cover' | 'commentsCount' | 'categories'> & {
     id: number;
     publicationDate: string;
   };
@@ -268,25 +385,25 @@ export type ProjectPreview = Omit<Project, 'meta'> & {
   meta: Pick<ProjectMeta, 'contexts' | 'cover' | 'dates' | 'tagline'>;
 };
 
-export type ThematicMeta = Omit<PageMeta, 'wordsCount'> & {
+export type CategoryMeta = Omit<PageMeta, 'wordsCount'> & {
   articles?: ArticlePreview[];
-  relatedTopics?: PageLink[];
+  relatedTags?: PageLink[];
 };
 
-export type Thematic = Page & {
+export type Category = Page & {
   id: number;
-  meta: ThematicMeta;
+  meta: CategoryMeta;
 };
 
-export type TopicMeta = Omit<PageMeta, 'wordsCount'> & {
+export type TagMeta = Omit<PageMeta, 'wordsCount'> & {
   articles?: ArticlePreview[];
-  relatedThematics?: PageLink[];
+  relatedCategories?: PageLink[];
   website?: string;
 };
 
-export type Topic = Page & {
+export type Tag = Page & {
   id: number;
-  meta: TopicMeta;
+  meta: TagMeta;
 };
 
 export type GithubRepositoryMeta = {
@@ -294,3 +411,35 @@ export type GithubRepositoryMeta = {
   stargazerCount: number;
   updatedAt: string;
 };
+
+export type Bookmark = Page & {
+  databaseId: number;
+  id: number;
+}
+
+export type Log = {
+  date: string;
+  databaseId: number | string;
+  content: string;
+  slug: string;
+  title: string;
+}
+
+export type LastFmTrack = {
+  album: { '#text': string, mbid: string };
+  streamable: string;
+  artist: { '#text': string };
+  date: { uts: string; '#text': string };
+  image: { size: string; '#text': string }[];
+  "@attr": { nowplaying: string };
+  name: string;
+  playcount: string;
+  url: string;
+
+}
+
+export type LastFmRecentTracksResponse = {
+  recenttracks: {
+    track: LastFmTrack[];
+  }
+}

@@ -61,3 +61,4 @@ lang
 # Cypress
 /tests/cypress/videos
 /tests/cypress/screenshots
+.yarn

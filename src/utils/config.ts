@@ -8,6 +8,17 @@ export const CONFIG = {
   },
   name: 'Secret Gardens',
   baseline: 'The only key is mine',
+  description: 'I hate it here so I will go to secret gardens in my mind.',
+  shortDescription: 'I hate it here',
+  accounts: {
+    github: {
+      username: 'meaganewaller',
+      repo: 'meaganewaller.github.io',
+    },
+    tiktok: {
+      username: '@gotlovesickallovermybed'
+    }
+  },
   copyright: {
     startYear: '2024',
     endYear: new Date().getFullYear().toString(),
@@ -19,7 +30,6 @@ export const CONFIG = {
     supported: ['en']
   },
   postsPerPage: 10,
-  tiktokId: '@gotlovesickallovermybed',
   url:
     (isStaging
       ? process.env.NEXT_PUBLIC_STAGING_APP_URL

@@ -1,5 +1,5 @@
 import type { Nullable } from "@/types";
-import { CONFIG } from "../config";
+import { CONFIG } from "@/utils/config";
 
 /**
  * Retrieve the API url from settings.

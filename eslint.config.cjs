@@ -1,57 +1,16 @@
-const typescriptEslint = require("@typescript-eslint/eslint-plugin")
-const tsParser = require("@typescript-eslint/parser")
-const js = require("@eslint/js")
+const { fixupConfigRules } = require("@eslint/compat");
+const { FlatCompat } = require("@eslint/eslintrc");
+const prettier = require("eslint-config-prettier");
 
-const {
-  FlatCompat,
-} = require("@eslint/eslintrc")
+const flatCompat = new FlatCompat();
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all
-});
-
-module.exports = [{
-  ignores: [
-    ".next",
-    "**/node_modules",
-    "eslint.config.cjs"
-  ],
-}, ...compat.extends(
-  "eslint:recommended",
-  "plugin:@typescript-eslint/recommended",
-  "prettier",
-  "next/core-web-vitals",
-), {
-  plugins: {
-    "@typescript-eslint": typescriptEslint,
+module.exports = [
+  ...fixupConfigRules(
+    flatCompat.extends("next/core-web-vitals"),
+    flatCompat.extends("next/typescript")
+  ),
+  {
+    ignores: ["next.config.js", "public/**/*", ".next/**/*"],
   },
-
-  languageOptions: {
-    parser: tsParser,
-    ecmaVersion: 13,
-    sourceType: "module",
-  },
-  rules: {
-    "@typescript-eslint/no-explicit-any": "off",
-  }
-}, {
-  files: ["**/*.js"],
-
-  rules: {
-    "@typescript-eslint/no-require-imports": "off",
-  },
-}, {
-  files: ["**/seed.ts"],
-
-  rules: {
-    "@typescript-eslint/no-require-imports": "off",
-  },
-}, {
-  files: [
-    "components/defaultLanding/**/*.tsx",
-    "components/emailTemplates/**/*.tsx",
-    "pages/index.tsx",
-  ],
-}];
+  prettier
+];

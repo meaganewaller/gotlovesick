@@ -1,0 +1,312 @@
+.wp-site-blocks>.alignleft {
+  float: left;
+  margin-right: 2em;
+}
+
+.wp-site-blocks>.alignright {
+  float: right;
+  margin-left: 2em;
+}
+
+.wp-site-blocks>.aligncenter {
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+:where(.wp-site-blocks)>* {
+  margin-block-start: 1.75rem;
+  margin-block-end: 0;
+}
+
+:where(.wp-site-blocks)> :first-child:first-child {
+  margin-block-start: 0;
+}
+
+:where(.wp-site-blocks)> :last-child:last-child {
+  margin-block-end: 0;
+}
+
+.is-layout-constrained>.alignwide {
+  max-width: 1000px;
+  margin: auto;
+  /* Center the block */
+}
+
+.is-layout-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.is-content-justification-center {
+  justify-content: center;
+}
+
+.wp-block-columns-is-layout-flex {
+  flex-wrap: nowrap;
+  gap: 1.75rem;
+  justify-content: flex-start;
+}
+
+.is-vertical {
+  flex-direction: column;
+}
+
+.is-horizontal {
+  gap: 0.875rem;
+}
+
+/* ----- Typography ----- */
+
+.has-small-font-size {
+  font-size: 0.833rem !important;
+}
+
+.has-medium-font-size {
+  font-size: 1rem !important;
+}
+
+.has-large-font-size {
+  font-size: clamp(1rem, 1rem + ((1vw - 0.2rem) * 0.471), 1.2rem) !important;
+}
+
+.has-x-large-font-size {
+  font-size: clamp(1.2rem, 1.2rem + ((1vw - 0.2rem) * 1.242), 1.728rem) !important;
+}
+
+.has-xx-large-font-size {
+  font-size: clamp(1.728rem, 1.728rem + ((1vw - 0.2rem) * 0.814), 2.074rem) !important;
+}
+
+.has-xxx-large-font-size {
+  font-size: clamp(2.074rem, 2.074rem + ((1vw - 0.2rem) * 2.146), 2.986rem) !important;
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+  font-style: normal;
+  font-weight: 700;
+  line-height: calc(1em + 0.75rem);
+}
+
+/* ----- Columns ----- */
+
+.wp-block-columns {
+  align-items: normal !important;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap !important
+}
+
+@media (min-width:782px) {
+  .wp-block-columns {
+    flex-wrap: nowrap !important
+  }
+}
+
+.wp-block-columns.are-vertically-aligned-top {
+  align-items: flex-start
+}
+
+.wp-block-columns.are-vertically-aligned-center {
+  align-items: center
+}
+
+.wp-block-columns.are-vertically-aligned-bottom {
+  align-items: flex-end
+}
+
+@media (max-width:781px) {
+  .wp-block-columns:not(.is-not-stacked-on-mobile)>.wp-block-column {
+    flex-basis: 100% !important
+  }
+}
+
+@media (min-width:782px) {
+  .wp-block-columns:not(.is-not-stacked-on-mobile)>.wp-block-column {
+    flex-basis: 0;
+    flex-grow: 1
+  }
+
+  .wp-block-columns:not(.is-not-stacked-on-mobile)>.wp-block-column[style*=flex-basis] {
+    flex-grow: 0
+  }
+}
+
+.wp-block-columns.is-not-stacked-on-mobile {
+  flex-wrap: nowrap !important
+}
+
+.wp-block-columns.is-not-stacked-on-mobile>.wp-block-column {
+  flex-basis: 0;
+  flex-grow: 1
+}
+
+.wp-block-columns.is-not-stacked-on-mobile>.wp-block-column[style*=flex-basis] {
+  flex-grow: 0
+}
+
+:where(.wp-block-columns) {
+  margin-bottom: 1.75em
+}
+
+:where(.wp-block-columns.has-background) {
+  padding: 1.25em 2.375em
+}
+
+.wp-block-column {
+  flex-grow: 1;
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word
+}
+
+.wp-block-column.is-vertically-aligned-top {
+  align-self: flex-start
+}
+
+.wp-block-column.is-vertically-aligned-center {
+  align-self: center
+}
+
+.wp-block-column.is-vertically-aligned-bottom {
+  align-self: flex-end
+}
+
+.wp-block-column.is-vertically-aligned-stretch {
+  align-self: stretch
+}
+
+.wp-block-column.is-vertically-aligned-bottom,
+.wp-block-column.is-vertically-aligned-center,
+.wp-block-column.is-vertically-aligned-top {
+  width: 100%
+}
+
+/* ----- Links ----- */
+
+.wordpress-container a {
+  color: #3f37c9;
+  text-decoration-color: #3f37c9;
+  text-decoration-thickness: 0.5px !important;
+  text-underline-offset: 0.1em
+}
+
+.wordpress-container a:hover:not(.wp-element-button) {
+  text-decoration: underline;
+}
+
+/* ----- Images ----- */
+
+.wp-block-image img {
+  height: auto;
+  width: 100%;
+}
+
+/* from Petter 2024-04-28 */
+
+/* Examples (Industries, Intensities, Tqargets)
+- mer space mellan kolumner
+
+*/
+.wp-block-columns-is-layout-flex {
+  gap: 80px;
+  /* inte säker  */
+}
+
+.wp-block-group-is-layout-flow p {
+  font-size: 1rem;
+}
+
+.wp-block-image size-medium {
+  margin-top: 2rem;
+}
+
+
+/* USPs / Fature set
+- minska textstorleken
+- linje till vänster om USP
+*/
+
+.wp-block-column-is-layout-flow .css-3narwu {
+  font-size: 1rem;
+}
+
+.wp-block-image
+
+/* alternativt figure */
+figure {
+  margin-inline-start: 0px;
+}
+
+
+/* By the numbers / KPI's
+- minska avståndet mellan h3 och p
+
+*/
+
+
+.wp-block-post-content .kpis p,
+.wp-block-post-content .kpis h3 {
+  margin: 0em;
+}
+
+/* -- DOCUMENTATION  -- */
+
+/*
+Sections
+- increase top/bottom spacing
+- left border on right column
+- increase line height
+- decrease font-size
+
+*/
+
+.wp-block-columns-is-layout-flex alt .wp-container-core-columns-is-layout-1 {
+  padding: 2rem 0;
+}
+
+.wp-block-columns figure {
+  margin: 0;
+}
+
+.wordpress-container .has-global-padding {
+  padding: 5rem 1.8rem !important;
+}
+
+@media (min-width:782px) {
+  .wordpress-container .kpis {
+    padding: 1.8rem 0;
+  }
+}
+
+.dynamic-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.8rem;
+}
+
+.dynamic-columns img {
+  width: 60px;
+}
+
+@media (max-width: 781px) {
+  .dynamic-columns {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dynamic-columns.mobile-one-column {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.wp-block-post-content .wp-block-code {
+  overflow: scroll;
+  font-size: 16px;
+  background: rgb(237, 242, 251);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.wp-block-post-content .wp-block-code.clamp-height {
+  height: 150px;
+}

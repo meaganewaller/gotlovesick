@@ -1,0 +1,73 @@
+@use '@fontsource/ibm-plex-mono';
+
+:root {
+  --font-mono: 'IBM Plex Mono';
+  --font-sans: 'basiic';
+  --font-serif: 'Romance A';
+  --font-pixel-sans: 'basiic';
+  --font-cursive: 'Venice Classic';
+  --font-cute: 'rainyhearts';
+  --font-pixel-serif: 'Romance A';
+  --font-gothic: 'gothicpixelsmedium';
+  --font-handwritten: 'papernotesregular';
+  --font-handwritten-bold: 'papernotesbold';
+}
+
+@font-face {
+  font-family: 'Venice Classic';
+  src: url('../assets/fonts/VeniceClassic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'basiic';
+  src: url('../assets/fonts/basiic.woff') format('woff'),
+    url('../assets/fonts/basiic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: rainyhearts;
+  src:
+    url('../assets/fonts/rainyhearts.woff2') format('woff2'),
+    url('../assets/fonts/rainyhearts.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Romance A';
+  src:
+    url('../assets/fonts/RomanceA.woff2') format('woff2'),
+    url('../assets/fonts/RomanceA.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: gothicpixelsmedium;
+  src: url('../assets/fonts/gothicpixels-webfont.woff2') format('woff2'),
+    url('../assets/fonts/gothicpixels-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: papernotesbold;
+  src: url('../assets/fonts/papernotes_bold-webfont.woff2') format('woff2'),
+    url('../assets/fonts/papernotes_bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: papernotesregular;
+  src: url('../assets/fonts/papernotes-webfont.woff2') format('woff2'),
+    url('../assets/fonts/papernotes-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

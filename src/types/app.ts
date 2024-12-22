@@ -1,7 +1,6 @@
 import type { NextPage } from 'next'
 import type { AppProps as NextAppProps } from 'next/app'
 import type { ReactElement, ReactNode } from 'react'
-import type { MessageFormatElement } from 'react-intl'
 import type { VALID_THEMES } from '@/utils/constants'
 
 export type NextPageWithLayoutOptions = {
@@ -20,11 +19,7 @@ type AppProps<P = unknown> = {
   pageProps: P;
 } & Omit<NextAppProps<P>, 'pageProps'>;
 
-type CustomPageProps = {
-  translation: Record<string, string> | Record<string, MessageFormatElement[]>;
-};
-
-export type AppPropsWithLayout = AppProps<CustomPageProps> & {
+export type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
@@ -34,7 +29,5 @@ export type Position = 'bottom' | 'center' | 'left' | 'right' | 'top';
 export type Spacing = '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl';
 
 export type Validator<T> = (value: unknown) => value is T;
-
-export type AckeeTrackerValue = 'full' | 'partial';
 
 export type Theme = (typeof VALID_THEMES)[number];

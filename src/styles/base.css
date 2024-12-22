@@ -1,0 +1,134 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--background);
+  cursor: url('/cursors/rainbow.cur') 1 1, auto;
+  min-height: 100vh;
+  font-size: var(--font-size);
+  margin: 0;
+  padding: var(--margin);
+  color: var(--textColor);
+  font-family: var(--bodyfont);
+  line-height: 1.2;
+}
+
+body ::selection {
+  color: var(--textColor);
+  background: var(--light);
+}
+
+body a,
+body a:hover,
+body a:focus,
+body a:visited {
+  color: var(--textColor);
+  cursor: url('/cursors/pointer.cur') 7 5, pointer;
+  text-decoration: none;
+}
+
+body button {
+  font-family: var(--font-cute);
+  font-size: 1.3rem;
+  line-height: 1.5;
+  cursor: url('/cursors/pointer.cur') 7 5, pointer;
+}
+
+#skip-to-sitemap-link,
+#skip-to-content-link {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  padding: .375rem .75rem;
+  line-height: 1;
+  font-size: 1.25rem;
+  background-color: var(--content-bg);
+  color: var(--text-color);
+  transform: translateY(-3rem);
+  transition: transform 0.1s ease-in;
+  z-index: 99999999999;
+}
+
+#skip-to-sitemap-link:focus,
+#skip-to-content-link:focus,
+#skip-to-sitemap-link:focus-within,
+#skip-to-content-link:focus-within {
+  transform: translateY(0);
+}
+
+#theme-toggler {
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  z-index: 999999;
+
+  button {
+    display: flex;
+    align-content: center;
+    border: 1px solid var(--dark);
+    color: var(--black);
+    background: var(--purple);
+    background-image: linear-gradient(to top, var(--purple) 16%, var(--pink) 79%);
+    border-radius: 10px;
+    padding: 2px 5px;
+    font-size: 15px;
+
+    &:hover {
+      filter: brightness(0.9);
+    }
+  }
+
+  span {
+    letter-spacing: .5px;
+  }
+
+  img {
+    display: block;
+    margin-right: .5rem;
+  }
+
+  @media(max-width: 576px) {
+    display: none;
+  }
+}
+
+#font-toggler {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  z-index: 999999;
+
+  button {
+    display: flex;
+    align-content: center;
+    border: 1px solid var(--dark);
+    color: var(--black);
+    background: var(--purple);
+    background-image: linear-gradient(to top, var(--purple) 16%, var(--pink) 79%);
+    border-radius: 10px;
+    padding: 2px 5px;
+    font-size: 15px;
+
+    &:hover {
+      filter: brightness(0.9);
+    }
+  }
+
+  @media(max-width: 576px) {
+    display: none;
+  }
+}
+
+body.readable-font #font-toggler button {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+.only-show-in-dark-mode {
+  display: none;
+}

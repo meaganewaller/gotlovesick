@@ -1,37 +1,36 @@
 import Link from 'next/link'
-import rainbowLeft from '@/assets/images/bullets/rainbow-left.gif'
-import rainbowRight from '@/assets/images/bullets/rainbow-right.gif'
 import Image from 'next/image'
+import pinksparkle from '~/images/bullets/pinksparkle.gif';
 import SidebarNav from "@/components/SidebarNav"
-import { Menu } from "@/lib/types"
+import { WPMenu } from "@/types"
 
 interface SidebarParams {
-  pageSlug: string
-  menu: Menu
+  menus: { title: string, menu: WPMenu }[]
 }
 
-export default function Sidebar({ pageSlug, menu }: SidebarParams) {
+export default function Sidebar({ menus }: SidebarParams) {
   return (
-    <nav className="py-4 px-0 select-none" id="sidebar">
-      <span className="text-center text-xl w-full flex items-center content-center justify-center gap-1 lowercase">
-        <Image src={rainbowLeft} alt="" className="w-[19px] h-3" />
-        Links
-        <Image src={rainbowRight} alt="" className="w-[19px] h-3" />
-      </span>
-      <SidebarNav menu={menu} pageSlug={pageSlug} />
-      {pageSlug === "homepage" && (
-        <>
-          <span className="text-center text-xl w-full flex items-center content-center justify-center gap-1 lowercase">
-            <Image src={rainbowLeft} alt="" className="w-[19px] h-3" />
-            Elsewhere
-            <Image src={rainbowRight} alt="" className="w-[19px] h-3" />
-          </span>
+    <div id="sidebar">
+      {menus.map((section, index) => (
+        <div key={index}>
+          <div className='section-tab'>
+            <Image src={pinksparkle} alt="" className='section-icon' />
+            <div className='section-title'>{section.title}</div>
+          </div>
+          <SidebarNav menu={section.menu} />
+        </div>
+      ))}
 
-          <Link href="#">tiktok</Link>
-          <Link href="#">storygraph</Link>
-          <Link href="#">github</Link>
-        </>
-      )}
-    </nav>
+      <>
+        <div className='section-tab'>
+          <Image src={pinksparkle} alt="" className='section-icon' />
+          <div className="section-title">Around</div>
+        </div>
+
+        <Link className='w-full block' href="#">TikTok</Link>
+        <Link className='w-full block' href="#">Story Graph</Link>
+        <Link className='w-full block' href="#">GitHub</Link>
+      </>
+    </div>
   )
 }

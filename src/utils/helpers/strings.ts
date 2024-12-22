@@ -43,7 +43,7 @@ export const fromKebabCaseToCamelCase = (text: string): string =>
  * @param {string} str - A string.
  * @returns {string} A data attribute (ie. `data-...`)
  */
-export const getDataAttributeFrom = (str: string) => {
+export const getDataAttributeFrom = (str: string): string => {
   if (str.startsWith('data-')) return str;
   return `data-${str}`;
 };

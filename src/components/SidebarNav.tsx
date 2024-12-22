@@ -1,18 +1,19 @@
-import { cn } from "@/lib/utils"
 import Link from 'next/link'
-import { type Menu } from "@/lib/types"
+import type { WPMenu, WPMenuItem } from "@/types"
 
 interface SidebarNavParams {
-  menu: Menu
-  pageSlug: string
+  menu: WPMenu,
 }
 
 export default function SidebarNav(params: SidebarNavParams) {
   return (
     <>
-      {!!params.menu && params.menu.menuItems.nodes.map((item) => (
-        <Link key={item.databaseId} href={item.uri} className={cn({ 'active-sidebar-link': item.uri.includes(params.pageSlug) })}>
-          {item.label}
+      {params.menu && params.menu.nodes.map((item: WPMenuItem) => (
+        <Link
+          key={item.key}
+          href={item.path}
+        >
+          {item.title}
         </Link>
       ))}
     </>

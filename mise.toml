@@ -1,0 +1,4 @@
+[tools]
+neovim = "nightly"
+node = "latest"
+npm = "latest"

@@ -6,6 +6,8 @@ import type {
   WPComment,
 } from '@/types'
 
+import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers';
+
 export type CommentsListResponse = {
   comments: Nullable<GraphQLNodes<WPComment>>
 }

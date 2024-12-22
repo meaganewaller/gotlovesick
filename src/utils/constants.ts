@@ -1,4 +1,7 @@
 export const GITHUB_API = 'https://api.github.com/graphql'
+export const LASTFM_USERNAME = process.env.NEXT_PUBLIC_LASTFM_USER
+export const LASTFM_API_KEY = process.env.NEXT_PUBLIC_LASTFM_API_KEY
+export const LASTFM_API_URL = 'https://ws.audioscrobbler.com/2.0/'
 
 export const PERSONAL_LINKS = {
   GITHUB: 'https://github.com/meaganewaller',
@@ -11,13 +14,13 @@ export const PERSONAL_LINKS = {
  * All static routes should be configured here to avoid 404 if a route changes.
  */
 export const ROUTES = {
-  POST: '/post',
+  ARTICLE: '/article',
   BLOG: '/blog',
   CONTACT: '/contact',
   HOME: '/',
   NOT_FOUND: '/404',
   PROJECTS: '/projects',
-  RSSS: '/feed',
+  RSS: '/feed',
   BOOKMARKS: '/bookmarks',
   SEARCH: '/search',
   CATEGORIES: '/category',
@@ -26,7 +29,7 @@ export const ROUTES = {
 
 export const PAGINATED_ROUTE_PREFIX = '/page'
 
-export const POST_ID = 'post';
+export const ARTICLE_ID = 'post';
 export const AUTHOR_ID = 'bio';
 export const COMMENT_ID_PREFIX = 'comment-';
 export const COMMENTS_SECTION_ID = 'comments';
@@ -39,4 +42,4 @@ export const STORAGE_KEY = {
 
 export const PRISM_THEME_ATTRIBUTE = 'data-prismjs-color-scheme-current'
 
-export const VALID_THEMES = ['dark', 'light', 'system'] as const;
+export const VALID_THEMES = ['light', 'dark', 'cupcake'] as const;
