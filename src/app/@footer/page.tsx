@@ -1,4 +1,4 @@
-import AccessCounter from '@/components/AccessCounter'
+import AccessCounter from '@/components/AccessCounter';
 
 export default function Footer() {
   return (
@@ -13,5 +13,5 @@ export default function Footer() {
       </div>
       <AccessCounter />
     </footer>
-  )
+  );
 }

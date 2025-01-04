@@ -4,7 +4,7 @@ import type {
   GraphQLPostWhere,
   Nullable,
   RecentWPPost,
-} from '@/types'
+} from '@/types';
 import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers';
 
 export type RecentPostsResponse = {

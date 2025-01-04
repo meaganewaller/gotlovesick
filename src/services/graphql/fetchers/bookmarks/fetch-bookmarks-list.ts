@@ -5,8 +5,8 @@ import type {
   GraphQLBookmarkWhere,
   Nullable,
   WPBookmarkPreview,
-} from '@/types'
-import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers'
+} from '@/types';
+import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers';
 
 export type BookmarksListResponse = {
   bookmarks: Nullable<GraphQLConnection<WPBookmarkPreview>>;
@@ -82,7 +82,8 @@ export const fetchBookmarksList = async ({
     },
   });
 
-  if (!response.bookmarks) return Promise.reject(new Error('No bookmarks found.'));
+  if (!response.bookmarks)
+    return Promise.reject(new Error('No bookmarks found.'));
 
   return response.bookmarks;
 };

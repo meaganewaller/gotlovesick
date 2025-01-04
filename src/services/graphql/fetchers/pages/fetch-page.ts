@@ -1,9 +1,9 @@
-import type { Nullable, WPPage } from '@/types'
-import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers'
+import type { Nullable, WPPage } from '@/types';
+import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers';
 
 export type PageResponse = {
-  page: Nullable<WPPage>
-}
+  page: Nullable<WPPage>;
+};
 
 const pageQuery = `query Page($slug: ID = "URI") {
   page(id: $slug, idType: URI) {
@@ -39,7 +39,7 @@ export const fetchPage = async (slug: string): Promise<WPPage> => {
     query: pageQuery,
     url: getGraphQLUrl(),
     variables: { slug },
-  })
+  });
 
   if (!response.page)
     return Promise.reject(
@@ -47,4 +47,4 @@ export const fetchPage = async (slug: string): Promise<WPPage> => {
     );
 
   return response.page;
-}
+};

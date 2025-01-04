@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { createContext, useEffect, useState, ReactNode } from "react";
-import Loader from "@/components/loader"
+import { createContext, useEffect, useState, ReactNode } from 'react';
+import Loader from '@/components/loader';
 
 type ThemeContextType = {
   theme?: string;
@@ -18,16 +18,16 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   children,
 }: ThemeProviderProps) => {
   const [isMounted, setIsMounted] = useState(false);
-  const [theme, setTheme] = useState<string>("light");
+  const [theme, setTheme] = useState<string>('light');
 
   const changeTheme = (nextTheme: string) => {
     setTheme(nextTheme);
-    localStorage.setItem("theme", nextTheme);
+    localStorage.setItem('theme', nextTheme);
   };
 
   // #region -- Load Theme
   const loadTheme = () => {
-    const storedTheme = localStorage.getItem("theme") || "light";
+    const storedTheme = localStorage.getItem('theme') || 'light';
     setTheme(storedTheme);
     setIsMounted(true);
   };

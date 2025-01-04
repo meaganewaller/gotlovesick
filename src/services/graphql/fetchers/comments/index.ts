@@ -1,1 +1,1 @@
-export * from './fetch-comments'
+export * from './fetch-comments';

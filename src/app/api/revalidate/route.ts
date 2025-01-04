@@ -1,10 +1,10 @@
-import {revalidatePath, revalidateTag} from 'next/cache'
-import {NextRequest} from 'next/server'
+import { revalidatePath, revalidateTag } from 'next/cache';
+import { NextRequest } from 'next/server';
 
 /**
  * Route segment configuration.
  */
-export const runtime = 'edge'
+export const runtime = 'edge';
 
 /**
  * On-demand revalidation.
@@ -31,68 +31,71 @@ export const runtime = 'edge'
  * @see https://nextjs.org/docs/app/api-reference/functions/revalidatePath
  */
 export async function GET(request: NextRequest) {
-  const secret = request.headers.get('x-vercel-revalidation-secret')
-  const slug = request.nextUrl.searchParams.get('slug')
+  const secret = request.headers.get('x-vercel-revalidation-secret');
+  const slug = request.nextUrl.searchParams.get('slug');
 
   // Validate the secret.
   if (secret !== process.env.NEXTJS_REVALIDATION_SECRET) {
     return new Response(
-      JSON.stringify({revalidated: false, message: 'Invalid secret'}),
+      JSON.stringify({ revalidated: false, message: 'Invalid secret' }),
       {
         status: 401,
         headers: {
           'Content-Type': 'application/json',
-          'X-Robots-Tag': 'noindex'
-        }
+          'X-Robots-Tag': 'noindex',
+        },
       }
-    )
+    );
   }
 
   // Validate the post slug.
   if (!slug) {
     return new Response(
-      JSON.stringify({revalidated: false, message: 'Invalid slug parameter.'}),
+      JSON.stringify({
+        revalidated: false,
+        message: 'Invalid slug parameter.',
+      }),
       {
         status: 400,
         headers: {
           'Content-Type': 'application/json',
-          'X-Robots-Tag': 'noindex'
-        }
+          'X-Robots-Tag': 'noindex',
+        },
       }
-    )
+    );
   }
 
   try {
     // Revalidate the static page.
-    revalidatePath(slug, 'page')
+    revalidatePath(slug, 'page');
 
     // Revalidate the layout.
-    revalidatePath('/', 'layout')
+    revalidatePath('/', 'layout');
 
     // Revalidate everything.
-    revalidatePath('/')
+    revalidatePath('/');
 
     // Revalidate the cached GraphQL queries.
-    revalidateTag(slug)
-    revalidateTag('graphql') // This tag is set in `lib/functions.ts`.
+    revalidateTag(slug);
+    revalidateTag('graphql'); // This tag is set in `lib/functions.ts`.
 
     return new Response(
       JSON.stringify({
         revalidated: true,
         revalidatePath: slug,
         revalidateTags: [slug, 'graphql'],
-        revalidationTime: Date.now()
+        revalidationTime: Date.now(),
       }),
       {
         headers: {
           'Content-Type': 'application/json',
-          'X-Robots-Tag': 'noindex'
-        }
+          'X-Robots-Tag': 'noindex',
+        },
       }
-    )
+    );
   } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : 'Unknown error.'
+      error instanceof Error ? error.message : 'Unknown error.';
 
     return new Response(
       JSON.stringify({
@@ -100,15 +103,15 @@ export async function GET(request: NextRequest) {
         revalidatePath: slug,
         revalidateTag: 'graphql',
         revalidationTime: Date.now(),
-        error: errorMessage
+        error: errorMessage,
       }),
       {
         status: 500,
         headers: {
           'Content-Type': 'application/json',
-          'X-Robots-Tag': 'noindex'
-        }
+          'X-Robots-Tag': 'noindex',
+        },
       }
-    )
+    );
   }
 }

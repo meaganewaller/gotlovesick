@@ -1,17 +1,23 @@
-'use client'
+'use client';
 
-import ThemeSwap from "@/components/ThemeSwap"
-import React from "react"
+import ThemeSwap from '@/components/ThemeSwap';
+import React from 'react';
 
 interface LayoutProviderProps {
-  children: React.ReactNode
-  header: React.ReactNode
-  footer: React.ReactNode
-  leftSidebar?: React.ReactNode
-  rightSidebar?: React.ReactNode
+  children: React.ReactNode;
+  header: React.ReactNode;
+  footer: React.ReactNode;
+  leftSidebar?: React.ReactNode;
+  rightSidebar?: React.ReactNode;
 }
 
-export const LayoutProvider = ({ children, header, footer, leftSidebar, rightSidebar }: LayoutProviderProps) => {
+export const LayoutProvider = ({
+  children,
+  header,
+  footer,
+  leftSidebar,
+  rightSidebar,
+}: LayoutProviderProps) => {
   if (leftSidebar && rightSidebar) {
     return (
       <div id="default-layout">
@@ -31,7 +37,7 @@ export const LayoutProvider = ({ children, header, footer, leftSidebar, rightSid
         {children}
         {footer}
       </div>
-    )
+    );
   } else if (leftSidebar) {
     return (
       <div id="left-sidebar-layout">
@@ -50,7 +56,7 @@ export const LayoutProvider = ({ children, header, footer, leftSidebar, rightSid
         {children}
         {footer}
       </div>
-    )
+    );
   } else if (rightSidebar) {
     return (
       <div id="right-sidebar-layout">
@@ -69,7 +75,7 @@ export const LayoutProvider = ({ children, header, footer, leftSidebar, rightSid
         {children}
         {footer}
       </div>
-    )
+    );
   } else {
     return (
       <div id="no-sidebar-layout">
@@ -83,7 +89,6 @@ export const LayoutProvider = ({ children, header, footer, leftSidebar, rightSid
         {children}
         {footer}
       </div>
-    )
+    );
   }
-}
-
+};

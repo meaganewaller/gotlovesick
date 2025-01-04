@@ -1,4 +1,4 @@
-import { type IconContext } from "react-icons/lib";
+import { type IconContext } from 'react-icons/lib';
 
 export interface Benchmarks {
   loadTime: { industry: number; optimized: number };

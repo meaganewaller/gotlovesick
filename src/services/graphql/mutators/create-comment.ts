@@ -1,15 +1,15 @@
-import type { Nullable, WPComment } from '@/types'
-import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers'
+import type { Nullable, WPComment } from '@/types';
+import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers';
 
 export type CreateCommentPayload = {
-  clientMutationId: Nullable<string>
-  success: boolean
-  comment: Nullable<Pick<WPComment, 'approved'>>
-}
+  clientMutationId: Nullable<string>;
+  success: boolean;
+  comment: Nullable<Pick<WPComment, 'approved'>>;
+};
 
 export type CreateCommentResponse = {
-  createComment: CreateCommentPayload
-}
+  createComment: CreateCommentPayload;
+};
 
 export const createCommentMutation = `mutation CreateComment($input: CreateCommentInput!) {
   createComment(input: $input) {
@@ -19,17 +19,17 @@ export const createCommentMutation = `mutation CreateComment($input: CreateComme
     }
     success
   }
-}`
+}`;
 
 export type CreateCommentInput = {
-  author: string
-  authorEmail: string
-  authorUrl: string
-  clientMutationId: string
-  commentOn: number
-  content: string
-  parent?: number
-}
+  author: string;
+  authorEmail: string;
+  authorUrl: string;
+  clientMutationId: string;
+  commentOn: number;
+  content: string;
+  parent?: number;
+};
 
 /**
  * Create a new comment using GraphQL API.
@@ -44,7 +44,7 @@ export const createComment = async (
     query: createCommentMutation,
     url: getGraphQLUrl(),
     variables: { input },
-  })
+  });
 
-  return response.createComment
-}
+  return response.createComment;
+};

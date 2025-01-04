@@ -3,9 +3,9 @@
   grid-gap: var(--margin);
   width: 1200px;
   grid-template:
-    "header" auto
-    "main" auto
-    "footer" auto / auto;
+    'header' auto
+    'main' auto
+    'footer' auto / auto;
 
   header {
     grid-area: header;
@@ -28,7 +28,7 @@
         font-family: var(--font-handwritten-bold);
         -webkit-text-stroke-width: 5px;
         -webkit-text-stroke-color: white;
-        transition: transform .2s ease;
+        transition: transform 0.2s ease;
         transform: none;
 
         &:hover,
@@ -41,16 +41,16 @@
         font-size: 3.5rem;
       }
 
-      @media(max-width: 576px) {
+      @media (max-width: 576px) {
         font-size: 2.5rem;
       }
     }
 
-    @media(max-width: 576px) {
+    @media (max-width: 576px) {
       margin-bottom: 0;
     }
 
-    @media(max-width: 400px) {
+    @media (max-width: 400px) {
       .header-title {
         font-size: 2rem;
       }
@@ -208,15 +208,15 @@
   }
 
   25% {
-    color: hsl(.25turn, 90%, 75%);
+    color: hsl(0.25turn, 90%, 75%);
   }
 
   50% {
-    color: hsl(.5turn, 90%, 75%);
+    color: hsl(0.5turn, 90%, 75%);
   }
 
   75% {
-    color: hsl(.75turn, 90%, 75%);
+    color: hsl(0.75turn, 90%, 75%);
   }
 
   100% {

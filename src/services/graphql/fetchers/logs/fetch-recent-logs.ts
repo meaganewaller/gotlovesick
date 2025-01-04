@@ -4,13 +4,13 @@ import type {
   GraphQLPostWhere,
   Nullable,
   WPLog,
-} from '@/types'
+} from '@/types';
 
-import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers'
+import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers';
 
 export type RecentLogsResponse = {
   logs: Nullable<GraphQLConnection<WPLog>>;
-}
+};
 
 const recentLogsQuery = `query RecentLogs($first: Int) {
   logs(
@@ -42,7 +42,7 @@ const recentLogsQuery = `query RecentLogs($first: Int) {
       total
     }
   }
-}`
+}`;
 
 export type FetchRecentLogsInput = GraphQLEdgesInput & {
   where?: GraphQLPostWhere;

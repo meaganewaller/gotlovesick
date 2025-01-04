@@ -1,5 +1,5 @@
-import AccessCounter from '@/components/AccessCounter'
-import Link from 'next/link'
+import AccessCounter from '@/components/AccessCounter';
+import Link from 'next/link';
 
 export default function Footer() {
   return (
@@ -12,7 +12,5 @@ export default function Footer() {
       </p>
       <AccessCounter />
     </footer>
-  )
+  );
 }
-
-

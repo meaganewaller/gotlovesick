@@ -7,7 +7,9 @@ body {
   align-items: center;
   justify-content: center;
   background: var(--background);
-  cursor: url('/cursors/rainbow.cur') 1 1, auto;
+  cursor:
+    url('/cursors/rainbow.cur') 1 1,
+    auto;
   min-height: 100vh;
   font-size: var(--font-size);
   margin: 0;
@@ -27,7 +29,9 @@ body a:hover,
 body a:focus,
 body a:visited {
   color: var(--textColor);
-  cursor: url('/cursors/pointer.cur') 7 5, pointer;
+  cursor:
+    url('/cursors/pointer.cur') 7 5,
+    pointer;
   text-decoration: none;
 }
 
@@ -35,7 +39,9 @@ body button {
   font-family: var(--font-cute);
   font-size: 1.3rem;
   line-height: 1.5;
-  cursor: url('/cursors/pointer.cur') 7 5, pointer;
+  cursor:
+    url('/cursors/pointer.cur') 7 5,
+    pointer;
 }
 
 #skip-to-sitemap-link,
@@ -44,7 +50,7 @@ body button {
   top: 0;
   left: 0;
   display: inline-block;
-  padding: .375rem .75rem;
+  padding: 0.375rem 0.75rem;
   line-height: 1;
   font-size: 1.25rem;
   background-color: var(--content-bg);
@@ -73,7 +79,11 @@ body button {
     border: 1px solid var(--dark);
     color: var(--black);
     background: var(--purple);
-    background-image: linear-gradient(to top, var(--purple) 16%, var(--pink) 79%);
+    background-image: linear-gradient(
+      to top,
+      var(--purple) 16%,
+      var(--pink) 79%
+    );
     border-radius: 10px;
     padding: 2px 5px;
     font-size: 15px;
@@ -84,15 +94,15 @@ body button {
   }
 
   span {
-    letter-spacing: .5px;
+    letter-spacing: 0.5px;
   }
 
   img {
     display: block;
-    margin-right: .5rem;
+    margin-right: 0.5rem;
   }
 
-  @media(max-width: 576px) {
+  @media (max-width: 576px) {
     display: none;
   }
 }
@@ -109,7 +119,11 @@ body button {
     border: 1px solid var(--dark);
     color: var(--black);
     background: var(--purple);
-    background-image: linear-gradient(to top, var(--purple) 16%, var(--pink) 79%);
+    background-image: linear-gradient(
+      to top,
+      var(--purple) 16%,
+      var(--pink) 79%
+    );
     border-radius: 10px;
     padding: 2px 5px;
     font-size: 15px;
@@ -119,7 +133,7 @@ body button {
     }
   }
 
-  @media(max-width: 576px) {
+  @media (max-width: 576px) {
     display: none;
   }
 }

@@ -1,4 +1,4 @@
-import type { GithubRepositoryMeta, Nullable } from '@/types'
+import type { GithubRepositoryMeta, Nullable } from '@/types';
 import { GITHUB_API } from '@/utils/constants';
 import { fetchGraphQL } from '@/utils/helpers';
 

@@ -1,11 +1,11 @@
-import type { NextPage } from 'next'
-import type { AppProps as NextAppProps } from 'next/app'
-import type { ReactElement, ReactNode } from 'react'
-import type { VALID_THEMES } from '@/utils/constants'
+import type { NextPage } from 'next';
+import type { AppProps as NextAppProps } from 'next/app';
+import type { ReactElement, ReactNode } from 'react';
+import type { VALID_THEMES } from '@/utils/constants';
 
 export type NextPageWithLayoutOptions = {
   isHome?: boolean;
-}
+};
 
 export type NextPageWithLayout<T = object> = NextPage<T> & {
   getLayout?: (

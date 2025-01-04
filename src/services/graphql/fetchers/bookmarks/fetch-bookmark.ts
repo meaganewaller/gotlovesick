@@ -1,5 +1,5 @@
-import type { Nullable, WPBookmark } from '@/types'
-import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers'
+import type { Nullable, WPBookmark } from '@/types';
+import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers';
 
 export type BookmarkResponse = {
   bookmark: Nullable<WPBookmark>;

@@ -1,5 +1,5 @@
-import type { GraphQLPageInfo, Nullable } from '@/types'
-import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers'
+import type { GraphQLPageInfo, Nullable } from '@/types';
+import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers';
 
 export type LastBookmarkCursorResponse = {
   bookmarks: Nullable<Record<'pageInfo', Pick<GraphQLPageInfo, 'endCursor'>>>;
@@ -19,7 +19,9 @@ const lastBookmarkCursorQuery = `query LastBookmarkCursor($first: Int) {
  * @param {number} count - The number of bookmarks to fetch.
  * @returns {Promise<string>} The cursor of the last bookmark.
  */
-export const fetchLastBookmarkCursor = async (count: number): Promise<string> => {
+export const fetchLastBookmarkCursor = async (
+  count: number
+): Promise<string> => {
   const response = await fetchGraphQL<LastBookmarkCursorResponse>({
     url: getGraphQLUrl(),
     query: lastBookmarkCursorQuery,

@@ -1,9 +1,9 @@
-import type { Nullable, WPShrine } from '@/types'
-import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers'
+import type { Nullable, WPShrine } from '@/types';
+import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers';
 
 export type ShrineResponse = {
   shrine: Nullable<WPShrine>;
-}
+};
 
 const shrineQuery = `query Shrine($slug: ID!) {
   shrine(id: $slug, idType: URI) {
@@ -66,14 +66,14 @@ const shrineQuery = `query Shrine($slug: ID!) {
       }
     }
   }
-}`
+}`;
 
 export const fetchShrine = async (slug: string) => {
   const response = await fetchGraphQL<ShrineResponse>({
     query: shrineQuery,
     url: getGraphQLUrl(),
     variables: { slug },
-  })
+  });
 
   if (!response.shrine) {
     return Promise.reject(
@@ -82,4 +82,4 @@ export const fetchShrine = async (slug: string) => {
   }
 
   return response.shrine;
-}
+};

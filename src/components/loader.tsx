@@ -1,5 +1,5 @@
-import Image from 'next/image'
-import loader from "~/images/loader.webp"
+import Image from 'next/image';
+import loader from '~/images/loader.webp';
 
 export default function Loader() {
   return (

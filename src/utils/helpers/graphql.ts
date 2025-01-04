@@ -1,5 +1,5 @@
-import type { Nullable } from "@/types";
-import { CONFIG } from "@/utils/config";
+import type { Nullable } from '@/types';
+import { CONFIG } from '@/utils/config';
 
 /**
  * Retrieve the API url from settings.
@@ -10,7 +10,7 @@ export const getGraphQLUrl = (): string => {
   if (!CONFIG.api.url) throw new Error('You forgot to define the API url.');
 
   return CONFIG.api.url;
-}
+};
 
 export type GraphQLData<T> = Record<string, Nullable<T>>;
 

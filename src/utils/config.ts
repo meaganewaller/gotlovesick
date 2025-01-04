@@ -1,4 +1,4 @@
-const isStaging = process.env.NEXT_PUBLIC_APP_ENV === 'staging'
+const isStaging = process.env.NEXT_PUBLIC_APP_ENV === 'staging';
 
 export const CONFIG = {
   api: {
@@ -16,8 +16,8 @@ export const CONFIG = {
       repo: 'meaganewaller.github.io',
     },
     tiktok: {
-      username: '@gotlovesickallovermybed'
-    }
+      username: '@gotlovesickallovermybed',
+    },
   },
   copyright: {
     startYear: '2024',
@@ -27,12 +27,11 @@ export const CONFIG = {
   locales: {
     defaultLocale: 'en',
     defaultCountry: 'US',
-    supported: ['en']
+    supported: ['en'],
   },
   postsPerPage: 10,
   url:
     (isStaging
       ? process.env.NEXT_PUBLIC_STAGING_APP_URL
-      : process.env.NEXT_PUBLIC_APP_URL
-    ) ?? '',
-}
+      : process.env.NEXT_PUBLIC_APP_URL) ?? '',
+};

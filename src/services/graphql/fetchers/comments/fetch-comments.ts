@@ -4,13 +4,13 @@ import type {
   GraphQLNodes,
   Nullable,
   WPComment,
-} from '@/types'
+} from '@/types';
 
 import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers';
 
 export type CommentsListResponse = {
-  comments: Nullable<GraphQLNodes<WPComment>>
-}
+  comments: Nullable<GraphQLNodes<WPComment>>;
+};
 
 const commentsListQuery = `query CommentsList($first: Int, $contentId: ID, $contentName: String, $status: String) {
   comments(

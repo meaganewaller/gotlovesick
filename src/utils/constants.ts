@@ -1,7 +1,7 @@
-export const GITHUB_API = 'https://api.github.com/graphql'
-export const LASTFM_USERNAME = process.env.NEXT_PUBLIC_LASTFM_USER
-export const LASTFM_API_KEY = process.env.NEXT_PUBLIC_LASTFM_API_KEY
-export const LASTFM_API_URL = 'https://ws.audioscrobbler.com/2.0/'
+export const GITHUB_API = 'https://api.github.com/graphql';
+export const LASTFM_USERNAME = process.env.NEXT_PUBLIC_LASTFM_USER;
+export const LASTFM_API_KEY = process.env.NEXT_PUBLIC_LASTFM_API_KEY;
+export const LASTFM_API_URL = 'https://ws.audioscrobbler.com/2.0/';
 
 export const PERSONAL_LINKS = {
   GITHUB: 'https://github.com/meaganewaller',
@@ -27,7 +27,7 @@ export const ROUTES = {
   TAGS: '/tag',
 } as const;
 
-export const PAGINATED_ROUTE_PREFIX = '/page'
+export const PAGINATED_ROUTE_PREFIX = '/page';
 
 export const ARTICLE_ID = 'post';
 export const AUTHOR_ID = 'bio';
@@ -40,6 +40,6 @@ export const STORAGE_KEY = {
   THEME: 'theme',
 } as const;
 
-export const PRISM_THEME_ATTRIBUTE = 'data-prismjs-color-scheme-current'
+export const PRISM_THEME_ATTRIBUTE = 'data-prismjs-color-scheme-current';
 
 export const VALID_THEMES = ['light', 'dark', 'cupcake'] as const;

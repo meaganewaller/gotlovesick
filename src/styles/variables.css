@@ -8,12 +8,12 @@
   --borderColor: #d47b83;
   --borders: #ff8a9d;
   --burger: #4b4bc3;
-  --burgericon: url("/images/icons/burger.svg");
-  --header-bg: url("/images/bg/clouds.gif");
-  --background-image: url("/images/bg/unicorn.jpeg");
+  --burgericon: url('/images/icons/burger.svg');
+  --header-bg: url('/images/bg/clouds.gif');
+  --background-image: url('/images/bg/unicorn.jpeg');
   --buttonbg: #cbe6e6;
   --buttoncolor: #51747b;
-  --closeicon: url("/images/icons/close.svg");
+  --closeicon: url('/images/icons/close.svg');
   --color: #333;
   --content-background-color: #ffecf8;
   --dark: #9c595e;
@@ -29,7 +29,7 @@
   --header: #95ccd4;
   --headerfont: var(--font-pixel-serif);
   --light: #ffd3ef;
-  --linkColor: #7E5A9B;
+  --linkColor: #7e5a9b;
   --linkColorHover: #f0b207;
   --linkhover: #f0b207;
   --mainBackgroundColor: #ffecf8;
@@ -38,10 +38,10 @@
   --navcolor: #333;
   --navhover: #f9b14e;
   --navhoverbg: #fff5e0;
-  --navlink: #EBB1FA;
+  --navlink: #ebb1fa;
   --navlinkbg: #f6d88e;
-  --navtexthover: #B1FAE0;
-  --navtextlink: #FAB1CC;
+  --navtexthover: #b1fae0;
+  --navtextlink: #fab1cc;
   --overlay: rgb(0, 0, 0, 0.3);
   --padding: 20px;
   --pink: #df90a4;
@@ -57,11 +57,11 @@
   --yellow: #ffba39;
 }
 
-[data-theme="dark"] {
+[data-theme='dark'] {
   --white: black;
   --black: white;
-  --header-bg: url("/images/bg/clouds.gif");
-  --background-image: url("/images/bg/night.gif");
+  --header-bg: url('/images/bg/clouds.gif');
+  --background-image: url('/images/bg/night.gif');
   --veryLight: #ffecf8;
   --light: #56313b;
   --pink: #a06674;

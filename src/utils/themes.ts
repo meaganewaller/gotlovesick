@@ -1,1 +1,1 @@
-export const themes: string[] = ['light', 'dark', 'cupcake']
+export const themes: string[] = ['light', 'dark', 'cupcake'];

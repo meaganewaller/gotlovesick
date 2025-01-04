@@ -1,1 +1,1 @@
-export * from './fetch-recent-logs'
+export * from './fetch-recent-logs';

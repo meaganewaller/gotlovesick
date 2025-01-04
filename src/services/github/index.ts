@@ -1,1 +1,1 @@
-export * from './fetch-github-repo-meta'
+export * from './fetch-github-repo-meta';

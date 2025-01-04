@@ -1,5 +1,5 @@
-import type { Nullable } from '@/types'
-import { fetchGraphQL, getGraphQLUrl } from '../../../utils/helpers'
+import type { Nullable } from '@/types';
+import { fetchGraphQL, getGraphQLUrl } from '../../../utils/helpers';
 
 export type SendEmail = {
   clientMutationId: Nullable<string>;

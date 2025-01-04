@@ -24,14 +24,22 @@
   /* Ikea Favoritos */
   --color-ikea-favoritos-card-bg: rgb(255, 233, 178);
   --color-ikea-favoritos-card-text: rgb(48, 68, 91);
-  --color-ikea-favoritos-card-door-gradient: linear-gradient(204deg, rgb(48, 68, 91) 10%, rgb(255, 233, 178) 100%);
+  --color-ikea-favoritos-card-door-gradient: linear-gradient(
+    204deg,
+    rgb(48, 68, 91) 10%,
+    rgb(255, 233, 178) 100%
+  );
 
   /* Overheard */
   --color-overheard-card-bg: rgb(219, 243, 232);
   --color-overheard-card-text: rgb(41, 49, 77);
 
   /* Duolingo Fowl langiage */
-  --color-duolingo-fl-card-bg: linear-gradient(40deg, rgb(43, 177, 243) 0%, rgb(255, 86, 86) 100%);
+  --color-duolingo-fl-card-bg: linear-gradient(
+    40deg,
+    rgb(43, 177, 243) 0%,
+    rgb(255, 86, 86) 100%
+  );
   --color-duolingo-fl-card-text: rgb(66, 66, 66);
   --color-duolingo-fl-card-cover-border: rgb(255, 255, 255);
 
@@ -45,5 +53,9 @@
   /* 3D Carousel */
   --color-carousel-card-bg: rgb(219, 219, 243);
   --color-carousel-card-text: rgb(var(--color-black));
-  --color-carousel-card-cards-gradient: linear-gradient(180deg, rgb(206, 206, 234) 0%, rgb(125, 125, 165) 100%);
+  --color-carousel-card-cards-gradient: linear-gradient(
+    180deg,
+    rgb(206, 206, 234) 0%,
+    rgb(125, 125, 165) 100%
+  );
 }

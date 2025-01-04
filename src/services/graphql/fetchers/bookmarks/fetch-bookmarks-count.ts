@@ -1,9 +1,9 @@
-import type { GraphQLPageInfo, GraphQLBookmarkWhere, Nullable } from '@/types'
-import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers'
+import type { GraphQLPageInfo, GraphQLBookmarkWhere, Nullable } from '@/types';
+import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers';
 
 export type BookmarksCountResponse = {
   bookmarks: Nullable<Record<'pageInfo', Pick<GraphQLPageInfo, 'total'>>>;
-}
+};
 
 const bookmarksCountQuery = `query BookmarksCount($authorName: String, $search: String, $title: String) {
   bookmarks(where: {authorName: $authorName, search: $search, title: $title}) {

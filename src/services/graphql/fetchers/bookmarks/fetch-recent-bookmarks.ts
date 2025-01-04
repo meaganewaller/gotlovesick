@@ -4,8 +4,8 @@ import type {
   GraphQLBookmarkWhere,
   Nullable,
   RecentWPBookmark,
-} from '@/types'
-import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers'
+} from '@/types';
+import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers';
 
 export type RecentBookmarksResponse = {
   bookmarks: Nullable<GraphQLConnection<RecentWPBookmark>>;

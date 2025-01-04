@@ -45,11 +45,9 @@ export default async function Bookmark() {
 
           <div className="mx-auto mt-10 max-w-screen-md space-y-12 px-4 py-10 font-serif text-lg tracking-wide text-gray-700">
             {/* <div dangerouslySetInnerHTML={{ __html: bookmark.content }} /> */}
-
           </div>
         </article>
       </main>
     </>
-  )
+  );
 }
-

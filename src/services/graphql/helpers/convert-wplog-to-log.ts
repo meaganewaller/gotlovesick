@@ -1,11 +1,11 @@
-import type { WPLog, Log } from "@/types"
+import type { WPLog, Log } from '@/types';
 
 export const convertWPLogToLog = ({
   contentParts,
   databaseId,
   date,
   slug,
-  title
+  title,
 }: WPLog): Log => {
   return {
     date,
@@ -13,5 +13,5 @@ export const convertWPLogToLog = ({
     content: contentParts.beforeMore + contentParts.afterMore,
     slug,
     title,
-  }
-}
+  };
+};

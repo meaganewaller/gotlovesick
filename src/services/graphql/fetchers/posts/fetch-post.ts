@@ -1,9 +1,9 @@
-import type { Nullable, WPPost } from '@/types'
-import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers'
+import type { Nullable, WPPost } from '@/types';
+import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers';
 
 export type PostResponse = {
   post: Nullable<WPPost>;
-}
+};
 
 const postQuery = `query Post($slug: ID!) {
   post(id: $slug, idType: SLUG) {

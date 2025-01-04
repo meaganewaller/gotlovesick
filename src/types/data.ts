@@ -3,12 +3,12 @@ import type { Nullable } from './generics';
 import type { GraphQLNode, GraphQLNodes } from './gql';
 
 export enum MenuLocationEnum {
-  Sidebar = "SIDEBAR_MENU",
-  Blog = "BLOG_MENU",
-  Bookmarks = "BOOKMARKS_MENU",
-  Shrines = "SHRINES_MENU",
-  Header = "HEADER_MENU",
-  Resources = "RESOURCES_MENU",
+  Sidebar = 'SIDEBAR_MENU',
+  Blog = 'BLOG_MENU',
+  Bookmarks = 'BOOKMARKS_MENU',
+  Shrines = 'SHRINES_MENU',
+  Header = 'HEADER_MENU',
+  Resources = 'RESOURCES_MENU',
 }
 
 export type SlugNode = {
@@ -22,10 +22,12 @@ export type SlugNode = {
 type WPSeo = {
   metaDesc: string;
   title: string;
-  breadcrumbs: Nullable<{
-    text: string;
-    url: string;
-  }[]>;
+  breadcrumbs: Nullable<
+    {
+      text: string;
+      url: string;
+    }[]
+  >;
 };
 
 type WPCommentAuthorAvatar = {
@@ -82,7 +84,7 @@ type WPContent = {
 
 export type WPPage = WPContent & {
   info: WPInfo;
-  content: string
+  content: string;
 };
 
 type WPPostAuthor = { name: string };
@@ -93,26 +95,26 @@ type WPAcfPosts = {
 };
 
 export type MenuItem = {
-  id: string
-  databaseId: string
-  label: Nullable<string>,
-  description: Nullable<string>,
-  order: number,
-  title: string,
-  uri: string,
-  parentId?: string | null
-}
+  id: string;
+  databaseId: string;
+  label: Nullable<string>;
+  description: Nullable<string>;
+  order: number;
+  title: string;
+  uri: string;
+  parentId?: string | null;
+};
 
 export type WPMenuItem = {
-  key: string
-  title: string
-  order: number
-  path: string
-}
+  key: string;
+  title: string;
+  order: number;
+  path: string;
+};
 
 export type WPMenu = {
-  nodes: WPMenuItem[]
-}
+  nodes: WPMenuItem[];
+};
 
 export type WPPost = WPContent & {
   acfPosts: Nullable<Partial<WPAcfPosts>>;
@@ -133,22 +135,24 @@ export type WPShrine = {
   slug: string;
   title: string;
   shrineDetails: Nullable<{
-    featuredSections: Nullable<{ content: string; title: string; }[]>;
-    sidebar: Nullable<GraphQLNodes<{
-      id: string;
-      databaseId: number;
-      title: string;
-      slug: string;
-      uri: string;
-    }>>;
+    featuredSections: Nullable<{ content: string; title: string }[]>;
+    sidebar: Nullable<
+      GraphQLNodes<{
+        id: string;
+        databaseId: number;
+        title: string;
+        slug: string;
+        uri: string;
+      }>
+    >;
     shortDescription: Nullable<string>;
     headerImage: Nullable<GraphQLNode<WPImage>>;
   }>;
-}
+};
 
 export type WPResource = WPContent & {
   info: WPInfo;
-}
+};
 
 export type WPResourceType = {
   id: string;
@@ -157,15 +161,15 @@ export type WPResourceType = {
   name: string;
   count: number;
   resources: GraphQLNode<WPResource>[];
-}
+};
 
-export type WPLog = WPContent
+export type WPLog = WPContent;
 
 export type WPBookmark = WPContent & {
   author: GraphQLNode<WPPostAuthor>;
   commentCount: Nullable<number>;
   info: WPInfo;
-}
+};
 
 export type WPPostPreview = Pick<
   WPPost,
@@ -179,8 +183,8 @@ export type WPPostPreview = Pick<
   | 'title'
 > & {
   acfPosts:
-  | Nullable<Pick<WPAcfPosts, 'postsInCategory'>>
-  | Nullable<Pick<WPAcfPosts, 'postsInTag'>>;
+    | Nullable<Pick<WPAcfPosts, 'postsInCategory'>>
+    | Nullable<Pick<WPAcfPosts, 'postsInTag'>>;
   contentParts: Pick<WPContentParts, 'beforeMore'>;
 };
 
@@ -196,14 +200,14 @@ export type WPBookmarkPreview = Pick<
   | 'title'
 > & {
   contentParts: Pick<WPContentParts, 'beforeMore'>;
-}
+};
 
 export type RecentWPResource = Pick<
   WPPost,
   'date' | 'featuredImage' | 'slug' | 'title'
 > & {
   databaseId: number;
-}
+};
 
 export type RecentWPPost = Pick<
   WPPost,
@@ -415,7 +419,7 @@ export type GithubRepositoryMeta = {
 export type Bookmark = Page & {
   databaseId: number;
   id: number;
-}
+};
 
 export type Log = {
   date: string;
@@ -423,23 +427,22 @@ export type Log = {
   content: string;
   slug: string;
   title: string;
-}
+};
 
 export type LastFmTrack = {
-  album: { '#text': string, mbid: string };
+  album: { '#text': string; mbid: string };
   streamable: string;
   artist: { '#text': string };
   date: { uts: string; '#text': string };
   image: { size: string; '#text': string }[];
-  "@attr": { nowplaying: string };
+  '@attr': { nowplaying: string };
   name: string;
   playcount: string;
   url: string;
-
-}
+};
 
 export type LastFmRecentTracksResponse = {
   recenttracks: {
     track: LastFmTrack[];
-  }
-}
+  };
+};

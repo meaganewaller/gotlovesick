@@ -1,1 +1,1 @@
-export * from "./use-splitting-on-load";
+export * from './use-splitting-on-load';

@@ -1,5 +1,5 @@
-import { PropsWithChildren, useContext } from "react";
-import { ThemeContext } from "@/context/ThemeContext";
+import { PropsWithChildren, useContext } from 'react';
+import { ThemeContext } from '@/context/ThemeContext';
 
 export default function ClientThemeWrapper({ children }: PropsWithChildren) {
   const { theme } = useContext(ThemeContext);
