@@ -56,10 +56,10 @@ export const LastFmData = () => {
     const vibesBody = () => {
       if (track['@attr']?.nowplaying) {
         return (
-          <div>
+          <div className='track'>
             <h3>Now playing</h3>
             {imageUrl && (
-              <Image src={imageUrl} alt="" width={100} height={100} />
+              <Image src={imageUrl} alt="" width={100} height={100} className="track-cover" />
             )}
             <p>{track.name}</p>
             <p>by: {track.artist['#text']}</p>
@@ -75,10 +75,10 @@ export const LastFmData = () => {
         );
       } else {
         return (
-          <div>
+          <div className='track'>
             <h3>Recently played</h3>
             {imageUrl && (
-              <Image src={imageUrl} alt="" width={100} height={100} />
+              <Image src={imageUrl} alt="" width={100} height={100} className="track-cover" />
             )}
             <p>{track.name}</p>
             <p>by: {track.artist['#text']}</p>

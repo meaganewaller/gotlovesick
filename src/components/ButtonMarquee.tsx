@@ -25,6 +25,7 @@ import vim from '~/images/marquee/vim.gif';
 export default function ButtonMarquee() {
   return (
     <div className="marquee-container" aria-hidden="true" tabIndex={1}>
+      <h2 className="sr-only">Button Marquee</h2>
       <div className="marquee">
         <Image src={acab} alt="" />
         <Image src={y2k} alt="" />

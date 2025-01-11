@@ -1,10 +1,14 @@
 import { fetchShrine } from '@/services/graphql';
 import { notFound } from 'next/navigation';
 import { WPShrine } from '@/types';
-import Link from 'next/link';
+import "@/styles/shrine.css";
+import { ShrineNav } from '@/components/shrines';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
 async function fetchData(slug: string) {
-  const shrine = await fetchShrine(slug);
+  let shrine = undefined;
+
+  shrine = await fetchShrine(slug);
 
   if (shrine) {
     return { shrine: shrine };
@@ -15,55 +19,16 @@ async function fetchData(slug: string) {
 
 function RenderPage({ shrine }: { shrine: WPShrine }) {
   return (
-    <div id="shrine-page">
-      {' '}
-      <nav className="shrine-nav">
-        {shrine.shrineDetails?.sidebar?.nodes.map((node) => (
-          <div className="shrine-nav-item" key={node.id}>
-            <div className="shrine-nav-title">
-              <Link href={node.uri}>{node.title}</Link>
-            </div>
-          </div>
-        ))}
-      </nav>
+    <main id="shrine-page">
+      <ShrineNav shrine={shrine} />
       <div className="shrine-layout">
         <section className="" id="page-content">
-          <ol className="breadcrumbs" aria-label="Breadcrumb">
-            {shrine.seo?.breadcrumbs?.map((breadcrumb) => {
-              if (breadcrumb.text === shrine.title) {
-                return (
-                  <li key={breadcrumb.url} aria-current="page">
-                    {breadcrumb.text}
-                  </li>
-                );
-              } else {
-                return (
-                  <li key={breadcrumb.url}>
-                    <Link href={getPathFromUrl(breadcrumb.url)}>
-                      {breadcrumb.text}
-                    </Link>
-                  </li>
-                );
-              }
-            })}
-          </ol>
-          <aside className="left-sidebar">
-            <nav>
-              <div className="sidebar-title">Menu</div>
-              <ul>
-                {shrine.shrineDetails?.sidebar?.nodes.map((node) => (
-                  <li key={node.id}>
-                    <a href={`${node.uri}`}>{node.title}</a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </aside>
+          {shrine.seo?.breadcrumbs && <Breadcrumbs breadcrumbs={shrine.seo?.breadcrumbs} />}
 
           <main id="shrine">
             <section>
               <h1 dangerouslySetInnerHTML={{ __html: shrine.title }} />
-              <div dangerouslySetInnerHTML={{ __html: shrine.content }} />
+
             </section>
 
             {shrine.shrineDetails?.featuredSections?.map((section) => (
@@ -72,10 +37,12 @@ function RenderPage({ shrine }: { shrine: WPShrine }) {
                 <div dangerouslySetInnerHTML={{ __html: section.content }} />
               </section>
             ))}
+
+            <div dangerouslySetInnerHTML={{ __html: shrine.content }} />
           </main>
         </section>
       </div>
-    </div>
+    </main>
   );
 }
 

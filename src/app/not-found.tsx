@@ -10,9 +10,9 @@ export default async function NotFound() {
   const referer = headersList.get('referer');
 
   return (
-    <>
+    <main className="not-found">
       <h1 className="text-center">404 - Not Found</h1>
       <p className="text-center text-red-500">{referer}</p>
-    </>
+    </main>
   );
 }

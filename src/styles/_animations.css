@@ -1,0 +1,31 @@
+@keyframes rainbow-colors {
+  0% {
+    color: hsl(0turn, 90%, 75%);
+  }
+
+  25% {
+    color: hsl(0.25turn, 90%, 75%);
+  }
+
+  50% {
+    color: hsl(0.5turn, 90%, 75%);
+  }
+
+  75% {
+    color: hsl(0.75turn, 90%, 75%);
+  }
+
+  100% {
+    color: hsl(1turn, 90%, 75%);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}

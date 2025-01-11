@@ -42,7 +42,7 @@ const shrineQuery = `query Shrine($slug: ID!) {
         content
         title
       }
-      sidebar {
+      sidebar(first: 100) {
         nodes {
           ... on Shrine {
             id

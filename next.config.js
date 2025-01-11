@@ -7,6 +7,13 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 const nextConfig = {
   poweredByHeader: false,
 
+  logging: {
+    fetches: {
+      fullUrl: true,
+      hmrRefreshes: true,
+    },
+  },
+
   // The pre-commit hook takes care of linting
   eslint: {
     ignoreDuringBuilds: true,
@@ -14,6 +21,10 @@ const nextConfig = {
 
   images: {
     remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'wp.gotlovesick.com',
+      },
       {
         protocol: 'https',
         hostname: 'lastfm.freetls.fastly.net',

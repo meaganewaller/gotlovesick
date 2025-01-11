@@ -94,27 +94,31 @@ type WPAcfPosts = {
   postsInTag: Nullable<WPTagPreview[]>;
 };
 
-export type MenuItem = {
-  id: string;
-  databaseId: string;
-  label: Nullable<string>;
-  description: Nullable<string>;
-  order: number;
-  title: string;
-  uri: string;
-  parentId?: string | null;
-};
-
 export type WPMenuItem = {
   key: string;
+  url: string;
   title: string;
   order: number;
   path: string;
+  parentId: Nullable<string>;
 };
 
 export type WPMenu = {
   nodes: WPMenuItem[];
 };
+
+export type MenuItem = {
+  key: string;
+  parentId: Nullable<string>;
+  title: string;
+  url: string;
+  path: string;
+  order: number;
+}
+
+export type NestedMenuItem = MenuItem & {
+  children: MenuItem[];
+}
 
 export type WPPost = WPContent & {
   acfPosts: Nullable<Partial<WPAcfPosts>>;
@@ -183,8 +187,8 @@ export type WPPostPreview = Pick<
   | 'title'
 > & {
   acfPosts:
-    | Nullable<Pick<WPAcfPosts, 'postsInCategory'>>
-    | Nullable<Pick<WPAcfPosts, 'postsInTag'>>;
+  | Nullable<Pick<WPAcfPosts, 'postsInCategory'>>
+  | Nullable<Pick<WPAcfPosts, 'postsInTag'>>;
   contentParts: Pick<WPContentParts, 'beforeMore'>;
 };
 
@@ -446,3 +450,25 @@ export type LastFmRecentTracksResponse = {
     track: LastFmTrack[];
   };
 };
+
+export type WPWebDirectoryEntry = {
+  id: string;
+  title: string;
+  uri: string;
+}
+
+export type WPWebDirectoryCategory = {
+  key: string;
+  title: string;
+  slug: string;
+  description: Nullable<string>;
+  count: number;
+  webDirectoryEntries: GraphQLNode<WPWebDirectoryEntry>[];
+}
+
+export type WPPlaylist = {
+  id: string;
+  title: string;
+  uri: string;
+  slug: string;
+}

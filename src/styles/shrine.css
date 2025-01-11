@@ -1,0 +1,117 @@
+main#shrine-page {
+  grid-area: main;
+  background: var(--content-background-color);
+  overflow-y: auto;
+  padding: var(--padding);
+  padding-top: 100px;
+  border: 2px solid var(--borders);
+  display: grid;
+  column-gap: 10px;
+  border-radius: 10px;
+  row-gap: 15px;
+  line-height: 1.5;
+  grid-template-columns: 1fr 1fr 300px;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'content content nav'
+    'content content nav';
+
+
+  nav.shrine-nav {
+    grid-area: nav;
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  .shrine-layout {
+    grid-area: content;
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+.scallop-box {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 4;
+
+  .u01 {
+    background: url('/images/frames/scallop/f-ue.gif') repeat-x;
+    height: 32px;
+    margin: 0 32px;
+  }
+
+  .s01 {
+    background: url('/images/frames/scallop/f-sita.gif') repeat-x;
+    height: 32px;
+    margin: 0 32px;
+  }
+
+  .box-top {
+    background-image: url('/images/frames/scallop/f-kado1.gif'),
+      url('/images/frames/scallop/f-kado2.gif');
+    background-position: top left, top right;
+    background-repeat: no-repeat, no-repeat;
+    height: 32px;
+  }
+
+  .box-center {
+    background-image: url('/images/frames/scallop/f-migi.gif'),
+      url('/images/frames/scallop/f-hidari.gif');
+    background-position: top right, top left;
+    background-repeat: repeat-y, repeat-y;
+  }
+
+  .box-inner {
+    background: #fff;
+    margin: 0 32px;
+    padding: 5px;
+    text-align: center;
+
+    h2 {
+      margin: 0;
+      font-family: var(--font-cute);
+      letter-spacing: 2px;
+      font-weight: normal;
+    }
+
+    .divider {
+      margin-bottom: 30px;
+      margin-top: 10px;
+    }
+  }
+
+  .box-bottom {
+    background-image: url('/images/frames/scallop/f-kado3.gif'),
+      url('/images/frames/scallop/f-kado4.gif');
+    background-position: top left, top right;
+    background-repeat: no-repeat, no-repeat;
+    height: 32px;
+  }
+}
+
+.shrine-nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.shrine-nav ul li a {
+  border-radius: 10px;
+  background-color: var(--nav-link-background-color);
+  color: var(--nav-link);
+  font-size: .9em;
+  padding: 8px 10px;
+  border: 2px solid var(--nav-link-border-color);
+
+  &:hover {
+    background-color: var(--nav-link-background-hover);
+    border: 2px solid var(--nav-link-border-hover);
+    color: var(--nav-link-color-hover);
+  }
+}
