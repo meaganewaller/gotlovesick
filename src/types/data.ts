@@ -466,9 +466,39 @@ export type WPWebDirectoryCategory = {
   webDirectoryEntries: GraphQLNode<WPWebDirectoryEntry>[];
 }
 
+export type Song = {
+  artist: string;
+  description: Nullable<string>;
+  link: Nullable<string>;
+  songTitle: string;
+  trackSide: ('A' | 'B')[];
+}
+
 export type WPPlaylist = {
   id: string;
   title: string;
-  uri: string;
   slug: string;
+  seo: WPSeo;
+  playlistDetails: {
+    description: Nullable<string>;
+    embed: Nullable<string>;
+    featured: Nullable<boolean>;
+    playlistCover: Nullable<GraphQLNode<WPImage>>;
+    songs: Song[];
+  }
+  moods: Nullable<GraphQLNodes<{
+    name: string;
+    slug: string;
+    id: string;
+  }>>;
+  genres: Nullable<GraphQLNodes<{
+    name: string;
+    slug: string;
+    id: string;
+  }>>;
+  playlistActivities: Nullable<GraphQLNodes<{
+    name: string;
+    slug: string;
+    id: string;
+  }>>;
 }

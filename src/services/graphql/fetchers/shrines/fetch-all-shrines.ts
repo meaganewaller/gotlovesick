@@ -12,6 +12,18 @@ const allShrinesQuery = `query AllShrines {
       title
       slug
       uri
+      shrineDetails {
+        headerImage {
+          node {
+            altText
+            mediaDetails {
+              height
+              width
+            }
+            sourceUrl
+          }
+        }
+      }
     }
   }
 }`;

@@ -81,11 +81,11 @@ const nextConfig = {
 const ContentSecurityPolicy = `
     default-src 'self' vercel.live;
     script-src 'self' 'unsafe-eval' 'unsafe-inline' cdn.vercel-insights.com vercel.live va.vercel-scripts.com status.cafe counter1.fc2.com fc2.com ws.audioscrobbler.com;
-    style-src 'self' 'unsafe-inline' vercel.live;
+    style-src 'self' 'unsafe-inline' vercel.live fonts.googleapis.com;
     img-src * blob: data:;
     media-src 'self';
     connect-src *;
-    font-src 'self' vercel.live;
+    font-src 'self' vercel.live 'unsafe-inline' fonts.googleapis.com fonts.gstatic.com;
     frame-src 'self' ${process.env.NEXT_PUBLIC_LAB_BASE_URL} vercel.live;
 `;
 

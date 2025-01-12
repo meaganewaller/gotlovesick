@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import { WPPlaylist } from '@/types'
 import '@/styles/playlist.css'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
+import { Cassette } from "@/components/playlists"
 
 async function fetchData(slug: string) {
   let playlist = undefined
@@ -19,26 +20,12 @@ async function fetchData(slug: string) {
 function RenderPage({ playlist }: { playlist: WPPlaylist }) {
   return (
     <main id="playlist-page">
-      <div className="playlist-layout">
-        <section className="" id="page-content">
-          {playlist.seo?.breadcrumbs && <Breadcrumbs breadcrumbs={playlist.seo?.breadcrumbs} />}
+      <div className="" id="playlist-content">
+        {playlist.seo?.breadcrumbs && <Breadcrumbs breadcrumbs={playlist.seo?.breadcrumbs} />}
 
-          <main id="playlist">
-            <section>
-              <h1 dangerouslySetInnerHTML={{ __html: playlist.title }} />
-
-            </section>
-
-            {playlist.playlistDetails?.featuredSections?.map((section) => (
-              <section key={section.title} className="featured-section">
-                <h2>{section.title}</h2>
-                <div dangerouslySetInnerHTML={{ __html: section.content }} />
-              </section>
-            ))}
-
-            <div dangerouslySetInnerHTML={{ __html: playlist.content }} />
-          </main>
-        </section>
+        <div id="playlist">
+          <Cassette playlist={playlist} />
+        </div>
       </div>
     </main>
   )

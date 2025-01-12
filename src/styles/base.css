@@ -232,8 +232,6 @@ body button {
 
       background-color: #F5E663;
     }
-
-
   }
 }
 
@@ -250,4 +248,10 @@ body button {
   text-transform: uppercase;
   font-style: italic;
   z-index: 2;
+}
+
+.grid {
+  display: grid;
+  grid-gap: var(--g, .5rem);
+  grid-template-columns: repeat(auto-fill, minmax(min(var(--m, 50rem), 100%), 1fr));
 }

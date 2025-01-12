@@ -5,6 +5,12 @@
 }
 
 body[data-theme='light'] {
+  --cassette-background: #FFD6EB;
+  --cassette-border: #FF5EB1;
+  --cassette-title-border: #FF5EB1;
+  --cassette-background-2: #FF87C3;
+  --cassette-shadow: #FFB8DC;
+  --cassette-window: #e3e3e3;
   --background-image: url('/images/bg/roses.gif');
   --background: #FFCCE8;
   --borders: #E637BF;

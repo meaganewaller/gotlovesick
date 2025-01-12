@@ -25,13 +25,14 @@ export const LayoutProvider = ({
   const pathname = usePathname();
 
   const indexPaths = ['/'];
-  const pagePaths = ['/meagan', '/about', '/colophon', '/sitemap', '/playlists'];
-  const slugPaths = ['web-directory', 'shrines', 'playlists', 'fun-extras', 'blog'];
+  const pagePaths = ['/meagan', '/about', '/colophon', '/sitemap', '/contact'];
+  const slugPaths = ['blog', 'bookmarks', 'fun-extras', 'playlists', 'shrines', 'web-directory', 'tags'];
 
   const useSlugPage = slugPaths.includes(pathname.split('/')[1]);
 
   useEffect(() => {
     if (indexPaths.includes(pathname)) {
+      document.body.classList.remove("page");
       document.body.classList.add("index");
     }
 

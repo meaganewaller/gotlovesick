@@ -8,25 +8,8 @@ type PlaylistResponse = {
 const playlistQuery = `query Playlist($slug: ID!) {
   playlist(id: $slug, idType: URI) {
     id
-    contentParts {
-      afterMore
-      beforeMore
-    }
-    content
     databaseId
     date
-    featuredImage {
-      node {
-        altText
-        sourceUrl
-        mediaDetails {
-          height
-          width
-        }
-      }
-    }
-    id
-    modified
     seo {
       breadcrumbs {
         text
@@ -35,8 +18,51 @@ const playlistQuery = `query Playlist($slug: ID!) {
       metaDesc
       title
     }
+    playlistDetails {
+      description
+      embed
+      featured
+      playlistCover {
+        node {
+          altText
+          mediaDetails {
+            height
+            width
+          }
+          sourceUrl
+        }
+      }
+      songs {
+        artist
+        description
+        link
+        songTitle
+        trackSide
+      }
+    }
     slug
     title
+    moods {
+      nodes {
+        name
+        slug
+        id
+      }
+    }
+    genres {
+      nodes {
+        name
+        slug
+        id
+      }
+    }
+    playlistActivities {
+      nodes {
+        name
+        slug
+        id
+      }
+    }
   }
 }`;
 

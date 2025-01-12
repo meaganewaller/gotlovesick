@@ -1,3 +1,144 @@
+main#shrines-page {
+  grid-area: main;
+  background: var(--content-background-color);
+  overflow-y: auto;
+  padding: var(--padding);
+  padding-top: 100px;
+  border: 2px solid var(--borders);
+  border-top: 0;
+  border-bottom: 0;
+  line-height: 1.5;
+  display: grid;
+  column-gap: 10px;
+  row-gap: 15px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: 'content content' 'content content';
+
+  .shrine-container {
+    grid-area: content;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .shrine-header h1 {
+    font-size: 2.5rem;
+    color: #0077cc;
+    text-align: center;
+  }
+
+  .about-section {
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+
+    p {
+      width: 70%;
+      margin: 0 auto;
+      line-height: 1.7;
+      font-size: 1.25rem;
+    }
+  }
+
+  .shrine-section {
+    margin: 30px 0;
+  }
+
+  .shrine-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .shrine-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f9fdff;
+    border: 2px solid #cceeff;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 15px;
+    width: 260px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  .shrine-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+  }
+
+  .shrine-card .placeholder-image {
+    width: 120px;
+    height: 120px;
+    background-color: #f3f3f3;
+    /* Light gray for placeholder */
+    color: #aaa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    border-radius: 50%;
+    margin-bottom: 15px;
+  }
+
+  .shrine-info {
+    padding: 10px 0;
+
+    h3 {
+      font-size: 1.2rem;
+      color: #00ffaa;
+      margin: 5px 0;
+    }
+  }
+
+  .shrine-status {
+    font-size: 0.9rem;
+    color: #009944;
+    margin: 10px;
+  }
+
+  .shrine-info p {
+    font-size: .9rem;
+    line-height: 1.4;
+    color: #666;
+    margin-bottom: 15px;
+  }
+
+  .shrine-link {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #ffd7e3;
+    color: #333;
+    font-size: .9rem;
+    border-radius: 8px;
+    text-decoration: none;
+    border: 1px solid #ffaec9;
+    transition: background-color 0.2s, border-color 0.2s;
+
+    &:hover {
+      background-color: #ffaec9;
+      border-color: #ff7b9c;
+    }
+  }
+
+  .shrine-link:hover {
+    background: var(--button-hover-background);
+    color: var(--button-hover-color);
+  }
+}
+
 main#shrine-page {
   grid-area: main;
   background: var(--content-background-color);
