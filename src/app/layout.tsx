@@ -58,22 +58,13 @@ export default async function RootLayout({
   footer,
 }: RootLayoutProps) {
   const fetchedSidebarMenu = await fetchMenu(MenuLocationEnum.Sidebar);
-  const fetchedShrinesMenu = await fetchMenu(MenuLocationEnum.Shrines);
-  const fetchedBookmarksMenu = await fetchMenu(MenuLocationEnum.Bookmarks);
-  const fetchedResourcesMenu = await fetchMenu(MenuLocationEnum.Resources);
 
-  if (!fetchedSidebarMenu.nodes ||
-    !fetchedShrinesMenu.nodes ||
-    !fetchedBookmarksMenu.nodes ||
-    !fetchedResourcesMenu.nodes) {
+  if (!fetchedSidebarMenu.nodes) {
     return <Loading />;
   }
 
   const menus = [
     { title: 'Info', menu: fetchedSidebarMenu },
-    { title: 'Shrines', menu: fetchedShrinesMenu },
-    { title: 'Collections', menu: fetchedBookmarksMenu },
-    { title: 'Resources', menu: fetchedResourcesMenu },
   ];
 
   return (

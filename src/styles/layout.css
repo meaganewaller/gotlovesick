@@ -424,6 +424,25 @@ footer {
     text-align: center;
     border: 2px solid var(--borders);
     border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+
+    a:hover {
+      color: var(--nav-link-color-hover);
+    }
+
+    ul.footer-menu {
+      list-style: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 10px;
+      font-size: .90rem;
+
+      li a:hover {
+        text-decoration: underline;
+      }
+    }
   }
 }
 

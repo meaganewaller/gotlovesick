@@ -13,6 +13,7 @@ const allShrinesQuery = `query AllShrines {
       slug
       uri
       shrineDetails {
+        status
         headerImage {
           node {
             altText

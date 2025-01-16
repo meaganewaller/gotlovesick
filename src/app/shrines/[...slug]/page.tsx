@@ -19,7 +19,7 @@ async function fetchData(slug: string) {
 
 function RenderPage({ shrine }: { shrine: WPShrine }) {
   return (
-    <main id="shrine-page">
+    <main id="shrine-page" className={`${shrine.slug}`}>
       <ShrineNav shrine={shrine} />
       <div className="shrine-layout">
         <section className="" id="page-content">
@@ -28,7 +28,6 @@ function RenderPage({ shrine }: { shrine: WPShrine }) {
           <main id="shrine">
             <section>
               <h1 dangerouslySetInnerHTML={{ __html: shrine.title }} />
-
             </section>
 
             {shrine.shrineDetails?.featuredSections?.map((section) => (
@@ -37,8 +36,6 @@ function RenderPage({ shrine }: { shrine: WPShrine }) {
                 <div dangerouslySetInnerHTML={{ __html: section.content }} />
               </section>
             ))}
-
-            <div dangerouslySetInnerHTML={{ __html: shrine.content }} />
           </main>
         </section>
       </div>

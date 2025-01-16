@@ -25,8 +25,8 @@ export const LayoutProvider = ({
   const pathname = usePathname();
 
   const indexPaths = ['/'];
-  const pagePaths = ['/meagan', '/about', '/colophon', '/sitemap', '/contact'];
-  const slugPaths = ['blog', 'bookmarks', 'fun-extras', 'playlists', 'shrines', 'web-directory', 'tags'];
+  const pagePaths = ['/meagan', '/about', '/colophon', '/sitemap', '/contact', '/privacy-policy'];
+  const slugPaths = ['blog', 'bookmarks', 'fun-extras', 'playlists', 'shrines', 'web-directory', 'tags', 'resource-types', 'resources'];
 
   const useSlugPage = slugPaths.includes(pathname.split('/')[1]);
 
@@ -44,6 +44,10 @@ export const LayoutProvider = ({
     if (useSlugPage) {
       document.body.classList.remove("index");
       document.body.classList.add("page");
+    }
+
+    if (pathname.includes('shrines')) {
+      document.body.classList.add(`${pathname.split('/')[2]}-shrine`);
     }
   })
 
