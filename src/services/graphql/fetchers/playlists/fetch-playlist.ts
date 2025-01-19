@@ -10,14 +10,6 @@ const playlistQuery = `query Playlist($slug: ID!) {
     id
     databaseId
     date
-    seo {
-      breadcrumbs {
-        text
-        url
-      }
-      metaDesc
-      title
-    }
     playlistDetails {
       description
       embed

@@ -8,16 +8,76 @@ export type QuizResponse = {
 const quizQuery = `query Quiz($slug: ID!) {
   quiz: funExtra(id: $slug, idType: SLUG) {
     key: id
-    seo {
-      breadcrumbs {
-        text
-        url
+    title
+    slug
+    quizFields {
+      autoScroll
+      showCopyShareButton
+      copyShareLink
+      description
+      generalBackgroundColor
+      generalFontColor
+      questions {
+        answerArrangement
+        answers {
+          answer
+          backgroundColor
+          backgroundImageSrc {
+            node {
+              sourceUrl
+            }
+          }
+          fontColor
+          imageAttribution
+          resultId
+          revealResponse {
+            description
+            image {
+              node {
+                altText
+                mediaDetails {
+                  height
+                  width
+                }
+                sourceUrl
+              }
+            }
+            imageAttribution
+            title
+          }
+        }
+        backgroundColor
+        backgroundImageSrc {
+          node {
+            sourceUrl
+          }
+        }
+        fontColor
+        imageAttribution
+        question
+        questionRelativeToImage
       }
-      metaDesc
-      title
+      results {
+        description
+        imageAttribution
+        resultId
+        resultImageSrc {
+          node {
+            altText
+            sourceUrl
+            mediaDetails {
+              height
+              width
+            }
+          }
+        }
+        title
+      }
+      showCopyShareButton
     }
     slug
     title
+    uri
   }
 }`;
 

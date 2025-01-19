@@ -33,7 +33,10 @@ export default async function QuizzesPage() {
               {data.quizzes.nodes.map((quiz: WPQuiz) => {
                 return (
                   <div key={quiz.key}>
+                    {quiz.featuredImage && <Image src={quiz.featuredImage.node.sourceUrl} alt={quiz.featuredImage.node.altText || ''}  width={quiz.featuredImage.node.mediaDetails.height}
+                      height={quiz.featuredImage.node.mediaDetails.width} />}
                     <Link href={quiz.uri}>{quiz.title}</Link>
+                    <p>{quiz.quizFields.description}</p>
                   </div>
                 );
               })}

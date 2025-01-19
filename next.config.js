@@ -10,7 +10,6 @@ const nextConfig = {
   logging: {
     fetches: {
       fullUrl: true,
-      hmrRefreshes: true,
     },
   },
 
@@ -28,6 +27,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'lastfm.freetls.fastly.net',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.gotlovesick.**'
       }
     ]
   },

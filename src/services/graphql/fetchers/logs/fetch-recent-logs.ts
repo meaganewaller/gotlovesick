@@ -24,10 +24,7 @@ const recentLogsQuery = `query RecentLogs($first: Int) {
         slug
         modified
         title
-        contentParts {
-          afterMore
-          beforeMore
-        }
+        content
         seo {
           metaDesc
           title

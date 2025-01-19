@@ -20,7 +20,7 @@ export type SlugNode = {
 // Data from WordPress
 //===========================================================================
 
-type WPSeo = {
+export type WPSeo = {
   metaDesc: string;
   title: string;
   breadcrumbs: Nullable<
@@ -128,25 +128,25 @@ export type WPPost = WPContent & {
   info: WPInfo;
 };
 
-export type WPQuiz = {
-  key: string;
-  title: string;
-  slug: string;
-  uri: string;
-  seo?: WPSeo;
-};
-
-export type WPFunExtrasType = {
-  key: string;
-  funExtras: Nullable<
-    GraphQLNodes<{
-      key: string;
-      title: string;
-      slug: string;
-      uri: string;
-    }>
-  >;
-};
+// export type WPQuiz = {
+//   key: string;
+//   title: string;
+//   slug: string;
+//   uri: string;
+//   seo?: WPSeo;
+// };
+//
+// export type WPFunExtrasType = {
+//   key: string;
+//   funExtras: Nullable<
+//     GraphQLNodes<{
+//       key: string;
+//       title: string;
+//       slug: string;
+//       uri: string;
+//     }>
+//   >;
+// };
 
 export type WPShrine = {
   databaseId: number;

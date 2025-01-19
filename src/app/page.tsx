@@ -31,25 +31,15 @@ export default async function Home() {
               <div
                 className="welcome-content"
                 dangerouslySetInnerHTML={{
-                  __html: homepage.contentParts.beforeMore,
+                  __html: homepage.content
                 }}
               />
-              {(homepage.contentParts.afterMore != "") && (
-                <>
-                  <Image
-                    src={stardivider}
-                    width={stardivider.width}
-                    height={stardivider.height}
-                    alt=""
-                  />
-                  <div
-                    className="welcome-content"
-                    dangerouslySetInnerHTML={{
-                      __html: homepage.contentParts.afterMore,
-                    }}
-                  />
-                </>
-              )}
+              <Image
+              src={stardivider}
+              width={stardivider.width}
+              height={stardivider.height}
+              alt=""
+              />
             </div>
           </div>
           <div id="status-container">

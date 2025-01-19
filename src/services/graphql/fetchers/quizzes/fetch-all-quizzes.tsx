@@ -1,4 +1,4 @@
-import type { Nullable, WPQuiz, GraphQLNodes, WPFunExtrasType } from '@/types';
+import type { Nullable, WPQuiz, GraphQLNodes } from '@/types';
 import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers';
 
 export type QuizzesResponse = {
@@ -7,13 +7,37 @@ export type QuizzesResponse = {
 
 const allQuizzesQuery = `query AllQuizzes {
   quizzes: funExtras(
-    where: {taxQuery: {relation: AND, taxArray: {field: SLUG, operator: AND, taxonomy: TYPE, terms: "quizzes"}}}
+    where: {
+      taxQuery: {
+        relation: AND,
+        taxArray: {
+          field: SLUG,
+          operator: AND,
+          taxonomy: FUNEXTRATYPE,
+          terms: "quizzes"
+        }
+      },
+      status: PUBLISH
+    }
   ) {
     nodes {
       key: id
       title
       slug
       uri
+      quizFields {
+        description
+      }
+      featuredImage {
+        node {
+          altText
+          sourceUrl
+          mediaDetails {
+            height
+            width
+          }
+        }
+      }
     }
   }
 }`;

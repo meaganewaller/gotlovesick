@@ -6,7 +6,7 @@ export const CONFIG = {
   api: {
     url: isStaging
       ? process.env.NEXT_PUBLIC_STAGING_GRAPHQL_API
-      : process.env.NEXT_PUBLIC_GRAPHQL_API,
+      : process.env.NEXT_PUBLIC_WORDPRESS_GRAPHQL_URL
   },
   name: 'Secret Gardens',
   baseline: 'The only key is mine',

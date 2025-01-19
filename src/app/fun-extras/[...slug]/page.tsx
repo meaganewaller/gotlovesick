@@ -1,10 +1,9 @@
 import { fetchQuiz } from '@/services/graphql';
 import { notFound } from 'next/navigation';
-
 import { WPQuiz } from '@/types';
 import '@/styles/quizzes.css';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
-import { BuzzFeedQuiz } from 'react-buzzfeed-quiz';
+import { Quiz } from '@/components/Quiz';
 
 async function fetchData(slug: string) {
   let quiz = undefined;
@@ -30,6 +29,7 @@ function RenderPage({ quiz }: { quiz: WPQuiz }) {
           <main id="quiz">
             <section>
               <h1 dangerouslySetInnerHTML={{ __html: quiz.title }} />
+              <Quiz quiz={quiz} />
             </section>
           </main>
         </section>
