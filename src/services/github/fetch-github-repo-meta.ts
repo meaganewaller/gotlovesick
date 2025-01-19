@@ -23,7 +23,7 @@ export const fetchGithubRepoMeta = async ({
   name,
   owner,
 }: FetchGithubRepoMetaInput) => {
-  const token = process.env.NEXT_PRIVATE_GITHUB_TOKEN;
+  const token = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
 
   if (!token) throw new Error('GitHub token is not defined.');
 
