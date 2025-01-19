@@ -1,6 +1,6 @@
 export const GITHUB_API = 'https://api.github.com/graphql';
 export const LASTFM_USERNAME = process.env.NEXT_PUBLIC_LASTFM_USER;
-export const LASTFM_API_KEY = process.env.LASTFM_API_KEY;
+export const LASTFM_API_KEY = process.env.NEXT_PUBLIC_LASTFM_API_KEY;
 export const LASTFM_API_URL = 'https://ws.audioscrobbler.com/2.0/';
 
 export const PERSONAL_LINKS = {
