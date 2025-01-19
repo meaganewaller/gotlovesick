@@ -43,7 +43,7 @@ export function HeaderNav({ menu }: { menu: Menu }) {
               <li key={item.key}>
                 <Link
                   href={
-                    item.path.startsWith('http') ? item.url : `${item.path || ''}`
+                    item.path && item.path.startsWith('http') ? item.url : `${item.path || ''}`
                   }
                 >
                   {item.title}
