@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { fetchAllQuizzes } from '@/services/graphql';
 import '@/styles/quizzes.css';
 import Image from 'next/image';
-import { WPQuiz } from '@/types';
+// import { WPQuiz } from '@/types';
 
 async function fetchQuizzes() {
   const quizzes = await fetchAllQuizzes();
@@ -30,7 +30,7 @@ export default async function QuizzesPage() {
             <div className="about-section">
               <h1>Quizzes</h1>
 
-              {data.quizzes.nodes.map((quiz: WPQuiz) => {
+              {data.quizzes.nodes.map((quiz: any) => {
                 return (
                   <div key={quiz.key}>
                     {quiz.featuredImage && <Image src={quiz.featuredImage.node.sourceUrl} alt={quiz.featuredImage.node.altText || ''}  width={quiz.featuredImage.node.mediaDetails.height}

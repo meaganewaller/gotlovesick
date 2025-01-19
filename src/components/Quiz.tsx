@@ -58,7 +58,7 @@ export const Quiz: FC<{ quiz: any }> = (props) => {
         changeResultsAvailable(true);
         changeFinalResult(
           convertedQuiz.results.filter(
-            (result) => Number(result.resultId) === Number(mostFrequentResultID)
+            (result: any) => Number(result.resultId) === Number(mostFrequentResultID)
           )
         );
       }

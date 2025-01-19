@@ -3,7 +3,7 @@ import Link from "next/link"
 import { notFound } from 'next/navigation'
 import "@/styles/playlist.css";
 
-export async function fetchPlaylists() {
+async function fetchPlaylists() {
   const playlists = await fetchAllPlaylists({ first: 25 })
 
   if (!playlists) {

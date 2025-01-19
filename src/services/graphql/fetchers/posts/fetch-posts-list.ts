@@ -4,12 +4,11 @@ import type {
   GraphQLPostOrderBy,
   GraphQLPostWhere,
   Nullable,
-  WPPostPreview,
 } from '../../../../types';
 import { fetchGraphQL, getGraphQLUrl } from '../../../../utils/helpers';
 
 export type PostsListResponse = {
-  posts: Nullable<GraphQLConnection<WPPostPreview>>;
+  posts: Nullable<GraphQLConnection<any>>;
 };
 
 const postsListQuery = `query PostsList($after: String, $before: String, $first: Int, $last: Int, $authorName: String, $orderby: [PostObjectsConnectionOrderbyInput], $search: String, $title: String) {
@@ -74,13 +73,13 @@ export type FetchPostsListInput = GraphQLEdgesInput & {
  * Retrieve a paginated list of WordPress posts.
  *
  * @param {FetchPostsListInput} input - The input to retrieve posts.
- * @returns {Promise<GraphQLConnection<WPPostPreview>>} The paginated posts.
+ * @returns {Promise<GraphQLConnection<any>>} The paginated posts.
  */
 export const fetchPostsList = async ({
   orderBy,
   where,
   ...vars
-}: FetchPostsListInput): Promise<GraphQLConnection<WPPostPreview>> => {
+}: FetchPostsListInput): Promise<GraphQLConnection<any>> => {
   const response = await fetchGraphQL<PostsListResponse>({
     query: postsListQuery,
     url: getGraphQLUrl(),

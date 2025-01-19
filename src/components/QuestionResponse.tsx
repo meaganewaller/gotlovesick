@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import { QuestionResponseProps } from '@/types';
+// import { QuestionResponseProps } from '@/types';
 
-const QuestionResponse: FC<QuestionResponseProps> = ({
+const QuestionResponse: FC<any> = ({
   questionIndex,
   title,
   description,

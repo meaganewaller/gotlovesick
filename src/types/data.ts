@@ -55,11 +55,6 @@ export type WPComment = {
   status: WPCommentStatus;
 };
 
-type WPContentParts = {
-  afterMore: string;
-  beforeMore: string;
-};
-
 export type WPImage = {
   altText: Nullable<string>;
   mediaDetails: {
@@ -73,7 +68,7 @@ export type WPImage = {
 type WPInfo = { wordsCount: number };
 
 type WPContent = {
-  contentParts: WPContentParts;
+  content: string;
   databaseId: number | string;
   date: string;
   featuredImage?: Nullable<GraphQLNode<WPImage>>;
@@ -175,22 +170,22 @@ export type WPShrine = {
 
 export type WPLog = WPContent;
 
-export type WPPostPreview = Pick<
-  WPPost,
-  | 'commentCount'
-  | 'databaseId'
-  | 'date'
-  | 'featuredImage'
-  | 'info'
-  | 'modified'
-  | 'slug'
-  | 'title'
-> & {
-  acfPosts:
-    | Nullable<Pick<WPAcfPosts, 'postsInCategory'>>
-    | Nullable<Pick<WPAcfPosts, 'postsInTag'>>;
-  contentParts: Pick<WPContentParts, 'beforeMore'>;
-};
+// export type WPPostPreview = Pick<
+//   WPPost,
+//   | 'commentCount'
+//   | 'databaseId'
+//   | 'date'
+//   | 'featuredImage'
+//   | 'info'
+//   | 'modified'
+//   | 'slug'
+//   | 'title'
+// > & {
+//   acfPosts:
+//     | Nullable<Pick<WPAcfPosts, 'postsInCategory'>>
+//     | Nullable<Pick<WPAcfPosts, 'postsInTag'>>;
+//   contentParts: Pick<WPContentParts, 'beforeMore'>;
+// };
 
 export type RecentWPPost = Pick<
   WPPost,
@@ -201,13 +196,13 @@ export type RecentWPPost = Pick<
 
 export type RecentWPLog = Pick<
   WPPost,
-  'date' | 'slug' | 'title' | 'contentParts'
+  'date' | 'slug' | 'title' | 'content'
 > & {
   databaseId: number;
 };
 
 type WPAcfCategories = {
-  postsInCategory: Nullable<WPPostPreview[]>;
+  postsInCategory: Nullable<any[]>;
 };
 
 export type WPCategory = WPContent & {
@@ -221,7 +216,7 @@ export type WPCategoryPreview = Pick<
 
 type WPAcfTag = {
   officialWebsite: Nullable<string>;
-  postsInTag: Nullable<WPPostPreview[]>;
+  postsInTag: Nullable<any[]>;
 };
 
 export type WPTag = WPContent & {

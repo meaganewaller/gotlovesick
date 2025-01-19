@@ -1,8 +1,8 @@
-import type { Nullable, WPQuiz } from '@/types';
+import type { Nullable } from '@/types';
 import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers';
 
 export type QuizResponse = {
-  quiz: Nullable<WPQuiz>;
+  quiz: Nullable<any>;
 };
 
 const quizQuery = `query Quiz($slug: ID!) {

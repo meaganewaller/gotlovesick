@@ -1,5 +1,5 @@
 import { FC, useMemo } from 'react';
-import { ResultProps } from '@/types';
+// import { ResultProps } from '@/types';
 import CopyLinkButton from './CopyLinkButton';
 import Image from 'next/image';
 

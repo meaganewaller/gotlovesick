@@ -1,7 +1,7 @@
 import type { Nullable, WPShrine, GraphQLNodes } from '@/types';
 import { fetchGraphQL, getGraphQLUrl } from "@/utils/helpers";
 
-export type ShrineResponse = {
+type ShrineResponse = {
   shrines: Nullable<GraphQLNodes<WPShrine>>;
 }
 

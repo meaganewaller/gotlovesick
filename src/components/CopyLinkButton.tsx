@@ -3,9 +3,9 @@
 import { FC, useState } from 'react';
 import { IoIosCheckmarkCircle } from 'react-icons/io';
 import { HiLink } from 'react-icons/hi';
-import { CopyLinkButtonProps } from '@/types';
+// import { CopyLinkButtonProps } from '@/types';
 
-const CopyLinkButton: FC<CopyLinkButtonProps> = ({ copyShareLink }) => {
+const CopyLinkButton: FC<any> = ({ copyShareLink }) => {
   const [shareLinkClicked, setShareLinkClicked] = useState(false)
   const [shareLinkAnimatingOut, setShareLinkAnimatingOut] = useState(false)
 

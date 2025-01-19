@@ -1,1 +1,1 @@
-export * from "./Cassette.tsx"
+export * from "./Cassette"

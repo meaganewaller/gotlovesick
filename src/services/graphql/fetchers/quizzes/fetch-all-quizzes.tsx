@@ -1,8 +1,8 @@
-import type { Nullable, WPQuiz, GraphQLNodes } from '@/types';
+import type { Nullable, GraphQLNodes } from '@/types';
 import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers';
 
 export type QuizzesResponse = {
-  quizzes: Nullable<GraphQLNodes<WPQuiz>>;
+  quizzes: Nullable<GraphQLNodes<any>>;
 };
 
 const allQuizzesQuery = `query AllQuizzes {

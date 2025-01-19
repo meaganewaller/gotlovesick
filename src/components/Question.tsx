@@ -1,10 +1,10 @@
 'use client';
 import { JSX, useState, FC } from 'react';
-import { QuestionProps, QuizQuestion } from '@/types';
+// import { QuestionProps, QuizQuestion } from '@/types';
 import Answers from '@/components/Answers';
 import QuestionResponse from './QuestionResponse';
 
-const Question: FC<QuestionProps> = ({
+const Question: FC<any> = ({
   item,
   questionIndex,
   resultsAvailable,
@@ -22,7 +22,7 @@ const Question: FC<QuestionProps> = ({
     imageAttribution: '',
   });
 
-  const renderOverlapText = (item: QuizQuestion) => {
+  const renderOverlapText = (item: any) => {
     if (item.questionRelativeToImage !== 'adjacent') {
       return (
         <div className="question-overlap-text">

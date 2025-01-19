@@ -1,9 +1,9 @@
 'use client';
 import { FC, useContext } from 'react';
-import { AnswersProps } from '@/types';
+// import { AnswersProps } from '@/types';
 import { QuizContext } from './Quiz';
 
-const Answers: FC<AnswersProps> = ({
+const Answers: FC<any> = ({
   item,
   questionIndex,
   resultsAvailable,
@@ -67,7 +67,7 @@ const Answers: FC<AnswersProps> = ({
     <div
       className={`answers-container ${item.answerArrangement === 'row' ? 'answer-row-arrangement' : ''} ${item.answers.length >= 9 ? 'more-than-9-answers' : ''} ${item.answers.length === 3 ? 'three-answers' : ''}`}
     >
-      {item.answers.map((answerEl, answerIndex) => {
+      {item.answers.map((answerEl: any, answerIndex: number) => {
         const questionAnswered = selectedAnswers.some(
           (el) => el.questionIndex === questionIndex
         );
