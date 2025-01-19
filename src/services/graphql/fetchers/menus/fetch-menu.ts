@@ -6,13 +6,14 @@ export type MenuResponse = {
 };
 
 const menuQuery = `query Menu($location: MenuLocationEnum) {
-  menu: menuItems(where: {location: $location})  {
+  menu: menuItems(where: {location: $location}, first: 100)  {
     nodes {
       key: id
       title: label
       order
       path
       parentId
+      url
     }
   }
 }`;

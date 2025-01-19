@@ -3,12 +3,13 @@ import type { Nullable } from './generics';
 import type { GraphQLNode, GraphQLNodes } from './gql';
 
 export enum MenuLocationEnum {
-  Sidebar = 'SIDEBAR_MENU',
   Blog = 'BLOG_MENU',
-  Bookmarks = 'BOOKMARKS_MENU',
-  Shrines = 'SHRINES_MENU',
+  Footer = 'FOOTER_MENU',
+  FunExtras = 'FUN_EXTRAS_MENU',
   Header = 'HEADER_MENU',
-  Resources = 'RESOURCES_MENU',
+  Reviews = 'REVIEWS_MENU',
+  Shrines = 'SHRINES_MENU',
+  Sidebar = 'SIDEBAR_MENU',
 }
 
 export type SlugNode = {
@@ -19,7 +20,7 @@ export type SlugNode = {
 // Data from WordPress
 //===========================================================================
 
-type WPSeo = {
+export type WPSeo = {
   metaDesc: string;
   title: string;
   breadcrumbs: Nullable<
@@ -94,26 +95,30 @@ type WPAcfPosts = {
   postsInTag: Nullable<WPTagPreview[]>;
 };
 
-export type MenuItem = {
-  id: string;
-  databaseId: string;
-  label: Nullable<string>;
-  description: Nullable<string>;
-  order: number;
-  title: string;
-  uri: string;
-  parentId?: string | null;
-};
-
 export type WPMenuItem = {
   key: string;
+  url: string;
   title: string;
   order: number;
   path: string;
+  parentId: Nullable<string>;
 };
 
 export type WPMenu = {
   nodes: WPMenuItem[];
+};
+
+export type MenuItem = {
+  key: string;
+  parentId: Nullable<string>;
+  title: string;
+  url: string;
+  path: string;
+  order: number;
+};
+
+export type NestedMenuItem = MenuItem & {
+  children: MenuItem[];
 };
 
 export type WPPost = WPContent & {
@@ -123,18 +128,36 @@ export type WPPost = WPContent & {
   info: WPInfo;
 };
 
+// export type WPQuiz = {
+//   key: string;
+//   title: string;
+//   slug: string;
+//   uri: string;
+//   seo?: WPSeo;
+// };
+//
+// export type WPFunExtrasType = {
+//   key: string;
+//   funExtras: Nullable<
+//     GraphQLNodes<{
+//       key: string;
+//       title: string;
+//       slug: string;
+//       uri: string;
+//     }>
+//   >;
+// };
+
 export type WPShrine = {
-  content: string;
-  contentParts: WPContentParts;
   databaseId: number;
   date: string;
-  featuredImage: Nullable<GraphQLNode<WPImage>>;
   id: string;
   modified: string;
   seo: WPSeo;
   slug: string;
   title: string;
   shrineDetails: Nullable<{
+    status: string;
     featuredSections: Nullable<{ content: string; title: string }[]>;
     sidebar: Nullable<
       GraphQLNodes<{
@@ -150,26 +173,7 @@ export type WPShrine = {
   }>;
 };
 
-export type WPResource = WPContent & {
-  info: WPInfo;
-};
-
-export type WPResourceType = {
-  id: string;
-  databaseId: number;
-  slug: string;
-  name: string;
-  count: number;
-  resources: GraphQLNode<WPResource>[];
-};
-
 export type WPLog = WPContent;
-
-export type WPBookmark = WPContent & {
-  author: GraphQLNode<WPPostAuthor>;
-  commentCount: Nullable<number>;
-  info: WPInfo;
-};
 
 export type WPPostPreview = Pick<
   WPPost,
@@ -188,27 +192,6 @@ export type WPPostPreview = Pick<
   contentParts: Pick<WPContentParts, 'beforeMore'>;
 };
 
-export type WPBookmarkPreview = Pick<
-  WPBookmark,
-  | 'commentCount'
-  | 'databaseId'
-  | 'date'
-  | 'featuredImage'
-  | 'info'
-  | 'modified'
-  | 'slug'
-  | 'title'
-> & {
-  contentParts: Pick<WPContentParts, 'beforeMore'>;
-};
-
-export type RecentWPResource = Pick<
-  WPPost,
-  'date' | 'featuredImage' | 'slug' | 'title'
-> & {
-  databaseId: number;
-};
-
 export type RecentWPPost = Pick<
   WPPost,
   'date' | 'featuredImage' | 'slug' | 'title'
@@ -219,13 +202,6 @@ export type RecentWPPost = Pick<
 export type RecentWPLog = Pick<
   WPPost,
   'date' | 'slug' | 'title' | 'contentParts'
-> & {
-  databaseId: number;
-};
-
-export type RecentWPBookmark = Pick<
-  WPBookmark,
-  'date' | 'featuredImage' | 'slug' | 'title'
 > & {
   databaseId: number;
 };
@@ -416,11 +392,6 @@ export type GithubRepositoryMeta = {
   updatedAt: string;
 };
 
-export type Bookmark = Page & {
-  databaseId: number;
-  id: number;
-};
-
 export type Log = {
   date: string;
   databaseId: number | string;
@@ -445,4 +416,47 @@ export type LastFmRecentTracksResponse = {
   recenttracks: {
     track: LastFmTrack[];
   };
+};
+
+export type Song = {
+  artist: string;
+  description: Nullable<string>;
+  link: Nullable<string>;
+  songTitle: string;
+  trackSide: ('A' | 'B')[];
+};
+
+export type WPPlaylist = {
+  id: string;
+  title: string;
+  slug: string;
+  seo: WPSeo;
+  playlistDetails: {
+    description: Nullable<string>;
+    embed: Nullable<string>;
+    featured: Nullable<boolean>;
+    playlistCover: Nullable<GraphQLNode<WPImage>>;
+    songs: Song[];
+  };
+  moods: Nullable<
+    GraphQLNodes<{
+      name: string;
+      slug: string;
+      id: string;
+    }>
+  >;
+  genres: Nullable<
+    GraphQLNodes<{
+      name: string;
+      slug: string;
+      id: string;
+    }>
+  >;
+  playlistActivities: Nullable<
+    GraphQLNodes<{
+      name: string;
+      slug: string;
+      id: string;
+    }>
+  >;
 };

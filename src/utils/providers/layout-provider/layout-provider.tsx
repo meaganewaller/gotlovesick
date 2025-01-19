@@ -1,94 +1,92 @@
 'use client';
 
 import ThemeSwap from '@/components/ThemeSwap';
+import FontSwap from '@/components/FontSwap';
 import React from 'react';
+import { usePathname } from 'next/navigation';
+import { WPMenu } from '@/types';
+import Sidebar from '@/components/Sidebar';
+import RightSidebar from '@/components/RightSidebar';
+import { useEffect } from 'react'
 
 interface LayoutProviderProps {
   children: React.ReactNode;
   header: React.ReactNode;
   footer: React.ReactNode;
-  leftSidebar?: React.ReactNode;
-  rightSidebar?: React.ReactNode;
+  menus: { title: string, menu: WPMenu }[];
 }
 
 export const LayoutProvider = ({
   children,
   header,
   footer,
-  leftSidebar,
-  rightSidebar,
+  menus,
 }: LayoutProviderProps) => {
-  if (leftSidebar && rightSidebar) {
+  const pathname = usePathname();
+
+  const indexPaths = ['/'];
+  const pagePaths = ['/meagan', '/about', '/colophon', '/sitemap', '/contact', '/privacy-policy'];
+  const slugPaths = ['blog', 'bookmarks', 'fun-extras', 'playlists', 'shrines', 'web-directory', 'tags', 'resource-types', 'resources'];
+
+  const useSlugPage = slugPaths.includes(pathname.split('/')[1]);
+
+  useEffect(() => {
+    if (indexPaths.includes(pathname)) {
+      document.body.classList.remove("page");
+      document.body.classList.add("index");
+    }
+
+    if (pagePaths.includes(pathname)) {
+      document.body.classList.remove("index");
+      document.body.classList.add("page");
+    }
+
+    if (useSlugPage) {
+      document.body.classList.remove("index");
+      document.body.classList.add("page");
+    }
+
+    if (pathname.includes('shrines')) {
+      document.body.classList.add(`${pathname.split('/')[2]}-shrine`);
+    }
+  })
+
+  if (indexPaths.includes(pathname)) {
     return (
-      <div id="default-layout">
-        <div id="theme-toggler" aria-hidden="true">
-          <button type="button">
-            <span>toggle theme</span>
-          </button>
-        </div>
-        <div id="font-toggler" aria-hidden="true">
-          <button type="button">
-            <span>toggle font</span>
-          </button>
-        </div>
-        <aside id="left-sidebar">{leftSidebar}</aside>
-        <aside id="right-sidebar">{rightSidebar}</aside>
-        {header}
-        {children}
-        {footer}
-      </div>
-    );
-  } else if (leftSidebar) {
-    return (
-      <div id="left-sidebar-layout">
-        <div id="theme-toggler" aria-hidden="true">
-          <button type="button">
-            <span>toggle theme</span>
-          </button>
-        </div>
-        <div id="font-toggler" aria-hidden="true">
-          <button type="button">
-            <span>toggle font</span>
-          </button>
-        </div>
-        <aside id="left-sidebar">{leftSidebar}</aside>
-        {header}
-        {children}
-        {footer}
-      </div>
-    );
-  } else if (rightSidebar) {
-    return (
-      <div id="right-sidebar-layout">
-        <div id="theme-toggler" aria-hidden="true">
-          <button type="button">
-            <span>toggle theme</span>
-          </button>
-        </div>
-        <div id="font-toggler" aria-hidden="true">
-          <button type="button">
-            <span>toggle font</span>
-          </button>
-        </div>
-        {rightSidebar}
-        {header}
-        {children}
-        {footer}
-      </div>
-    );
-  } else {
-    return (
-      <div id="no-sidebar-layout">
+      <div id="home-layout" className='layout'>
         <ThemeSwap />
-        <div id="font-toggler" aria-hidden="true">
-          <button type="button">
-            <span>toggle font</span>
-          </button>
-        </div>
+        <FontSwap />
+        {header}
+        <Sidebar menus={menus} />
+        {children}
+        <RightSidebar />
+        {footer}
+      </div>
+    )
+  }
+
+  if (useSlugPage) {
+    return (
+      <div id="slug-layout" className='layout'>
+        <ThemeSwap />
+        <FontSwap />
         {header}
         {children}
         {footer}
       </div>
-    );
+    )
+  }
+
+  if (pagePaths.includes(pathname)) {
+    return (
+      <div id="page-layout" className='layout'>
+        <ThemeSwap />
+        <FontSwap />
+        {header}
+        <Sidebar menus={menus} />
+        {children}
+        {footer}
+      </div>
+    )
   }
 };

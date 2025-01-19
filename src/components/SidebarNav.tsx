@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import type { WPMenu, WPMenuItem } from '@/types';
 
 interface SidebarNavParams {
@@ -7,13 +8,15 @@ interface SidebarNavParams {
 
 export default function SidebarNav(params: SidebarNavParams) {
   return (
-    <>
+    <nav>
       {params.menu &&
         params.menu.nodes.map((item: WPMenuItem) => (
-          <Link key={item.key} href={item.path}>
-            {item.title}
-          </Link>
+          <span key={item.key} className="nav-link">
+            <Link href={item.path}>
+              {item.title}
+            </Link>
+          </span>
         ))}
-    </>
+    </nav>
   );
 }

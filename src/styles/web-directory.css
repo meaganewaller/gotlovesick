@@ -1,0 +1,11 @@
+#web-directory-entry-page {
+  grid-area: main;
+  background: var(--content-background-color);
+  overflow-y: auto;
+  padding: var(--padding);
+  padding-top: 100px;
+  border: 2px solid var(--borders);
+  border-top: 0;
+  border-bottom: 0;
+  line-height: 1.5;
+}

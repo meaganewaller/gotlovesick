@@ -10,33 +10,43 @@ interface SidebarParams {
 
 export default function Sidebar({ menus }: SidebarParams) {
   return (
-    <div id="sidebar">
-      {menus.map((section, index) => (
-        <div key={index}>
+    <div id="sidebar" className="aside">
+      <div className='sidebar-inner'>
+        {menus.map((section, index) => (
+          <div key={index}>
+            <div className="section-tab">
+              <Image src={pinksparkle} alt="" className="section-icon" />
+              <div className="section-title">{section.title}</div>
+            </div>
+            <SidebarNav menu={section.menu} />
+          </div>
+        ))}
+
+        <>
           <div className="section-tab">
             <Image src={pinksparkle} alt="" className="section-icon" />
-            <div className="section-title">{section.title}</div>
+            <div className="section-title">Around</div>
           </div>
-          <SidebarNav menu={section.menu} />
-        </div>
-      ))}
 
-      <>
-        <div className="section-tab">
-          <Image src={pinksparkle} alt="" className="section-icon" />
-          <div className="section-title">Around</div>
-        </div>
-
-        <Link className="w-full block" href="#">
-          TikTok
-        </Link>
-        <Link className="w-full block" href="#">
-          Story Graph
-        </Link>
-        <Link className="w-full block" href="#">
-          GitHub
-        </Link>
-      </>
+          <nav>
+            <span className="nav-link">
+              <Link className="w-full block" href="#">
+                TikTok
+              </Link>
+            </span>
+            <span className="nav-link">
+              <Link className="w-full block" href="#">
+                Story Graph
+              </Link>
+            </span>
+            <span className="nav-link">
+              <Link className="w-full block" href="#">
+                GitHub
+              </Link>
+            </span>
+          </nav>
+        </>
+      </div>
     </div>
   );
 }

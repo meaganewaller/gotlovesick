@@ -6,7 +6,7 @@ function HeaderTitle() {
   useSplittingOnLoad('rainbow');
   return (
     <h1 data-splitting className="rainbow animated title">
-      secret gardens
+      got lovesick
     </h1>
   );
 }

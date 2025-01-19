@@ -51,6 +51,9 @@ export const fetchGraphQL = async <
       query,
       variables,
     }),
+    next: {
+      tags: ['graphql']
+    }
   });
 
   const { data, errors }: GraphQLResponse<T> = await response.json();

@@ -8,23 +8,8 @@ export type ShrineResponse = {
 const shrineQuery = `query Shrine($slug: ID!) {
   shrine(id: $slug, idType: URI) {
     id
-    contentParts {
-      afterMore
-      beforeMore
-    }
-    content
     databaseId
     date
-    featuredImage {
-      node {
-        altText
-        sourceUrl
-        mediaDetails {
-          height
-          width
-        }
-      }
-    }
     id
     modified
     seo {
@@ -38,11 +23,12 @@ const shrineQuery = `query Shrine($slug: ID!) {
     slug
     title
     shrineDetails {
+      status
       featuredSections {
         content
         title
       }
-      sidebar {
+      sidebar(first: 100) {
         nodes {
           ... on Shrine {
             id

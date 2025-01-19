@@ -1,26 +1,94 @@
+@charset "UTF-8";
+
 * {
   box-sizing: border-box;
 }
 
+a:link {
+  text-decoration: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.loading-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: var(--background);
+}
+
 body {
+  font-family: var(--font-pixel-sans);
+  font-size: var(--font-size);
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: var(--background);
+  background-image: var(--background-image);
+  margin: 0;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  max-width: 100%;
+  padding: 0;
+  transition: background 0.3s ease 0s;
+}
+
+div[data-font='readable-font'] {
+  font-family: Arial, sans-serif !important;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: Arial, sans-serif !important;
+  }
+
+  a {
+    font-family: Arial, sans-serif !important;
+  }
+
+  div {
+    font-family: Arial, sans-serif !important;
+  }
+
+  span {
+    font-family: Arial, sans-serif !important;
+  }
+
+  p {
+    font-family: Arial, sans-serif !important;
+  }
+
+  .section-title {
+    font-family: Arial, sans-serif !important;
+  }
+}
+
+div[data-theme='light'],
+div[data-theme='dark'] {
+  padding: var(--margin);
+  width: 100%;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--background);
-  cursor:
-    url('/cursors/rainbow.cur') 1 1,
-    auto;
-  min-height: 100vh;
-  font-size: var(--font-size);
-  margin: 0;
-  padding: var(--margin);
-  color: var(--textColor);
-  font-family: var(--bodyfont);
-  line-height: 1.2;
 }
 
 body ::selection {
-  color: var(--textColor);
+  color: var(--text-color);
   background: var(--light);
 }
 
@@ -28,7 +96,7 @@ body a,
 body a:hover,
 body a:focus,
 body a:visited {
-  color: var(--textColor);
+  color: var(--text-color);
   cursor:
     url('/cursors/pointer.cur') 7 5,
     pointer;
@@ -53,7 +121,7 @@ body button {
   padding: 0.375rem 0.75rem;
   line-height: 1;
   font-size: 1.25rem;
-  background-color: var(--content-bg);
+  background-color: var(--background);
   color: var(--text-color);
   transform: translateY(-3rem);
   transition: transform 0.1s ease-in;
@@ -67,26 +135,24 @@ body button {
   transform: translateY(0);
 }
 
-#theme-toggler {
+#theme-toggler,
+#font-toggler {
   position: absolute;
   top: 7px;
-  left: 7px;
   z-index: 999999;
 
   button {
     display: flex;
     align-content: center;
-    border: 1px solid var(--dark);
-    color: var(--black);
-    background: var(--purple);
-    background-image: linear-gradient(
-      to top,
-      var(--purple) 16%,
-      var(--pink) 79%
-    );
+    border: 1px solid var(--borders);
+    color: #1b2021;
+    background: #DE6B48;
+    background-image: linear-gradient(to top,
+        #DE6B48 16%,
+        #FFB3E0 79%);
     border-radius: 10px;
     padding: 2px 5px;
-    font-size: 15px;
+    font-size: 1.2em;
 
     &:hover {
       filter: brightness(0.9);
@@ -107,42 +173,85 @@ body button {
   }
 }
 
+#theme-toggler {
+  left: 7px;
+}
+
 #font-toggler {
-  position: absolute;
-  top: 7px;
   right: 7px;
-  z-index: 999999;
+}
 
-  button {
-    display: flex;
-    align-content: center;
-    border: 1px solid var(--dark);
-    color: var(--black);
-    background: var(--purple);
-    background-image: linear-gradient(
-      to top,
-      var(--purple) 16%,
-      var(--pink) 79%
-    );
-    border-radius: 10px;
-    padding: 2px 5px;
-    font-size: 15px;
+[data-font='readable-font'] button,
+[data-font='readable-font'] a,
+[data-font='readable-font'] h1,
+[data-font='readable-font'] h2,
+[data-font='readable-font'] h3,
+[data-font='readable-font'] h4,
+[data-font='readable-font'] h5,
+[data-font='readable-font'] h6 {
+  font-family: Arial, sans-serif;
+}
 
-    &:hover {
-      filter: brightness(0.9);
+[data-font='readable-font'] #font-toggler button,
+[data-font='readable-font'] #theme-toggler button {
+  padding: 5px 9px;
+}
+
+.breadcrumb {
+  position: relative;
+  border: 1px dashed;
+  padding: 1em;
+  padding-top: 1.2em;
+  margin-top: 1em;
+}
+
+.breadcrumb ol {
+  display: flex;
+  line-height: 1.2;
+  font-size: .9em;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    background: #6f2dbd;
+    padding: 5px 10px;
+    color: #DDD1EF;
+
+    a {
+      color: #fff;
+
+    }
+
+    &:not(:last-child):hover {
+      a {
+        color: #222;
+      }
+
+      background-color: #F5E663;
     }
   }
-
-  @media (max-width: 576px) {
-    display: none;
-  }
 }
 
-body.readable-font #font-toggler button {
-  font-family: Arial, sans-serif;
-  font-size: 14px;
+.breadcrumb-heading {
+  text-align: right;
+  position: absolute;
+  top: -10px;
+  right: 1px;
+  line-height: 1;
+  padding: 0 .5em;
+  user-select: none;
+  border-radius: 10px;
+  background: var(--content-background-color);
+  text-transform: uppercase;
+  font-style: italic;
+  z-index: 2;
 }
 
-.only-show-in-dark-mode {
-  display: none;
+.grid {
+  display: grid;
+  grid-gap: var(--g, .5rem);
+  grid-template-columns: repeat(auto-fill, minmax(min(var(--m, 50rem), 100%), 1fr));
 }

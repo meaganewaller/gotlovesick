@@ -1,10 +1,12 @@
-const isStaging = process.env.NEXT_PUBLIC_APP_ENV === 'staging';
+export const isStaging = process.env.NEXT_PUBLIC_APP_ENV === 'staging';
+export const isDevelopment = process.env.NEXT_PUBLIC_APP_ENV === 'development';
+export const isProduction = process.env.NEXT_PUBLIC_APP_ENV === 'production';
 
 export const CONFIG = {
   api: {
     url: isStaging
       ? process.env.NEXT_PUBLIC_STAGING_GRAPHQL_API
-      : process.env.NEXT_PUBLIC_GRAPHQL_API,
+      : process.env.NEXT_PUBLIC_WORDPRESS_GRAPHQL_URL
   },
   name: 'Secret Gardens',
   baseline: 'The only key is mine',

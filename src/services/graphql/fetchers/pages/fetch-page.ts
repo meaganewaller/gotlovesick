@@ -11,10 +11,6 @@ const pageQuery = `query Page($slug: ID = "URI") {
     date
     modified
     slug
-    contentParts {
-      afterMore
-      beforeMore
-    }
     content
     title
     featuredImage {

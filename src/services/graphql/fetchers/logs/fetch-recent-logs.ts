@@ -24,10 +24,7 @@ const recentLogsQuery = `query RecentLogs($first: Int) {
         slug
         modified
         title
-        contentParts {
-          afterMore
-          beforeMore
-        }
+        content
         seo {
           metaDesc
           title
@@ -39,7 +36,6 @@ const recentLogsQuery = `query RecentLogs($first: Int) {
       hasNextPage
       hasPreviousPage
       startCursor
-      total
     }
   }
 }`;
@@ -64,8 +60,8 @@ export const fetchRecentLogs = async ({
     variables: { ...vars, ...where },
   });
 
-  if (!response.logs)
-    return Promise.reject(new Error('No recent posts found.'));
+  if (!response || !response.logs)
+    return Promise.reject(new Error('No recent logs found.'));
 
   return response.logs;
 };

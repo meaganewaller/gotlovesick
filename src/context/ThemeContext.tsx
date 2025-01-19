@@ -32,6 +32,8 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
     setIsMounted(true);
   };
 
+  //
+
   /* Simulate asynchronous loading to ensure the component mounts after
    * the initial render
    */

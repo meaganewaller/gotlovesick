@@ -1,0 +1,398 @@
+@import url("https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap");
+
+main#playlist-page {
+  grid-area: main;
+  background: var(--content-background-color);
+  border-right: 2px solid var(--borders);
+  border-left: 2px solid var(--borders);
+  overflow-y: auto;
+  padding: var(--padding);
+  padding-top: 100px;
+  line-height: 1.5;
+  font-family: "Gochi Hand", -apple-system, system-ui, sans-serif;
+
+  #playlist-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 0;
+
+    div#playlist {
+      display: grid;
+      grid-gap: 30px;
+      justify-content: center;
+      align-items: center;
+      margin: 60px auto;
+    }
+
+    .grid-2c {
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+    }
+
+    .grid-3c {
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+    }
+
+    .cassette-wrapper {
+      display: grid;
+      grid-template-areas: "cassette" "cassetteCase";
+      grid-template-columns: autofit;
+      gap: 30px;
+      width: 100%;
+
+      @media (min-width: 1270px) {
+        gap: 15px;
+        grid-template-areas: "cassette cassetteCase";
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .cassette {
+      grid-area: cassette;
+      max-width: calc(100% - 40px);
+      width: 550px;
+      height: 360px;
+      border-radius: 9px;
+      background: var(--cassette-background);
+      border: 1px solid var(--cassette-border);
+      position: relative;
+    }
+
+    .cassette #mix {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      width: 90%;
+      transform: translateX(-50%);
+      border-bottom: 1px dashed var(--cassette-title-border);
+      font-size: 1.5rem;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .cassette .label {
+      width: calc(100% - 60px);
+      height: 64%;
+      position: relative;
+      margin: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 9px 9px 0 0;
+      border: 1px solid var(--cassette-border);
+      outline: 1px solid transparent;
+      background: linear-gradient(var(--cassette-background) 46%, var(--cassette-background-2) 46%, var(--cassette-background-2) calc(46% + 1px), var(--cassette-background) calc(46% + 2px), var(--cassette-background) calc(46% + 7px), var(--cassette-background-2) calc(46% + 7px), var(--cassette-background-2) calc(46% + 10px), var(--cassette-background) calc(46% + 10px), var(--cassette-background) calc(46% + 15px), var(--cassette-background-2) calc(46% + 15px), var(--cassette-background-2) calc(46% + 20px), var(--cassette-background) calc(46% + 20px), var(--cassette-background) calc(46% + 24px), var(--cassette-background-2) calc(46% + 24px), var(--cassette-background-2) calc(46% + 31px), var(--cassette-background) calc(46% + 31px), var(--cassette-background) calc(46% + 33px), var(--cassette-background-2) calc(46% + 33px));
+    }
+
+    .cassette .label .reels {
+      position: relative;
+      margin-top: 20px;
+      border-radius: 50px;
+      background: var(--cassette-background);
+      border: 1px solid var(--cassette-border);
+      z-index: 99;
+      align-items: center;
+      justify-content: center;
+      grid-gap: 30px;
+      padding: 20px 24px;
+      display: grid;
+      grid-template-columns: auto auto auto;
+    }
+
+    .cassette .label .reels .reelHole {
+      width: 12vw;
+      height: 12vw;
+      max-width: 60px;
+      max-height: 60px;
+      border: 3px solid var(--cassette-title-border);
+      border-radius: 50%;
+      position: relative;
+      box-shadow: 0 0 0 3px var(--cassette-shadow);
+      background: var(--cassette-background);
+    }
+
+    .cassette .label .reels .reelHole span {
+      display: block;
+      position: absolute;
+      top: calc(50% - 2px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 5px;
+      border: solid var(--cassette-title-border);
+      border-width: 0 6px;
+    }
+
+    .cassette .label .reels .reelHole span:nth-of-type(2) {
+      transform: translateX(-50%) rotate(60deg);
+    }
+
+    .cassette .label .reels .reelHole span:nth-of-type(3) {
+      transform: translateX(-50%) rotate(-60deg);
+    }
+
+    .cassette .label .reels .window {
+      background: var(--cassette-window);
+      width: 120px;
+      height: 60px;
+      border: 2px solid var(--cassette-title-border);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .cassette .label .reels .window::after {
+      display: block;
+      position: absolute;
+      background: linear-gradient(transparent 0, transparent 3%, rgba(255, 255, 255, 0.1) 9%, rgba(255, 255, 255, 0.1) 13%, transparent 15%, rgba(255, 255, 255, 0.1) 18%, rgba(255, 255, 255, 0.1) 34%, transparent 34%, transparent 34%, rgba(255, 255, 255, 0.1) 44%, rgba(255, 255, 255, 0.1) 70%, transparent 90%);
+      content: "";
+      width: 100%;
+      height: 100%;
+    }
+
+    .cassette .label .reels .window .spool {
+      position: absolute;
+      top: -30%;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      display: block;
+    }
+
+    .cassette .label .reels .window .spool:first-of-type {
+      left: -70%;
+      box-shadow: 0 0 0 70px var(--cassette-title-border), 0 0 0 72px var(--cassette-title-border);
+    }
+
+    .cassette .label .reels .window .spool:last-of-type {
+      right: -80%;
+      box-shadow: 0 0 0 7px var(--cassette-title-border), 0 0 0 9px var(--cassette-title-border);
+    }
+
+    .cassette .head {
+      width: 60%;
+      height: 23%;
+      position: absolute;
+      margin-left: 20%;
+      bottom: -3px;
+    }
+
+    .cassette .head::before,
+    .cassette .head::after {
+      display: block;
+      content: "";
+      width: 70%;
+      height: 100%;
+      position: absolute;
+      background: var(--cassette-background);
+      border: 1px solid var(--cassette-border);
+    }
+
+    .cassette .head::before {
+      transform: skew(-15deg);
+      left: -8%;
+      border-right: none;
+      border-radius: 9px 0 0 9px;
+    }
+
+    .cassette .head::after {
+      transform: skew(15deg);
+      right: -8%;
+      border-left: none;
+      border-radius: 0 9px 9px 0;
+    }
+
+    .cassette .screw {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+    }
+
+    .cassette .screw::before {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border: 1px solid rgba(255, 135, 195, 0.3);
+      left: 0;
+      border-radius: 5px;
+      background: var(--cassette-title-border);
+      background: linear-gradient(to bottom, #ff87c3 1%,
+          #F552A4 100%);
+      box-shadow: 0 1px 1px 0 rgba(181, 181, 181, 0.8);
+    }
+
+    .cassette .screw:nth-child(1) {
+      top: 6px;
+      left: 6px;
+    }
+
+    .cassette .screw:nth-child(2) {
+      top: 6px;
+      right: 6px;
+    }
+
+    .cassette .screw:nth-child(3) {
+      bottom: 6px;
+      right: 6px;
+    }
+
+    .cassette .screw:nth-child(4) {
+      bottom: 6px;
+      left: 6px;
+    }
+
+    .cassette .hole {
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid var(--cassette-border);
+      z-index: 3;
+    }
+
+    .cassette .hole:nth-child(1) {
+      bottom: 12px;
+      left: 10%;
+    }
+
+    .cassette .hole:nth-child(2) {
+      bottom: 24px;
+      left: 30%;
+    }
+
+    .cassette .hole:nth-child(3) {
+      bottom: 24px;
+      right: 30%;
+    }
+
+    .cassette .hole:nth-child(4) {
+      bottom: 12px;
+      right: 10%;
+    }
+
+    .cassetteCase {
+      grid-area: cassetteCase;
+      position: relative;
+      max-width: calc(100% - 40px);
+      width: 550px;
+      outline: 3px solid var(--cassette-background);
+      outline-offset: -4px;
+      border: 1px solid var(--cassette-window);
+      box-shadow: 1px 3px 3px rgba(92, 92, 92, 0.1), 1px 12px 4px rgba(219, 219, 219, 0.1), 15px 15px 15px rgba(117, 117, 117, 0.1);
+      background-image: repeating-linear-gradient(var(--cassette-background) 0, var(--cassette-background) 20px, var(--cassette-shadow) 20px, var(--cassette-background) 21px, var(--cassette-background) 30px);
+      line-height: 30px;
+      padding: 14px;
+      z-index: 99;
+    }
+
+    .cassetteCase::after {
+      content: "";
+      width: 100%;
+      height: 46px;
+      background: var(--cassette-background);
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-bottom: 3px solid var(--cassette-border);
+      z-index: -1;
+    }
+
+    .cassetteCase .side {
+      background: var(--cassette-border);
+      font-family: -apple-system, system-ui, sans-serif;
+      color: var(--cassette-background);
+      font-size: 1rem;
+      line-height: 1;
+      padding: 1px 4px 3px;
+    }
+
+    .cassetteCase p {
+      font-size: 1.5rem;
+      line-height: 1;
+      margin: 0;
+    }
+
+    .track-listing {
+      font-size: 1rem;
+      text-align: justify;
+
+      span {
+        display: block;
+      }
+    }
+
+    .cassetteCase [class*=grid-] {
+      grid-gap: 12px;
+    }
+
+    .cassetteCase .grid-2c {
+      align-items: center;
+    }
+
+    .cassetteCase .grid-2c:not(:last-child) {
+      grid-template-columns: auto 1fr;
+    }
+
+    .cassetteCase .grid-3c {
+      grid-template-columns: 1fr auto 1fr;
+    }
+
+    .cassetteCase .grid-3c>div:nth-child(4),
+    .cassetteCase .grid-3c>div:nth-child(6) {
+      padding-top: 30px;
+    }
+  }
+}
+
+main#playlists-page {
+  grid-area: main;
+  background: var(--content-background-color);
+  border-right: 2px solid var(--borders);
+  border-left: 2px solid var(--borders);
+  overflow-y: auto;
+  padding: var(--padding);
+  padding-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    font-size: 1.5rem;
+
+    li a {
+      color: var(--nav-link);
+      background-color: var(--nav-link-background-color);
+      padding: 10px;
+      border: 2px solid var(--nav-link-border-color);
+
+      &:hover,
+      &:focus {
+        background-color: var(--nav-link-background-hover);
+        border-color: var(--nav-link-border-hover);
+        color: var(--nav-link-color-hover);
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  h1 {
+    font-family: var(--font-pixel-serif);
+    color: var(--section-border-color);
+    font-size: 2.5rem;
+    border-bottom: 5px dotted var(--section-border-color);
+    text-align: center;
+  }
+}

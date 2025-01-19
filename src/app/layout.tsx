@@ -3,7 +3,12 @@ import { CONFIG } from '@/utils/config';
 import Link from 'next/link';
 import { LayoutProvider, MotionProvider } from '@/utils/providers';
 import { ThemeProvider } from '@/context/ThemeContext';
+import { FontProvider } from '@/context/FontContext';
 import ClientThemeWrapper from '@/context/ClientThemeWrapper';
+import Loading from '@/components/loader';
+
+import { fetchMenu } from '@/services/graphql'
+import { MenuLocationEnum } from '@/types'
 
 import '@/styles/index.css';
 
@@ -52,6 +57,16 @@ export default async function RootLayout({
   header,
   footer,
 }: RootLayoutProps) {
+  const fetchedSidebarMenu = await fetchMenu(MenuLocationEnum.Sidebar);
+
+  if (!fetchedSidebarMenu.nodes) {
+    return <Loading />;
+  }
+
+  const menus = [
+    { title: 'Info', menu: fetchedSidebarMenu },
+  ];
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
@@ -61,17 +76,19 @@ export default async function RootLayout({
         </noscript>
         <MotionProvider>
           <ThemeProvider>
-            <ClientThemeWrapper>
-              <Link href="#main" id="skip-to-content-link">
-                Skip to content
-              </Link>
-              <Link href="/sitemap" id="skip-to-sitemap-link">
-                Go to Sitemap
-              </Link>
-              <LayoutProvider header={header} footer={footer}>
-                {children}
-              </LayoutProvider>
-            </ClientThemeWrapper>
+            <FontProvider>
+              <ClientThemeWrapper>
+                <Link href="#main" id="skip-to-content-link">
+                  Skip to content
+                </Link>
+                <Link href="/sitemap" id="skip-to-sitemap-link">
+                  Go to Sitemap
+                </Link>
+                <LayoutProvider menus={menus} header={header} footer={footer}>
+                  {children}
+                </LayoutProvider>
+              </ClientThemeWrapper>
+            </FontProvider>
           </ThemeProvider>
         </MotionProvider>
       </body>

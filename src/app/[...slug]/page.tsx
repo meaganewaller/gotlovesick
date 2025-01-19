@@ -18,12 +18,12 @@ async function fetchData(slug: string[]) {
 
 function RenderPage({ page }: { page: WPPage }) {
   return (
-    <div id="slug-page">
+    <main id="content">
       <section className="" id="page-content">
         <h1 dangerouslySetInnerHTML={{ __html: page.title }} />
         <div dangerouslySetInnerHTML={{ __html: page.content }} />
       </section>
-    </div>
+    </main>
   );
 }
 

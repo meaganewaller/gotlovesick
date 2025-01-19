@@ -1,5 +1,8 @@
 @import '../styles/fonts.css';
 @import '../styles/variables.css';
+@import '../styles/_animations.css';
+@import '../styles/_tooltip.css';
 @import '../styles/base.css';
-@import '../styles/layouts.css';
-@import '../styles/wordpress.css';
+@import '../styles/layout.css';
+/* @import '../styles/layouts.css'; */
+/* @import '../styles/wordpress.css'; */

@@ -1,7 +1,7 @@
 import type { WPLog, Log } from '@/types';
 
 export const convertWPLogToLog = ({
-  contentParts,
+  content,
   databaseId,
   date,
   slug,
@@ -10,7 +10,7 @@ export const convertWPLogToLog = ({
   return {
     date,
     databaseId,
-    content: contentParts.beforeMore + contentParts.afterMore,
+    content,
     slug,
     title,
   };
