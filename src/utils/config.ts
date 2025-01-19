@@ -8,7 +8,7 @@ export const CONFIG = {
       ? process.env.NEXT_PUBLIC_STAGING_GRAPHQL_API
       : process.env.NEXT_PUBLIC_WORDPRESS_GRAPHQL_URL
   },
-  name: 'Secret Gardens',
+  name: 'Got Lovesick',
   baseline: 'The only key is mine',
   description: 'I hate it here so I will go to secret gardens in my mind.',
   shortDescription: 'I hate it here',

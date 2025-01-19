@@ -30,17 +30,12 @@ export default function Sidebar({ menus }: SidebarParams) {
 
           <nav>
             <span className="nav-link">
-              <Link className="w-full block" href="#">
-                TikTok
-              </Link>
-            </span>
-            <span className="nav-link">
-              <Link className="w-full block" href="#">
+              <Link className="w-full block" href="https://app.thestorygraph.com/profile/itsonmyholdlist" target="_blank">
                 Story Graph
               </Link>
             </span>
             <span className="nav-link">
-              <Link className="w-full block" href="#">
+              <Link className="w-full block" href="https://github.com/meaganewaller">
                 GitHub
               </Link>
             </span>
