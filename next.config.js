@@ -20,6 +20,7 @@ const nextConfig = {
 
   images: {
     remotePatterns: [
+      {protocol: 'https', hostname: 'wp-staging.gotlovesick.com' },
       {
         protocol: 'https',
         hostname: 'wp.gotlovesick.com',

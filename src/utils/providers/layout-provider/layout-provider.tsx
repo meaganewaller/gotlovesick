@@ -25,28 +25,29 @@ export const LayoutProvider = ({
   const pathname = usePathname();
 
   const indexPaths = ['/'];
-  const pagePaths = ['/meagan', '/about', '/colophon', '/sitemap', '/contact', '/privacy-policy'];
-  const slugPaths = ['blog', 'bookmarks', 'fun-extras', 'playlists', 'shrines', 'web-directory', 'tags', 'resource-types', 'resources'];
+  const pagePaths = ['/meagan', '/about', '/colophon', '/sitemap', '/contact', '/privacy-policy', '/polls'];
+  const slugPaths = ['blog', 'fun-extras', 'playlists', 'shrines', 'tags', 'resource-types', 'resources', 'polls'];
 
   const useSlugPage = slugPaths.includes(pathname.split('/')[1]);
 
   useEffect(() => {
     if (indexPaths.includes(pathname)) {
-      document.body.classList.remove("page");
+      document.body.setAttribute('class', '')
       document.body.classList.add("index");
     }
 
     if (pagePaths.includes(pathname)) {
-      document.body.classList.remove("index");
+      document.body.setAttribute('class', '')
       document.body.classList.add("page");
     }
 
     if (useSlugPage) {
-      document.body.classList.remove("index");
+      document.body.setAttribute('class', '')
       document.body.classList.add("page");
     }
 
     if (pathname.includes('shrines')) {
+      document.body.setAttribute('class', '')
       document.body.classList.add(`${pathname.split('/')[2]}-shrine`);
     }
   })

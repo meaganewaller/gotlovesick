@@ -1,18 +1,19 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { fetchAllQuizzes } from '@/services/graphql';
+import { fetchAllFunExtras } from '@/services/graphql';
 import '@/styles/quizzes.css';
 import Image from 'next/image';
+import { WPFunExtra, WPFunExtraType } from '@/types';
 // import { WPQuiz } from '@/types';
 
 async function fetchQuizzes() {
-  const quizzes = await fetchAllQuizzes();
+  const funExtraTypes = await fetchAllFunExtras();
 
-  if (!quizzes) {
+  if (!funExtraTypes) {
     return { error: 'No quizzes found' };
   }
 
-  return { quizzes };
+  return { funExtraTypes };
 }
 
 export default async function QuizzesPage() {
@@ -22,21 +23,26 @@ export default async function QuizzesPage() {
     return notFound();
   }
 
-  if (data.quizzes) {
+  if (data.funExtraTypes) {
     return (
       <main id="quizzes-page">
         <div className="quiz-container">
           <div className="quiz-header">
             <div className="about-section">
-              <h1>Quizzes</h1>
-
-              {data.quizzes.nodes.map((quiz: any) => {
+              {data.funExtraTypes.nodes.map((funExtraType: WPFunExtraType) => {
                 return (
-                  <div key={quiz.key}>
-                    {quiz.featuredImage && <Image src={quiz.featuredImage.node.sourceUrl} alt={quiz.featuredImage.node.altText || ''}  width={quiz.featuredImage.node.mediaDetails.height}
-                      height={quiz.featuredImage.node.mediaDetails.width} />}
-                    <Link href={quiz.uri}>{quiz.title}</Link>
-                    <p>{quiz.quizFields.description}</p>
+                  <div key={funExtraType.key}>
+                    <h2>{funExtraType.name}</h2>
+                    <span>{funExtraType.count} post(s)</span>
+                    <p>{funExtraType.description}</p>
+
+                    <ul>
+                    {funExtraType.funExtras.nodes.map((funExtra: WPFunExtra) => (
+                      <li key={funExtra.key}>
+                        <Link href={funExtra.link}>{funExtra.title}</Link>
+                      </li>
+                    ))}
+                    </ul>
                   </div>
                 );
               })}

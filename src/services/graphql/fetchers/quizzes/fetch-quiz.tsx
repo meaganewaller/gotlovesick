@@ -10,10 +10,17 @@ const quizQuery = `query Quiz($slug: ID!) {
     key: id
     title
     slug
+    seo {
+      title
+      metaDesc
+      breadcrumbs {
+        text
+        url
+      }
+    }
     quizFields {
       autoScroll
       showCopyShareButton
-      copyShareLink
       description
       generalBackgroundColor
       generalFontColor

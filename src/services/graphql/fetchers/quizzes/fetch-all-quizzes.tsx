@@ -17,7 +17,6 @@ const allQuizzesQuery = `query AllQuizzes {
           terms: "quizzes"
         }
       },
-      status: PUBLISH
     }
   ) {
     nodes {

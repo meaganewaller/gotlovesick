@@ -3,3 +3,4 @@ export * from './data';
 export * from './generics';
 export * from './gql';
 export * from './quiz';
+export * from './fun-extras';
