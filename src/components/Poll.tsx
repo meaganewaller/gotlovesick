@@ -1,17 +1,19 @@
-'use client'
+'use client';
 
-import { WPPoll } from '@/types'
-import { fetchPoll, castVote } from '@/services/graphql'
-import { useState, useEffect } from 'react'
+import { WPPoll } from '@/types';
+import { fetchPoll, castVote } from '@/services/graphql';
+import { useState, useEffect } from 'react';
+import Loader from './loader';
 
 export function Poll({ slug }: { slug: string }) {
   const [poll, setPoll] = useState<WPPoll | null>(null);
   const [votes, setVotes] = useState<Record<string, number>>({});
   const [loading, setLoading] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [hasVoted, setHasVoted] = useState<boolean>(false);
 
   useEffect(() => {
-     const fetchData = async () => {
+    const fetchData = async () => {
       try {
         const fetchedPoll = await fetchPoll(slug);
         if (fetchedPoll) {
@@ -24,6 +26,9 @@ export function Poll({ slug }: { slug: string }) {
             {}
           );
           setVotes(initialVotes);
+
+          const hasUserVoted = !!localStorage.getItem(`poll-vote-${slug}`)
+          setHasVoted(hasUserVoted);
         } else {
           setError('Poll not found');
         }
@@ -34,38 +39,49 @@ export function Poll({ slug }: { slug: string }) {
     };
 
     fetchData();
-  }, [slug])
+  }, [slug]);
 
-  const hasUserVoted = (pollId: string): boolean => {
-    const lastVoted = localStorage.getItem(`poll-vote-${pollId}`);
-    return false
-    // if (!lastVoted) return false;
-    //
-    // const lastVotedDate = new Date(lastVoted)
-    // const now = new Date()
-    //
-    // return now.toDateString() === lastVotedDate.toDateString()
+  const getTotalVotes = (): number => {
+    return Object.values(votes).reduce((total, count) => total + count, 0);
   }
 
-  const recordVote = (pollId: string) => {
-    localStorage.setItem(`poll-vote-${pollId}`, new Date().toISOString());
+  const getVotePercentage = (optionId: string): number => {
+    const totalVotes = getTotalVotes()
+    if (totalVotes === 0) return 0;
+
+    return Math.round((votes[optionId] / totalVotes) * 100);
   }
 
-  const handleVote = async (pollId: string, optionId: string) => {
-    if (hasUserVoted(pollId)) {
-      alert('You have already voted for this poll today. Please come back tomorrow!')
-      return
+  const hasUserVoted = (pollSlug: string): boolean => {
+    const lastVoted = localStorage.getItem(`poll-vote-${pollSlug}`);
+    if (!lastVoted) return false;
+
+    const lastVotedDate = new Date(lastVoted);
+    const now = new Date();
+
+    return now.toDateString() === lastVotedDate.toDateString();
+  };
+
+  const recordVote = (pollSlug: string) => {
+    localStorage.setItem(`poll-vote-${pollSlug}`, new Date().toISOString());
+    setHasVoted(true)
+  };
+
+  const handleVote = async (pollSlug: string, optionId: string) => {
+    if (hasVoted) {
+      alert('You have already voted for this poll.');
+      return;
     }
 
-    setLoading(optionId)
-     try {
+    setLoading(optionId);
+    try {
       await castVote({
         clientMutationId: `vote-${optionId}-${Date.now()}`,
-        pollId,
+        pollSlug,
         optionId,
       });
 
-      recordVote(pollId);
+      recordVote(pollSlug);
 
       // Optimistically update the votes state
       setVotes((prevVotes) => ({
@@ -81,38 +97,47 @@ export function Poll({ slug }: { slug: string }) {
   };
 
   if (error) return <p className="error">{error}</p>;
-  if (!poll) return <p>Loading poll...</p>;
+  if (!poll) return <Loader />
 
-   return (
-    <main id="poll-page">
-      <div className="poll-layout">
-        <section id="page-content">
-          <main id="quiz">
-            <section>
-              <h1 dangerouslySetInnerHTML={{ __html: poll.title }} />
-              <div dangerouslySetInnerHTML={{ __html: poll.pollDetails.description }} />
-            </section>
+  return (
+    <div className="poll-container">
+      <header className="header">
+        <h1 className="poll-title" dangerouslySetInnerHTML={{ __html: poll.title }} />
+        <div
+          className="poll-description"
+          dangerouslySetInnerHTML={{ __html: poll.pollDetails.description }}
+        />
+      </header>
 
-            {poll.pollDetails.pollOptions.map((option) => (
-              <div key={option.id} className="poll-option">
-                <p>
-                  {option.body} <span>({votes[option.id]} votes)</span>
-                  <button
-                    onClick={() => handleVote(poll.key, option.id)}
-                    disabled={loading === option.id}
-                    className="vote-button"
-                  >
-                    {loading === option.id ? 'Submitting...' : 'Vote'}
-                  </button>
-                </p>
+      <ol className="poll-options">
+       {poll.pollDetails.pollOptions.map((option) => {
+          const votePercentage = Object.values(votes).reduce((total, count) => total + count, 0)
+            ? Math.round((votes[option.id] / Object.values(votes).reduce((total, count) => total + count, 0)) * 100)
+            : 0;
+
+          return (
+            <li key={option.id} className="poll-option">
+              <div
+                className="poll-option-bg"
+                style={{ width: `${votePercentage}%` }}
+              ></div>
+              <div className="poll-option-content">
+                <span>{option.body}</span>
+                <span className="poll-option-votes">({votes[option.id]} votes)</span>
+                <button
+                  onClick={() => handleVote(poll.slug, option.id)}
+                  disabled={hasVoted || loading === option.id}
+                  className="poll-submit-button"
+                >
+                  {hasVoted ? 'Voted' : loading === option.id ? 'Submitting...' : 'Vote'}
+                </button>
               </div>
-            ))}
-          </main>
-        </section>
-      </div>
-    </main>
+            </li>
+          );
+        })}
+      </ol>
+    </div>
   );
 }
 
-export default Poll
-
+export default Poll;

@@ -3,8 +3,15 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 });
 
+const path = require('path')
+const allowedImageWordpressDomain = new URL( process.env.NEXT_PUBLIC_WORDPRESS_SITE_URL ).hostname;
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  trailingSlash: true,
+  sassOptions: {
+    includePaths: [ path.join(__dirname, 'src/styles' ) ],
+  },
   poweredByHeader: false,
 
   logging: {
@@ -19,21 +26,7 @@ const nextConfig = {
   },
 
   images: {
-    remotePatterns: [
-      {protocol: 'https', hostname: 'wp-staging.gotlovesick.com' },
-      {
-        protocol: 'https',
-        hostname: 'wp.gotlovesick.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'lastfm.freetls.fastly.net',
-      },
-      {
-        protocol: 'https',
-        hostname: '*.gotlovesick.**'
-      }
-    ]
+    domains: [ allowedImageWordpressDomain, 'via.placeholder.com', 'lastfm.freetls.fastly.net' ],
   },
 
   webpack: (config) => {

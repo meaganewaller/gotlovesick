@@ -1206,3 +1206,93 @@ main#quiz-page {
   border-bottom: 0;
   line-height: 1.5;
 }
+
+main#quizzes-page .layout {
+  margin: 50px auto;
+
+  .header {
+    text-align: center;
+    overflow: hidden;
+  }
+
+  div[role='grid'] {
+    padding: 10px;
+    perspective: 1000px;
+
+    .quiz-card {
+      background: var(--light);
+      margin-bottom: 10px;
+      display: inline-block;
+      border-radius: 4px;
+      padding: 20px;
+      box-sizing: border-box;
+      color: white;
+      background-position: center;
+      background-size: cover;
+      opacity: 0;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      &.is-visible {
+        animation: quizCards 600ms ease-in forwards;
+      }
+
+    }
+  }
+}
+
+@-webkit-keyframes quizCards {
+  0% {
+    opacity: 0;
+    height: 0%;
+    padding: 0px;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes quizCards {
+  0% {
+    opacity: 0;
+    height: 0%;
+    padding: 0px;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes quizCards {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotateY(90deg);
+  }
+  60% {
+    transform: scale(1.4);
+  }
+  90% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes quizCards {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotateY(90deg);
+  }
+  60% {
+    transform: scale(1.4);
+  }
+  90% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+

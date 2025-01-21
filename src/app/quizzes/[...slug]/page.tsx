@@ -1,9 +1,9 @@
-import { fetchQuiz } from '@/services/graphql';
-import { notFound } from 'next/navigation';
-// import { WPQuiz } from '@/types';
-import '@/styles/quizzes.css';
+import { fetchQuiz } from '@/services/graphql'
+import { notFound } from 'next/navigation'
+import { WPQuiz } from '@/types'
+import '@/styles/quizzes.css'
 import { Breadcrumbs } from '@/components/Breadcrumbs';
-import { Quiz } from '@/components/Quiz';
+import { Quiz } from '@/components/Quiz'
 
 async function fetchData(slug: string) {
   let quiz = undefined;
@@ -81,3 +81,5 @@ export default async function Archive(props: {
 
   return notFound();
 }
+
+

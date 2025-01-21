@@ -1,0 +1,50 @@
+main#blog-page {
+  grid-area: main;
+  background: var(--content-background-color);
+  overflow-y: auto;
+  padding: var(--padding);
+  padding-top: 100px;
+  border: 2px solid var(--borders);
+  border-bottom: 0;
+  border-top: 0;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+main#blog-page .layout {
+  margin: 50px auto;
+
+  .header {
+    text-align: center;
+    overflow: hidden;
+  }
+
+  div[role='grid'] {
+    padding: 10px;
+    perspective: 1000px;
+
+    .poll-card {
+      background: var(--light);
+      margin-bottom: 10px;
+      display: inline-block;
+      border-radius: 4px;
+      padding: 20px;
+      box-sizing: border-box;
+      color: white;
+      background-position: center;
+      background-size: cover;
+      opacity: 0;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      &.is-visible {
+        animation: pollCards 600ms ease-in forwards;
+      }
+    }
+  }
+
+
+}

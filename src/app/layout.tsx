@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     ? new URL(CONFIG.url)
     : new URL('http://lvh.me:3000'),
   title: {
-    template: '%s | secret gardens',
+    template: '%s | got lovesick',
     default: CONFIG.name,
   },
   description: CONFIG.description,
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: {
       default: CONFIG.name,
-      template: '%s | secret gardens',
+      template: '%s | got lovesick',
     },
     description: CONFIG.description,
     siteName: CONFIG.name,

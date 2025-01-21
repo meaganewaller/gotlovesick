@@ -26,7 +26,7 @@ export const LayoutProvider = ({
 
   const indexPaths = ['/'];
   const pagePaths = ['/meagan', '/about', '/colophon', '/sitemap', '/contact', '/privacy-policy', '/polls'];
-  const slugPaths = ['blog', 'fun-extras', 'playlists', 'shrines', 'tags', 'resource-types', 'resources', 'polls'];
+  const slugPaths = ['blog', 'fun-extras', 'playlists', 'shrines', 'tags', 'polls', 'quizzes'];
 
   const useSlugPage = slugPaths.includes(pathname.split('/')[1]);
 

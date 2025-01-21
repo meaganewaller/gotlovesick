@@ -123,6 +123,17 @@ export type WPPost = WPContent & {
   info: WPInfo;
 };
 
+export type WPPostLtd = {
+  key: string
+  uri: string
+  title: string
+  slug: string
+  postDetails: {
+    description: string
+    headerImage: Nullable<GraphQLNode<WPImage>>
+  }
+}
+
 // export type WPQuiz = {
 //   key: string;
 //   title: string;

@@ -17,9 +17,6 @@ export const CONFIG = {
       username: 'meaganewaller',
       repo: 'meaganewaller.github.io',
     },
-    tiktok: {
-      username: '@gotlovesickallovermybed',
-    },
   },
   copyright: {
     startYear: '2024',

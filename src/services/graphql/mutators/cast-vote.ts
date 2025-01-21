@@ -5,7 +5,7 @@ export type CastVotePayload = {
   clientMutationId: Nullable<string>;
   success: boolean;
   message: string;
-  pollId: string;
+  pollSlug: string;
   optionId: string
 }
 
@@ -18,14 +18,14 @@ export const castVoteMutation = `mutation CastVote($input: CastVoteInput!) {
     clientMutationId
     success
     message
-    pollId
+    pollSlug
     optionId
   }
 }`
 
 export type CastVoteInput = {
   clientMutationId: string;
-  pollId: string;
+  pollSlug: string;
   optionId: string;
 }
 

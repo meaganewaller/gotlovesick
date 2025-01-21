@@ -1,9 +1,9 @@
 'use client';
 import { FC, useContext } from 'react';
-// import { AnswersProps } from '@/types';
+import { AnswersProps } from '@/types';
 import { QuizContext } from './Quiz';
 
-const Answers: FC<any> = ({
+const Answers: FC<AnswersProps> = ({
   item,
   questionIndex,
   resultsAvailable,

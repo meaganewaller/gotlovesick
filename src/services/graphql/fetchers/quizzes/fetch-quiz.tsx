@@ -6,7 +6,7 @@ export type QuizResponse = {
 };
 
 const quizQuery = `query Quiz($slug: ID!) {
-  quiz: funExtra(id: $slug, idType: SLUG) {
+  quiz(id: $slug, idType: URI) {
     key: id
     title
     slug
