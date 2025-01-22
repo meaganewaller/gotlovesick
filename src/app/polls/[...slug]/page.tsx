@@ -10,9 +10,9 @@ export default async function Archive(props: { params: Promise<{ slug: string[] 
     return notFound();
   }
 
-  return  (
+  return (
     <main id="poll-page">
-    <Poll slug={slug[0]} />
+      <Poll slug={slug[0]} />
     </main>
   )
 }

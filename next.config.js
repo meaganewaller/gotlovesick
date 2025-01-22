@@ -26,7 +26,7 @@ const nextConfig = {
   },
 
   images: {
-    domains: [ allowedImageWordpressDomain, 'via.placeholder.com', 'lastfm.freetls.fastly.net' ],
+    domains: [ allowedImageWordpressDomain, 'via.placeholder.com', 'lastfm.freetls.fastly.net', 'secure.gravatar.com' ],
   },
 
   webpack: (config) => {

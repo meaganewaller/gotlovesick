@@ -30,12 +30,12 @@ function PostCard({ item, index }: PostCardProps) {
   }, [index])
 
   return (
-    <div className={classNames("poll-card", { "is-visible": isVisible })} key={item.key}>
-      {item.featuredImage ? (
-        <Image src={item.featuredImage.node.sourceUrl} alt={item.featuredImage.node.altText || ''} width={item.featuredImage.node.mediaDetails.width} height={item.featuredImage.node.mediaDetails.height} />
+    <div className={classNames("post-card", { "is-visible": isVisible })} key={item.key}>
+      {item.postDetails.headerImage ? (
+        <Image src={item.postDetails.headerImage.node.sourceUrl} alt={item.postDetails.headerImage.node.altText || ''} width={item.postDetails.headerImage.node.mediaDetails.width} height={item.postDetails.headerImage.node.mediaDetails.height} />
       ) : <></>}
-      <Link href={item.uri}><h2>{item.title}</h2></Link>
-      <div dangerouslySetInnerHTML={{  __html: item.pollDetails.description }} />
+      <Link href={`/blog/${item.slug}`}><h2>{item.title}</h2></Link>
+      <div dangerouslySetInnerHTML={{  __html: item.postDetails.description }} />
     </div>
   )
 }

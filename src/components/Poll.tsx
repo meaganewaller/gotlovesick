@@ -110,7 +110,7 @@ export function Poll({ slug }: { slug: string }) {
       </header>
 
       <ol className="poll-options">
-       {poll.pollDetails.pollOptions.map((option) => {
+        {poll.pollDetails.pollOptions.map((option) => {
           const votePercentage = Object.values(votes).reduce((total, count) => total + count, 0)
             ? Math.round((votes[option.id] / Object.values(votes).reduce((total, count) => total + count, 0)) * 100)
             : 0;
