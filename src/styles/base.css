@@ -29,6 +29,25 @@ a:link {
   background: var(--background);
 }
 
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  color: #007bff;
+}
+
+.load-more:hover {
+  background-color: #0056b3;
+}
+
+.load-more:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+
 body {
   font-family: var(--font-pixel-sans);
   font-size: var(--font-size);

@@ -21,7 +21,7 @@ export function CommentForm({ postSlug }: { postSlug: string }) {
       email,
       website,
       comment,
-      postSlug
+      postID
     })
 
     // If the comment was created successfully...

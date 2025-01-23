@@ -8,6 +8,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import rainbows from '~/images/dividers/rainbows.gif';
 import { CommentForm } from './CommentForm'
+import { formatDateAsString } from '@/utils/helpers'
 
 export function BlogPost({ slug }: { slug: string }) {
   const [post, setPost] = useState<any>(null)
@@ -58,7 +59,7 @@ export function BlogPost({ slug }: { slug: string }) {
           <h1>{post.title}</h1>
           <ul className="post-meta">
             <li>
-              <span>{post.date}</span>
+              <span>{formatDateAsString(post.date)}</span>
             </li>
             <li>
               <Link href={"#"}>{post.commentCount} comments</Link>
