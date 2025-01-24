@@ -1,62 +1,65 @@
-import { notFound } from 'next/navigation'
-import Link from 'next/link'
-import { fetchAllPosts } from '@/services/graphql';
-import '@/styles/blog.css'
-import Image from 'next/image'
-import { Grid } from "@/components/blog"
+import { Pagination } from "@/components/blog";
+import { fetchAllPosts } from "@/services/graphql";
+import { Post } from "@/types";
+import { formatDateAsString } from "@/utils/helpers";
+import '@/styles/blog.css';
+import Link from "next/link";
 
-async function fetchData() {
-  const posts = await fetchAllPosts(10)
-
-  if (!posts) {
-    return { error: 'No posts found' }
-  }
-
-  return { posts }
+type SearchParams = {
+  page?: string | null;
 }
 
-export default async function BlogIndexPage() {
-  const data = await fetchData();
+type Props = {
+  searchParams: Promise<SearchParams>
+}
 
-  if (data.error) { return notFound(); }
+const Page = async ({ searchParams }: Props) => {
+  const perPage = 10;
+  let params = await searchParams;
+  let page = params.page ? parseInt(params.page) : 1;
+  let currentPage = page;
+  let totalPages = 1;
 
-  if (data.posts) {
+  const response = await fetchAllPosts(page, perPage)
+
+  if (response.posts?.pageInfo?.offsetPagination?.total) {
+    totalPages = Math.ceil(response.posts.pageInfo.offsetPagination.total / perPage);
+  }
+
+  const posts = response.posts?.nodes;
+
+  if (posts?.length === 0) {
     return (
-      <main id="blog-page">
-      <div className="layout">
-      <header className="header">
-      <section className="about">
-      <h1>Blog</h1>
-      </section>
-      </header>
-
-      <section className="blog-posts">
-      <div className="blog-cards">
-      {data.posts.nodes.map((post) => (
-        <div key={post.key} className="post-card">
-        {post.postDetails?.headerImage ? (
-          <Image
-          src={post.postDetails.headerImage.node.sourceUrl}
-          alt={post.postDetails.headerImage.node.altText || ''}
-          width={post.postDetails.headerImage.node.mediaDetails.width}
-          height={post.postDetails.headerImage.node.mediaDetails.height}
-          />
-        ) : (
-        <div className="placeholder-image">No Image</div>
-        )}
-        <div className='post-info'>
-        <h3>{post.title}</h3>
-        <p>{post.postDetails?.description || "No description available."}</p>
-        <Link href={`/blog/${post.slug}`} className="post-link">Read post</Link>
-        </div>
-        </div>
-      ))}
+      <div>
+        <h1>No posts found</h1>
       </div>
-      </section>
-      </div>
-      </main>
     )
   }
 
-  return notFound();
+  return (
+    <main id="blog-page">
+      <div className='layout'>
+        <header className='header'>
+          <section className='about-section'>
+            <h1>Blog Posts (page {page})</h1>
+          </section>
+        </header>
+
+        <section className="posts">
+          {posts?.map((post: Post) => (
+            <div key={post.key}>
+              <h1>{post.title}</h1>
+              <span>{formatDateAsString(post.date)}</span>
+              <p>{post.postDetails?.description}</p>
+              <Link href={`/blog/${post.slug}`}>Read more</Link>
+            </div>
+          ))}
+        </section>
+
+        <Pagination currentPage={currentPage} totalPages={totalPages} />
+      </div>
+    </main>
+  )
 }
+
+export default Page;

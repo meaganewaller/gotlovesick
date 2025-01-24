@@ -1,6 +1,5 @@
 import { fetchQuiz } from '@/services/graphql'
 import { notFound } from 'next/navigation'
-import { WPQuiz } from '@/types'
 import '@/styles/quizzes.css'
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { Quiz } from '@/components/Quiz'

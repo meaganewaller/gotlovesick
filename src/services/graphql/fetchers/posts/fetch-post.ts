@@ -2,71 +2,83 @@ import type { Nullable, WPPost } from '@/types';
 import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers';
 
 export type PostResponse = {
-  post: Nullable<WPPost>;
+  post: Nullable<any>;
 };
 
 const postQuery = `query Post($slug: ID!) {
-  post(id: $slug, idType: SLUG) {
-    acfPosts {
-      postsInCategory {
-        ... on Category {
-          databaseId
-          slug
-          title
-        }
-      }
-      postsInTag {
-        ... on Tag {
-      databaseId
-          featuredImage {
-            node {
-              altText
-              mediaDetails {
-                height
-                width
-              }
-              sourceUrl
-              title
-            }
-          }
-          slug
-          title
-        }
-      }
-    }
+  post(id: $slug, idType: URI) {
+    key: id
+    title
+    slug
+    content
     author {
       node {
         name
+        uri
+        website: url
+        key: id
+        avatar {
+          url
+          width
+          height
+        }
+      }
+    }
+    seo {
+      title
+      metaDesc
+      breadcrumbs {
+        text
+        url
       }
     }
     commentCount
-    contentParts {
-      afterMore
-      beforeMore
-    }
-    databaseId
     date
     featuredImage {
       node {
-        altText
-        mediaDetails {
-          height
-          width
-        }
-        sourceUrl
-        title
+      altText
+      caption
+      mediaDetails {
+      height
+      width
+      }
+      sourceUrl
       }
     }
-    info {
-      wordsCount
+    categories {
+      nodes {
+        key: id
+        name
+        slug
+        uri
+      }
     }
-    modified
-    seo {
-      metaDesc
-      title
+    tags {
+      nodes {
+        key: id
+        name
+        link
+        slug
+      }
     }
-    slug
-    title
+    comments(first: 30, where: { order: ASC}) {
+      nodes {
+        content
+        key: id
+        date
+        status
+        author {
+          node {
+            avatar {
+              url
+            }
+            email
+            name
+            url
+          }
+        }
+      }
+    }
   }
 }`;
 
@@ -76,7 +88,7 @@ const postQuery = `query Post($slug: ID!) {
  * @param {string} slug - The post slug.
  * @returns {Promise<WPPost>} The requested post.
  */
-export const fetchPost = async (slug: string): Promise<WPPost> => {
+export const fetchPost = async (slug: string) => {
   const response = await fetchGraphQL<PostResponse>({
     query: postQuery,
     url: getGraphQLUrl(),

@@ -32,7 +32,7 @@ export default async function QuizzesPage() {
             </div>
           </div>
 
-          <Grid items={data.quizzes.nodes} columnGutter={10} columnWidth={250} />
+          {/* <Grid items={data.quizzes.nodes} columnGutter={10} columnWidth={250} /> */}
         </div>
       </main>
     )
