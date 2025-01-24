@@ -10,12 +10,13 @@ type SearchParams = {
 }
 
 type Props = {
-  searchParams: SearchParams
+  searchParams: Promise<SearchParams>
 }
 
 const Page = async ({ searchParams }: Props) => {
   const perPage = 10;
-  let page = searchParams.page ? parseInt(searchParams.page) : 1;
+  let params = await searchParams;
+  let page = params.page ? parseInt(params.page) : 1;
   let currentPage = page;
   let totalPages = 1;
 

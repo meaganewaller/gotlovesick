@@ -84,7 +84,7 @@ export function BlogPost({ slug }: { slug: string }) {
 
         <section className="comments" id="comments">
           <h3>Comments</h3>
-          {post.comments.nodes.map((comment) => (
+          {post.comments.nodes.map((comment: any) => (
             <article key={comment.key}>
               <header>
                 <Image alt={comment.author.node.name} height={64} loading="lazy" src={comment.author.node.avatar.url} width={64} />
