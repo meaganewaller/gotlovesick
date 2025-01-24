@@ -274,3 +274,152 @@ body button {
   grid-gap: var(--g, .5rem);
   grid-template-columns: repeat(auto-fill, minmax(min(var(--m, 50rem), 100%), 1fr));
 }
+
+.pixel-border {
+  --s: 4px;
+  --c1: #303C9D;
+  --c2: #6070E7;
+
+  background: no-repeat;
+  background-image:
+    linear-gradient(0, var(--c1), var(--c1)),
+
+    linear-gradient(0, var(--c1), var(--c1)),
+    linear-gradient(0, var(--c2), var(--c2)),
+    linear-gradient(0, var(--c1), var(--c1)),
+
+    linear-gradient(0, var(--c1), var(--c1)),
+    linear-gradient(0, var(--c2), var(--c2)),
+    linear-gradient(0, var(--c2), var(--c2)),
+    linear-gradient(0, var(--c1), var(--c1)),
+
+    linear-gradient(0, var(--c1), var(--c1)),
+    linear-gradient(0, var(--c2), var(--c2)),
+    linear-gradient(0, var(--c2), var(--c2)),
+    linear-gradient(0, var(--c1), var(--c1)),
+
+    linear-gradient(0, var(--c1), var(--c1)),
+    linear-gradient(0, var(--c2), var(--c2)),
+    linear-gradient(0, var(--c2), var(--c2)),
+    linear-gradient(0, var(--c1), var(--c1)),
+
+    linear-gradient(0, var(--c1), var(--c1)),
+    linear-gradient(0, var(--c2), var(--c2)),
+    linear-gradient(0, var(--c2), var(--c2)),
+    linear-gradient(0, var(--c1), var(--c1)),
+
+    linear-gradient(0, var(--c1), var(--c1)),
+    linear-gradient(0, var(--c2), var(--c2)),
+    linear-gradient(0, var(--c2), var(--c2)),
+    linear-gradient(0, var(--c1), var(--c1)),
+
+    linear-gradient(0, var(--c1), var(--c1)),
+    linear-gradient(0, var(--c2), var(--c2)),
+    linear-gradient(0, var(--c2), var(--c2)),
+    linear-gradient(0, var(--c1), var(--c1)),
+
+    linear-gradient(0, var(--c1), var(--c1)),
+    linear-gradient(0, var(--c2), var(--c2)),
+    linear-gradient(0, var(--c2), var(--c2)),
+    linear-gradient(0, var(--c1), var(--c1)),
+
+    linear-gradient(0, var(--c1), var(--c1)),
+    linear-gradient(0, var(--c2), var(--c2)),
+    linear-gradient(0, var(--c1), var(--c1)),
+
+    linear-gradient(0, var(--c1), var(--c1));
+  background-size:
+    calc(100% - var(--s) * 4 * 2) var(--s),
+
+    var(--s) var(--s),
+    calc(100% - var(--s) * 4 * 2) var(--s),
+    var(--s) var(--s),
+
+    var(--s) var(--s),
+    calc(var(--s) * 2) var(--s),
+    calc(var(--s) * 2) var(--s),
+    var(--s) var(--s),
+
+    var(--s) var(--s),
+    calc(var(--s) * 2) var(--s),
+    calc(var(--s) * 2) var(--s),
+    var(--s) var(--s),
+
+    var(--s) var(--s),
+    calc(var(--s) * 2) var(--s),
+    calc(var(--s) * 2) var(--s),
+    var(--s) var(--s),
+
+    var(--s) calc(100% - var(--s) * 5 * 2),
+    var(--s) calc(100% - var(--s) * 5 * 2),
+    var(--s)  calc(100% - var(--s) * 5 * 2),
+    var(--s) calc(100% - var(--s) * 5 * 2),
+
+    var(--s) var(--s),
+    calc(var(--s) * 2) var(--s),
+    calc(var(--s) * 2) var(--s),
+    var(--s) var(--s),
+
+    var(--s) var(--s),
+    calc(var(--s) * 2) var(--s),
+    calc(var(--s) * 2) var(--s),
+    var(--s) var(--s),
+
+    var(--s) var(--s),
+    calc(var(--s) * 2) var(--s),
+    calc(var(--s) * 2) var(--s),
+    var(--s) var(--s),
+
+    var(--s) var(--s),
+    calc(100% - var(--s) * 4 * 2) var(--s),
+    var(--s) var(--s),
+
+    calc(100% - var(--s) * 4 * 2) var(--s);
+  background-position:
+    calc(var(--s) * 4) 0,
+
+    calc(var(--s) * 3) var(--s),
+    calc(var(--s) * 4) var(--s),
+    right calc(var(--s) * 3) top var(--s),
+
+    calc(var(--s) * 2) calc(var(--s) * 2),
+    calc(var(--s) * 3) calc(var(--s) * 2),
+    right calc(var(--s) * 3) top calc(var(--s) * 2),
+    right calc(var(--s) * 2) top calc(var(--s) * 2),
+
+    var(--s) calc(var(--s) * 3),
+    calc(var(--s) * 2) calc(var(--s) * 3),
+    right calc(var(--s) * 2) top calc(var(--s) * 3),
+    right var(--s) top calc(var(--s) * 3),
+
+    0 calc(var(--s) * 4),
+    var(--s) calc(var(--s) * 4),
+    right var(--s) top calc(var(--s) * 4),
+    right 0 top calc(var(--s) * 4),
+
+    0 calc(var(--s) * 5),
+    var(--s) calc(var(--s) * 5),
+    right var(--s) top calc(var(--s) * 5),
+    right 0 top calc(var(--s) * 5),
+
+    left 0 bottom calc(var(--s) * 4),
+    left var(--s) bottom calc(var(--s) * 4),
+    right var(--s) bottom calc(var(--s) * 4),
+    right 0 bottom calc(var(--s) * 4),
+
+    left var(--s) bottom calc(var(--s) * 3),
+    left calc(var(--s) * 2) bottom calc(var(--s) * 3),
+    right calc(var(--s) * 2) bottom calc(var(--s) * 3),
+    right var(--s) bottom calc(var(--s) * 3),
+
+    left calc(var(--s) * 2) bottom calc(var(--s) * 2),
+    left calc(var(--s) * 3) bottom calc(var(--s) * 2),
+    right calc(var(--s) * 3) bottom calc(var(--s) * 2),
+    right calc(var(--s) * 2) bottom calc(var(--s) * 2),
+
+    left calc(var(--s) * 3) bottom var(--s),
+    left calc(var(--s) * 4) bottom var(--s),
+    right calc(var(--s) * 3) bottom var(--s),
+
+    left calc(var(--s) * 4) bottom 0;
+}

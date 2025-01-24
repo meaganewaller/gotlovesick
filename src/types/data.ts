@@ -406,10 +406,33 @@ export type CategoryMeta = Omit<PageMeta, 'wordsCount'> & {
   relatedTags?: PageLink[];
 };
 
-export type Category = Page & {
-  id: number;
-  meta: CategoryMeta;
-};
+export type Category = {
+  name: string;
+  description: string;
+  slug: string;
+  key: string;
+  seo: WPSeo;
+  posts: {
+    nodes: {
+      slug: string;
+      title: string;
+      date: string;
+      postDetails: {
+        description: string;
+      }
+    }[]
+    pageInfo: {
+      offsetPagination: {
+        total: number;
+      }
+    }
+  }
+}
+
+// export type Category = Page & {
+//   id: number;
+//   meta: CategoryMeta;
+// };
 
 export type TagMeta = Omit<PageMeta, 'wordsCount'> & {
   articles?: ArticlePreview[];

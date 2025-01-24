@@ -14,7 +14,7 @@ type Props = {
 }
 
 const Page = async ({ searchParams }: Props) => {
-  const perPage = 10;
+  const perPage = 9;
   let params = await searchParams;
   let page = params.page ? parseInt(params.page) : 1;
   let currentPage = page;
@@ -28,7 +28,7 @@ const Page = async ({ searchParams }: Props) => {
 
   const posts = response.posts?.nodes;
 
-  if (posts?.length === 0) {
+  if (posts && posts?.length === 0) {
     return (
       <div>
         <h1>No posts found</h1>
@@ -46,8 +46,8 @@ const Page = async ({ searchParams }: Props) => {
         </header>
 
         <section className="posts">
-          {posts?.map((post: Post) => (
-            <div key={post.key}>
+          {posts.map((post: Post) => (
+            <div key={post.key} className='pixel-border card'>
               <h1>{post.title}</h1>
               <span>{formatDateAsString(post.date)}</span>
               <p>{post.postDetails?.description}</p>

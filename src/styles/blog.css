@@ -222,6 +222,55 @@ main#blog-page .layout {
     overflow: hidden;
   }
 
+  .posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 50px;
+
+    .card {
+      height: 100%;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+
+      h1 {
+        font-size: 1.5rem;
+        margin: 0;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      span {
+        font-size: 1rem;
+        color: var(--pink);
+        text-align: center;
+      }
+
+      p {
+        margin-top: 10px;
+        font-size: 1rem;
+        line-height: 1.5;
+        flex-grow: 1;
+      }
+
+      a {
+        margin-top: 10px;
+        text-align: center;
+        background-color: var(--pink);
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: var(--purple);
+        }
+      }
+    }
+  }
+
   div[role='grid'] {
     padding: 10px;
     perspective: 1000px;

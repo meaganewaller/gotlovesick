@@ -1,15 +1,15 @@
-import type { GraphQLNodes, Nullable, Post } from '@/types'
+import type { Nullable, Post } from '@/types'
 import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers'
 
 type PostsResponse = {
-  posts: {
+  posts: Nullable<{
     nodes: Post[];
     pageInfo: { offsetPagination: { total: number }};
-  }
+  }>
 }
 
-const fetchAllPostsQuery = `query FetchAllPosts($size: Int!, $offset: Int!) {
-  posts(where: { offsetPagination: { size: $size, offset: $offset }, orderby: { field: DATE, order: DESC }}) {
+const postsQuery = `query FetchAllPosts($categorySlug: String, $size: Int!, $offset: Int!) {
+  posts(where: { offsetPagination: { size: $size, offset: $offset }, orderby: { field: DATE, order: DESC }, categoryName: $categorySlug }) {
     nodes {
       key: id
       author {
@@ -37,22 +37,6 @@ const fetchAllPostsQuery = `query FetchAllPosts($size: Int!, $offset: Int!) {
         }
         description
       }
-      tags {
-        edges {
-          node {
-            name
-            slug
-          }
-        }
-      }
-      categories {
-        edges {
-          node {
-            name
-            slug
-          }
-        }
-      }
     }
     pageInfo {
       offsetPagination {
@@ -62,12 +46,12 @@ const fetchAllPostsQuery = `query FetchAllPosts($size: Int!, $offset: Int!) {
   }
 }`
 
-export async function fetchAllPosts(page: number, perPage: number): Promise<PostsResponse> {
+export const fetchPostsByCategory = async (categorySlug: string, page: number, perPage: number): Promise<PostsResponse> => {
   const response = await fetchGraphQL<PostsResponse>({
-    query: fetchAllPostsQuery,
+    query: postsQuery,
     url: getGraphQLUrl(),
-    variables: { offset: (page - 1) * perPage, size: perPage },
-  });
+    variables: { categorySlug, offset: (page - 1) * perPage, size: perPage }
+  })
 
   return response;
-};
+}

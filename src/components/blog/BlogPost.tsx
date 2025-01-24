@@ -62,7 +62,7 @@ export function BlogPost({ slug }: { slug: string }) {
               <span>{formatDateAsString(post.date)}</span>
             </li>
             <li>
-              <Link href={"#"}>{post.commentCount} comments</Link>
+              <Link href={"#comments"}>{post.commentCount} comments</Link>
             </li>
             <li>
               by <span>{post.author.node.name}</span>
