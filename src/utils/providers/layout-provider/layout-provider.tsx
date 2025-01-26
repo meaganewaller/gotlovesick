@@ -4,7 +4,7 @@ import ThemeSwap from '@/components/ThemeSwap';
 import FontSwap from '@/components/FontSwap';
 import React from 'react';
 import { usePathname } from 'next/navigation';
-import { WPMenu } from '@/types';
+import { WPMenu } from '@/types'
 import Sidebar from '@/components/Sidebar';
 import RightSidebar from '@/components/RightSidebar';
 import { useEffect } from 'react'

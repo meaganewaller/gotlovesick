@@ -21,7 +21,6 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   const [theme, setTheme] = useState<string>('pixel-princess');
 
   const changeTheme = (nextTheme: string) => {
-    console.log("theme is:", nextTheme);
     setTheme(nextTheme);
     localStorage.setItem('theme', nextTheme);
   };

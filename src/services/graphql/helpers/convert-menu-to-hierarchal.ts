@@ -39,7 +39,5 @@ export function convertMenuToHierarchal(
     }
   });
 
-  console.log("tree", tree);
-
   return tree;
 }

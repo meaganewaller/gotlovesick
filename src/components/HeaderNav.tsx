@@ -1,15 +1,5 @@
-import { Nullable } from '@/types';
+import { MenuItem } from '@/types';
 import Link from 'next/link';
-
-type MenuItem = {
-  key: string
-  title: string
-  order: number
-  path: string
-  url: string
-  parentId: Nullable<String>
-  children: MenuItem[]
-}
 
 type Menu = MenuItem[]
 

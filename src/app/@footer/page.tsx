@@ -1,7 +1,7 @@
 import AccessCounter from '@/components/AccessCounter';
 import Link from 'next/link';
 import { fetchMenu } from '@/services/graphql';
-import { MenuLocationEnum, WPMenu, MenuItem } from '@/types';
+import { MenuLocationEnum, WPMenu, WPMenuItem } from '@/types';
 
 export default async function Footer() {
   const footerMenu: WPMenu = await fetchMenu(MenuLocationEnum.Footer);
@@ -20,7 +20,7 @@ export default async function Footer() {
         </div>
 
         {footerMenu.nodes.length > 0 && <ul className="footer-menu">
-          {footerMenu.nodes.map((item: MenuItem) => (
+          {footerMenu.nodes.map((item: WPMenuItem) => (
             <li key={item.key}>
               <Link
                 href={

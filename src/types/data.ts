@@ -105,12 +105,12 @@ export type WPMenu = {
 
 export type MenuItem = {
   key: string;
-  parentId: Nullable<string>;
-  children?: MenuItem[];
   title: string;
-  url: string;
-  path: string;
   order: number;
+  path: string;
+  url: string;
+  parentId: Nullable<string>;
+  children: MenuItem[];
 };
 
 export type NestedMenuItem = MenuItem & {
