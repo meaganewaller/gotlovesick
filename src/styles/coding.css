@@ -1,0 +1,68 @@
+main#coding-page {
+  grid-area: main;
+  background: var(--content-background-color);
+  overflow-y: auto;
+  padding: var(--padding);
+  padding-top: 100px;
+  border: 2px solid var(--borders);
+  border-bottom: 0;
+  border-top: 0;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+main#coding-page .layout {
+  margin: 50px auto;
+  display: grid;
+  grid-template-areas: "sidebar content";
+  grid-template-columns: 1fr 3fr;
+  gap: 20px;
+
+  .header {
+    text-align: center;
+    margin-bottom: 55px;
+  }
+
+  aside.sidebar {
+    grid-area: sidebar;
+    background-color: rgba(var(--section-background-color), .54);
+    padding: var(--padding);
+    border-radius: 12px;
+    border: 1px solid var(--borders);
+
+    h2 {
+      text-align: center;
+      margin-bottom: 15px;
+      font-size: 1.2em;
+    }
+  }
+
+  article.content {
+    grid-area: content;
+
+    div.group {
+      margin-top: 15px;
+      border: .5px dashed var(--borders);
+      padding: var(--padding);
+      border-radius: 12px;
+
+      .callout {
+        margin: 15px 0;
+        padding: 15px;
+        border: 1px solid var(--borders);
+        border-radius: 12px;
+        background: var(--callout-background-color);
+        color: var(--callout-color);
+
+        a {
+          color: var(--callout-color);
+          text-decoration: wavy underline;
+
+          &:hover {
+            font-style: italic;
+          }
+        }
+      }
+    }
+  }
+}

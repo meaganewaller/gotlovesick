@@ -61,6 +61,7 @@ body {
   max-width: 100%;
   padding: 0;
   transition: background 0.3s ease 0s;
+  cursor: var(--cursor);
 }
 
 div[data-font='readable-font'] {
@@ -96,15 +97,44 @@ div[data-font='readable-font'] {
   }
 }
 
-div[data-theme='light'],
-div[data-theme='dark'] {
+
+div[data-theme='pixel-princess'],
+div[data-theme='rainbow'] {
   padding: var(--margin);
   width: 100%;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  section.header-title-container h1 {
+    display: none;
+  }
 }
+
+div[data-theme='rainbow'] {
+  section.header-title-container h1.rainbow {
+    display: block;
+    font-family: var(--header-title-font);
+    -webkit-text-stroke-width: 5px;
+    -webkit-text-stroke-color: white;
+  }
+}
+
+div[data-theme='pixel-princess'] {
+  section.header-title-container h1.glitter {
+    display: block;
+    font-family: var(--header-title-font);
+    text-transform: capitalize;
+    background-image: url("/images/bg/pinkglitter.gif");
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(1px 1px #FC36BA) drop-shadow(0 -1px #FC36BA) drop-shadow(1px 0 1px #FC36BA) drop-shadow(-1px 0 #FC36BA);
+  }
+}
+
 
 body ::selection {
   color: var(--text-color);
@@ -116,19 +146,22 @@ body a:hover,
 body a:focus,
 body a:visited {
   color: var(--text-color);
-  cursor:
-    url('/cursors/pointer.cur') 7 5,
-    pointer;
+  cursor: var(--pointer-cursor);
   text-decoration: none;
+}
+
+body select {
+  font-family: var(--font-cute);
+  font-size: 1.3rem;
+  line-height: 1.5;
+  cursor: var(--pointer-cursor);
 }
 
 body button {
   font-family: var(--font-cute);
   font-size: 1.3rem;
   line-height: 1.5;
-  cursor:
-    url('/cursors/pointer.cur') 7 5,
-    pointer;
+  cursor: var(--pointer-cursor);
 }
 
 #skip-to-sitemap-link,
@@ -160,6 +193,8 @@ body button {
   top: 7px;
   z-index: 999999;
 
+
+  select,
   button {
     display: flex;
     align-content: center;
@@ -201,6 +236,7 @@ body button {
 }
 
 [data-font='readable-font'] button,
+[data-font='readable-font'] select,
 [data-font='readable-font'] a,
 [data-font='readable-font'] h1,
 [data-font='readable-font'] h2,
@@ -212,7 +248,7 @@ body button {
 }
 
 [data-font='readable-font'] #font-toggler button,
-[data-font='readable-font'] #theme-toggler button {
+[data-font='readable-font'] #theme-toggler select {
   padding: 5px 9px;
 }
 

@@ -1,8 +1,8 @@
-import type { Nullable, WPMenu, MenuLocationEnum } from '@/types';
+import type { Nullable, WPMenu, MenuLocationEnum, GraphQLNodes } from '@/types';
 import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers';
 
 export type MenuResponse = {
-  menu: Nullable<WPMenu>;
+  menu: Nullable<GraphQLNodes<WPMenu>>;
 };
 
 const menuQuery = `query Menu($location: MenuLocationEnum) {
@@ -24,19 +24,18 @@ const menuQuery = `query Menu($location: MenuLocationEnum) {
  * @param {MenuLocationEnum} location - The menu location.
  * @returns {Promise<WPMenu>} The requested menu
  */
-export const fetchMenu = async (
-  location: MenuLocationEnum
-): Promise<WPMenu> => {
+export const fetchMenu = async (location: MenuLocationEnum) => {
   const response = await fetchGraphQL<MenuResponse>({
     query: menuQuery,
     url: getGraphQLUrl(),
     variables: { location },
   });
 
-  if (!response.menu)
+  if (!response.menu) {
     return Promise.reject(
       new Error(`No menu found for the following location ${location}.`)
     );
+  }
 
-  return response.menu;
+  return response.menu
 };

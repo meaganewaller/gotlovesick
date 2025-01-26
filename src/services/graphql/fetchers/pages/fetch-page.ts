@@ -11,7 +11,7 @@ const pageQuery = `query Page($slug: ID = "URI") {
     date
     modified
     slug
-    content
+    content(format: RENDERED)
     title
     featuredImage {
       node {

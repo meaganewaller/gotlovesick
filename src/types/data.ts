@@ -106,6 +106,7 @@ export type WPMenu = {
 export type MenuItem = {
   key: string;
   parentId: Nullable<string>;
+  children?: MenuItem[];
   title: string;
   url: string;
   path: string;
@@ -113,7 +114,7 @@ export type MenuItem = {
 };
 
 export type NestedMenuItem = MenuItem & {
-  children: MenuItem[];
+  children:  MenuItem[];
 };
 
 export type Author = {
