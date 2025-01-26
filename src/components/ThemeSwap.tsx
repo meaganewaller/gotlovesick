@@ -9,21 +9,26 @@ const ThemeSwap = () => {
     return null;
   }
 
+  // List of available themes
+  const themes = [
+    { id: 'pixel-princess', label: 'Pixel Princess' },
+    { id: 'rainbow', label: 'Rainbow' },
+  ];
+
   return (
     <div id="theme-toggler">
-      <button
-        type="button"
-        onClick={(e) => {
-          if (theme === 'light') {
-            changeTheme('dark');
-          }
-          if (theme === 'dark') {
-            changeTheme('light');
-          }
-        }}
+      <label htmlFor="theme-select" className="sr-only">pick theme:</label>
+      <select
+        id="theme-select"
+        value={theme}
+        onChange={(e) => changeTheme(e.target.value)}
       >
-        <span>toggle theme</span>
-      </button>
+        {themes.map(({ id, label }) => (
+          <option key={id} value={id}>
+            {label}
+          </option>
+        ))}
+      </select>
     </div>
   );
 };

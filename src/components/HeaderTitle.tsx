@@ -1,13 +1,12 @@
-'use client';
-
-import { useSplittingOnLoad } from '@/utils/hooks';
+import RainbowHeaderTitle from "@/components/RainbowHeaderTitle"
+import GlitterHeaderTitle from "@/components/GlitterHeaderTitle";
 
 function HeaderTitle() {
-  useSplittingOnLoad('rainbow');
   return (
-    <h1 data-splitting className="rainbow animated title">
-      got lovesick
-    </h1>
+    <section className="header-title-container">
+      <RainbowHeaderTitle />
+      <GlitterHeaderTitle />
+    </section>
   );
 }
 

@@ -41,5 +41,3 @@ export const STORAGE_KEY = {
 } as const;
 
 export const PRISM_THEME_ATTRIBUTE = 'data-prismjs-color-scheme-current';
-
-export const VALID_THEMES = ['light', 'dark', 'cupcake'] as const;

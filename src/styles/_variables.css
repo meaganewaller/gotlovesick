@@ -1,0 +1,100 @@
+:root {
+  --layout-grid-gap: 5px;
+  --max-width: 1300px;
+  --padding: 20px;
+}
+
+body[data-theme='pixel-princess'] {
+  --pointer-cursor: url('/cursors/pointer.cur') 7 5, pointer;
+  --cursor: url('/cursors/blue-butterfly.gif') 1 1, auto;
+  --footer-background-url: url("/images/bg/pixelplaid.gif");
+  --dropdown-bg-url: url("/images/bg/smallpinkplaid.gif");
+  --header-title-font: var(--font-handwritten-bold);
+  --background-image: url('/images/bg/roses.gif');
+  --background: #FFCCE8;
+  --borders: #E637BF;
+  --callout-background-color: #F2E2BA;
+  --callout-color: #00120B;
+  --cassette-background-2: #FF87C3;
+  --cassette-background: #FFD6EB;
+  --cassette-border: #FF5EB1;
+  --cassette-shadow: #FFB8DC;
+  --cassette-title-border: #FF5EB1;
+  --cassette-window: #e3e3e3;
+  --content-background-color: #fdfeff;
+  --footer-background-color: #F865B0;
+  --header-bg-size: normal;
+  --header-bg: url('/images/bg/greenstripes.jpg');
+  --header-nav-bg: url("/images/bg/pixelplaid.gif");
+  --header-nav-border-bg-bottom: url("/images/divider/greenbow.gif"), url("/images/divider/pink-sparkle-bows.gif");
+  --header-nav-border-bg: url("/images/divider/greenbow.gif");
+  --light: #c6e197;
+  --nav-border-bottom: 2px solid var(--nav-border-color);
+  --nav-border-color: #CA29A7;
+  --nav-button-gradient: linear-gradient(225deg, hsla(82, 55%, 74%, 1) 0%, hsla(315, 86%, 89%, 1) 50%, hsla(313, 78%, 56%, 1) 100%);
+  --nav-link-background-color: #FBCAEF;
+  --nav-link-background-hover: #F552A4;
+  --nav-link-border-color: #F865B0;
+  --nav-link-border-hover: #FBCAEF;
+  --nav-link-color-hover: #f5f9f0;
+  --nav-link: #00120b;
+  --pink:#F56FA1;
+  --purple: #DF73FF;
+  --section-background-color: 136, 221, 241;
+  --section-border-color-2: #53a263;
+  --section-border-color: #86C192;
+  --section-tab-background-color: #C6E197;
+  --sidebar-background-color: #FBCAEF;
+  --sidebar-background-url: url("/images/bg/greenplaid.png");
+  --sidebar-text-color: #F9DEC9;
+  --text-color: #00120B;
+}
+
+body[data-theme='rainbow'] {
+  --background-image: url('/images/bg/rainbowplaid.gif');
+  --background: #FFCCE8;
+  --borders: #6ab4f1;
+  --callout-background-color: #F2E2BA;
+  --callout-color: #00120B;
+  --cassette-background-2: #FF87C3;
+  --cassette-background: #FFD6EB;
+  --cassette-border: #FF5EB1;
+  --cassette-shadow: #FFB8DC;
+  --cassette-title-border: #FF5EB1;
+  --cassette-window: #e3e3e3;
+  --content-background-color: #fdfeff;
+  --dropdown-bg-url: url("/images/bg/starsstripes.gif");
+  --dropdown-bg: #c1ff9b;
+  --dropdown-border: #ffef9f;
+  --footer-background-color: #F865B0;
+  --header-bg-size: normal;
+  --header-bg: url('/images/bg/pink-sparkle-sky.gif');
+  --header-nav-bg: url("/images/bg/rainbow.webp");
+  --header-nav-border-bg-bottom: url("/images/divider/rainbowstarstatic.gif"), url("/images/divider/rainbowstars.gif");
+  --header-nav-border-bg: url("/images/divider/rainbowstarstatic.gif");
+  --light: #ffd3e8;
+  --nav-border-bottom: 2px solid var(--nav-border-color);
+  --nav-border-color: #CA29A7;
+  --nav-button-gradient: linear-gradient(225deg, hsla(82, 55%, 74%, 1) 0%, hsla(315, 86%, 89%, 1) 50%, hsla(313, 78%, 56%, 1) 100%);
+  --nav-link-background-color: #70d6ff;
+  --nav-link-background-hover: #F552A4;
+  --nav-link-border-color: #ab87ff;
+  --nav-link-border-hover: #FBCAEF;
+  --nav-link-color-hover: #f5f9f0;
+  --nav-link: #eff7f6;
+  --pink:#F56FA1;
+  --purple: #DF73FF;
+  --section-background-color: 226, 160, 255;
+  --section-border-color: #6ab4f1;
+  --section-border-color-2:#a983d8;
+  --section-tab-background-color: #fcf6bd;
+  --sidebar-background-color: #FBCAEF;
+  --sidebar-background-url: url("/images/bg/rainbow.jpg");
+  --sidebar-text-color: #F9DEC9;
+  --text-color: #00120B;
+  --header-title-font: var(--font-handwritten-bold);
+  --footer-background-url: url("/images/bg/starsstripes.gif");
+  --cursor: url('/cursors/rainbow.cur') 1 1, auto;
+  --pointer-cursor: url('/cursors/pointer.cur') 7 5, pointer;
+}
+

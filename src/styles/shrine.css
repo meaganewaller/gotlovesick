@@ -176,8 +176,6 @@ main#shrine-page {
 }
 
 body.taylor-swift-shrine {
-  background: url('/images/bg/taylorswift.gif') repeat center center;
-
   #slug-layout {
     grid-template:
       'header header header' auto

@@ -43,15 +43,6 @@ function RenderPage({ shrine }: { shrine: WPShrine }) {
   );
 }
 
-function getPathFromUrl(url: string) {
-  try {
-    const parsedUrl = new URL(url);
-    return parsedUrl.pathname;
-  } catch (e) {
-    console.error('Invalid URL:', url);
-    return url;
-  }
-}
 
 export default async function Archive(props: {
   params: Promise<{ slug: string[] }>;

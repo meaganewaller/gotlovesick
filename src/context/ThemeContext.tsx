@@ -18,7 +18,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   children,
 }: ThemeProviderProps) => {
   const [isMounted, setIsMounted] = useState(false);
-  const [theme, setTheme] = useState<string>('light');
+  const [theme, setTheme] = useState<string>('pixel-princess');
 
   const changeTheme = (nextTheme: string) => {
     setTheme(nextTheme);
@@ -27,7 +27,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
 
   // #region -- Load Theme
   const loadTheme = () => {
-    const storedTheme = localStorage.getItem('theme') || 'light';
+    const storedTheme = localStorage.getItem('theme') || 'pixel-princess';
     setTheme(storedTheme);
     setIsMounted(true);
   };

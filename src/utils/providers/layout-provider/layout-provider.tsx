@@ -4,7 +4,7 @@ import ThemeSwap from '@/components/ThemeSwap';
 import FontSwap from '@/components/FontSwap';
 import React from 'react';
 import { usePathname } from 'next/navigation';
-import { WPMenu } from '@/types';
+import { WPMenu } from '@/types'
 import Sidebar from '@/components/Sidebar';
 import RightSidebar from '@/components/RightSidebar';
 import { useEffect } from 'react'
@@ -26,7 +26,7 @@ export const LayoutProvider = ({
 
   const indexPaths = ['/'];
   const pagePaths = ['/meagan/', '/meagan', '/about', '/about/', '/colophon', '/colophon/', '/sitemap', '/sitemap/', '/contact', '/contact/', '/privacy-policy', '/privacy-policy/'];
-  const slugPaths = ['blog', 'fun-extras', 'playlists', 'shrines', 'tags', 'polls', 'quizzes', 'categories'];
+  const slugPaths = ['blog', 'fun-extras', 'playlists', 'shrines', 'tags', 'polls', 'quizzes', 'categories', 'coding', 'goodies', 'recs'];
 
   const useSlugPage = slugPaths.includes(pathname.split('/')[1]);
 
