@@ -5,6 +5,10 @@
 }
 
 body[data-theme='pixel-princess'] {
+  --red: #ff6176;
+  --blog-card-background: var(--callout-background-color);
+  --blog-footer-background: #FF87C3;
+  --blog-footer-text: #fdfeff;
   --pointer-cursor: url('/cursors/pointer.cur') 7 5, pointer;
   --cursor: url('/cursors/blue-butterfly.gif') 1 1, auto;
   --footer-background-url: url("/images/bg/pixelplaid.gif");
@@ -48,13 +52,24 @@ body[data-theme='pixel-princess'] {
   --sidebar-background-url: url("/images/bg/greenplaid.png");
   --sidebar-text-color: #F9DEC9;
   --text-color: #00120B;
+  --btn-color: #53a263;
+  --btn-background: #c6e197;
+  --btn-border-hover: var(--pink);
+  --btn-color-hover: var(--pink);
+  --btn-background-hover: #FFB8DC;
 }
 
 body[data-theme='rainbow'] {
+  --red: #ff6176;
   --background-image: url('/images/bg/rainbowplaid.gif');
   --background: #FFCCE8;
+  --btn-color: #53a263;
+  --btn-background: #c6e197;
+  --btn-border-hover: var(--pink);
+  --btn-color-hover: var(--pink);
+  --btn-background-hover: #FFB8DC;
   --borders: #6ab4f1;
-  --callout-background-color: #F2E2BA;
+  --callout-background-color: #EDFCEE;
   --callout-color: #00120B;
   --cassette-background-2: #FF87C3;
   --cassette-background: #FFD6EB;
@@ -96,5 +111,8 @@ body[data-theme='rainbow'] {
   --footer-background-url: url("/images/bg/starsstripes.gif");
   --cursor: url('/cursors/rainbow.cur') 1 1, auto;
   --pointer-cursor: url('/cursors/pointer.cur') 7 5, pointer;
+  --blog-card-background: var(--callout-background-color);
+  --blog-footer-background: #70d6ff;
+  --blog-footer-text: #eff7f6;
 }
 

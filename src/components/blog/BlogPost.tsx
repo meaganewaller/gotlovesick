@@ -1,14 +1,16 @@
 'use client'
 
 import { fetchPost } from '@/services/graphql'
-import { useState, useEffect, use } from 'react'
+import { useState, useEffect } from 'react'
 import Loader from '@/components/loader'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import Image from 'next/image'
 import Link from 'next/link'
 import rainbows from '~/images/dividers/rainbows.gif';
 import { CommentForm } from './CommentForm'
-import { formatDateAsString } from '@/utils/helpers'
+import { formatDateAsString, formatComments } from '@/utils/helpers'
+import classNames from 'classnames'
+import { WPComment } from '@/types'
 
 export function BlogPost({ slug }: { slug: string }) {
   const [post, setPost] = useState<any>(null)
@@ -54,7 +56,7 @@ export function BlogPost({ slug }: { slug: string }) {
           <Link
             className="category"
             href={post.categories.nodes[0].uri}>
-              {post.categories.nodes[0].name}
+            {post.categories.nodes[0].name}
           </Link>
           <h1>{post.title}</h1>
           <ul className="post-meta">
@@ -62,15 +64,15 @@ export function BlogPost({ slug }: { slug: string }) {
               <span>{formatDateAsString(post.date)}</span>
             </li>
             <li>
-              <Link href={"#comments"}>{post.commentCount} comments</Link>
+              <Link href={"#comments"}>{formatComments(post.commentCount || "0")}</Link>
             </li>
             <li>
               by <span>{post.author.node.name}</span>
             </li>
           </ul>
-        <div className="divider">
-          <Image src={rainbows} alt="" className='divider' />
-        </div>
+          <div className="divider">
+            <Image src={rainbows} alt="" className='divider' />
+          </div>
 
         </header>
 
@@ -82,26 +84,15 @@ export function BlogPost({ slug }: { slug: string }) {
 
         <article dangerouslySetInnerHTML={{ __html: post.content }} />
 
-        <section className="comments" id="comments">
-          <h3>Comments</h3>
-          {post.comments.nodes.map((comment: any) => (
-            <article key={comment.key}>
-              <header>
-                <Image alt={comment.author.node.name} height={64} loading="lazy" src={comment.author.node.avatar.url} width={64} />
-                <div className="comment">
-                  <h4
-                    className="m-0 p-0 leading-none"
-                    dangerouslySetInnerHTML={{ __html: comment.author.node.name }}
-                  />
-                  <time className="italic">{comment.date}</time>
-                </div>
-              </header>
-
-              <div dangerouslySetInnerHTML={{ __html: comment.content }} />
-            </article>
-          ))}
-        </section>
-        <CommentForm postSlug={post.slug} />
+        <div id="comments" className="comments-area">
+          <h2 className="comments-title">{formatComments(post.commentCount || 0)}</h2>
+          <ol className="comment-list">
+            {post.comments.nodes.map((comment: WPComment) => (
+            <li key={comment.key} className={classNames(["comment"])}>
+            </li>
+            ))}
+          </ol>
+        </div>
       </section>
     </div>
   )

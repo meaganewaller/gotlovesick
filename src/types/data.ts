@@ -48,6 +48,7 @@ export type WPCommentStatus = 'APPROVE' | 'HOLD' | 'SPAM' | 'TRASH';
 export type WPComment = {
   approved: boolean;
   author: GraphQLNode<WPCommentAuthor>;
+  key: string;
   content: string;
   databaseId: number;
   date: string;

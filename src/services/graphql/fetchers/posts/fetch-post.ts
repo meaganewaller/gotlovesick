@@ -8,6 +8,7 @@ export type PostResponse = {
 const postQuery = `query Post($slug: ID!) {
   post(id: $slug, idType: URI) {
     key: id
+    databaseId
     title
     slug
     content

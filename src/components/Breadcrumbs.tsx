@@ -27,10 +27,10 @@ export function Breadcrumbs({ breadcrumbs }: { breadcrumbs: { text: string, url:
               itemType="http://schema.org/ListItem"
             >
               {isLast ? (
-                <span itemProp="name">{breadcrumb.text}</span>
+                <span itemProp="name" dangerouslySetInnerHTML={{ __html: breadcrumb.text }} />
               ) : (
                 <Link itemProp="item" href={getPathFromUrl(breadcrumb.url)}>
-                  <span itemProp="name">{breadcrumb.text}</span>
+                  <span dangerouslySetInnerHTML={{ __html: breadcrumb.text }} />
                 </Link>
               )}
               <meta itemProp='position' content={`${index + 1}`} />

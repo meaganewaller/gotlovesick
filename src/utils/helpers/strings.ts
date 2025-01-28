@@ -1,3 +1,5 @@
+import { Nullable } from "@/types";
+
 /**
  * Convert a text into a slug or id.
  * https://gist.github.com/codeguy/6684588#gistcomment-3332719
@@ -63,3 +65,13 @@ export const trimTrailingChars = (str: string, char: string): string => {
 
 export const trimHTMLTags = (str: string) =>
   str.replace(/(?:<(?:[^>]+)>)/gi, '').replaceAll('\n\n\n\n', '\n\n');
+
+export const formatComments = (count: Nullable<number>): string => {
+  if (count === 0 || count === null) {
+    return "no comments yet"
+  } else if (count === 1) {
+    return "1 comment"
+  } else {
+    return `${count} comments`
+  }
+}
