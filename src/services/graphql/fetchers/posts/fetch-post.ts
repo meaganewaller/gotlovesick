@@ -1,8 +1,8 @@
-import type { Nullable, WPPost } from '@/types';
+import type { Post } from "@/types/blog";
 import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers';
 
 export type PostResponse = {
-  post: Nullable<any>;
+  post: Post
 };
 
 const postQuery = `query Post($slug: ID!) {
@@ -11,7 +11,7 @@ const postQuery = `query Post($slug: ID!) {
     databaseId
     title
     slug
-    content
+    content(format: RENDERED)
     author {
       node {
         name
@@ -64,18 +64,22 @@ const postQuery = `query Post($slug: ID!) {
     }
     comments(first: 30, where: { order: ASC}) {
       nodes {
-        content
-        key: id
-        date
+        id
+        databaseId
+        parentId
+        parentDatabaseId
         status
+        content(format: RENDERED)
+        date
         author {
+          name
+          url
           node {
             avatar {
               url
+              width
+              height
             }
-            email
-            name
-            url
           }
         }
       }
@@ -83,12 +87,6 @@ const postQuery = `query Post($slug: ID!) {
   }
 }`;
 
-/**
- * Retrieve a WordPress post by slug.
- *
- * @param {string} slug - The post slug.
- * @returns {Promise<WPPost>} The requested post.
- */
 export const fetchPost = async (slug: string) => {
   const response = await fetchGraphQL<PostResponse>({
     query: postQuery,

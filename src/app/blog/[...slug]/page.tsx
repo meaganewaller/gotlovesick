@@ -1,6 +1,11 @@
 import { notFound } from 'next/navigation'
 import '@/styles/blog.css'
-import { BlogPost } from '@/components/blog/BlogPost';
+import { BlogPost, CommentForm, CommentThread } from '@/components/blog';
+import { Comment } from "@/types/blog"
+import { fetchPost } from '@/services/graphql'
+import Loader from '@/components/loader';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
+import { formatComments, nestComments } from "@/utils/helpers"
 
 export default async function Archive(props: { params: Promise<{ slug: string[] }> }) {
   const params = await props.params;
@@ -10,86 +15,28 @@ export default async function Archive(props: { params: Promise<{ slug: string[] 
     return notFound();
   }
 
+  const post = await fetchPost(slug[0])
+
+
+  if (!post) {
+    return <Loader />
+  }
+
+  const nestedComments: Comment[] = nestComments(post.comments.nodes);
+
   return (
     <main id="blog-post-page">
-      <BlogPost slug={slug[0]} />
+      <div className="layout">
+        {post.seo?.breadcrumbs && (<Breadcrumbs breadcrumbs={post.seo.breadcrumbs} />)}
+
+        <BlogPost post={post} />
+
+        <section id="comments">
+          <h3 className='comments-title'>{formatComments(post.commentCount || 0)} on {post.title}{" . . . "}</h3>
+          <CommentThread comments={nestedComments} />
+          <CommentForm  postID={post.databaseId} />
+        </section>
+      </div>
     </main>
   )
 }
-
-// async function fetchData(slug: string) {
-//   let post = undefined;
-
-//   post = await fetchPost(slug);
-
-//   if (post) {
-//     return { post };
-//   }
-
-//   return { error: 'No post found' };
-// }
-
-// function RenderPage({ post }: { post: any }) {
-//   return (
-//     <main id="blog-page">
-//       <div className="blog-layout">
-//         <section className="" id="page-content">
-//           {post.seo?.breadcrumbs && (
-//             <Breadcrumbs breadcrumbs={post.seo?.breadcrumbs} />
-//           )}
-
-//           <main id="post">
-//             <section>
-//               <h1 dangerouslySetInnerHTML={{ __html: post.title }} />
-//               <BlogPost slug={post} />
-//             </section>
-//           </main>
-//         </section>
-//       </div>
-//     </main>
-//   );
-// }
-
-// export default async function Archive(props: {
-//   params: Promise<{ slug: string[] }>;
-// }) {
-//   const params = await props.params;
-//   const { slug } = params;
-
-//   const length = slug.length;
-
-//   if (length < 1) {
-//     return notFound();
-//   }
-
-//   if (length === 1) {
-//     const data = await fetchData(slug[0]);
-
-//     if (data.error) {
-//       return notFound();
-//     }
-
-//     if (data.post) {
-//       return <RenderPage post={data.post} />;
-//     }
-
-//     return notFound();
-//   }
-
-//   if (length > 1) {
-//     const withoutFirst = slug.slice(1);
-//     const data = await fetchData(withoutFirst.join('/'));
-
-//     if (data.error) {
-//       return notFound();
-//     }
-
-//     if (data.post) {
-//       return <RenderPage post={data.post} />;
-//     }
-
-//     return notFound;
-//   }
-
-//   return notFound();
-// }

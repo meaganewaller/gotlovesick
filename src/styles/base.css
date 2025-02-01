@@ -458,7 +458,7 @@ body button {
 
 .breadcrumb {
   position: relative;
-  border: 1px dashed;
+  border: 2px solid var(--purple);
   padding: 1em;
   padding-top: 1.2em;
   margin-top: 1em;
@@ -496,6 +496,8 @@ body button {
 
 .breadcrumb-heading {
   text-align: right;
+  color: var(--purple);
+  font-family: var(--font-cute);
   position: absolute;
   top: -10px;
   right: 1px;
@@ -504,8 +506,8 @@ body button {
   user-select: none;
   border-radius: 10px;
   background: var(--content-background-color);
-  text-transform: uppercase;
-  font-style: italic;
+  text-transform: lowercase;
+  font-size: 1.25rem;
   z-index: 2;
 }
 

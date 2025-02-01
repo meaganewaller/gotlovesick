@@ -4,7 +4,7 @@ main#blog-page {
   background: var(--content-background-color);
   overflow-y: auto;
   padding: var(--padding);
-  padding-top: 100px;
+  padding-top: var(--padding-top-content);
   border: 2px solid var(--borders);
   border-bottom: 0;
   border-top: 0;
@@ -171,7 +171,7 @@ main#blog-post-page .layout {
     }
   }
 
-  section.featured-image {
+  figure.featured-image {
     margin: 0 auto;
     max-width: 600px;
 
@@ -301,3 +301,216 @@ main#blog-page .layout {
   }
 }
 
+.comment-thread {
+  margin: 0 auto;
+  font-family: var(--font-pixel-sans);
+  max-width: 800px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.parent-comment {
+  border: 1px solid var(--pink);
+  padding: 16px;
+  margin-bottom: 12px;
+  background-color: #fdfdfd;
+  border-radius: 6px;
+}
+
+.nested-comment {
+  border-left: 3px solid var(--pink);
+  margin-left: 20px;
+  padding-left: 16px;
+  margin-top: 12px;
+  background-color: #fdfdfd;
+  padding: 12px;
+  border-radius: 4px;
+}
+
+.comment {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.comment img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+
+.author {
+  font-weight: bold;
+}
+
+.author a {
+  color: var(--pink);
+  text-decoration: none;
+}
+
+.author a:hover {
+  text-decoration: underline;
+}
+
+.author p {
+  font-size: 12px;
+  color: #666;
+  margin: 2px 0 0;
+}
+
+/* Comment content */
+.comment-content {
+  margin-top: 8px;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Nested reply wrapper */
+.nested-reply {
+  margin-top: 8px;
+  padding-left: 10px;
+  border-left: 2px dashed #ddd;
+}
+
+.comment-respond {
+  padding: 24px;
+  background-color: #fff;
+  border: 1px solid var(--pink);
+  border-radius: 8px;
+  max-width: 800px;
+  margin: 20px auto;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.comment-reply-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.comment-notes {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.required {
+  color: var(--red);
+  font-weight: bold;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.comment-form-comment textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  resize: vertical;
+  min-height: 120px;
+  transition: border-color 0.3s;
+}
+
+.comment-form-comment textarea:focus {
+  outline: none;
+  border-color: #007acc;
+  box-shadow: 0 0 4px rgba(0, 122, 204, 0.5);
+}
+
+.comment-input-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.comment-form-author,
+.comment-form-email,
+.comment-form-url {
+  flex: 1;
+  min-width: 200px;
+}
+
+.comment-form-author input,
+.comment-form-email input,
+.comment-form-url input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.comment-form-author input:focus,
+.comment-form-email input:focus,
+.comment-form-url input:focus {
+  outline: none;
+  border-color: #007acc;
+  box-shadow: 0 0 4px rgba(0, 122, 204, 0.5);
+}
+
+/* Floating labels */
+.float-label {
+  display: block;
+  font-size: 0.85rem;
+  color: #555;
+  margin-top: 4px;
+}
+
+.comment-form-cookies-consent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Submit button */
+.form-submit button {
+  background-color: #007acc;
+  color: #fff;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.form-submit button:hover {
+  background-color: #005fa3;
+  transform: translateY(-2px);
+}
+
+.form-submit button:active {
+  transform: translateY(0);
+}
+
+/* Status message */
+.comment-form p {
+  font-size: 0.95rem;
+  color: #007acc;
+  margin-top: 8px;
+}
+
+.comment-form p.error {
+  color: var(--red);
+}
+
+#comments {
+  h3 {
+    text-align: center;
+    color: var(--purple);
+    font-family: var(--font-cute);
+    font-size: 1.3rem;
+    text-transform: lowercase;
+  }
+}

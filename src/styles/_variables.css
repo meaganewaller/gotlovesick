@@ -57,9 +57,11 @@ body[data-theme='pixel-princess'] {
   --btn-border-hover: var(--pink);
   --btn-color-hover: var(--pink);
   --btn-background-hover: #FFB8DC;
+  --padding-top-content: 50px;
 }
 
 body[data-theme='rainbow'] {
+  --padding-top-content: 20px;
   --red: #ff6176;
   --background-image: url('/images/bg/rainbowplaid.gif');
   --background: #FFCCE8;

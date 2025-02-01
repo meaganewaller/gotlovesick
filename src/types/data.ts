@@ -139,7 +139,7 @@ export type Post = {
   slug: string;
   title: string;
   uri: string;
-  categories: { edges: { node: Term }[] };
+  categories: GraphQLNodes<Category>;
   tags: { edges: { node: Term }[] };
   postDetails: {
     headerImage: Nullable<GraphQLNode<WPImage>>;
