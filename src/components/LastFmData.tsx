@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { formatDateAsString } from "@/utils/helpers";
 import Link from 'next/link';
 import musicgirl from '~/images/musicgirl.webp';
 import { LastFmRecentTracksResponse } from '@/types';
@@ -82,7 +83,7 @@ export const LastFmData = () => {
             )}
             <p>{track.name}</p>
             <p>by: {track.artist['#text']}</p>
-            <p>listened on: {track.date['#text']}</p>
+            <p>played {formatDateAsString(track.date['#text'])}</p>
             <Link
               href={track.url}
               target="_blank"

@@ -48,6 +48,7 @@ export type WPCommentStatus = 'APPROVE' | 'HOLD' | 'SPAM' | 'TRASH';
 export type WPComment = {
   approved: boolean;
   author: GraphQLNode<WPCommentAuthor>;
+  key: string;
   content: string;
   databaseId: number;
   date: string;
@@ -138,7 +139,7 @@ export type Post = {
   slug: string;
   title: string;
   uri: string;
-  categories: { edges: { node: Term }[] };
+  categories: GraphQLNodes<Category>;
   tags: { edges: { node: Term }[] };
   postDetails: {
     headerImage: Nullable<GraphQLNode<WPImage>>;

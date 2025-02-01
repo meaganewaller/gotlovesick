@@ -43,12 +43,6 @@ export type FetchCommentsListInput = Pick<GraphQLEdgesInput, 'first'> & {
   where?: GraphQLCommentWhere;
 };
 
-/**
- * Retrieve the comments list.
- *
- * @param {FetchCommentsListInput} input - The input to retrieve comments.
- * @returns {Promise<WPComment[]>} An array of comments.
- */
 export const fetchCommentsList = async ({
   where,
   ...vars
