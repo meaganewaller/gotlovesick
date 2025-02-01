@@ -1,4 +1,3 @@
-'use client'
 import ButtonMarquee from "./ButtonMarquee"
 
 export const RightSidebar = () => {
