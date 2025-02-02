@@ -1,19 +1,19 @@
 main#shrines-page {
-  grid-area: main;
   background: var(--content-background-color);
-  overflow-y: auto;
-  padding: var(--padding);
-  padding-top: 100px;
-  border: 2px solid var(--borders);
-  border-top: 0;
   border-bottom: 0;
-  line-height: 1.5;
-  display: grid;
+  border-top: 0;
+  border: 2px solid var(--borders);
   column-gap: 10px;
-  row-gap: 15px;
+  display: grid;
+  grid-area: main;
+  grid-template-areas: 'content content' 'content content';
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
-  grid-template-areas: 'content content' 'content content';
+  line-height: 1.5;
+  overflow-y: auto;
+  padding-top: 100px;
+  padding: var(--padding);
+  row-gap: 15px;
 
   .shrine-container {
     grid-area: content;

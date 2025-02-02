@@ -12,6 +12,7 @@ const fetchAllPostsQuery = `query FetchAllPosts($size: Int!, $offset: Int!) {
   posts(where: { offsetPagination: { size: $size, offset: $offset }, orderby: { field: DATE, order: DESC }}) {
     nodes {
       key: id
+      databaseId
       author {
         node {
           name
@@ -24,6 +25,7 @@ const fetchAllPostsQuery = `query FetchAllPosts($size: Int!, $offset: Int!) {
       title
       slug
       date
+      commentCount
       postDetails {
         headerImage {
           node {

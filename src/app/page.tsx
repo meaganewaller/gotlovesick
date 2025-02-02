@@ -34,12 +34,15 @@ export default async function Home() {
                   __html: homepage.content
                 }}
               />
-              <Image
-              src={stardivider}
-              width={stardivider.width}
-              height={stardivider.height}
-              alt=""
-              />
+              <figure>
+                <Image
+                  className="divider"
+                  src={stardivider.src}
+                  width={stardivider.width}
+                  height={stardivider.height}
+                  alt=""
+                />
+              </figure>
             </div>
           </div>
           <div id="status-container">
@@ -66,7 +69,9 @@ export default async function Home() {
                   className="log-content"
                   dangerouslySetInnerHTML={{ __html: log.content }}
                 />
-                <Image src={stardivider} alt="" className="divider" />
+                <figure>
+                  <Image src={stardivider} alt="" className="divider" />
+                </figure>
               </div>
             ))}
           </div>

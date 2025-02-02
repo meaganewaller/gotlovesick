@@ -2,7 +2,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import rainbows from '~/images/dividers/rainbows.gif';
 import { formatDateAsString, formatComments } from '@/utils/helpers'
-import classNames from 'classnames'
 import { Post } from '@/types/blog'
 
 export function BlogPost({ post }: { post: Post }) {

@@ -62,7 +62,7 @@ const Page = async ({ searchParams }: Props) => {
 
               <div className="card__footer">
                 <div className="card__comments">
-                  <p className="card__text"><HiOutlineChat className="meta__image" size={18} />4</p>
+                  <p className="card__text"><HiOutlineChat className="meta__image" size={18} />{post.commentCount}</p>
                 </div>
 
                 <div className="card__calendar">

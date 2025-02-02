@@ -1,4 +1,12 @@
 .welcome-content {
+  margin: 0 auto;
+  width: 100%;
+
+  img.divider {
+    width: auto;
+    margin: 0 auto;
+  }
+
   .index-welcome-grid {
     display: grid;
     grid-gap: var(--layout-grid-gap);
@@ -7,23 +15,39 @@
       "status vibes"
       "updates vibes";
 
+    @media (max-width: 768px) {
+      grid-template-areas:
+        "welcome welcome"
+        "updates updates"
+        "status status"
+        "vibes vibes";
+
+      grid-template-columns: 1fr;
+    }
+
     #index-welcome-main {
       grid-area: welcome;
-      background: rgba(var(--section-background-color), 0.6);
-      border-radius: 10px;
-      border: 8px solid var(--light);
+      background-color: var(--blue-100);
+      border: 2px dashed var(--blue-500);
 
       h1 {
         text-align: center;
         font-family: var(--font-pixel-serif);
         font-size: 2.5rem !important;
-        color: var(--text-color);
+        color: var(--blue-500);
+        letter-spacing: 1px;
+        font-weight: semibold;
       }
 
       .welcome-content {
         justify-content: center;
         align-items: center;
         text-align: center;
+        color: var(--blue-600);
+      }
+
+      img {
+        margin-bottom: .75rem;
       }
     }
   }
@@ -34,119 +58,80 @@
   align-self: center;
 
   #statuscafe {
-    background: rgba(var(--section-background-color), 0.5);
-    border: 5px dotted var(--light);
-    border-radius: 10px;
+    background: var(--pink-100);
+    border: 2px dashed var(--pink-300);
+    border-radius: 8px;
     box-sizing: border-box;
     margin: 10px auto;
     padding: 10px;
     width: 80%;
+
+    a {
+      color: var(--pink-500);
+      font-size: .9rem;
+      letter-spacing: .5px;
+      font-weight: bold;
+      text-decoration-line: underline;
+      text-decoration-style: wavy;
+      text-underline-offset: 2px;
+      text-decoration-color: var(--pink-700);
+
+      &:hover,
+      &:focus {
+        color: var(--pink-300);
+        text-decoration-color: var(--pink-500);
+        font-style: italic;
+      }
+    }
   }
 
   #statuscafe-username {
-    font-size: .8em;
+    font-size: .75rem;
     min-height: 1em;
     margin-bottom: .5em;
-
-    a {
-      font-size: 1em;
-      font-style: italic;
-      font-weight: bold;
-    }
+    color: var(--pink-700);
   }
 
   #statuscafe-content {
     font-size: .95em;
     min-height: 2.5em;
     line-height: 1;
-
-    a {
-      display: block;
-      margin-top: 3px;
-      opacity: .7;
-      font-style: italic;
-    }
-
-    a:hover,
-    a:focus {
-      font-style: normal;
-      opacity: 1;
-      text-decoration: underline;
-    }
-  }
-}
-
-#vibes {
-  grid-area: vibes;
-  border: 3px solid var(--nav-border-color);
-  background: var(--section-tab-background-color);
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-
-  .track {
-    margin-top: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    text-align: center;
-
-    h3 {
-      font-family: var(--font-cute);
-      font-size: 1.5em !important;
-    }
-
-    p {
-      font-size: 1.2em;
-      padding: 0 !important;
-      margin: 0 !important;
-      line-height: 1.5 !important;
-    }
-
-    a {
-      display: block;
-      width: fit-content;
-      margin: 10px auto;
-      padding: 5px;
-    }
-  }
-
-  .track-cover {
-    border-radius: 50%;
-    border: 3px solid var(--light);
-  }
-
-  img.pixel-girl {
-    padding: 0;
-    margin: 0;
-    align-self: flex-end
+    color: var(--pink-600);
   }
 }
 
 #recent-logs {
-  border: 1px dashed;
+  border: 5px dotted var(--green-500);
   grid-area: updates;
-  position: relative;
-  border-radius: 15px;
-  width: 80%;
+  margin: 0 auto;
   padding: 1em;
-  padding-top: 1.2em;
+  position: relative;
+  width: 95%;
 
   .inner {
-    text-align: right;
-    position: absolute;
-    top: -10px;
-    right: 4px;
-    line-height: 1;
-    padding: 0 .5em;
     background: var(--content-background-color);
-    z-index: 2;
     font-size: 1.25em;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-weight: bold;
+    font-family: var(--font-cute);
+    line-height: 1;
+    position: absolute;
+    padding: 0 7px;
+    right: 0;
+    text-transform: lowercase;
+    top: -10px;
+    z-index: 2;
+
+    span {
+      text-decoration-line: underline;
+      text-decoration-style: wavy;
+      text-underline-offset: 5px;
+      text-decoration-color: var(--pink-300);
+      color: var(--green-600);
+    }
   }
 
   .log {
+    color: var(--green-700);
     overflow-y: auto;
     overflow-x: clip;
     margin-top: .5em;
@@ -154,9 +139,14 @@
     padding: .5em;
     line-height: 1.2;
 
+    figure {
+      margin: 0 auto;
+      width: 100%;
+      text-align: center;
+    }
+
     .divider {
-      margin-top: 10px;
-      margin-bottom: 5px;
+      margin: 10px auto;
     }
   }
 }

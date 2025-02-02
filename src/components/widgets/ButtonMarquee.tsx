@@ -22,7 +22,7 @@ import web from '~/images/marquee/web.gif';
 import fishtank from '~/images/marquee/fishtank.webp';
 import vim from '~/images/marquee/vim.gif';
 
-export default function ButtonMarquee() {
+export function ButtonMarquee() {
   return (
     <div className="marquee-container" aria-hidden="true" tabIndex={1}>
       <h2 className="sr-only">Button Marquee</h2>
@@ -83,3 +83,4 @@ export default function ButtonMarquee() {
     </div>
   );
 }
+
