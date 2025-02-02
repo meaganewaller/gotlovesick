@@ -3,6 +3,7 @@ import Image from 'next/image'
 import rainbows from '~/images/dividers/rainbows.gif';
 import { notFound } from "next/navigation";
 import { WPPage } from "@/types";
+import "@/styles/pages/recs.css";
 
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 
@@ -20,7 +21,7 @@ async function fetchData(slug: string) {
 
 function RenderPage({ page }: { page: WPPage }) {
   return (
-    <main id="coding-page" className={`${page.slug}`}>
+    <main id="recs-page" className={`${page.slug}`}>
       <div className="layout">
         <section className="main-content">
           {page.seo?.breadcrumbs && <Breadcrumbs breadcrumbs={page.seo?.breadcrumbs} />}

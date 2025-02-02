@@ -1,0 +1,11 @@
+main#recs-page {
+  background: var(--content-background-color);
+  border: 2px solid var(--borders);
+  border-bottom: 0;
+  border-top: 0;
+  grid-area: main;
+  min-height: 100vh;
+  padding: var(--padding);
+  padding-top: var(--padding-top-content);
+  overflow-y: auto;
+}
