@@ -1,6 +1,8 @@
 @use '@fontsource/ibm-plex-mono';
+@use '@fontsource/ibm-plex-sans';
 
 :root {
+  --readable-font: 'IBM Plex Sans', Arial, sans-serif;
   --font-mono: 'IBM Plex Mono';
   --font-sans: 'basiic';
   --font-serif: 'Romance A';

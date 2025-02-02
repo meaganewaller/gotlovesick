@@ -1,0 +1,72 @@
+#vibes {
+  grid-area: vibes;
+  margin: 0 auto;
+  width: 90%;
+  border: 5px dotted var(--yellow-500);
+  background: var(--yellow-200);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+
+  .track {
+    margin-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+
+    .track-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .track-cover {
+        margin: 0 auto;
+      }
+    }
+
+    h3 {
+      color: var(--yellow-800);
+      text-transform: lowercase;
+      font-weight: 200;
+      font-family: var(--font-cute);
+      font-size: 1.7em !important;
+    }
+
+    p {
+      color: var(--yellow-900);
+      font-size: 1.2em;
+      padding: 0 !important;
+      margin: 0 !important;
+      line-height: 1.5 !important;
+    }
+
+    a {
+      background-color: var(--yellow-800);
+      color: var(--yellow-100);
+      display: block;
+      width: fit-content;
+      margin: 10px auto;
+      padding: 10px 12px;
+      border: 1px solid var(--yellow-900);
+
+      &:hover,
+      &:focus {
+        background-color: var(--yellow-100);
+        color: var(--yellow-800);
+      }
+    }
+  }
+
+  .track-cover {
+    border: 3px dotted var(--yellow-700);
+    border-radius: 100%;
+    width: 7rem;
+    height: 7rem;
+  }
+
+  img.pixel-girl {
+    padding: 0;
+    margin: 0;
+    align-self: flex-end
+  }
+}

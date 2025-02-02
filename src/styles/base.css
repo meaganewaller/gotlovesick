@@ -63,8 +63,8 @@ input[type="color"]::-webkit-input-placeholder,
 .fs-dropdown,
 .fs-search,
 .fs-wrap.multiple .fs-option .fs-checkbox i {
-	color: var(--text-color) !important;
-	border-color: var(--borders) !important;
+	color: var(--text-color);
+	border-color: var(--borders);
 	font-size: 90%;
 }
 
@@ -93,7 +93,7 @@ textarea,
 tr,
 td,
 th {
-  border-color: var(--borders) !important;
+  border-color: var(--borders);
 }
 
 blockquote,
@@ -269,7 +269,7 @@ body {
 }
 
 div[data-font='readable-font'] {
-  font-family: Arial, sans-serif !important;
+  font-family: var(--readable-font);
 
   h1,
   h2,
@@ -277,30 +277,33 @@ div[data-font='readable-font'] {
   h4,
   h5,
   h6 {
-    font-family: Arial, sans-serif !important;
+    font-family: var(--readable-font) !important;
   }
 
   a {
-    font-family: Arial, sans-serif !important;
+    font-family: var(--readable-font) !important;
   }
 
   div {
-    font-family: Arial, sans-serif !important;
+    font-family: var(--readable-font);
   }
 
   span {
-    font-family: Arial, sans-serif !important;
+    font-family: var(--readable-font);
   }
 
   p {
-    font-family: Arial, sans-serif !important;
+    font-family: var(--readable-font);
   }
 
   .section-title {
-    font-family: Arial, sans-serif !important;
+    font-family: var(--readable-font);
+  }
+
+  .header-title-container {
+    font-family: var(--header-title-font) !important;
   }
 }
-
 
 div[data-theme='pixel-princess'],
 div[data-theme='rainbow'] {
@@ -313,22 +316,27 @@ div[data-theme='rainbow'] {
 
   section.header-title-container h1 {
     display: none;
+    font-family: var(--header-title-font) !important;
   }
 }
 
 div[data-theme='rainbow'] {
   section.header-title-container h1.rainbow {
     display: block;
-    font-family: var(--header-title-font);
+    font-family: var(--header-title-font) !important;
     -webkit-text-stroke-width: 5px;
     -webkit-text-stroke-color: white;
+  }
+
+  section.header-title-container h1.glitter {
+    display: none;
   }
 }
 
 div[data-theme='pixel-princess'] {
   section.header-title-container h1.glitter {
     display: block;
-    font-family: var(--header-title-font);
+    font-family: var(--header-title-font) !important;
     text-transform: capitalize;
     background-image: url("/images/bg/pinkglitter.gif");
     background-repeat: repeat;
@@ -336,6 +344,10 @@ div[data-theme='pixel-princess'] {
     background-clip: text;
     color: transparent;
     filter: drop-shadow(1px 1px #FC36BA) drop-shadow(0 -1px #FC36BA) drop-shadow(1px 0 1px #FC36BA) drop-shadow(-1px 0 #FC36BA);
+  }
+
+  section.header-title-container h1.rainbow {
+    display: none;
   }
 }
 
@@ -397,7 +409,6 @@ body button {
   top: 7px;
   z-index: 999999;
 
-
   select,
   button {
     display: flex;
@@ -448,7 +459,7 @@ body button {
 [data-font='readable-font'] h4,
 [data-font='readable-font'] h5,
 [data-font='readable-font'] h6 {
-  font-family: Arial, sans-serif;
+  font-family: var(--readable-font);
 }
 
 [data-font='readable-font'] #font-toggler button,
@@ -456,48 +467,54 @@ body button {
   padding: 5px 9px;
 }
 
-.breadcrumb {
+.breadcrumbs {
   position: relative;
-  border: 2px solid var(--purple);
-  padding: 1em;
-  padding-top: 1.2em;
-  margin-top: 1em;
+  display: flex;
+  border: 2px dotted var(--breadcrumb-border);
+  border-radius: 8px;
+  padding: .75rem;
+  margin-top: 1rem;
 }
 
-.breadcrumb ol {
+.breadcrumbs ol {
   display: flex;
-  line-height: 1.2;
-  font-size: .9em;
-  flex-wrap: wrap;
-  gap: 10px;
+  align-items: center;
   list-style: none;
   padding: 0;
   margin: 0;
+  gap: 8px;
 
   li {
-    background: #6f2dbd;
-    padding: 5px 10px;
-    color: #DDD1EF;
+    color: var(--breadcrumb-text);
+
+    .breadcrumb-group {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+
+      .icon {
+        color: var(--breadcrumb-border);
+      }
+    }
 
     a {
-      color: #fff;
-
+      color: var(--breadcrumb-link);
     }
 
     &:not(:last-child):hover {
       a {
-        color: #222;
+        color: var(--breadcrumb-link-hover);
       }
 
-      background-color: #F5E663;
+      background-color: var(--breadcrumb-background-hover);
     }
   }
 }
 
 .breadcrumb-heading {
   text-align: right;
-  color: var(--purple);
-  font-family: var(--font-cute);
+  color: var(--breadcrumb-heading);
+  font-family: var(--breadcrumb-font);
   position: absolute;
   top: -10px;
   right: 1px;

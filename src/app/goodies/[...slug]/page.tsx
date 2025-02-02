@@ -4,6 +4,8 @@ import rainbows from '~/images/dividers/rainbows.gif';
 import { notFound } from "next/navigation";
 import { WPPage } from "@/types";
 
+import "@/styles/pages/goodies.css"
+
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 async function fetchData(slug: string) {
@@ -20,10 +22,10 @@ async function fetchData(slug: string) {
 
 function RenderPage({ page }: { page: WPPage }) {
   return (
-    <main id="coding-page" className={`${page.slug}`}>
+    <main id="goodies-page" className={`${page.slug}`}>
       <div className="layout">
+        {page.seo?.breadcrumbs && <Breadcrumbs breadcrumbs={page.seo?.breadcrumbs} />}
         <section className="main-content">
-          {page.seo?.breadcrumbs && <Breadcrumbs breadcrumbs={page.seo?.breadcrumbs} />}
           <header className="header">
             <div className="about-section">
               <h1 dangerouslySetInnerHTML={{ __html: page.title }} />

@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { TiChevronRight } from "react-icons/ti";
+
 
 function getPathFromUrl(url: string) {
   try {
@@ -12,7 +14,7 @@ function getPathFromUrl(url: string) {
 
 export function Breadcrumbs({ breadcrumbs }: { breadcrumbs: { text: string, url: string }[] }) {
   return (
-    <nav className="breadcrumb">
+    <nav className="breadcrumbs">
       <div className="breadcrumb-heading">You are here:</div>
       <ol itemScope itemType="http://schema.org/BreadcrumbList">
         {breadcrumbs.map((breadcrumb, index) => {
@@ -29,9 +31,12 @@ export function Breadcrumbs({ breadcrumbs }: { breadcrumbs: { text: string, url:
               {isLast ? (
                 <span itemProp="name" dangerouslySetInnerHTML={{ __html: breadcrumb.text }} />
               ) : (
-                <Link itemProp="item" href={getPathFromUrl(breadcrumb.url)}>
-                  <span dangerouslySetInnerHTML={{ __html: breadcrumb.text }} />
-                </Link>
+                  <div className="breadcrumb-group">
+                    <Link itemProp="item" href={getPathFromUrl(breadcrumb.url)}>
+                      <span dangerouslySetInnerHTML={{ __html: breadcrumb.text }} />
+                    </Link>
+                    <TiChevronRight className="icon" />
+                  </div>
               )}
               <meta itemProp='position' content={`${index + 1}`} />
             </li>

@@ -139,6 +139,7 @@ export type Post = {
   slug: string;
   title: string;
   uri: string;
+  commentCount: Nullable<number>;
   categories: GraphQLNodes<Category>;
   tags: { edges: { node: Term }[] };
   postDetails: {

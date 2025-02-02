@@ -2,8 +2,7 @@
 @import '../styles/_variables.css';
 @import '../styles/_animations.css';
 @import '../styles/_tooltip.css';
-@import '../styles/_nav.css';
+@import '../styles/_navbar.css';
+@import '../styles/_widgets.css';
 @import '../styles/base.css';
 @import '../styles/layout.css';
-/* @import '../styles/layouts.css'; */
-/* @import '../styles/wordpress.css'; */

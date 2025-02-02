@@ -1,32 +1,12 @@
+'use client';
+
 import { MenuItem } from '@/types';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 type Menu = MenuItem[]
 
 // Recursive function to render deeply nested menus
-function renderNestedMenu(item: MenuItem) {
-  return (
-   <li className="dropdown" key={item.key}>
-      <button
-        type="button"
-        className="dropdown__title"
-        aria-expanded="false"
-        aria-controls={`${item.title.toLowerCase().replace(/\s+/g, '-')}-dropdown`}
-      >
-        {item.title}
-      </button>
-      <ul
-        className="dropdown__menu"
-        id={`${item.title.toLowerCase().replace(/\s+/g, '-')}-dropdown`}
-      >
-        {item.children.map((child) =>
-          child.children.length > 0 ? renderNestedMenu(child) : renderMenuItem(child)
-        )}
-      </ul>
-    </li>
-  )
-}
-
 // Function to render a single menu item (leaf node)
 function renderMenuItem(item: MenuItem) {
   return (
@@ -41,8 +21,52 @@ function renderMenuItem(item: MenuItem) {
   );
 }
 
+function AccordionMenu({ item, isMobile }: { item: MenuItem; isMobile: boolean }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <li className="dropdown" key={item.key}>
+      <button
+        type="button"
+        className={`dropdown__title ${isOpen ? 'open' : ''}`}
+        onClick={() => isMobile && setIsOpen(!isOpen)} // Only toggle on mobile
+        aria-expanded={isMobile ? isOpen : undefined}
+        aria-controls={`${item.title.toLowerCase().replace(/\s+/g, '-')}-dropdown`}
+      >
+        {item.title}
+        {item.children.length > 0 && <span className="arrow">{isMobile ? (isOpen ? '▲' : '▼') : ''}</span>}
+      </button>
+
+      {(isMobile && isOpen) || !isMobile ? (
+        <ul className={`dropdown__menu ${isMobile && isOpen ? 'open' : ''}`}>
+          {item.children.map((child) =>
+            child.children.length > 0 ? (
+              <AccordionMenu key={child.key} item={child} isMobile={isMobile} />
+            ) : (
+              renderMenuItem(child)
+            )
+          )}
+        </ul>
+      ) : null}
+    </li>
+  );
+}
 
 export function HeaderNav({ menu }: { menu: Menu }) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+
   if (!menu || menu.length === 0) {
     return null
   }
@@ -51,9 +75,13 @@ export function HeaderNav({ menu }: { menu: Menu }) {
     <nav aria-label="Main navigation">
       <ul>
         {menu.map((item) =>
-          item.children.length > 0 ? renderNestedMenu(item) : renderMenuItem(item)
+          item.children.length > 0 ? (
+            <AccordionMenu key={item.key} item={item} isMobile={isMobile} />
+          ) : (
+              renderMenuItem(item)
+            )
         )}
       </ul>
     </nav>
-  )
+  );
 }
