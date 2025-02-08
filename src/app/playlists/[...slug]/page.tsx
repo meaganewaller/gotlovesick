@@ -1,7 +1,7 @@
 import { fetchPlaylist } from '@/services/graphql'
 import { notFound } from 'next/navigation'
 import { WPPlaylist } from '@/types'
-import '@/styles/playlist.css'
+import '@/styles/pages/playlists.css'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { Cassette } from "@/components/playlists"
 

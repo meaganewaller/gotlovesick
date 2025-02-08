@@ -1,7 +1,7 @@
 import React from "react";
 import { Metadata } from "next";
 import { fetchAllTutorials, fetchAllTutorialTypes, fetchAllSkillLevels } from "@/services/graphql"
-import { TutorialFilters, Pagination, Grid, TutorialList } from "@/components/tutorials"
+import { TutorialFilters, Pagination, TutorialList } from "@/components/tutorials"
 import '@/styles/pages/tutorials.css';
 
 export const metadata: Metadata = {

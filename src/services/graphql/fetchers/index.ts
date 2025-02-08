@@ -8,3 +8,4 @@ export * from './quizzes';
 export * from './polls';
 export * from './categories';
 export * from './tutorials';
+export * from './recs';

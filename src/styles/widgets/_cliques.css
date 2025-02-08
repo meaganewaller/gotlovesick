@@ -1,0 +1,41 @@
+#cliques {
+  align-items: center;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  padding: 1em;
+  padding-top: 1.2rem;
+  position: relative;
+  width: 100%;
+  background: var(--pink-100);
+  border: 1px solid var(--pink-500);
+
+  .inner {
+    background-color: var(--pink-400);
+    border-radius: 8px;
+    border: 1px solid var(--pink-500);
+    color: var(--pink-800);
+    font-family: var(--font-cute);
+    font-size: 1.2em;
+    line-height: 1;
+    padding: .1em .5em;
+    position: absolute;
+    text-align: center;
+    text-transform: lowercase;
+    top: -10px;
+  }
+
+  .clique-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+
+    a:hover,
+    a:focus {
+      transform: scale(1.05);
+    }
+  }
+}
+

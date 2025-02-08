@@ -3,7 +3,7 @@ import { fetchAllPosts } from "@/services/graphql";
 import { Post } from "@/types";
 import { HiOutlineChat, HiOutlineCalendar } from "react-icons/hi";
 import { formatDateAsString } from "@/utils/helpers";
-import '@/styles/blog.css';
+import '@/styles/pages/blog.css';
 import Link from "next/link";
 import Image from "next/image";
 

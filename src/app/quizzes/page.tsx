@@ -1,8 +1,7 @@
 import React from 'react'
 import { notFound } from 'next/navigation'
 import { fetchAllQuizzes } from '@/services/graphql'
-import '@/styles/quizzes.css';
-import { Grid } from "@/components/quizzes"
+import '@/styles/pages/quizzes.css';
 
 async function fetchQuizzes() {
   const quizzes = await fetchAllQuizzes()

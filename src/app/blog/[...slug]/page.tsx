@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation'
-import '@/styles/blog.css'
+import '@/styles/pages/blog.css'
 import { BlogPost, CommentForm, CommentThread } from '@/components/blog';
 import { Comment } from "@/types/blog"
 import { fetchPost } from '@/services/graphql'
@@ -16,7 +16,6 @@ export default async function Archive(props: { params: Promise<{ slug: string[] 
   }
 
   const post = await fetchPost(slug[0])
-
 
   if (!post) {
     return <Loader />

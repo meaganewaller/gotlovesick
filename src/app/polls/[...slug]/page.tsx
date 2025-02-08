@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import { Poll } from '@/components/Poll'
-import '@/styles/polls.css'
+import '@/styles/pages/polls.css'
 
 export default async function Archive(props: { params: Promise<{ slug: string[] }> }) {
   const params = await props.params;

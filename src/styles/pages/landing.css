@@ -1,0 +1,56 @@
+.welcome-content {
+  margin: 0 auto;
+  width: 100%;
+
+  img.divider {
+    width: auto;
+    margin: 0 auto;
+  }
+
+  .index-welcome-grid {
+    display: grid;
+    grid-gap: var(--layout-grid-gap);
+    grid-template-areas:
+      "welcome welcome"
+      "status vibes"
+      "updates vibes";
+
+    @media (max-width: 768px) {
+      grid-template-areas:
+        "welcome welcome"
+        "updates updates"
+        "status status"
+        "vibes vibes";
+
+      grid-template-columns: 1fr;
+    }
+
+    #index-welcome-main {
+      grid-area: welcome;
+      background-color: var(--blue-100);
+      border: 2px dashed var(--blue-500);
+
+      h1 {
+        text-align: center;
+        font-family: var(--font-pixel-serif);
+        font-size: 2.5rem !important;
+        color: var(--blue-500);
+        letter-spacing: 1px;
+        font-weight: semibold;
+      }
+
+      .welcome-content {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: var(--blue-600);
+      }
+
+      img {
+        margin-bottom: .75rem;
+      }
+    }
+  }
+}
+
+

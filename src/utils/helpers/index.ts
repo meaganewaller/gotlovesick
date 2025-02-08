@@ -2,6 +2,7 @@ import { formatDistance } from 'date-fns'
 export * from './graphql';
 export * from './strings';
 export * from './comments';
+export * from './genres';
 
 import { CONFIG } from '@/utils/config';
 

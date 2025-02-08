@@ -1,4 +1,4 @@
-import "@/styles/landing.css";
+import "@/styles/pages/landing.css";
 import Script from 'next/script';
 import {
   fetchPage,
@@ -47,6 +47,9 @@ export default async function Home() {
           </div>
           <div id="status-container">
             <div id="statuscafe">
+              <div className="inner">
+                <span>status</span>
+              </div>
               <div id="statuscafe-username" />
               <div id="statuscafe-content" />
             </div>
@@ -58,22 +61,25 @@ export default async function Home() {
           <LastFmData />
           <div id="recent-logs">
             <div className="inner">
-              <span>Changelog</span>
-            </div>
-            {recentLogs.map((log) => (
-              <div key={log.databaseId} className="log">
-                <h2>
-                  {log.title}
-                </h2>
-                <div
-                  className="log-content"
-                  dangerouslySetInnerHTML={{ __html: log.content }}
-                />
-                <figure>
-                  <Image src={stardivider} alt="" className="divider" />
-                </figure>
+              <div className="title">
+                <span>Changelog</span>
               </div>
-            ))}
+
+              {recentLogs.map((log) => (
+                <div key={log.databaseId} className="log">
+                  <h2>
+                    {log.title}
+                  </h2>
+                  <div
+                    className="log-content"
+                    dangerouslySetInnerHTML={{ __html: log.content }}
+                  />
+                  <figure>
+                    <Image src={stardivider} alt="" className="divider" />
+                  </figure>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
