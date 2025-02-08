@@ -20,6 +20,10 @@ textarea {
   border-radius: 0 !important;
 }
 
+input[type='checkbox'] {
+  background-color: var(--pink-500);
+}
+
 select,
 textarea,
 .comment-form input:placeholder-shown+label,

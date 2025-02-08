@@ -7,8 +7,8 @@ type PollResponse = {
 
 const pollQuery = `query FetchPoll($slug: ID!) {
   poll(id: $slug, idType: SLUG) {
-    key: id
     id
+    databaseId
     uri
     slug
     date

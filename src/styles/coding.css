@@ -3,7 +3,7 @@ main#coding-page {
   background: var(--content-background-color);
   overflow-y: auto;
   padding: var(--padding);
-  padding-top: 100px;
+  padding-top: var(--padding-top-content);
   border: 2px solid var(--borders);
   border-bottom: 0;
   border-top: 0;
@@ -21,6 +21,11 @@ main#coding-page .layout {
   .header {
     text-align: center;
     margin-bottom: 55px;
+  }
+
+  div[role='grid'] {
+    padding: 10px;
+    perspective: 1000px;
   }
 
   aside.sidebar {
@@ -66,3 +71,4 @@ main#coding-page .layout {
     }
   }
 }
+

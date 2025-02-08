@@ -5,6 +5,6 @@ export * from './posts';
 export * from './shrines';
 export * from './playlists';
 export * from './quizzes';
-export * from './fun-extras';
 export * from './polls';
 export * from './categories';
+export * from './tutorials';

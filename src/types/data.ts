@@ -1,4 +1,4 @@
-import type { StaticImageData } from 'next/image';
+// import type { StaticImageData } from 'next/image';
 import type { Nullable } from './generics';
 import type { GraphQLNode, GraphQLNodes } from './gql';
 
@@ -125,7 +125,7 @@ export type Author = {
     url: string;
   };
 };
-
+//
 export type Term = {
   name: string;
   slug: string;
@@ -155,38 +155,18 @@ export type WPPost = WPContent & {
   info: WPInfo;
 };
 
-export type WPPostLtd = {
-  key: string
-  uri: string
-  title: string
-  slug: string
-  hasBeenAnimated?: boolean
-  postDetails: {
-    description: string
-    headerImage: Nullable<GraphQLNode<WPImage>>
-  }
-}
-
-// export type WPQuiz = {
-//   key: string;
-//   title: string;
-//   slug: string;
-//   uri: string;
-//   seo?: WPSeo;
-// };
+// export type WPPostLtd = {
+//   key: string
+//   uri: string
+//   title: string
+//   slug: string
+//   hasBeenAnimated?: boolean
+//   postDetails: {
+//     description: string
+//     headerImage: Nullable<GraphQLNode<WPImage>>
+//   }
+// }
 //
-// export type WPFunExtrasType = {
-//   key: string;
-//   funExtras: Nullable<
-//     GraphQLNodes<{
-//       key: string;
-//       title: string;
-//       slug: string;
-//       uri: string;
-//     }>
-//   >;
-// };
-
 export type WPShrine = {
   databaseId: number;
   date: string;
@@ -213,37 +193,37 @@ export type WPShrine = {
 };
 
 export type WPLog = WPContent;
-
-// export type WPPostPreview = Pick<
-//   WPPost,
-//   | 'commentCount'
-//   | 'databaseId'
-//   | 'date'
-//   | 'featuredImage'
-//   | 'info'
-//   | 'modified'
-//   | 'slug'
-//   | 'title'
-// > & {
-//   acfPosts:
-//     | Nullable<Pick<WPAcfPosts, 'postsInCategory'>>
-//     | Nullable<Pick<WPAcfPosts, 'postsInTag'>>;
-//   contentParts: Pick<WPContentParts, 'beforeMore'>;
-// };
-
+//
+// // export type WPPostPreview = Pick<
+// //   WPPost,
+// //   | 'commentCount'
+// //   | 'databaseId'
+// //   | 'date'
+// //   | 'featuredImage'
+// //   | 'info'
+// //   | 'modified'
+// //   | 'slug'
+// //   | 'title'
+// // > & {
+// //   acfPosts:
+// //     | Nullable<Pick<WPAcfPosts, 'postsInCategory'>>
+// //     | Nullable<Pick<WPAcfPosts, 'postsInTag'>>;
+// //   contentParts: Pick<WPContentParts, 'beforeMore'>;
+// // };
+//
 export type RecentWPPost = Pick<
   WPPost,
   'date' | 'featuredImage' | 'slug' | 'title'
 > & {
   databaseId: number;
 };
-
-export type RecentWPLog = Pick<
-  WPPost,
-  'date' | 'slug' | 'title' | 'content'
-> & {
-  databaseId: number;
-};
+//
+// export type RecentWPLog = Pick<
+//   WPPost,
+//   'date' | 'slug' | 'title' | 'content'
+// > & {
+//   databaseId: number;
+// };
 
 type WPAcfCategories = {
   postsInCategory: Nullable<any[]>;
@@ -271,35 +251,35 @@ export type WPTagPreview = Pick<
   WPTag,
   'databaseId' | 'featuredImage' | 'slug' | 'title'
 >;
-
-//===========================================================================
-// Data from MDX files
-//===========================================================================
-
-export type MDXData = {
-  file: string;
-  image: MDXImage;
-};
-
-export type MDXImage = StaticImageData & {
-  alt: string;
-  title?: string;
-};
-
-export type MDXPageMeta = Omit<PageMeta, 'wordsCount'> & {
-  intro: string;
-  title: string;
-};
-
-export type MDXProjectMeta = Omit<ProjectMeta, 'wordsCount'> & {
-  intro: string;
-  title: string;
-};
-
-//===========================================================================
-// Data used in this application
-//===========================================================================
-
+//
+// //===========================================================================
+// // Data from MDX files
+// //===========================================================================
+//
+// export type MDXData = {
+//   file: string;
+//   image: MDXImage;
+// };
+//
+// export type MDXImage = StaticImageData & {
+//   alt: string;
+//   title?: string;
+// };
+//
+// export type MDXPageMeta = Omit<PageMeta, 'wordsCount'> & {
+//   intro: string;
+//   title: string;
+// };
+//
+// export type MDXProjectMeta = Omit<ProjectMeta, 'wordsCount'> & {
+//   intro: string;
+//   title: string;
+// };
+//
+// //===========================================================================
+// // Data used in this application
+// //===========================================================================
+//
 export type Dates = {
   publication: string;
   update?: string;
@@ -317,27 +297,27 @@ export type Img = {
   title?: string;
   width: number;
 };
-
-export type CommentAuthor = {
-  avatar?: Omit<Img, 'title'>;
-  name: string;
-  website?: string;
-};
-
-export type CommentMeta = {
-  author: CommentAuthor;
-  date: string;
-};
-
-export type SingleComment = {
-  content: string;
-  id: number;
-  isApproved: boolean;
-  meta: CommentMeta;
-  parentId?: number;
-  replies: SingleComment[];
-};
-
+//
+// export type CommentAuthor = {
+//   avatar?: Omit<Img, 'title'>;
+//   name: string;
+//   website?: string;
+// };
+//
+// export type CommentMeta = {
+//   author: CommentAuthor;
+//   date: string;
+// };
+//
+// export type SingleComment = {
+//   content: string;
+//   id: number;
+//   isApproved: boolean;
+//   meta: CommentMeta;
+//   parentId?: number;
+//   replies: SingleComment[];
+// };
+//
 export type PageMeta = {
   cover?: Img;
   dates: Dates;
@@ -370,45 +350,45 @@ export type Article = Page & {
   id: number;
   meta: ArticleMeta;
 };
-
-export type ArticlePreview = Pick<Article, 'intro' | 'slug' | 'title'> & {
-  id: number;
-  meta: Omit<ArticleMeta, 'author' | 'seo' | 'tags'>;
-};
-
+//
+// export type ArticlePreview = Pick<Article, 'intro' | 'slug' | 'title'> & {
+//   id: number;
+//   meta: Omit<ArticleMeta, 'author' | 'seo' | 'tags'>;
+// };
+//
 export type RecentArticle = Pick<Article, 'slug' | 'title'> &
   Pick<ArticleMeta, 'cover' | 'commentsCount' | 'categories'> & {
     id: number;
     publicationDate: string;
   };
-
-export type Repos = {
-  github?: string;
-  gitlab?: string;
-};
-
-export type ProjectMeta = Omit<PageMeta, 'wordsCount'> & {
-  contexts?: string[];
-  license?: string;
-  repos: Repos;
-  tagline?: string;
-  technologies?: string[];
-};
-
-export type Project = Omit<Page, 'content'> & {
-  id: string;
-  meta: ProjectMeta;
-};
-
-export type ProjectPreview = Omit<Project, 'meta'> & {
-  meta: Pick<ProjectMeta, 'contexts' | 'cover' | 'dates' | 'tagline'>;
-};
-
-export type CategoryMeta = Omit<PageMeta, 'wordsCount'> & {
-  articles?: ArticlePreview[];
-  relatedTags?: PageLink[];
-};
-
+//
+// export type Repos = {
+//   github?: string;
+//   gitlab?: string;
+// };
+//
+// export type ProjectMeta = Omit<PageMeta, 'wordsCount'> & {
+//   contexts?: string[];
+//   license?: string;
+//   repos: Repos;
+//   tagline?: string;
+//   technologies?: string[];
+// };
+//
+// export type Project = Omit<Page, 'content'> & {
+//   id: string;
+//   meta: ProjectMeta;
+// };
+//
+// export type ProjectPreview = Omit<Project, 'meta'> & {
+//   meta: Pick<ProjectMeta, 'contexts' | 'cover' | 'dates' | 'tagline'>;
+// };
+//
+// export type CategoryMeta = Omit<PageMeta, 'wordsCount'> & {
+//   articles?: ArticlePreview[];
+//   relatedTags?: PageLink[];
+// };
+//
 export type Category = {
   name: string;
   description: string;
@@ -431,23 +411,17 @@ export type Category = {
     }
   }
 }
-
-// export type Category = Page & {
-//   id: number;
-//   meta: CategoryMeta;
+// export type TagMeta = Omit<PageMeta, 'wordsCount'> & {
+//   articles?: ArticlePreview[];
+//   relatedCategories?: PageLink[];
+//   website?: string;
 // };
-
-export type TagMeta = Omit<PageMeta, 'wordsCount'> & {
-  articles?: ArticlePreview[];
-  relatedCategories?: PageLink[];
-  website?: string;
-};
-
-export type Tag = Page & {
-  id: number;
-  meta: TagMeta;
-};
-
+//
+// export type Tag = Page & {
+//   id: number;
+//   meta: TagMeta;
+// };
+//
 export type GithubRepositoryMeta = {
   createdAt: string;
   stargazerCount: number;
