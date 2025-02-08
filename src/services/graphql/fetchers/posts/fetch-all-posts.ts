@@ -1,4 +1,4 @@
-import type { GraphQLNodes, Nullable, Post } from '@/types'
+import type { Post } from '@/types'
 import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers'
 
 type PostsResponse = {

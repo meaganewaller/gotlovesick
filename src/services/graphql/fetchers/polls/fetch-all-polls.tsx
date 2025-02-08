@@ -1,4 +1,4 @@
-import type { Nullable, WPPollList, GraphQLNodes } from '@/types';
+import type { Nullable, WPPollList } from '@/types';
 import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers';
 
 type PollsResponse = {
@@ -8,7 +8,8 @@ type PollsResponse = {
 const allPollsQuery = `query AllPolls {
   polls(where: { status: PUBLISH }) {
     nodes {
-      key: id
+      id
+      databaseId
       title
       uri
       featuredImage {

@@ -16,52 +16,6 @@ export type WPFunExtra = {
   featuredImage: Nullable<GraphQLNode<WPImage>>
 }
 
-export type WPPollLtd = {
-  key: string
-  title: string
-  uri: string
-  featuredImage: Nullable<GraphQLNode<WPImage>>
-  pollDetails: {
-    description: string
-  }
-}
-
-export type WPQuizLtd = {
-  key: string
-  title: string
-  uri: string
-  featuredImage: Nullable<GraphQLNode<WPImage>>
-  quizFields: {
-    description: string
-  }
-}
-
-export type WPPollList = GraphQLNodes<WPPollLtd>
-
-export type WPQuizList = GraphQLNodes<WPQuizLtd>
-
-export type WPPoll = {
-  key: string
-  id: string
-  slug: string
-  date: string
-  title: string
-  uri: string
-  featuredImage: Nullable<GraphQLNode<WPImage>>
-  seo: WPSeo
-  pollDetails: {
-    description: string
-    limited: Boolean
-    expiration: Nullable<string>
-    question: string
-    pollOptions: {
-      body: string
-      votes: number
-      id: string
-    }[]
-  }
-}
-
 export type QuestionType = {
   question: string;
   questionRelativeToImage?: 'adjacent' | 'overlap' | null;

@@ -30,7 +30,7 @@ function PollCard({ item, index }: PollCardProps) {
   }, [index])
 
   return (
-    <div className={classNames("poll-card", { "is-visible": isVisible })} key={item.key}>
+    <div className={classNames("poll-card", { "is-visible": isVisible })} key={item.id}>
       {item.featuredImage ? (
         <Image src={item.featuredImage.node.sourceUrl} alt={item.featuredImage.node.altText || ''} width={item.featuredImage.node.mediaDetails.width} height={item.featuredImage.node.mediaDetails.height} />
       ) : <></>}
@@ -48,7 +48,7 @@ export function Grid(data: PollGridProps) {
   return (
     <>
       <Masonry
-        itemKey={(item) => item.key}
+        itemKey={(item) => item.id}
         items={items}
         columnGutter={columnGutter}
         columnWidth={columnWidth}
