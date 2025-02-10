@@ -1,0 +1,70 @@
+#status-container {
+  align-self: center;
+  background: var(--pink-100);
+  border-radius: 8px;
+  border: 3px solid var(--purple-300);
+  grid-area: status;
+  padding: .75rem;
+  position: relative;
+
+  #statuscafe {
+    border: 2px dashed var(--purple-300);
+    color: var(--purple-700);
+    margin: 0 auto;
+    padding: 1rem;
+    position: relative;
+    border-radius: 8px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+
+    .inner {
+      background: var(--pink-100);
+      font-size: 1.25em;
+      font-weight: bold;
+      font-family: var(--font-cute);
+      line-height: 1;
+      position: absolute;
+      padding: 0 7px;
+      right: 0;
+      text-transform: lowercase;
+      top: -10px;
+      z-index: 2;
+
+      span {
+        text-decoration-line: underline;
+        text-decoration-style: wavy;
+        text-underline-offset: 5px;
+        text-decoration-color: var(--orange-400);
+        color: var(--purple-400);
+      }
+    }
+
+    a {
+      color: var(--orange-500);
+      font-size: .9rem;
+      letter-spacing: .5px;
+      font-weight: bold;
+      text-decoration-color: var(--pink-700);
+
+      &:hover,
+      &:focus {
+        color: var(--purple-400);
+        font-style: italic;
+      }
+    }
+  }
+
+  #statuscafe-username {
+    font-size: .75rem;
+    min-height: 1em;
+    margin-bottom: .5em;
+  }
+
+  #statuscafe-content {
+    font-size: .95em;
+    min-height: 2.5em;
+    line-height: 1;
+    align-items: center;
+  }
+}

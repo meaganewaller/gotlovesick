@@ -1,7 +1,7 @@
 import { fetchAllPlaylists } from "@/services/graphql"
 import Link from "next/link"
 import { notFound } from 'next/navigation'
-import "@/styles/playlist.css";
+import "@/styles/pages/playlists.css";
 
 async function fetchPlaylists() {
   const playlists = await fetchAllPlaylists({ first: 25 })

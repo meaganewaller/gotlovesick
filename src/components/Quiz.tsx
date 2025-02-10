@@ -5,7 +5,7 @@ import { scroller, Element } from 'react-scroll'
 import Question from './Question';
 import Result from './Result';
 import { WPQuiz, ISelectedAnswer } from '@/types'
-import '@/styles/quizzes.css';
+import '@/styles/pages/quizzes.css';
 import { convertWPQuizToIQuiz } from '@/services/graphql';
 
 interface ContextProps {

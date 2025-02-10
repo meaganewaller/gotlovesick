@@ -3,7 +3,7 @@ import { HiOutlineChat, HiOutlineCalendar } from "react-icons/hi";
 import { fetchPostsByCategory } from '@/services/graphql'
 import { notFound } from 'next/navigation'
 import { formatDateAsString } from '@/utils/helpers'
-import '@/styles/blog.css'
+import '@/styles/pages/blog.css'
 import Link from 'next/link'
 import Image from "next/image";
 import { Pagination } from '@/components/categories'

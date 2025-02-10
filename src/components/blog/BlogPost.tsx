@@ -38,7 +38,6 @@ export function BlogPost({ post }: { post: Post }) {
           </figure>
         )}
         <article dangerouslySetInnerHTML={{ __html: post.content }} />
-
       </section>
     </div>
   )

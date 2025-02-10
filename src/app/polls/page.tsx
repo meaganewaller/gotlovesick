@@ -1,7 +1,7 @@
 import React from 'react'
 import { notFound } from 'next/navigation'
 import { fetchAllPolls } from '@/services/graphql'
-import '@/styles/polls.css';
+import '@/styles/pages/polls.css';
 import { Grid } from "@/components/polls"
 
 async function fetchPolls() {

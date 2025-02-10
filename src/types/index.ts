@@ -5,3 +5,4 @@ export * from './gql';
 export * from './polls';
 export * from './quizzes';
 export * from "./tutorials";
+export * from "./recommendations";

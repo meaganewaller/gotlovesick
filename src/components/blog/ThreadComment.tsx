@@ -3,12 +3,12 @@ import type { Comment } from "@/types/blog"
 import Image from 'next/image';
 import Link from 'next/link';
 
-type ThreadCrommentProps = {
+type ThreadCommentProps = {
   comment: Comment;
   depth?: number;
 }
 
-export const ThreadComment: React.FC<ThreadCrommentProps> = ({ comment, depth = 0 }) => {
+export const ThreadComment: React.FC<ThreadCommentProps> = ({ comment, depth = 0 }) => {
   return (
     <div className={`${depth > 0 ? "nested-comment" : "parent-comment"}`}>
       <div className="comment">

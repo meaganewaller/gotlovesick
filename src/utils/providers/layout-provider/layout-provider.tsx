@@ -25,8 +25,8 @@ export const LayoutProvider = ({
   const pathname = usePathname();
 
   const indexPaths = ['/'];
-  const pagePaths = ['/meagan/', '/meagan', '/about', '/about/', '/colophon', '/colophon/', '/sitemap', '/sitemap/', '/contact', '/contact/', '/privacy-policy', '/privacy-policy/'];
-  const slugPaths = ['blog', 'fun-extras', 'playlists', 'shrines', 'tags', 'polls', 'quizzes', 'categories', 'coding', 'goodies', 'recs', 'tutorials'];
+  const pagePaths = ['/meagan/', '/meagan', '/about', '/about/', '/colophon', '/colophon/', '/sitemap', '/sitemap/', '/contact', '/contact/', '/privacy-policy', '/privacy-policy/', '/collages', '/collages/', '/notion-templates/', '/notion-templates', '/projects/', '/projects'];
+  const slugPaths = ['blog', 'fun-extras', 'playlists', 'shrines', 'tags', 'polls', 'quizzes', 'categories', 'coding', 'goodies', 'recs', 'tutorials', 'rec-types'];
 
   const useSlugPage = slugPaths.includes(pathname.split('/')[1]);
 

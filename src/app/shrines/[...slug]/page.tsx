@@ -1,7 +1,7 @@
 import { fetchShrine } from '@/services/graphql';
 import { notFound } from 'next/navigation';
 import { WPShrine } from '@/types';
-import "@/styles/shrine.css";
+import "@/styles/pages/shrines.css";
 import { ShrineNav } from '@/components/shrines';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 

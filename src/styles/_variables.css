@@ -78,7 +78,7 @@ body[data-theme='pixel-princess'] {
   --cursor: url('/cursors/blue-butterfly.gif') 1 1, auto;
   --footer-background-url: url("/images/bg/pixelplaid.gif");
   --dropdown-bg-url: url("/images/bg/smallpinkplaid.gif");
-  --header-title-font: var(--font-handwritten-bold);
+  --header-title-font: var(--font-cursive);
   --background-image: url('/images/bg/roses.gif');
   --background: #FFCCE8;
   --borders: #E637BF;
@@ -106,7 +106,7 @@ body[data-theme='pixel-princess'] {
   --nav-link-border-color: var(--pink-600);
   --nav-link-border-hover: var(--pink-100);
   --nav-link-color-hover: var(--pink-50);
-  --nav-link: var(--nav-link-hover-color);
+  --nav-link: var(--text-color);
   --breadcrumb-text: var(--green-700);
   --breadcrumb-link: var(--green-800);
   --breadcrumb-link-hover: var(--green-800);

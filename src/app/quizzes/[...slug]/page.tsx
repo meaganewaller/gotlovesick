@@ -1,6 +1,6 @@
 import { fetchQuiz } from '@/services/graphql'
 import { notFound } from 'next/navigation'
-import '@/styles/quizzes.css'
+import '@/styles/pages/quizzes.css'
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { Quiz } from '@/components/Quiz'
 

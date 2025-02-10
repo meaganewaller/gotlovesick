@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { fetchAllShrines } from '@/services/graphql';
-import "@/styles/shrine.css";
+import "@/styles/pages/shrines.css";
 import Image from 'next/image';
 
 async function fetchShrines() {

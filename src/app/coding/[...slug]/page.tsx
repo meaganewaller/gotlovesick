@@ -4,7 +4,7 @@ import rainbows from '~/images/dividers/rainbows.gif';
 import { notFound } from "next/navigation";
 import { WPPage } from "@/types";
 
-import "@/styles/coding.css";
+import "@/styles/pages/coding.css";
 
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 
