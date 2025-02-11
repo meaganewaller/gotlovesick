@@ -19,7 +19,7 @@
     font-family: var(--font-cute);
     font-size: 1.2em;
     line-height: 1;
-    padding: .1em .5em;
+    padding: 0.1em 0.5em;
     position: absolute;
     text-align: center;
     text-transform: lowercase;
@@ -38,4 +38,3 @@
     }
   }
 }
-

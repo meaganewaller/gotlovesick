@@ -1,4 +1,4 @@
-import { useContext } from 'react'
-import { FontContext } from '@/context/FontContext'
+import { useContext } from 'react';
+import { FontContext } from '@/context/FontContext';
 
-export const useChangeFont = () => useContext(FontContext)
+export const useChangeFont = () => useContext(FontContext);

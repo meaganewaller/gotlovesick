@@ -1,4 +1,4 @@
-import { Nullable } from "@/types";
+import { Nullable } from '@/types';
 
 /**
  * Convert a text into a slug or id.
@@ -68,10 +68,10 @@ export const trimHTMLTags = (str: string) =>
 
 export const formatComments = (count: Nullable<number>): string => {
   if (count === 0 || count === null) {
-    return "no comments yet"
+    return 'no comments yet';
   } else if (count === 1) {
-    return "1 comment"
+    return '1 comment';
   } else {
-    return `${count} comments`
+    return `${count} comments`;
   }
-}
+};

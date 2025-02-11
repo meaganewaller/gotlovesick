@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { FC, useState } from 'react';
 import { IoIosCheckmarkCircle } from 'react-icons/io';
@@ -6,8 +6,8 @@ import { HiLink } from 'react-icons/hi';
 // import { CopyLinkButtonProps } from '@/types';
 
 const CopyLinkButton: FC<any> = ({ copyShareLink }) => {
-  const [shareLinkClicked, setShareLinkClicked] = useState(false)
-  const [shareLinkAnimatingOut, setShareLinkAnimatingOut] = useState(false)
+  const [shareLinkClicked, setShareLinkClicked] = useState(false);
+  const [shareLinkAnimatingOut, setShareLinkAnimatingOut] = useState(false);
 
   const handleShareLinkClicked = async (shareLink: string) => {
     try {
@@ -16,7 +16,7 @@ const CopyLinkButton: FC<any> = ({ copyShareLink }) => {
       } else {
         const el = document.createElement('textarea');
         el.value = shareLink;
-           el.setAttribute('readonly', '');
+        el.setAttribute('readonly', '');
         el.style.position = 'absolute';
         el.style.left = '-9999px';
         document.body.appendChild(el);

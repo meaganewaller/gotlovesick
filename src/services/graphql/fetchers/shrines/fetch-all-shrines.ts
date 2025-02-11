@@ -1,9 +1,9 @@
 import type { Nullable, WPShrine, GraphQLNodes } from '@/types';
-import { fetchGraphQL, getGraphQLUrl } from "@/utils/helpers";
+import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers';
 
 type ShrineResponse = {
   shrines: Nullable<GraphQLNodes<WPShrine>>;
-}
+};
 
 const allShrinesQuery = `query AllShrines {
   shrines(where: { parent: 0 }) {
@@ -37,10 +37,8 @@ export const fetchAllShrines = async () => {
   });
 
   if (!response.shrines) {
-    return Promise.reject(
-      new Error(`No shrines found`)
-    )
+    return Promise.reject(new Error(`No shrines found`));
   }
 
   return response.shrines;
-}
+};

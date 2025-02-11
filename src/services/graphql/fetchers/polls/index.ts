@@ -1,2 +1,2 @@
-export * from './fetch-poll'
-export * from './fetch-all-polls'
+export * from './fetch-poll';
+export * from './fetch-all-polls';

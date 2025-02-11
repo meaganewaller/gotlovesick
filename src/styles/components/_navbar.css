@@ -1,5 +1,5 @@
 /* Base styles */
-nav[aria-label="Main navigation"] {
+nav[aria-label='Main navigation'] {
   background-color: var(--light);
   background-image: var(--header-nav-bg);
   border-left: 2px solid var(--borders);
@@ -13,7 +13,7 @@ nav[aria-label="Main navigation"] {
 
   &::before,
   &::after {
-    content: "";
+    content: '';
     left: 0;
     position: absolute;
     width: 100%;
@@ -30,7 +30,9 @@ nav[aria-label="Main navigation"] {
 
   &::after {
     background-image: var(--header-nav-border-bg-bottom);
-    background-position: center 0, center 3px;
+    background-position:
+      center 0,
+      center 3px;
     background-repeat: repeat-x, repeat-x;
     bottom: -90px;
     height: 96px;
@@ -38,7 +40,7 @@ nav[aria-label="Main navigation"] {
 }
 
 /* Menu list */
-nav[aria-label="Main navigation"] ul {
+nav[aria-label='Main navigation'] ul {
   display: flex;
   gap: 1em;
   justify-content: space-around;
@@ -120,7 +122,9 @@ nav[aria-label="Main navigation"] ul {
   font-size: 1rem;
   margin: 0 auto;
   text-decoration: none;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .menu-item:hover,
@@ -132,7 +136,7 @@ nav[aria-label="Main navigation"] ul {
 
 /* Desktop Hover Menu Styles */
 @media (min-width: 768px) {
-  nav[aria-label="Main navigation"] ul {
+  nav[aria-label='Main navigation'] ul {
     gap: 1em;
   }
 
@@ -181,7 +185,9 @@ nav[aria-label="Main navigation"] ul {
     opacity: 0;
     top: 0;
     transform: translateX(-10px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
     visibility: hidden;
   }
 
@@ -207,7 +213,7 @@ nav[aria-label="Main navigation"] ul {
 
 /* Mobile Accordion Styles */
 @media (max-width: 767px) {
-  nav[aria-label="Main navigation"] {
+  nav[aria-label='Main navigation'] {
     justify-content: flex-start;
     flex-direction: column;
 
@@ -216,7 +222,7 @@ nav[aria-label="Main navigation"] ul {
     }
   }
 
-  nav[aria-label="Main navigation"] ul {
+  nav[aria-label='Main navigation'] ul {
     gap: 0.5rem;
 
     ul {
@@ -227,7 +233,6 @@ nav[aria-label="Main navigation"] ul {
   .dropdown__menu {
     display: none;
     padding: 0 0 0 10px;
-
   }
 
   .dropdown__menu.open {
@@ -242,4 +247,3 @@ nav[aria-label="Main navigation"] ul {
     border-top: 0;
   }
 }
-

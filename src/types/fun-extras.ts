@@ -1,20 +1,26 @@
-import { JSX, ReactNode } from 'react'
-import type { GraphQLNodes, GraphQLNode, Nullable, WPImage, WPSeo } from "@/types"
+import { JSX, ReactNode } from 'react';
+import type {
+  GraphQLNodes,
+  GraphQLNode,
+  Nullable,
+  WPImage,
+  WPSeo,
+} from '@/types';
 
 export type WPFunExtraType = {
-  key: string
-  name: string
-  count: number
-  description: Nullable<string>
-  funExtras: GraphQLNodes<WPFunExtra>
-}
+  key: string;
+  name: string;
+  count: number;
+  description: Nullable<string>;
+  funExtras: GraphQLNodes<WPFunExtra>;
+};
 
 export type WPFunExtra = {
-  key: string
-  title: string
-  link: string
-  featuredImage: Nullable<GraphQLNode<WPImage>>
-}
+  key: string;
+  title: string;
+  link: string;
+  featuredImage: Nullable<GraphQLNode<WPImage>>;
+};
 
 export type QuestionType = {
   question: string;
@@ -57,7 +63,6 @@ export interface ListItemContainerElementProps {
   };
 }
 
-
 export type AnswerType = {
   answer: Nullable<string>;
   onAnswerSelection?: (
@@ -89,76 +94,76 @@ export interface QuestionProps {
 
 export type WPQuizQuestion = {
   answerArrangement?: 'row' | 'tile' | null;
-  answers: QuizQuestionAnswer[]
-  backgroundColor: Nullable<string>
-  backgroundImageSrc: Nullable<GraphQLNode<WPImage>>
-  fontColor: Nullable<string>
-  imageAttribution: Nullable<string>
-  question: string
-  questionRelativeToImage: string
-}
+  answers: QuizQuestionAnswer[];
+  backgroundColor: Nullable<string>;
+  backgroundImageSrc: Nullable<GraphQLNode<WPImage>>;
+  fontColor: Nullable<string>;
+  imageAttribution: Nullable<string>;
+  question: string;
+  questionRelativeToImage: string;
+};
 
 export type WPQuizResult = {
-  description: string
-  imageAttribution: Nullable<string>
-  resultId: number
-  resultImageSrc: Nullable<GraphQLNode<WPImage>>
-  title: string
-}
+  description: string;
+  imageAttribution: Nullable<string>;
+  resultId: number;
+  resultImageSrc: Nullable<GraphQLNode<WPImage>>;
+  title: string;
+};
 
 export type WPQuiz = {
-  key: string
-  date: string
-  modified: string
-  title: string
-  uri: string
-  featuredImage: Nullable<GraphQLNode<WPImage>>
-  seo: WPSeo
+  key: string;
+  date: string;
+  modified: string;
+  title: string;
+  uri: string;
+  featuredImage: Nullable<GraphQLNode<WPImage>>;
+  seo: WPSeo;
   quizFields: {
-    description: string
-    autoScroll: Boolean
-    generalBackgroundColor: Nullable<string>
-    generalFontColor: Nullable<string>
-    showCopyShareButton: Boolean
-    questions: WPQuizQuestion[]
-    results: WPQuizResult[]
-  }
-}
+    description: string;
+    autoScroll: Boolean;
+    generalBackgroundColor: Nullable<string>;
+    generalFontColor: Nullable<string>;
+    showCopyShareButton: Boolean;
+    questions: WPQuizQuestion[];
+    results: WPQuizResult[];
+  };
+};
 
 export type QuizResult = {
-  description: string
-  imageAttribution: Nullable<string>
-  resultId: Number
-  resultImageSrc: Nullable<GraphQLNode<WPImage>>
-  title: string
-}
+  description: string;
+  imageAttribution: Nullable<string>;
+  resultId: Number;
+  resultImageSrc: Nullable<GraphQLNode<WPImage>>;
+  title: string;
+};
 
 export type QuizQuestionAnswer = {
-  answer: string
+  answer: string;
   backgroundColor: Nullable<string>;
-  backgroundImageSrc: Nullable<GraphQLNode<{ sourceUrl: string }>>
-  fontColor: Nullable<string>
-  imageAttribution: Nullable<string>
-  resultId: number
+  backgroundImageSrc: Nullable<GraphQLNode<{ sourceUrl: string }>>;
+  fontColor: Nullable<string>;
+  imageAttribution: Nullable<string>;
+  resultId: number;
   revealResponse: {
-    description: Nullable<string>
-    image: Nullable<GraphQLNode<WPImage>>
-  }
-}
+    description: Nullable<string>;
+    image: Nullable<GraphQLNode<WPImage>>;
+  };
+};
 
 export type QuizQuestion = {
-  answerArrangement: string
-  answers: QuizQuestionAnswer[]
-  backgroundColor: Nullable<string>
-  backgroundImageSrc?: Nullable<GraphQLNode<{ sourceUrl: string }>>
-  fontColor: Nullable<string>
-  imageAttribution?: string
-  question: string
+  answerArrangement: string;
+  answers: QuizQuestionAnswer[];
+  backgroundColor: Nullable<string>;
+  backgroundImageSrc?: Nullable<GraphQLNode<{ sourceUrl: string }>>;
+  fontColor: Nullable<string>;
+  imageAttribution?: string;
+  question: string;
   questionRelativeToImage: string;
-}
+};
 
 export interface IQuiz {
-  key: string
+  key: string;
   title: string;
   description: string;
   copyShareButton: boolean;
@@ -170,14 +175,12 @@ export interface IQuiz {
     resultId?: number
   ) => void;
   onRestart?: () => void;
-  questions: QuizQuestion[]
-  results: QuizResult[]
-};
+  questions: QuizQuestion[];
+  results: QuizResult[];
+}
 
 export interface ISelectedAnswer {
   questionIndex: number;
   answerIndex: number;
   resultId: number;
 }
-
-

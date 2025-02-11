@@ -1,24 +1,24 @@
-'use client'
+'use client';
 
-import { createComment } from '@/services/graphql'
-import { useState } from 'react'
-import { randomBytes } from 'crypto'
+import { createComment } from '@/services/graphql';
+import { useState } from 'react';
+import { randomBytes } from 'crypto';
 
 export function CommentForm({ postID }: { postID: number }) {
-  const [author, setAuthor] = useState('')
-  const [email, setEmail] = useState('')
-  const [website, setWebsite] = useState('')
-  const [comment, setComment] = useState('')
-  const [status, setStatus] = useState('')
-  const [clientMutationId, setClientMutationId] = useState('')
+  const [author, setAuthor] = useState('');
+  const [email, setEmail] = useState('');
+  const [website, setWebsite] = useState('');
+  const [comment, setComment] = useState('');
+  const [status, setStatus] = useState('');
+  const [clientMutationId, setClientMutationId] = useState('');
 
   /**
-    * Handle the comment form submission.
-    */
+   * Handle the comment form submission.
+   */
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
+    e.preventDefault();
 
-    setClientMutationId(randomBytes(10).toString('hex'))
+    setClientMutationId(randomBytes(10).toString('hex'));
 
     // Create the comment and await the status.
     const status = await createComment({
@@ -27,39 +27,44 @@ export function CommentForm({ postID }: { postID: number }) {
       authorUrl: website,
       content: comment,
       commentOn: postID,
-      clientMutationId
-    })
+      clientMutationId,
+    });
 
     // If the comment was created successfully...
     if (status && status.success) {
       // Clear the form.
-      setAuthor('')
-      setEmail('')
-      setWebsite('')
-      setComment('')
-      setClientMutationId('')
+      setAuthor('');
+      setEmail('');
+      setWebsite('');
+      setComment('');
+      setClientMutationId('');
 
       // Set the status message.
       setStatus(
         `Thank you ${author}! Your comment has been submitted and is awaiting moderation.`
-      )
+      );
     }
 
     // If there was an error...
     if (status && !status.success) {
-      setStatus(`There was an error submitting your comment: ${status.comment}`)
+      setStatus(
+        `There was an error submitting your comment: ${status.comment}`
+      );
     }
   }
 
   return (
     <div className="comment-respond">
-      <h3 id="reply-title" className="comment-reply-title">Leave a Reply</h3>
+      <h3 id="reply-title" className="comment-reply-title">
+        Leave a Reply
+      </h3>
       <form className="comment-form" onSubmit={handleSubmit}>
         <p className="comment-notes">
-          <span id="email-notes">Your email address will not be published.{" "}</span>
+          <span id="email-notes">
+            Your email address will not be published.{' '}
+          </span>
           <span className="required-field-message">
-            Required fields are marked{" "}
-            <span className="required">*</span>
+            Required fields are marked <span className="required">*</span>
           </span>
         </p>
         <p className="comment-form-comment comment-form-float-label">
@@ -75,8 +80,7 @@ export function CommentForm({ postID }: { postID: number }) {
             onChange={(e) => setComment(e.target.value)}
           />
           <label className="float-label" htmlFor="comment">
-            Comment{" "}
-            <span className="required">*</span>
+            Comment <span className="required">*</span>
           </label>
         </p>
         <div className="comment-input-wrap has-url-field">
@@ -94,8 +98,7 @@ export function CommentForm({ postID }: { postID: number }) {
               aria-label="Name"
             />
             <label className="float-label" htmlFor="author">
-              Name{" "}
-              <span className="required">*</span>
+              Name <span className="required">*</span>
             </label>
           </p>
           <p className="comment-form-email">
@@ -109,8 +112,7 @@ export function CommentForm({ postID }: { postID: number }) {
               onChange={(e) => setEmail(e.target.value)}
             />
             <label className="float-label" htmlFor="email">
-              Email{" "}
-              <span className="required">*</span>
+              Email <span className="required">*</span>
             </label>
           </p>
           <p className="comment-form-url">
@@ -125,12 +127,22 @@ export function CommentForm({ postID }: { postID: number }) {
               maxLength={200}
               onChange={(e) => setWebsite(e.target.value)}
             />
-            <label className="float-label" htmlFor="url">Website</label>
+            <label className="float-label" htmlFor="url">
+              Website
+            </label>
           </p>
         </div>
         <p className="comment-form-cookies-consent">
-          <input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" />
-          <label htmlFor="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label>
+          <input
+            id="wp-comment-cookies-consent"
+            name="wp-comment-cookies-consent"
+            type="checkbox"
+            value="yes"
+          />
+          <label htmlFor="wp-comment-cookies-consent">
+            Save my name, email, and website in this browser for the next time I
+            comment.
+          </label>
         </p>
         <p className="form-submit">
           <button type="submit">Submit</button>
@@ -138,5 +150,5 @@ export function CommentForm({ postID }: { postID: number }) {
         {status && <p>{status}</p>}
       </form>
     </div>
-  )
+  );
 }

@@ -1,23 +1,23 @@
-import { fetchAllPlaylists } from "@/services/graphql"
-import Link from "next/link"
-import { notFound } from 'next/navigation'
-import "@/styles/pages/playlists.css";
+import { fetchAllPlaylists } from '@/services/graphql';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import '@/styles/pages/playlists.css';
 
 async function fetchPlaylists() {
-  const playlists = await fetchAllPlaylists({ first: 25 })
+  const playlists = await fetchAllPlaylists({ first: 25 });
 
   if (!playlists) {
-    return { error: 'No playlists found' }
+    return { error: 'No playlists found' };
   }
 
-  return { playlists }
+  return { playlists };
 }
 
 export default async function PlaylistsPage() {
-  const data = await fetchPlaylists()
+  const data = await fetchPlaylists();
 
   if (data.error) {
-    return notFound()
+    return notFound();
   }
 
   if (data.playlists) {
@@ -35,10 +35,9 @@ export default async function PlaylistsPage() {
               </li>
             ))}
           </ul>
-
         </section>
       </main>
-    )
+    );
   } else {
     return (
       <main id="playlists-page">
@@ -51,6 +50,6 @@ export default async function PlaylistsPage() {
           </div>
         </section>
       </main>
-    )
+    );
   }
 }

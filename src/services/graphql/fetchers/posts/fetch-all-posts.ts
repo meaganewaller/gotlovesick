@@ -1,12 +1,12 @@
-import type { Post } from '@/types'
-import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers'
+import type { Post } from '@/types';
+import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers';
 
 type PostsResponse = {
   posts: {
     nodes: Post[];
-    pageInfo: { offsetPagination: { total: number }};
-  }
-}
+    pageInfo: { offsetPagination: { total: number } };
+  };
+};
 
 const fetchAllPostsQuery = `query FetchAllPosts($size: Int!, $offset: Int!) {
   posts(where: { offsetPagination: { size: $size, offset: $offset }, orderby: { field: DATE, order: DESC }}) {
@@ -62,9 +62,12 @@ const fetchAllPostsQuery = `query FetchAllPosts($size: Int!, $offset: Int!) {
       }
     }
   }
-}`
+}`;
 
-export async function fetchAllPosts(page: number, perPage: number): Promise<PostsResponse> {
+export async function fetchAllPosts(
+  page: number,
+  perPage: number
+): Promise<PostsResponse> {
   const response = await fetchGraphQL<PostsResponse>({
     query: fetchAllPostsQuery,
     url: getGraphQLUrl(),
@@ -72,4 +75,4 @@ export async function fetchAllPosts(page: number, perPage: number): Promise<Post
   });
 
   return response;
-};
+}

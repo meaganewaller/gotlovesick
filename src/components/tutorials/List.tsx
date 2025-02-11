@@ -1,34 +1,41 @@
-'use client'
+'use client';
 
-import Link from 'next/link'
-import { formatDateAsString } from '@/utils/helpers'
-import classNames from 'classnames'
-import { useState, useEffect } from 'react'
-import { TutorialCard } from '@/types'
+import Link from 'next/link';
+import { formatDateAsString } from '@/utils/helpers';
+import classNames from 'classnames';
+import { useState, useEffect } from 'react';
+import { TutorialCard } from '@/types';
 
 type TutorialListProps = {
-  items: TutorialCard[]
-}
+  items: TutorialCard[];
+};
 
 type TutorialListItemProps = {
-  item: TutorialCard
-}
+  item: TutorialCard;
+};
 
 function TutorialListItem({ item }: TutorialListItemProps) {
   return (
     <Link
       href={`/tutorials/${item.slug}`}
-      className={classNames("tutorial-list-item")}
-      key={item.id}>
+      className={classNames('tutorial-list-item')}
+      key={item.id}
+    >
       <time className="blog-post__time">{formatDateAsString(item.date)}</time>
       <div className="blog-post__meta">
         {item.tutorialTypes.nodes?.map((tutorialType) => (
-          <button key={tutorialType.id} className={classNames(["tutorialType", tutorialType.slug])}>
+          <button
+            key={tutorialType.id}
+            className={classNames(['tutorialType', tutorialType.slug])}
+          >
             {tutorialType.name}
           </button>
         ))}
         {item.skillLevels.nodes?.map((skillLevel) => (
-          <button key={skillLevel.id} className={classNames(["skillLevel", skillLevel.slug])}>
+          <button
+            key={skillLevel.id}
+            className={classNames(['skillLevel', skillLevel.slug])}
+          >
             {skillLevel.name}
           </button>
         ))}
@@ -36,27 +43,25 @@ function TutorialListItem({ item }: TutorialListItemProps) {
       </div>
       <p className="blog-post__read-more">Read more →</p>
     </Link>
-  )
+  );
 }
 
 export function TutorialList(data: TutorialListProps) {
-  const [items, setItems] = useState(data.items)
+  const [items, setItems] = useState(data.items);
 
   useEffect(() => {
-    setItems(data.items)
-  }, [data])
+    setItems(data.items);
+  }, [data]);
 
   if (items && items.length > 0) {
     return (
       <div id="tutorialsList">
-        {items.map((item) => (<TutorialListItem key={item.id} item={item} />))}
+        {items.map((item) => (
+          <TutorialListItem key={item.id} item={item} />
+        ))}
       </div>
-    )
+    );
   } else {
-    return (
-      <div>
-        No tutorials found
-      </div>
-    )
+    return <div>No tutorials found</div>;
   }
 }

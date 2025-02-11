@@ -1,13 +1,13 @@
-import { Cliques, ButtonMarquee, LinkBack } from "@/components/widgets"
+import { Cliques, ButtonMarquee, LinkBack } from '@/components/widgets';
 
 export const RightSidebar = () => {
   return (
-    <div id="right-sidebar" className='aside'>
+    <div id="right-sidebar" className="aside">
       <ButtonMarquee />
       <Cliques />
       <LinkBack />
     </div>
-  )
-}
+  );
+};
 
-export default RightSidebar
+export default RightSidebar;

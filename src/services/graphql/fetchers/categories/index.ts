@@ -1,1 +1,1 @@
-export * from "./fetch-category";
+export * from './fetch-category';

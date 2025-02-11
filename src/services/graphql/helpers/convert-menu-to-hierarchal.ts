@@ -1,4 +1,4 @@
-import { WPMenuItem, Nullable, MenuItem, NestedMenuItem } from "@/types";
+import { WPMenuItem, Nullable, MenuItem, NestedMenuItem } from '@/types';
 
 type ConvertedMenu = (MenuItem | NestedMenuItem)[];
 
@@ -12,7 +12,7 @@ type ConvertedMenu = (MenuItem | NestedMenuItem)[];
  */
 export function convertMenuToHierarchal(
   data: WPMenuItem[] = [],
-  { idKey = "key", parentKey = "parentId", childrenKey = "children" } = {}
+  { idKey = 'key', parentKey = 'parentId', childrenKey = 'children' } = {}
 ): ConvertedMenu {
   const itemMap: Record<string, NestedMenuItem> = {};
 
@@ -28,12 +28,15 @@ export function convertMenuToHierarchal(
   // Build the tree by linking parent and child items
   data.forEach((item) => {
     const id = item[idKey as keyof WPMenuItem] as string;
-    const parentId = item[parentKey as keyof WPMenuItem] as Nullable<string> || null;
+    const parentId =
+      (item[parentKey as keyof WPMenuItem] as Nullable<string>) || null;
 
     if (parentId && itemMap[parentId]) {
       // Explicitly cast to NestedMenuItem to ensure `childrenKey` is recognized
       const parentItem = itemMap[parentId] as NestedMenuItem;
-      (parentItem[childrenKey as keyof NestedMenuItem] as NestedMenuItem[]).push(itemMap[id]);
+      (
+        parentItem[childrenKey as keyof NestedMenuItem] as NestedMenuItem[]
+      ).push(itemMap[id]);
     } else {
       tree.push(itemMap[id]);
     }

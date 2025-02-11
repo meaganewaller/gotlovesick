@@ -1,9 +1,9 @@
-import type { Nullable, WPPlaylist, GraphQLNodes } from "@/types"
-import { fetchGraphQL, getGraphQLUrl } from "@/utils/helpers";
+import type { Nullable, WPPlaylist, GraphQLNodes } from '@/types';
+import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers';
 
 type PlaylistResponse = {
   playlists: Nullable<GraphQLNodes<WPPlaylist>>;
-}
+};
 
 const allPlaylistsQuery = `query AllPlaylists($first: Int) {
   playlists(first: $first) {
@@ -24,10 +24,8 @@ export const fetchAllPlaylists = async ({ first }: { first: number }) => {
   });
 
   if (!response.playlists) {
-    return Promise.reject(
-      new Error(`No playlists found`)
-    )
+    return Promise.reject(new Error(`No playlists found`));
   }
 
   return response.playlists;
-}
+};

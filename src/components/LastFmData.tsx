@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { formatDateAsString } from "@/utils/helpers";
+import { formatDateAsString } from '@/utils/helpers';
 import Link from 'next/link';
 import musicgirl from '~/images/musicgirl.webp';
 import { LastFmRecentTracksResponse, LastFmTrack as Track } from '@/types';
@@ -14,20 +14,28 @@ import {
 // Reusable Track Component
 const TrackInfo: React.FC<{ track: Track }> = ({ track }) => {
   const isNowPlaying = track['@attr']?.nowplaying;
-  const imageUrl = track.image.find(img => img.size === 'large')?.['#text'];
+  const imageUrl = track.image.find((img) => img.size === 'large')?.['#text'];
 
   return (
     <div className="track">
       <h3>{isNowPlaying ? 'Now Playing' : 'Recently Played'}</h3>
       <div className="track-wrapper">
         {imageUrl && (
-          <Image src={imageUrl} alt={`${track.name} cover`} width={100} height={100} className="track-cover" />
+          <Image
+            src={imageUrl}
+            alt={`${track.name} cover`}
+            width={100}
+            height={100}
+            className="track-cover"
+          />
         )}
         <div className="track-meta">
           <p className="track-name">{track.name}</p>
           <p className="track-artist">by: {track.artist['#text']}</p>
           {!isNowPlaying && track.date && (
-            <p className="track-listened">Played {formatDateAsString(track.date['#text'])}</p>
+            <p className="track-listened">
+              Played {formatDateAsString(track.date['#text'])}
+            </p>
           )}
         </div>
         <Link
@@ -45,7 +53,9 @@ const TrackInfo: React.FC<{ track: Track }> = ({ track }) => {
 
 // Main LastFmData Component
 export const LastFmData: React.FC = () => {
-  const [lfmData, setLfmData] = useState<LastFmRecentTracksResponse | null>(null);
+  const [lfmData, setLfmData] = useState<LastFmRecentTracksResponse | null>(
+    null
+  );
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -78,7 +88,13 @@ export const LastFmData: React.FC = () => {
   return (
     <div id="vibes">
       <TrackInfo track={track} />
-      <Image src={musicgirl} alt="Pixel Girl" width={100} height={100} className="pixel-girl" />
+      <Image
+        src={musicgirl}
+        alt="Pixel Girl"
+        width={100}
+        height={100}
+        className="pixel-girl"
+      />
     </div>
   );
 };

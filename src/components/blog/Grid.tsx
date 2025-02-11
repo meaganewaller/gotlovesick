@@ -30,7 +30,10 @@ function PostCard({ item, index }: PostCardProps) {
   }, [index]);
 
   return (
-    <div className={classNames('post-card', { 'is-visible': isVisible })} key={item.key}>
+    <div
+      className={classNames('post-card', { 'is-visible': isVisible })}
+      key={item.key}
+    >
       {item.postDetails.headerImage ? (
         <Image
           src={item.postDetails.headerImage.node.sourceUrl}
@@ -47,7 +50,11 @@ function PostCard({ item, index }: PostCardProps) {
   );
 }
 
-export function Grid({ initialItems, columnGutter = 10, columnWidth = 172 }: BlogGridProps) {
+export function Grid({
+  initialItems,
+  columnGutter = 10,
+  columnWidth = 172,
+}: BlogGridProps) {
   const [items, setItems] = useState(initialItems);
 
   useEffect(() => {
@@ -59,7 +66,7 @@ export function Grid({ initialItems, columnGutter = 10, columnWidth = 172 }: Blo
   }
 
   return (
-   <Masonry
+    <Masonry
       itemKey={(item) => item.key}
       items={items}
       columnGutter={columnGutter}

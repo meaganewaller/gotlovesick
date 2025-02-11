@@ -1,12 +1,12 @@
-import { fetchTutorial } from "@/services/graphql";
-import { Tutorial } from "@/types"
-import Image from 'next/image'
+import { fetchTutorial } from '@/services/graphql';
+import { Tutorial } from '@/types';
+import Image from 'next/image';
 import rainbows from '~/images/dividers/rainbows.gif';
-import { notFound } from "next/navigation";
+import { notFound } from 'next/navigation';
 
-import "@/styles/pages/goodies.css"
+import '@/styles/pages/goodies.css';
 
-import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
 async function fetchData(slug: string) {
   let page = undefined;
@@ -17,23 +17,24 @@ async function fetchData(slug: string) {
     return { page: page };
   }
 
-  return { error: "No data found" };
+  return { error: 'No data found' };
 }
 
 function RenderPage({ page }: { page: Tutorial }) {
   return (
     <main id="goodies-page" className={`${page.slug}`}>
       <div className="layout">
-        {page.seo?.breadcrumbs && <Breadcrumbs breadcrumbs={page.seo?.breadcrumbs} />}
-        <aside className="filters">
-        </aside>
+        {page.seo?.breadcrumbs && (
+          <Breadcrumbs breadcrumbs={page.seo?.breadcrumbs} />
+        )}
+        <aside className="filters"></aside>
         <section className="main-content">
           <header className="header">
             <div className="about-section">
               <h1 dangerouslySetInnerHTML={{ __html: page.title }} />
             </div>
             <div className="divider">
-              <Image src={rainbows} alt="" className='divider' />
+              <Image src={rainbows} alt="" className="divider" />
             </div>
           </header>
 
@@ -89,5 +90,3 @@ export default async function Archive(props: {
 
   return notFound();
 }
-
-

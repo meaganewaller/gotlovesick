@@ -19,16 +19,23 @@ export default async function Footer() {
           <AccessCounter />
         </div>
 
-        {footerMenu.nodes.length > 0 && <ul className="footer-menu">
-          {footerMenu.nodes.map((item: WPMenuItem) => (
-            <li key={item.key}>
-              <Link
-                href={
-                  item.path.startsWith('http') ? item.url : `${item.path || ''}`
-                }>{item.title}</Link>
-            </li>
-          ))}
-        </ul>}
+        {footerMenu.nodes.length > 0 && (
+          <ul className="footer-menu">
+            {footerMenu.nodes.map((item: WPMenuItem) => (
+              <li key={item.key}>
+                <Link
+                  href={
+                    item.path.startsWith('http')
+                      ? item.url
+                      : `${item.path || ''}`
+                  }
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
       </section>
     </footer>
   );

@@ -1,7 +1,7 @@
 import { fetchShrine } from '@/services/graphql';
 import { notFound } from 'next/navigation';
 import { WPShrine } from '@/types';
-import "@/styles/pages/shrines.css";
+import '@/styles/pages/shrines.css';
 import { ShrineNav } from '@/components/shrines';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 
@@ -23,7 +23,9 @@ function RenderPage({ shrine }: { shrine: WPShrine }) {
       <ShrineNav shrine={shrine} />
       <div className="shrine-layout">
         <section className="" id="page-content">
-          {shrine.seo?.breadcrumbs && <Breadcrumbs breadcrumbs={shrine.seo?.breadcrumbs} />}
+          {shrine.seo?.breadcrumbs && (
+            <Breadcrumbs breadcrumbs={shrine.seo?.breadcrumbs} />
+          )}
 
           <main id="shrine">
             <section>
@@ -42,7 +44,6 @@ function RenderPage({ shrine }: { shrine: WPShrine }) {
     </main>
   );
 }
-
 
 export default async function Archive(props: {
   params: Promise<{ slug: string[] }>;

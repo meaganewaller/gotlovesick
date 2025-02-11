@@ -1,15 +1,15 @@
-import { Comment } from "@/types/blog"
+import { Comment } from '@/types/blog';
 
 export function nestComments(comments: Comment[]): Comment[] {
   const commentMap = new Map<number, Comment>();
 
-  comments.forEach(comment => {
+  comments.forEach((comment) => {
     commentMap.set(comment.databaseId, { ...comment, replies: [] });
   });
 
   const nestedComments: Comment[] = [];
 
-  comments.forEach(comment => {
+  comments.forEach((comment) => {
     if (comment.parentDatabaseId === 0) {
       // Top-level comment
       nestedComments.push(commentMap.get(comment.databaseId)!);

@@ -1,35 +1,34 @@
-import type { GraphQLNodes, GraphQLNode, Nullable, WPImage } from "@/types"
-import { JSX, ReactNode } from 'react'
+import type { GraphQLNodes, GraphQLNode, Nullable, WPImage } from '@/types';
+import { JSX, ReactNode } from 'react';
 
 export type WPQuizLtd = {
-  id: string
-  databaseId: number
-  title: string
-  uri: string
-  featuredImage: Nullable<GraphQLNode<WPImage>>
+  id: string;
+  databaseId: number;
+  title: string;
+  uri: string;
+  featuredImage: Nullable<GraphQLNode<WPImage>>;
   quizFields: {
-    description: string
-  }
-}
+    description: string;
+  };
+};
 
-export type WPQuizList = GraphQLNodes<WPQuizLtd>
+export type WPQuizList = GraphQLNodes<WPQuizLtd>;
 
 export type WPQuiz = {
-  id: string
-  databaseId: number
-  title: string
-  uri: string
-  featuredImage: Nullable<GraphQLNode<WPImage>>
+  id: string;
+  databaseId: number;
+  title: string;
+  uri: string;
+  featuredImage: Nullable<GraphQLNode<WPImage>>;
   quizFields: {
-    description: string
-    autoScroll: boolean
+    description: string;
+    autoScroll: boolean;
     results: {
-      resultId: string
-    }[]
-    questions: {
-    }[]
-  }
-}
+      resultId: string;
+    }[];
+    questions: {}[];
+  };
+};
 
 export interface ISelectedAnswer {
   questionIndex: number;
@@ -52,7 +51,6 @@ export type AnswerType = {
   };
   resultId: number;
 };
-
 
 export type QuestionType = {
   question: string;
@@ -107,4 +105,3 @@ export interface AnswersProps {
   generalBackgroundColor?: string;
   generalFontColor?: string;
 }
-

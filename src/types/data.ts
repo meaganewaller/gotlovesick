@@ -115,7 +115,7 @@ export type MenuItem = {
 };
 
 export type NestedMenuItem = MenuItem & {
-  children:  MenuItem[];
+  children: MenuItem[];
 };
 
 export type Author = {
@@ -129,7 +129,7 @@ export type Author = {
 export type Term = {
   name: string;
   slug: string;
-}
+};
 
 export type Post = {
   key: string;
@@ -145,8 +145,8 @@ export type Post = {
   postDetails: {
     headerImage: Nullable<GraphQLNode<WPImage>>;
     description: string;
-  }
-}
+  };
+};
 
 export type WPPost = WPContent & {
   acfPosts: Nullable<Partial<WPAcfPosts>>;
@@ -402,15 +402,15 @@ export type Category = {
       date: string;
       postDetails: {
         description: string;
-      }
-    }[]
+      };
+    }[];
     pageInfo: {
       offsetPagination: {
         total: number;
-      }
-    }
-  }
-}
+      };
+    };
+  };
+};
 // export type TagMeta = Omit<PageMeta, 'wordsCount'> & {
 //   articles?: ArticlePreview[];
 //   relatedCategories?: PageLink[];

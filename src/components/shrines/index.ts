@@ -1,1 +1,1 @@
-export * from "./ShrineNav"
+export * from './ShrineNav';

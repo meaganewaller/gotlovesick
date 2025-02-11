@@ -1,8 +1,8 @@
-import type { Post } from "@/types/blog";
+import type { Post } from '@/types/blog';
 import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers';
 
 export type PostResponse = {
-  post: Post
+  post: Post;
 };
 
 const postQuery = `query Post($slug: ID!) {

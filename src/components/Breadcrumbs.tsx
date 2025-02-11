@@ -1,6 +1,5 @@
 import Link from 'next/link';
-import { TiChevronRight } from "react-icons/ti";
-
+import { TiChevronRight } from 'react-icons/ti';
 
 function getPathFromUrl(url: string) {
   try {
@@ -12,7 +11,11 @@ function getPathFromUrl(url: string) {
   }
 }
 
-export function Breadcrumbs({ breadcrumbs }: { breadcrumbs: { text: string, url: string }[] }) {
+export function Breadcrumbs({
+  breadcrumbs,
+}: {
+  breadcrumbs: { text: string; url: string }[];
+}) {
   return (
     <nav className="breadcrumbs">
       <div className="breadcrumb-heading">You are here:</div>
@@ -29,20 +32,25 @@ export function Breadcrumbs({ breadcrumbs }: { breadcrumbs: { text: string, url:
               itemType="http://schema.org/ListItem"
             >
               {isLast ? (
-                <span itemProp="name" dangerouslySetInnerHTML={{ __html: breadcrumb.text }} />
+                <span
+                  itemProp="name"
+                  dangerouslySetInnerHTML={{ __html: breadcrumb.text }}
+                />
               ) : (
-                  <div className="breadcrumb-group">
-                    <Link itemProp="item" href={getPathFromUrl(breadcrumb.url)}>
-                      <span dangerouslySetInnerHTML={{ __html: breadcrumb.text }} />
-                    </Link>
-                    <TiChevronRight className="icon" />
-                  </div>
+                <div className="breadcrumb-group">
+                  <Link itemProp="item" href={getPathFromUrl(breadcrumb.url)}>
+                    <span
+                      dangerouslySetInnerHTML={{ __html: breadcrumb.text }}
+                    />
+                  </Link>
+                  <TiChevronRight className="icon" />
+                </div>
               )}
-              <meta itemProp='position' content={`${index + 1}`} />
+              <meta itemProp="position" content={`${index + 1}`} />
             </li>
-          )
+          );
         })}
       </ol>
     </nav>
-  )
+  );
 }

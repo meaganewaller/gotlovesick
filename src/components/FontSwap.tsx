@@ -26,6 +26,6 @@ const FontSwap = () => {
       </button>
     </div>
   );
-}
+};
 
 export default FontSwap;

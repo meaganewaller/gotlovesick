@@ -1,16 +1,16 @@
-import React from 'react'
-import { notFound } from 'next/navigation'
-import { fetchAllQuizzes } from '@/services/graphql'
+import React from 'react';
+import { notFound } from 'next/navigation';
+import { fetchAllQuizzes } from '@/services/graphql';
 import '@/styles/pages/quizzes.css';
 
 async function fetchQuizzes() {
-  const quizzes = await fetchAllQuizzes()
+  const quizzes = await fetchAllQuizzes();
 
   if (!quizzes) {
-    return { error: 'No quizzes found' }
+    return { error: 'No quizzes found' };
   }
 
-  return { quizzes }
+  return { quizzes };
 }
 
 export default async function QuizzesPage() {
@@ -34,9 +34,8 @@ export default async function QuizzesPage() {
           {/* <Grid items={data.quizzes.nodes} columnGutter={10} columnWidth={250} /> */}
         </div>
       </main>
-    )
+    );
   }
 
-  return notFound()
+  return notFound();
 }
-

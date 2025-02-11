@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import HeaderTitle from '@/components/HeaderTitle';
-import { fetchMenu, convertMenuToHierarchal } from '@/services/graphql'
+import { fetchMenu, convertMenuToHierarchal } from '@/services/graphql';
 import { MenuLocationEnum, WPMenu } from '@/types';
 import { HeaderNav } from '@/components/HeaderNav';
 
@@ -24,5 +24,3 @@ export default async function Header() {
     </>
   );
 }
-
-

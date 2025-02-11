@@ -67,12 +67,10 @@
   img.pixel-girl {
     padding: 0;
     margin: 0;
-    align-self: flex-end
+    align-self: flex-end;
   }
-
 
   @media (max-width: 768px) {
     justify-content: space-between;
   }
 }
-

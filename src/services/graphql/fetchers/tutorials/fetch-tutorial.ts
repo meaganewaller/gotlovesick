@@ -1,9 +1,9 @@
-import { Tutorial } from "@/types"
-import { fetchGraphQL, getGraphQLUrl } from "@/utils/helpers"
+import { Tutorial } from '@/types';
+import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers';
 
 export type TutorialResponse = {
-  tutorial: Tutorial
-}
+  tutorial: Tutorial;
+};
 
 const tutorialQuery = `query Tutorial($slug: ID!) {
   tutorial(id: $slug, idType: URI) {
@@ -66,5 +66,4 @@ export const fetchTutorial = async (slug: string) => {
     );
 
   return response.tutorial;
-}
-
+};

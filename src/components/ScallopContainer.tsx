@@ -7,9 +7,7 @@ export function ScallopContainer({ children }: { children: React.ReactNode }) {
         <div className="u01" />
       </div>
       <div className="box-center">
-        <div className="box-inner">
-          {children}
-        </div>
+        <div className="box-inner">{children}</div>
       </div>
       <div className="box-bottom">
         <div className="s01" />

@@ -39,7 +39,9 @@
       font-size: 22px;
       font-weight: bold;
       font-family: var(--font-gothic);
-      filter: drop-shadow(2px 0 0 white) drop-shadow(0 2px 0 white) drop-shadow(-2px 0 0 white) drop-shadow(0 -2px 0 white) drop-shadow(0px 1px 1px #c6e197) drop-shadow(0px 1px 1px #c6e197);
+      filter: drop-shadow(2px 0 0 white) drop-shadow(0 2px 0 white)
+        drop-shadow(-2px 0 0 white) drop-shadow(0 -2px 0 white)
+        drop-shadow(0px 1px 1px #c6e197) drop-shadow(0px 1px 1px #c6e197);
     }
   }
 
@@ -65,9 +67,11 @@
       gap: 5px;
 
       &:hover {
-        background: linear-gradient(90deg,
+        background: linear-gradient(
+          90deg,
           rgba(255, 191, 105, 1) 0%,
-          rgba(255, 191, 105, .5) 100%);
+          rgba(255, 191, 105, 0.5) 100%
+        );
       }
 
       a {
@@ -196,7 +200,7 @@ footer {
   border-top: 1px;
   color: var(--text-color);
   display: flex;
-  font-size: .75rem;
+  font-size: 0.75rem;
   grid-area: footer;
   justify-content: center;
   overflow: hidden;
@@ -254,10 +258,10 @@ footer {
 
 #slug-layout {
   grid-template:
-    "header header header" auto
-    "headerNav headerNav headerNav" auto
-    "main main main" auto
-    "footer footer footer" auto / auto;
+    'header header header' auto
+    'headerNav headerNav headerNav' auto
+    'main main main' auto
+    'footer footer footer' auto / auto;
 
   main#content {
     grid-area: main;
@@ -278,37 +282,37 @@ footer {
 #home-layout {
   display: grid;
   grid-template:
-    "header header header" auto
+    'header header header' auto
     'headerNav headerNav headerNav' auto
-    "leftSidebar main rightSidebar" auto
-    "footer footer footer" auto / 240px 1fr 240px;
+    'leftSidebar main rightSidebar' auto
+    'footer footer footer' auto / 240px 1fr 240px;
 
   @media all and (max-width: 1100px) {
     grid-template:
-      "header header" auto
-      "headerNav headerNav" auto
-      "leftSidebar main" auto
-      "rightSidebar main" auto
-      "footer footer" auto / 240px 1fr;
+      'header header' auto
+      'headerNav headerNav' auto
+      'leftSidebar main' auto
+      'rightSidebar main' auto
+      'footer footer' auto / 240px 1fr;
   }
 
   @media all and (max-width: 768px) {
     grid-template:
-      "header header" auto
-      "headerNav headerNav" auto
-      "main main" auto
-      "leftSidebar rightSidebar" auto
-      "footer footer" auto / 50% 50%;
+      'header header' auto
+      'headerNav headerNav' auto
+      'main main' auto
+      'leftSidebar rightSidebar' auto
+      'footer footer' auto / 50% 50%;
   }
 
   @media all and (max-width: 575px) {
     grid-template:
-      "header header" auto
-      "headerNav headerNav" auto
-      "main main" auto
-      "leftSidebar leftSidebar" auto
-      "rightSidebar rightSidebar" auto
-      "footer footer" auto / 50% 50%;
+      'header header' auto
+      'headerNav headerNav' auto
+      'main main' auto
+      'leftSidebar leftSidebar' auto
+      'rightSidebar rightSidebar' auto
+      'footer footer' auto / 50% 50%;
   }
 
   main#content {
@@ -326,10 +330,10 @@ footer {
 
 #page-layout {
   grid-template:
-    "header header header" auto
-    "headerNav headerNav headerNav" auto
-    "leftSidebar main main" auto
-    "footer footer footer" auto / 240px auto auto;
+    'header header header' auto
+    'headerNav headerNav headerNav' auto
+    'leftSidebar main main' auto
+    'footer footer footer' auto / 240px auto auto;
 
   main#content {
     grid-area: main;

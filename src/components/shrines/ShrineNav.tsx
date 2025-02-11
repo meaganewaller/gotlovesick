@@ -17,7 +17,7 @@ export const ShrineNav: React.FC<ShrineNavProps> = ({ shrine }) => {
   return (
     <ScallopContainer>
       <h2>{shrine.title.toLowerCase()} nav</h2>
-      <Image src={rainbows} alt="" className='divider' />
+      <Image src={rainbows} alt="" className="divider" />
 
       <nav className="shrine-nav">
         <ul>
@@ -31,6 +31,5 @@ export const ShrineNav: React.FC<ShrineNavProps> = ({ shrine }) => {
         </ul>
       </nav>
     </ScallopContainer>
-  )
-}
-
+  );
+};

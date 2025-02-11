@@ -12,9 +12,7 @@ export default function SidebarNav(params: SidebarNavParams) {
       {params.menu &&
         params.menu.nodes.map((item: WPMenuItem) => (
           <span key={item.key} className="nav-link">
-            <Link href={item.path}>
-              {item.title}
-            </Link>
+            <Link href={item.path}>{item.title}</Link>
           </span>
         ))}
     </nav>

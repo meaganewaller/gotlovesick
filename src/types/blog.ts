@@ -1,4 +1,4 @@
-import { Nullable, GraphQLNodes, WPCommentStatus } from "@/types"
+import { Nullable, GraphQLNodes, WPCommentStatus } from '@/types';
 
 export type Comment = {
   databaseId: number;
@@ -28,49 +28,49 @@ export type Post = {
   content: string;
   author: {
     node: {
-      name: string
-      uri: string
-      website: string
-      key: string
+      name: string;
+      uri: string;
+      website: string;
+      key: string;
       avatar: {
-        url: string
-        width: number
-        height: number
-      }
-    }
-  }
+        url: string;
+        width: number;
+        height: number;
+      };
+    };
+  };
   seo: {
-    title: string
-    metaDesc: string
+    title: string;
+    metaDesc: string;
     breadcrumbs: {
-      text: string
-      url: string
-    }[]
-  }
+      text: string;
+      url: string;
+    }[];
+  };
   commentCount: number;
   date: string;
   featuredImage: {
     node: {
-      altText: Nullable<string>
-      caption: Nullable<string>
+      altText: Nullable<string>;
+      caption: Nullable<string>;
       mediaDetails: {
-        height: number
-        width: number
-      }
-      sourceUrl: string
-    }
-  }
+        height: number;
+        width: number;
+      };
+      sourceUrl: string;
+    };
+  };
   categories: GraphQLNodes<{
-    key: string
-    name: string
-    slug: string
-    uri: string
-  }>
+    key: string;
+    name: string;
+    slug: string;
+    uri: string;
+  }>;
   tags: GraphQLNodes<{
-    key: string
-    name: string
-    link: string
-    slug: string
-  }>
+    key: string;
+    name: string;
+    link: string;
+    slug: string;
+  }>;
   comments: GraphQLNodes<Comment>;
-}
+};

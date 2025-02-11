@@ -11,7 +11,7 @@ interface SidebarParams {
 export default function Sidebar({ menus }: SidebarParams) {
   return (
     <div id="sidebar" className="aside">
-      <div className='sidebar-inner'>
+      <div className="sidebar-inner">
         {menus.map((section, index) => (
           <div key={index}>
             <div className="section-tab">
@@ -30,12 +30,19 @@ export default function Sidebar({ menus }: SidebarParams) {
 
           <nav>
             <span className="nav-link">
-              <Link className="w-full block" href="https://app.thestorygraph.com/profile/itsonmyholdlist" target="_blank">
+              <Link
+                className="w-full block"
+                href="https://app.thestorygraph.com/profile/itsonmyholdlist"
+                target="_blank"
+              >
                 Story Graph
               </Link>
             </span>
             <span className="nav-link">
-              <Link className="w-full block" href="https://github.com/meaganewaller">
+              <Link
+                className="w-full block"
+                href="https://github.com/meaganewaller"
+              >
                 GitHub
               </Link>
             </span>

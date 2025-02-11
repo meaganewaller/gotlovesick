@@ -19,7 +19,10 @@ export function Poll({ slug }: { slug: string }) {
         if (fetchedPoll) {
           setPoll(fetchedPoll);
           const initialVotes = fetchedPoll.pollDetails.pollOptions.reduce(
-            (acc: Record<string, number>, option: { id: string; votes: number }) => {
+            (
+              acc: Record<string, number>,
+              option: { id: string; votes: number }
+            ) => {
               acc[option.id] = option.votes || 0;
               return acc;
             },
@@ -27,7 +30,7 @@ export function Poll({ slug }: { slug: string }) {
           );
           setVotes(initialVotes);
 
-          const hasUserVoted = !!localStorage.getItem(`poll-vote-${slug}`)
+          const hasUserVoted = !!localStorage.getItem(`poll-vote-${slug}`);
           setHasVoted(hasUserVoted);
         } else {
           setError('Poll not found');
@@ -43,14 +46,14 @@ export function Poll({ slug }: { slug: string }) {
 
   const getTotalVotes = (): number => {
     return Object.values(votes).reduce((total, count) => total + count, 0);
-  }
+  };
 
   const getVotePercentage = (optionId: string): number => {
-    const totalVotes = getTotalVotes()
+    const totalVotes = getTotalVotes();
     if (totalVotes === 0) return 0;
 
     return Math.round((votes[optionId] / totalVotes) * 100);
-  }
+  };
 
   const hasUserVoted = (pollSlug: string): boolean => {
     const lastVoted = localStorage.getItem(`poll-vote-${pollSlug}`);
@@ -64,7 +67,7 @@ export function Poll({ slug }: { slug: string }) {
 
   const recordVote = (pollSlug: string) => {
     localStorage.setItem(`poll-vote-${pollSlug}`, new Date().toISOString());
-    setHasVoted(true)
+    setHasVoted(true);
   };
 
   const handleVote = async (pollSlug: string, optionId: string) => {
@@ -97,12 +100,15 @@ export function Poll({ slug }: { slug: string }) {
   };
 
   if (error) return <p className="error">{error}</p>;
-  if (!poll) return <Loader />
+  if (!poll) return <Loader />;
 
   return (
     <div className="poll-container">
       <header className="header">
-        <h1 className="poll-title" dangerouslySetInnerHTML={{ __html: poll.title }} />
+        <h1
+          className="poll-title"
+          dangerouslySetInnerHTML={{ __html: poll.title }}
+        />
         <div
           className="poll-description"
           dangerouslySetInnerHTML={{ __html: poll.pollDetails.description }}
@@ -111,8 +117,18 @@ export function Poll({ slug }: { slug: string }) {
 
       <ol className="poll-options">
         {poll.pollDetails.pollOptions.map((option) => {
-          const votePercentage = Object.values(votes).reduce((total, count) => total + count, 0)
-            ? Math.round((votes[option.id] / Object.values(votes).reduce((total, count) => total + count, 0)) * 100)
+          const votePercentage = Object.values(votes).reduce(
+            (total, count) => total + count,
+            0
+          )
+            ? Math.round(
+                (votes[option.id] /
+                  Object.values(votes).reduce(
+                    (total, count) => total + count,
+                    0
+                  )) *
+                  100
+              )
             : 0;
 
           return (
@@ -123,13 +139,19 @@ export function Poll({ slug }: { slug: string }) {
               ></div>
               <div className="poll-option-content">
                 <span>{option.body}</span>
-                <span className="poll-option-votes">({votes[option.id]} votes)</span>
+                <span className="poll-option-votes">
+                  ({votes[option.id]} votes)
+                </span>
                 <button
                   onClick={() => handleVote(poll.slug, option.id)}
                   disabled={hasVoted || loading === option.id}
                   className="poll-submit-button"
                 >
-                  {hasVoted ? 'Voted' : loading === option.id ? 'Submitting...' : 'Vote'}
+                  {hasVoted
+                    ? 'Voted'
+                    : loading === option.id
+                      ? 'Submitting...'
+                      : 'Vote'}
                 </button>
               </div>
             </li>

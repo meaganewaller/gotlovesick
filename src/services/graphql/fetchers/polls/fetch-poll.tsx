@@ -1,9 +1,9 @@
-import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers'
-import type { Nullable, WPPoll } from '@/types'
+import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers';
+import type { Nullable, WPPoll } from '@/types';
 
 type PollResponse = {
   poll: Nullable<WPPoll>;
-}
+};
 
 const pollQuery = `query FetchPoll($slug: ID!) {
   poll(id: $slug, idType: SLUG) {
@@ -43,7 +43,7 @@ const pollQuery = `query FetchPoll($slug: ID!) {
       }
     }
   }
-}`
+}`;
 
 export const fetchPoll = async (slug: string) => {
   const response = await fetchGraphQL<PollResponse>({

@@ -1,9 +1,9 @@
-import type { BookRec } from '@/types'
+import type { BookRec } from '@/types';
 import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers';
 
 export type BookRecResponse = {
-  rec: BookRec
-}
+  rec: BookRec;
+};
 
 const bookRecQuery = `query BookRecommendationQuery($slug: ID!) {
   rec: recommendation(id: $slug, idType: URI) {
@@ -46,16 +46,16 @@ const bookRecQuery = `query BookRecommendationQuery($slug: ID!) {
       year
     }
   }
-}`
+}`;
 
 export const fetchRecommendation = async (recType: string, slug: string) => {
-  let response
-  if (recType === "books") {
+  let response;
+  if (recType === 'books') {
     response = await fetchGraphQL<BookRecResponse>({
       query: bookRecQuery,
       url: getGraphQLUrl(),
-      variables: { slug }
-    })
+      variables: { slug },
+    });
   }
 
   if (!response) {
@@ -63,4 +63,4 @@ export const fetchRecommendation = async (recType: string, slug: string) => {
   }
 
   return response.rec;
-}
+};

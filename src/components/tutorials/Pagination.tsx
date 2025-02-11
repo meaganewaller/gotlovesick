@@ -21,7 +21,9 @@ export function Pagination({ currentPage, totalPages }: PaginationProps) {
       <button
         onClick={() => handlePageChange(currentPage - 1)}
         disabled={currentPage <= 1}
-        className={classNames('pagination-button', { disabled: currentPage <= 1 })}
+        className={classNames('pagination-button', {
+          disabled: currentPage <= 1,
+        })}
       >
         Previous
       </button>
@@ -29,7 +31,9 @@ export function Pagination({ currentPage, totalPages }: PaginationProps) {
         <button
           key={index + 1}
           onClick={() => handlePageChange(index + 1)}
-          className={classNames('pagination-button', { active: currentPage === index + 1 })}
+          className={classNames('pagination-button', {
+            active: currentPage === index + 1,
+          })}
         >
           {index + 1}
         </button>
@@ -37,11 +41,12 @@ export function Pagination({ currentPage, totalPages }: PaginationProps) {
       <button
         onClick={() => handlePageChange(currentPage + 1)}
         disabled={currentPage >= totalPages}
-        className={classNames('pagination-button', { disabled: currentPage >= totalPages })}
+        className={classNames('pagination-button', {
+          disabled: currentPage >= totalPages,
+        })}
       >
         Next
       </button>
     </div>
   );
 }
-

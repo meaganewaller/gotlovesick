@@ -1,34 +1,36 @@
-import { fetchPlaylist } from '@/services/graphql'
-import { notFound } from 'next/navigation'
-import { WPPlaylist } from '@/types'
-import '@/styles/pages/playlists.css'
-import { Breadcrumbs } from '@/components/Breadcrumbs'
-import { Cassette } from "@/components/playlists"
+import { fetchPlaylist } from '@/services/graphql';
+import { notFound } from 'next/navigation';
+import { WPPlaylist } from '@/types';
+import '@/styles/pages/playlists.css';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
+import { Cassette } from '@/components/playlists';
 
 async function fetchData(slug: string) {
-  let playlist = undefined
+  let playlist = undefined;
 
-  playlist = await fetchPlaylist(slug)
+  playlist = await fetchPlaylist(slug);
 
   if (playlist) {
-    return { playlist: playlist }
+    return { playlist: playlist };
   }
 
-  return { error: 'No data found' }
+  return { error: 'No data found' };
 }
 
 function RenderPage({ playlist }: { playlist: WPPlaylist }) {
   return (
     <main id="playlist-page">
       <div className="" id="playlist-content">
-        {playlist.seo?.breadcrumbs && <Breadcrumbs breadcrumbs={playlist.seo?.breadcrumbs} />}
+        {playlist.seo?.breadcrumbs && (
+          <Breadcrumbs breadcrumbs={playlist.seo?.breadcrumbs} />
+        )}
 
         <div id="playlist">
           <Cassette playlist={playlist} />
         </div>
       </div>
     </main>
-  )
+  );
 }
 
 export default async function Archive(props: {
@@ -74,6 +76,3 @@ export default async function Archive(props: {
 
   return notFound();
 }
-
-
-

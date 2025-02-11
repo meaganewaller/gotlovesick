@@ -1,12 +1,12 @@
-import { fetchPage } from "@/services/graphql";
-import Image from 'next/image'
+import { fetchPage } from '@/services/graphql';
+import Image from 'next/image';
 import rainbows from '~/images/dividers/rainbows.gif';
-import { notFound } from "next/navigation";
-import { WPPage } from "@/types";
+import { notFound } from 'next/navigation';
+import { WPPage } from '@/types';
 
-import "@/styles/pages/coding.css";
+import '@/styles/pages/coding.css';
 
-import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
 async function fetchData(slug: string) {
   let page = undefined;
@@ -17,7 +17,7 @@ async function fetchData(slug: string) {
     return { page: page };
   }
 
-  return { error: "No data found" };
+  return { error: 'No data found' };
 }
 
 function RenderPage({ page }: { page: WPPage }) {
@@ -25,13 +25,15 @@ function RenderPage({ page }: { page: WPPage }) {
     <main id="coding-page" className={`${page.slug}`}>
       <div className="layout">
         <section className="main-content">
-          {page.seo?.breadcrumbs && <Breadcrumbs breadcrumbs={page.seo?.breadcrumbs} />}
+          {page.seo?.breadcrumbs && (
+            <Breadcrumbs breadcrumbs={page.seo?.breadcrumbs} />
+          )}
           <header className="header">
             <div className="about-section">
               <h1 dangerouslySetInnerHTML={{ __html: page.title }} />
             </div>
             <div className="divider">
-              <Image src={rainbows} alt="" className='divider' />
+              <Image src={rainbows} alt="" className="divider" />
             </div>
           </header>
 

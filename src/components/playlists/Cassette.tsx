@@ -1,4 +1,4 @@
-import { WPPlaylist } from '@/types'
+import { WPPlaylist } from '@/types';
 
 export function Cassette({ playlist }: { playlist: WPPlaylist }) {
   return (
@@ -46,27 +46,55 @@ export function Cassette({ playlist }: { playlist: WPPlaylist }) {
             <span className="side">B</span>
             <p>Side B</p>
           </div>
-          <div className='track-listing'>
-            {playlist.playlistDetails.songs.filter((track) => track.trackSide.includes('A')).map((track) => (
-              <span
-                aria-label={`By: ${track.artist}`}
-                data-tooltip="up"
-                key={track.songTitle}>{track.songTitle}</span>
-            ))}
+          <div className="track-listing">
+            {playlist.playlistDetails.songs
+              .filter((track) => track.trackSide.includes('A'))
+              .map((track) => (
+                <span
+                  aria-label={`By: ${track.artist}`}
+                  data-tooltip="up"
+                  key={track.songTitle}
+                >
+                  {track.songTitle}
+                </span>
+              ))}
           </div>
           <div>
-            &middot;<br />&middot;<br />&middot;<br />&middot;<br />&middot;<br />&middot;<br />&middot;<br />&middot;<br />&middot;<br />&middot;
+            &middot;
+            <br />
+            &middot;
+            <br />
+            &middot;
+            <br />
+            &middot;
+            <br />
+            &middot;
+            <br />
+            &middot;
+            <br />
+            &middot;
+            <br />
+            &middot;
+            <br />
+            &middot;
+            <br />
+            &middot;
           </div>
-          <div className='track-listing'>
-            {playlist.playlistDetails.songs.filter((track) => track.trackSide.includes('B')).map((track) => (
-              <span
-                aria-label={`By: ${track.artist}`}
-                data-tooltip="up"
-                key={track.songTitle}>{track.songTitle}</span>
-            ))}
+          <div className="track-listing">
+            {playlist.playlistDetails.songs
+              .filter((track) => track.trackSide.includes('B'))
+              .map((track) => (
+                <span
+                  aria-label={`By: ${track.artist}`}
+                  data-tooltip="up"
+                  key={track.songTitle}
+                >
+                  {track.songTitle}
+                </span>
+              ))}
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }

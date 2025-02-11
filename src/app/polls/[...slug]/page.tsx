@@ -1,8 +1,10 @@
-import { notFound } from 'next/navigation'
-import { Poll } from '@/components/Poll'
-import '@/styles/pages/polls.css'
+import { notFound } from 'next/navigation';
+import { Poll } from '@/components/Poll';
+import '@/styles/pages/polls.css';
 
-export default async function Archive(props: { params: Promise<{ slug: string[] }> }) {
+export default async function Archive(props: {
+  params: Promise<{ slug: string[] }>;
+}) {
   const params = await props.params;
   const { slug } = params;
 
@@ -14,5 +16,5 @@ export default async function Archive(props: { params: Promise<{ slug: string[] 
     <main id="poll-page">
       <Poll slug={slug[0]} />
     </main>
-  )
+  );
 }

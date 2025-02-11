@@ -30,7 +30,7 @@ main#blog-post-page .layout {
     a.category {
       text-transform: lowercase;
       letter-spacing: 0.1em;
-      transition: all .2s ease-in-out;
+      transition: all 0.2s ease-in-out;
       vertical-align: baseline;
       color: var(--pink);
       font-size: 1.75rem;
@@ -70,7 +70,7 @@ main#blog-post-page .layout {
 
         a {
           color: var(--pink);
-          transition: all .2s ease-in-out;
+          transition: all 0.2s ease-in-out;
 
           &:hover {
             color: var(--purple);
@@ -266,10 +266,10 @@ main#blog-page .layout {
         text-align: center;
         font-weight: 600;
         line-height: 28px;
-        transition:all 0.7s ease;
-        text-decoration:none;
-        color:inherit;
-        cursor:pointer;
+        transition: all 0.7s ease;
+        text-decoration: none;
+        color: inherit;
+        cursor: pointer;
       }
 
       .card__description {
@@ -277,8 +277,8 @@ main#blog-page .layout {
         margin-top: 8px;
       }
 
-      .card__heading:hover{
-        opacity: .7;
+      .card__heading:hover {
+        opacity: 0.7;
       }
 
       .card__footer {
@@ -339,7 +339,6 @@ main#blog-page .layout {
   height: 40px;
   object-fit: cover;
 }
-
 
 .author {
   font-weight: bold;
@@ -482,7 +481,9 @@ main#blog-page .layout {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  transition:
+    background-color 0.3s,
+    transform 0.2s;
 }
 
 .form-submit button:hover {

@@ -1,48 +1,48 @@
-import { GraphQLNodes, WPSeo, Nullable, GraphQLNode, WPImage } from "@/types"
+import { GraphQLNodes, WPSeo, Nullable, GraphQLNode, WPImage } from '@/types';
 
 export type SkillLevel = {
-  databaseId: number
-  id: string
-  name: string
-  slug: string
-}
+  databaseId: number;
+  id: string;
+  name: string;
+  slug: string;
+};
 
 export type TutorialType = {
   databaseId: number;
   id: string;
   name: string;
-  slug: string
-}
+  slug: string;
+};
 
 export type TutorialFields = {
-  description: string
-}
+  description: string;
+};
 
 export type TutorialCard = {
-  databaseId: number
-  date: string
-  excerpt: string
-  featuredImage?: Nullable<GraphQLNode<WPImage>>
-  id: string
-  skillLevels: GraphQLNodes<SkillLevel>
-  slug: string
-  title: string
-  tutorialFields: TutorialFields
-  tutorialTypes: GraphQLNodes<TutorialType>
-}
+  databaseId: number;
+  date: string;
+  excerpt: string;
+  featuredImage?: Nullable<GraphQLNode<WPImage>>;
+  id: string;
+  skillLevels: GraphQLNodes<SkillLevel>;
+  slug: string;
+  title: string;
+  tutorialFields: TutorialFields;
+  tutorialTypes: GraphQLNodes<TutorialType>;
+};
 
 export type Tutorial = TutorialCard & {
-  content: string
-  seo: WPSeo
-}
+  content: string;
+  seo: WPSeo;
+};
 
 export type TutorialList = {
   tutorials: {
-    nodes: TutorialCard[]
+    nodes: TutorialCard[];
     pageInfo: {
       offsetPagination: {
-        total: number
-      }
-    }
-  }
-}
+        total: number;
+      };
+    };
+  };
+};

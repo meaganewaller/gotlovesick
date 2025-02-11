@@ -7,8 +7,8 @@ import { FontProvider } from '@/context/FontContext';
 import ClientThemeWrapper from '@/context/ClientThemeWrapper';
 import Loading from '@/components/loader';
 
-import { fetchMenu } from '@/services/graphql'
-import { MenuLocationEnum } from '@/types'
+import { fetchMenu } from '@/services/graphql';
+import { MenuLocationEnum } from '@/types';
 
 import '@/styles/index.css';
 
@@ -63,9 +63,7 @@ export default async function RootLayout({
     return <Loading />;
   }
 
-  const menus = [
-    { title: 'Info', menu: fetchedSidebarMenu },
-  ];
+  const menus = [{ title: 'Info', menu: fetchedSidebarMenu }];
 
   return (
     <html lang="en" suppressHydrationWarning>

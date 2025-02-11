@@ -11,16 +11,16 @@
     display: grid;
     grid-gap: var(--layout-grid-gap);
     grid-template-areas:
-      "welcome welcome"
-      "status vibes"
-      "updates vibes";
+      'welcome welcome'
+      'status vibes'
+      'updates vibes';
 
     @media (max-width: 768px) {
       grid-template-areas:
-        "welcome welcome"
-        "updates updates"
-        "status status"
-        "vibes vibes";
+        'welcome welcome'
+        'updates updates'
+        'status status'
+        'vibes vibes';
 
       grid-template-columns: 1fr;
     }
@@ -47,10 +47,8 @@
       }
 
       img {
-        margin-bottom: .75rem;
+        margin-bottom: 0.75rem;
       }
     }
   }
 }
-
-

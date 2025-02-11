@@ -1,4 +1,4 @@
-import type { Nullable, WPPlaylist } from "@/types"
+import type { Nullable, WPPlaylist } from '@/types';
 import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers';
 
 type PlaylistResponse = {
@@ -73,4 +73,3 @@ export const fetchPlaylist = async (slug: string) => {
 
   return response.playlist;
 };
-

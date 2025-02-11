@@ -1,9 +1,9 @@
-import "@/styles/pages/landing.css";
+import '@/styles/pages/landing.css';
 import Script from 'next/script';
 import {
   fetchPage,
   fetchRecentLogs,
-  convertWPLogToLog
+  convertWPLogToLog,
 } from '@/services/graphql';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
@@ -31,7 +31,7 @@ export default async function Home() {
               <div
                 className="welcome-content"
                 dangerouslySetInnerHTML={{
-                  __html: homepage.content
+                  __html: homepage.content,
                 }}
               />
               <figure>
@@ -67,9 +67,7 @@ export default async function Home() {
 
               {recentLogs.map((log) => (
                 <div key={log.databaseId} className="log">
-                  <h2>
-                    {log.title}
-                  </h2>
+                  <h2>{log.title}</h2>
                   <div
                     className="log-content"
                     dangerouslySetInnerHTML={{ __html: log.content }}

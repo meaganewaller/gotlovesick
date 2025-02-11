@@ -1,4 +1,4 @@
-import { formatDistance } from 'date-fns'
+import { formatDistance } from 'date-fns';
 export * from './graphql';
 export * from './strings';
 export * from './comments';
@@ -14,7 +14,7 @@ export function url(path = '') {
 
 export const formatDateAsString = (date: string) => {
   return formatDistance(new Date(date), new Date(), { addSuffix: true });
-}
+};
 
 export const updateSearchParams = (type: string, value: string) => {
   // Get the current URL search params
@@ -28,4 +28,3 @@ export const updateSearchParams = (type: string, value: string) => {
 
   return newPathname;
 };
-

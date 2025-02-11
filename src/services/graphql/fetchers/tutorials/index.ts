@@ -1,2 +1,2 @@
-export * from "./fetch-tutorial"
-export * from "./fetch-all-tutorials"
+export * from './fetch-tutorial';
+export * from './fetch-all-tutorials';

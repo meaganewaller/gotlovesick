@@ -6,11 +6,11 @@ export type RecsResponse = {
     nodes: Rec[];
     pageInfo: {
       offsetPagination: {
-        total: number
-      }
-    }
-  }
-}
+        total: number;
+      };
+    };
+  };
+};
 
 const allRecsQuery = `query AllRecommendations($size: Int!, $offset: Int!) {
   recs: recommendations(where: {
@@ -34,15 +34,18 @@ const allRecsQuery = `query AllRecommendations($size: Int!, $offset: Int!) {
   }
 }`;
 
-export const fetchAllRecs = async (page: number, perPage: number): Promise<RecsResponse> => {
+export const fetchAllRecs = async (
+  page: number,
+  perPage: number
+): Promise<RecsResponse> => {
   const response = await fetchGraphQL<RecsResponse>({
     query: allRecsQuery,
     url: getGraphQLUrl(),
     variables: {
       offset: (page - 1) * perPage,
-      size: perPage
+      size: perPage,
     },
   });
 
-  return response
-}
+  return response;
+};

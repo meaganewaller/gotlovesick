@@ -1,9 +1,9 @@
-import type { Nullable, Category } from '@/types'
-import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers'
+import type { Nullable, Category } from '@/types';
+import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers';
 
 type CategoryResponse = {
-  category: Nullable<Category>
-}
+  category: Nullable<Category>;
+};
 
 const categoryQuery = `query Category($slug: ID!, $size: Int!, $offset: Int!) {
   category(id: $slug, idType: SLUG) {
@@ -36,18 +36,22 @@ const categoryQuery = `query Category($slug: ID!, $size: Int!, $offset: Int!) {
       }
     }
   }
-}`
+}`;
 
-export const fetchCategory = async (slug: string, page: number, perPage: number) => {
+export const fetchCategory = async (
+  slug: string,
+  page: number,
+  perPage: number
+) => {
   const response = await fetchGraphQL<CategoryResponse>({
     query: categoryQuery,
     url: getGraphQLUrl(),
-    variables: { slug, offset: (page - 1) * perPage, size: perPage }
-  })
+    variables: { slug, offset: (page - 1) * perPage, size: perPage },
+  });
 
   if (response.category) {
-    return { category: response.category }
+    return { category: response.category };
   }
 
-  return { error: true }
-}
+  return { error: true };
+};

@@ -17,7 +17,9 @@ const ThemeSwap = () => {
 
   return (
     <div id="theme-toggler">
-      <label htmlFor="theme-select" className="sr-only">pick theme:</label>
+      <label htmlFor="theme-select" className="sr-only">
+        pick theme:
+      </label>
       <select
         id="theme-select"
         value={theme}

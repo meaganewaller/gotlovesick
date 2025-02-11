@@ -1,12 +1,12 @@
-import type { Nullable, Rec } from '@/types'
-import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers'
+import type { Nullable, Rec } from '@/types';
+import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers';
 
 type RecommendationsResponse = {
   recommendations: Nullable<{
     nodes: Rec[];
-    pageInfo: { offsetPagination: { total: number }};
-  }>
-}
+    pageInfo: { offsetPagination: { total: number } };
+  }>;
+};
 
 const recommendationsQuery = `query FetchAllRecommendations($typeSlug: String, $size: Int!, $offset: Int!) {
   recommendations(where: {
@@ -44,18 +44,22 @@ const recommendationsQuery = `query FetchAllRecommendations($typeSlug: String, $
       }
     }
   }
-}`
+}`;
 
-export const fetchRecommendationsByType = async (typeSlug: string, page: number, perPage: number): Promise<RecommendationsResponse> => {
+export const fetchRecommendationsByType = async (
+  typeSlug: string,
+  page: number,
+  perPage: number
+): Promise<RecommendationsResponse> => {
   const response = await fetchGraphQL<RecommendationsResponse>({
     query: recommendationsQuery,
     url: getGraphQLUrl(),
     variables: {
       typeSlug,
       offset: (page - 1) * perPage,
-      size: perPage
-    }
-  })
+      size: perPage,
+    },
+  });
 
-  return response
-}
+  return response;
+};

@@ -1,17 +1,17 @@
-import React from 'react'
-import { notFound } from 'next/navigation'
-import { fetchAllPolls } from '@/services/graphql'
+import React from 'react';
+import { notFound } from 'next/navigation';
+import { fetchAllPolls } from '@/services/graphql';
 import '@/styles/pages/polls.css';
-import { Grid } from "@/components/polls"
+import { Grid } from '@/components/polls';
 
 async function fetchPolls() {
-  const polls = await fetchAllPolls()
+  const polls = await fetchAllPolls();
 
   if (!polls) {
-    return { error: 'No polls found' }
+    return { error: 'No polls found' };
   }
 
-  return { polls }
+  return { polls };
 }
 
 export default async function PollsPage() {
@@ -35,8 +35,8 @@ export default async function PollsPage() {
           <Grid items={data.polls.nodes} columnGutter={10} columnWidth={250} />
         </div>
       </main>
-    )
+    );
   }
 
-  return notFound()
+  return notFound();
 }

@@ -1,11 +1,7 @@
 import React, { FC } from 'react';
 // import { QuestionResponseProps } from '@/types';
 
-const QuestionResponse: FC<any> = ({
-  questionIndex,
-  title,
-  description,
-}) => {
+const QuestionResponse: FC<any> = ({ questionIndex, title, description }) => {
   const visible = title || description;
 
   return (

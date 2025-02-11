@@ -7,14 +7,14 @@
   background-color: var(--green-300);
   border-radius: 10px;
   display: grid;
-  grid-template-areas: "center";
+  grid-template-areas: 'center';
   height: max-content;
   margin-top: 15px;
   overflow: hidden;
   padding: 0 5px 0 5px;
 }
 
-.marquee-container:hover>.marquee {
+.marquee-container:hover > .marquee {
   animation-play-state: paused;
 }
 
@@ -39,6 +39,5 @@
 }
 
 .marquee-copy {
-  animation-delay: calc(var(--speed-to-loop)/ -2);
+  animation-delay: calc(var(--speed-to-loop) / -2);
 }
-

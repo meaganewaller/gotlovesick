@@ -1,15 +1,15 @@
 'use client';
 
 import React, { useState, useEffect, FC, createContext, Dispatch } from 'react';
-import { scroller, Element } from 'react-scroll'
+import { scroller, Element } from 'react-scroll';
 import Question from './Question';
 import Result from './Result';
-import { WPQuiz, ISelectedAnswer } from '@/types'
+import { WPQuiz, ISelectedAnswer } from '@/types';
 import '@/styles/pages/quizzes.css';
 import { convertWPQuizToIQuiz } from '@/services/graphql';
 
 interface ContextProps {
-  selectedAnswers: any[]
+  selectedAnswers: any[];
   changeSelectedAnswers: Dispatch<React.SetStateAction<ISelectedAnswer[]>>;
   scrollFunction: (element: string, questionIndex: number) => void;
 }
@@ -20,14 +20,12 @@ export const QuizContext = createContext<ContextProps>({
   scrollFunction: () => {},
 });
 
-export const Quiz: FC<{ quiz: WPQuiz}> = (props) => {
-  const { quiz } = props
+export const Quiz: FC<{ quiz: WPQuiz }> = (props) => {
+  const { quiz } = props;
 
-  const convertedQuiz = convertWPQuizToIQuiz(quiz)
+  const convertedQuiz = convertWPQuizToIQuiz(quiz);
 
-  const [selectedAnswers, changeSelectedAnswers] = useState<any[]>(
-    []
-  );
+  const [selectedAnswers, changeSelectedAnswers] = useState<any[]>([]);
 
   const [resultsAvailable, changeResultsAvailable] = useState(false);
   const [finalResult, changeFinalResult] = useState<any[]>([]);
@@ -37,21 +35,21 @@ export const Quiz: FC<{ quiz: WPQuiz}> = (props) => {
   const scrollFunction = (element: string, questionIndex: number) => {
     const scrollToRes = () => {
       setTimeout(() => {
-        scroller.scrollTo("Result", {
+        scroller.scrollTo('Result', {
           duration: 500,
           offset: -80,
           smooth: true,
-          container: "main-questions-container",
+          container: 'main-questions-container',
         });
-      }, 200)
+      }, 200);
 
       setTimeout(() => {
-        scroller.scrollTo("Result", {
+        scroller.scrollTo('Result', {
           duration: 250,
           offset: -110,
           smooth: true,
-          container: "main-questions-container",
-        })
+          container: 'main-questions-container',
+        });
       }, 700);
     };
 
@@ -60,7 +58,7 @@ export const Quiz: FC<{ quiz: WPQuiz}> = (props) => {
         duration: 250,
         offset: -150,
         smooth: true,
-        container: 'main-questions-container'
+        container: 'main-questions-container',
       });
 
       setTimeout(() => {
@@ -68,28 +66,28 @@ export const Quiz: FC<{ quiz: WPQuiz}> = (props) => {
           duration: 250,
           offset: -150,
           smooth: true,
-          container: "main-questions-container",
+          container: 'main-questions-container',
         });
-      }, 500)
+      }, 500);
     };
 
     if (quiz.quizFields.autoScroll) {
       if (
         questionIndex + 1 === quiz.quizFields.questions.length &&
-        !element.includes("QuizQuestionResponse")
+        !element.includes('QuizQuestionResponse')
       ) {
         scrollToRes();
       } else {
-        if(element.includes("QuizResponseResponse")) {
+        if (element.includes('QuizResponseResponse')) {
           setTimeout(() => {
-            scrollToEl()
-          }, 200)
+            scrollToEl();
+          }, 200);
         } else {
-          scrollToEl()
+          scrollToEl();
         }
       }
     }
-  }
+  };
 
   useEffect(() => {
     if (
@@ -122,7 +120,12 @@ export const Quiz: FC<{ quiz: WPQuiz}> = (props) => {
         );
       }
     }
-  }, [selectedAnswers, quiz.quizFields.questions, resultsAvailable, quiz.quizFields.results])
+  }, [
+    selectedAnswers,
+    quiz.quizFields.questions,
+    resultsAvailable,
+    quiz.quizFields.results,
+  ]);
 
   if (quiz.quizFields.autoScroll) {
   }
@@ -153,12 +156,18 @@ export const Quiz: FC<{ quiz: WPQuiz}> = (props) => {
         changeResultsAvailable(true);
         changeFinalResult(
           convertedQuiz.results.filter(
-            (result: any) => Number(result.resultId) === Number(mostFrequentResultID)
+            (result: any) =>
+              Number(result.resultId) === Number(mostFrequentResultID)
           )
         );
       }
     }
-  }, [selectedAnswers, convertedQuiz.questions, resultsAvailable, convertedQuiz.results]);
+  }, [
+    selectedAnswers,
+    convertedQuiz.questions,
+    resultsAvailable,
+    convertedQuiz.results,
+  ]);
 
   useEffect(() => {
     if (shareLinkClicked) {
@@ -183,7 +192,9 @@ export const Quiz: FC<{ quiz: WPQuiz}> = (props) => {
     >
       <Element name="Top" className="outer-quiz-container">
         <div className="inner-quiz-container">
-          {convertedQuiz.title ? <h1 className="quiz-title">{convertedQuiz.title}</h1> : null}
+          {convertedQuiz.title ? (
+            <h1 className="quiz-title">{convertedQuiz.title}</h1>
+          ) : null}
           {convertedQuiz.description ? (
             <p className="quiz-description">{convertedQuiz.description}</p>
           ) : null}

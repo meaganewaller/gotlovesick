@@ -1,5 +1,5 @@
-body[data-theme="rainbow"] {
-  nav[aria-label="Main navigation"] {
+body[data-theme='rainbow'] {
+  nav[aria-label='Main navigation'] {
     &::before {
       height: 10px;
     }
@@ -10,7 +10,7 @@ body[data-theme="rainbow"] {
     }
   }
 }
-nav[aria-label="Main navigation"] {
+nav[aria-label='Main navigation'] {
   background-color: var(--light);
   background-image: var(--header-nav-bg);
   border-left: 2px solid var(--borders);
@@ -23,7 +23,7 @@ nav[aria-label="Main navigation"] {
   top: 0;
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: -8px;
     left: 0;
@@ -36,7 +36,7 @@ nav[aria-label="Main navigation"] {
   }
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     bottom: -90px;
     left: 0;
@@ -44,12 +44,14 @@ nav[aria-label="Main navigation"] {
     height: 96px;
     background-image: var(--header-nav-border-bg-bottom);
     background-repeat: repeat-x, repeat-x;
-    background-position: center 0, center 3px;
+    background-position:
+      center 0,
+      center 3px;
     z-index: 10;
   }
 }
 
-nav[aria-label="Main navigation"] ul {
+nav[aria-label='Main navigation'] ul {
   display: flex;
   gap: 1em;
   justify-content: center;
@@ -65,7 +67,6 @@ nav[aria-label="Main navigation"] ul {
 .dropdown {
   position: relative;
 }
-
 
 .dropdown > .dropdown__title {
   background-color: var(--nav-link-background-color);
@@ -141,7 +142,9 @@ nav[aria-label="Main navigation"] ul {
   font-size: 1rem;
   margin: 0 auto;
   text-decoration: none;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
   width: 90%;
 }
 
@@ -162,7 +165,9 @@ nav[aria-label="Main navigation"] ul {
   opacity: 0;
   top: 0;
   transform: translateX(-10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
   visibility: hidden;
 }
 
@@ -175,7 +180,7 @@ nav[aria-label="Main navigation"] ul {
 
 /* Responsive styles */
 @media (max-width: 768px) {
-  nav[aria-label="Main navigation"] ul {
+  nav[aria-label='Main navigation'] ul {
     flex-direction: column;
     gap: 0.5rem;
   }
@@ -195,5 +200,3 @@ nav[aria-label="Main navigation"] ul {
     transform: none;
   }
 }
-
-

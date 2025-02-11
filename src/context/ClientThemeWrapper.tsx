@@ -14,5 +14,9 @@ export default function ClientThemeWrapper({ children }: PropsWithChildren) {
   }, [theme]);
 
   const { fontClass } = useContext(FontContext);
-  return <div data-theme={theme} data-font={fontClass}>{children}</div>;
+  return (
+    <div data-theme={theme} data-font={fontClass}>
+      {children}
+    </div>
+  );
 }

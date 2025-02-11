@@ -31,5 +31,5 @@ export const fetchMenu = async (location: MenuLocationEnum) => {
     );
   }
 
-  return response.menu
+  return response.menu;
 };

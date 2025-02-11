@@ -1,17 +1,17 @@
-import type { Nullable } from '@/types'
-import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers'
+import type { Nullable } from '@/types';
+import { fetchGraphQL, getGraphQLUrl } from '@/utils/helpers';
 
 export type CastVotePayload = {
   clientMutationId: Nullable<string>;
   success: boolean;
   message: string;
   pollSlug: string;
-  optionId: string
-}
+  optionId: string;
+};
 
 export type CastVoteResponse = {
   castVote: CastVotePayload;
-}
+};
 
 export const castVoteMutation = `mutation CastVote($input: CastVoteInput!) {
   castVote(input: $input) {
@@ -21,13 +21,13 @@ export const castVoteMutation = `mutation CastVote($input: CastVoteInput!) {
     pollSlug
     optionId
   }
-}`
+}`;
 
 export type CastVoteInput = {
   clientMutationId: string;
   pollSlug: string;
   optionId: string;
-}
+};
 
 export const castVote = async (
   input: CastVoteInput
@@ -36,8 +36,7 @@ export const castVote = async (
     query: castVoteMutation,
     url: getGraphQLUrl(),
     variables: { input },
-  })
+  });
 
   return response.castVote;
-}
-
+};

@@ -14,7 +14,7 @@ main#coding-page {
 main#coding-page .layout {
   margin: 50px auto;
   display: grid;
-  grid-template-areas: "sidebar content";
+  grid-template-areas: 'sidebar content';
   grid-template-columns: 1fr 3fr;
   gap: 20px;
 
@@ -30,7 +30,7 @@ main#coding-page .layout {
 
   aside.sidebar {
     grid-area: sidebar;
-    background-color: rgba(var(--section-background-color), .54);
+    background-color: rgba(var(--section-background-color), 0.54);
     padding: var(--padding);
     border-radius: 12px;
     border: 1px solid var(--borders);
@@ -47,7 +47,7 @@ main#coding-page .layout {
 
     div.group {
       margin-top: 15px;
-      border: .5px dashed var(--borders);
+      border: 0.5px dashed var(--borders);
       padding: var(--padding);
       border-radius: 12px;
 
@@ -71,5 +71,3 @@ main#coding-page .layout {
     }
   }
 }
-
-
